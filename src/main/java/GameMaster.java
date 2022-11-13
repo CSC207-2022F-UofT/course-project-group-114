@@ -27,9 +27,14 @@ public class GameMaster {
         while (playing) {
             if (clock.millis() >= currTime + taskInterval) { // Enough time has passed, turn on a new task
                 Task newTask = createTask(tasks); // Pick a random task
-                newTask.activated = true;
-                newTask.display();
-                times.put(newTask, clock.millis() + timeAllowed); // Record the deadline for this task in the hashmap
+                if (times.containsKey(newTask) == false) { // If the task isn't already running, then run it
+                    if (newTask == (Task) assignmentTask) {
+                        assignmentsCount++;
+                    }
+                    newTask.activated = true;
+                    newTask.display();
+                    times.put(newTask, clock.millis() + timeAllowed); // Record the deadline for this task in the hashmap
+                }
             }
             for (Task task : times) {
                 if (clock.millis() >= times.get(task)) { // If the time is up for the task
@@ -37,6 +42,9 @@ public class GameMaster {
                         times.remove(task);
                         task.activated = false;
                         tasksCompletedCount++;
+                        if (task == (Task) assignmentTask) {
+                            assignmentsCount--;
+                        }
                     }
                     else {
                         lifeMaster.deductLife();
