@@ -16,7 +16,7 @@ public class AssignmentTask extends Task{
     }
 
     @Override
-    public boolean getCompletedStatus() {
+    public void getCompletedStatus() {
         return this.completed;
     }
 
