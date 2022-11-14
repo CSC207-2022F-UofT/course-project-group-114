@@ -21,6 +21,6 @@ public class Menu {
 
     // store highscore (based on the score) (maybe move this to another class later if its easier
     public static void updateScore(User player){
-        
+
     }
 }
