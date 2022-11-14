@@ -28,8 +28,8 @@ public class Menu {
         return scores;
     }
 
-    // store highscore (based on the score) (maybe move this to another class later if its easier
-    public static void updateScore(User player, int updated){
-        User.score = updated;
+    // rewrite csv accordingly
+    private static void updateCSV(){
+        // rereads the score up to the player index then update the order
     }
 }
