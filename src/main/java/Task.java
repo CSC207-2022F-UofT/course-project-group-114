@@ -3,7 +3,7 @@ public abstract class Task {
 
     public abstract void setCompletedStatus(boolean completed);
 
-    public abstract void getCompletedStatus();
+    public abstract boolean getCompletedStatus();
 
     public abstract void display();
 }
