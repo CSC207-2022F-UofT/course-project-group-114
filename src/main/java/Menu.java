@@ -27,9 +27,4 @@ public class Menu {
         scan.close();
         return scores;
     }
-
-    // rewrite csv accordingly
-    private static void updateCSV(){
-        // rereads the score up to the player index then update the order
-    }
 }
