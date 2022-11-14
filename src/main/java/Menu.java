@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 public class Menu {
     // this class controls the backend of the menu
     /* should have functions that do:
@@ -6,21 +9,27 @@ public class Menu {
      */
 
     // we need to agree to a path to store the file for saving
-    String path;
+    private static String path;
 
-    public static int[] getScores() // should be triggered after highscore screen open is clicked
+    public static String[] getScores() throws FileNotFoundException // should be triggered after highscore screen open is clicked
     {
-        int[] scores = new int[7];
-        for (int i = 0; i <= 7; i++)
-        {
-            // goes to the path to find the file
+        Scanner scan = new Scanner(new File("users")); // goes to the path to find the file
+        scan.useDelimiter(",");
+        int index = 0;
+        String line;
+        String[] scores = new String[7];
+        while(index <= 7){
+            line = scan.next();  // reads the line
+            scores[index] = line.split(",")[4]; // extracts the highscore and adds to array
+            index += 1;
         }
 
+        scan.close();
         return scores;
     }
 
     // store highscore (based on the score) (maybe move this to another class later if its easier
-    public static void updateScore(User player){
-
+    public static void updateScore(User player, int updated){
+        User.score = updated;
     }
 }
