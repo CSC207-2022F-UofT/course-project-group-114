@@ -49,6 +49,10 @@ public class GameMaster {
                     else {
                         lifeMaster.deductLife();
                     }
+                } else if (task.getCompletionStatus == true) { // Task was completed early
+                    times.remove(task);
+                    task.activated = false;
+                    tasksCompletedCount++;
                 }
             }
 
