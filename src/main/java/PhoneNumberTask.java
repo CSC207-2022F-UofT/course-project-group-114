@@ -18,13 +18,4 @@ public class PhoneNumberTask extends Task{
         }
     }
 
-    @Override
-    public void setCompletedStatus(boolean completed) {
-
-    }
-
-    @Override
-    public boolean getCompletedStatus() {
-        return false;
-    }
 }
