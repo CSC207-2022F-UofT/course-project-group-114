@@ -27,26 +27,5 @@ public class AssignmentTask extends Task{
             this.setActivatedStatus(false);
         }
     }
-    @Override
-    public void setCompletionStatus(boolean completed) {
-        this.completed = completed;
-    }
-
-    @Override
-    public boolean getCompletionStatus() {
-        return this.completed;
-    }
-
-
-    @Override
-    public void setActivatedStatus(boolean activated) {
-        this.activated = activated;
-    }
-
-    @Override
-    public boolean getActivatedStatus() {
-        return this.activated;
-    }
-
 
 }
