@@ -1,4 +1,5 @@
 public abstract class Task {
+
     protected boolean completed = false;
     protected boolean activated = false;
 
@@ -18,4 +19,6 @@ public abstract class Task {
     public boolean getActivatedStatus() {
         return this.activated;
     }
+
+
 }

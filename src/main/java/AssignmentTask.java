@@ -9,6 +9,7 @@ public class AssignmentTask extends Task{
         this.currentCharacterCount = 0;
     }
 
+
     public void setCharacterCountNeeded(){
         // generate random number from lowerbound and upperbound
         int COUNT_UPPERBOUND = 50;
@@ -27,5 +28,8 @@ public class AssignmentTask extends Task{
             this.setActivatedStatus(false);
         }
     }
+
+
+
 
 }
