@@ -32,7 +32,7 @@ public class GameMaster {
                         assignmentsCount++;
                     }
                     newTask.activated = true;
-                    newTask.display();
+                    newTask.reset();
                     times.put(newTask, clock.millis() + timeAllowed); // Record the deadline for this task in the hashmap
                 }
             }
