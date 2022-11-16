@@ -9,11 +9,10 @@ public class Menu {
      */
 
     // we need to agree to a path to store the file for saving
-    private static String path;
 
     public static String[] getScores() throws FileNotFoundException // should be triggered after highscore screen open is clicked
     {
-        Scanner scan = new Scanner(new File("users")); // goes to the path to find the file
+        Scanner scan = new Scanner(new File("users.csv")); // goes to the path to find the file
         scan.useDelimiter(",");
         int index = 0;
         String line;
@@ -23,8 +22,7 @@ public class Menu {
             scores[index] = line.split(",")[4]; // extracts the highscore and adds to array
             index += 1;
         }
-
-        scan.close();
+        
         return scores;
     }
 }
