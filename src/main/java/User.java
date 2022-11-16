@@ -20,9 +20,30 @@ public class User implements Comparable<User>{
         this.highscore = score;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getHighscore() {
+        return highscore;
+    }
+
     @Override
     public int compareTo(User o) {
         return this.highscore - o.highscore;
+    }
+
+    @Override
+    public String toString() {
+        return name + " " + highscore;
     }
 }
 
