@@ -1,3 +1,7 @@
+package src.main.java;
+
+import src.main.java.TriviaTask;
+
 import java.util.Hashtable;
 import java.util.Random;
 import java.time.Clock;
