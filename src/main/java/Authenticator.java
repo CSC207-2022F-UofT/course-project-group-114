@@ -1,5 +1,9 @@
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 public class Authenticator {
     // holds all the methods useful for login and such
     private static User current;
@@ -26,5 +30,22 @@ public class Authenticator {
 
     private static void updateUser(){
         //updates users to all the existing users
+    }
+
+    private static String md5(String input){
+        try{
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            byte[] messageDigest = md.digest(input.getBytes());
+            BigInteger no = new BigInteger(1, messageDigest);
+
+            String encrypted = no.toString(16);
+            while (encrypted.length() < 32){
+                encrypted = "0" + encrypted;
+            }
+            return encrypted;
+        }
+        catch (NoSuchAlgorithmException e){
+            throw new RuntimeException(e);
+        }
     }
 }
