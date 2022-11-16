@@ -1,7 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Array;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -36,6 +33,7 @@ public class Authenticator {
             return false;
         }
         else {
+            current = users.get(index);
             return md5(password).equals(users.get(index).getPassword());
         }
     }
@@ -49,19 +47,36 @@ public class Authenticator {
         }
 
         users.add(new User(name, username, md5(password), 0));
+        current = users.get(users.size() - 1);
         updateCSV();
         return true;
     }
     // store highscore (based on the score) (maybe move this to another class later if its easier) (ended up moving lol
     public static void updateScore(int updated){
-        current.setHighscore(updated);
-        updateCSV();
+        if (current.getHighscore() <= updated){
+            current.setHighscore(updated);
+            updateCSV();
+        }
     }
 
     // rewrite csv accordingly
     private static void updateCSV(){
         // rereads the score up to the player index then update the order
         Collections.sort(users);
+
+        try{
+            FileWriter location = new FileWriter(new File("users.csv"));
+            BufferedWriter output = new BufferedWriter(location);
+
+            for (User user : users){
+                output.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() +
+                        "," + user.getHighscore());
+                output.newLine();
+            }
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private static ArrayList<User> updateUser() throws FileNotFoundException {
