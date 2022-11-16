@@ -1,10 +1,8 @@
 public abstract class Task {
-    protected boolean completed = false;
-    protected boolean activated = false;
-    public abstract void setCompletionStatus(boolean completed);
+    private boolean completed = false;
+    private boolean activated = false;
+    public abstract void setCompletedStatus(boolean completed);
 
-    public abstract boolean getCompletionStatus();
+    public abstract boolean getCompletedStatus();
 
-    public abstract void setActivatedStatus(boolean activated);
-    public abstract boolean getActivatedStatus();
 }

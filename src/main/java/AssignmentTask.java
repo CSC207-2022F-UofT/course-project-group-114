@@ -9,19 +9,15 @@ public class AssignmentTask extends Task{
         this.currentCharacterCount = 0;
     }
 
+    public void
     @Override
     public void setCompletedStatus(boolean completed) {
-        this.completed = completed;
+        this.completed = true;
     }
 
     @Override
-    public void getCompletedStatus() {
+    public boolean getCompletedStatus() {
         return this.completed;
-    }
-
-    @Override
-    public void setActivatedStatus(boolean activated) {
-
     }
 
 
