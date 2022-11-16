@@ -20,5 +20,5 @@ public abstract class Task {
         return this.activated;
     }
 
-
+    public abstract void reset();
 }
