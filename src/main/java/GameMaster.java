@@ -13,7 +13,7 @@ public class GameMaster {
     public static void main(String[] args) {
         // Create a clock to keep track of time as well as an instance of each Task child class
         Clock clock = Clock.systemDefaultZone();
-        HeadAdjustmentTask heatAdjustmentTask = new HeatAdjustmentTask();
+        HeatAdjustmentTask heatAdjustmentTask = new HeatAdjustmentTask();
         TriviaTask triviaTask = new TriviaTask();
         WireTask wireTask = new WireTask();
         ClickTask clickTask = new ClickTask();
