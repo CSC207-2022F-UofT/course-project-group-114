@@ -1,10 +1,24 @@
 public abstract class Task {
+
     protected boolean completed = false;
     protected boolean activated = false;
-    public abstract void setCompletionStatus(boolean completed);
 
-    public abstract boolean getCompletionStatus();
+    public void setCompletionStatus(boolean completed) {
+        this.completed = completed;
+    }
 
-    public abstract void setActivatedStatus(boolean activated);
-    public abstract boolean getActivatedStatus();
+    public boolean getCompletionStatus() {
+        return this.completed;
+    }
+
+
+    public void setActivatedStatus(boolean activated) {
+        this.activated = activated;
+    }
+
+    public boolean getActivatedStatus() {
+        return this.activated;
+    }
+
+    public abstract void reset();
 }
