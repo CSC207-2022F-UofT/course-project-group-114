@@ -1,5 +1,5 @@
 import java.util.Random;
-public class HeatAdjustmentTask {
+public class HeatAdjustmentTask extends Task {
     public int answerTemp; // The actual temperature the user must achieve
     public int currentTemp; // The user's current temperature
     public HeatAdjustmentTask() {
