@@ -15,8 +15,9 @@ public class TriviaTask extends Task{
     // if the answer is incorrect
 
     @Override
-    public void reset() {
-
+    public void reset() { // TriviaTask inherited reset method from its parent class.
+        // choose the question aka current_question
+        // get the actual_answer of the corresponding question
     }
 //    public void check_answer(String actual_answer, String player_answer){
 //        // if the answer is correct
