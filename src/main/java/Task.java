@@ -23,4 +23,5 @@ public abstract class Task {
     public static void reset() {
         setCompletionStatus(false);
     }
+
 }
