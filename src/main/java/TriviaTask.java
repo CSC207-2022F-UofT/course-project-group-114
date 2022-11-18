@@ -1,4 +1,4 @@
 package src.main.java;
 
-public class TriviaTask extends{
+public class TriviaTask extends Task{
 }
