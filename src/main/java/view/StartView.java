@@ -50,9 +50,9 @@ public class StartView extends JFrame implements ActionListener {
         startPanel.setVisible(true);
     }
 
-//    public static void main(String[] args) {
-//        new StartView();
-//    }
+    public static void main(String[] args) {
+        new StartView();
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
