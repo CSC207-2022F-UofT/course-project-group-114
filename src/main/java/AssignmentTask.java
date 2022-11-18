@@ -29,8 +29,9 @@ public class AssignmentTask extends Task{
         }
     }
 
-    @Override
-    public void reset() {
-
+    public static void reset() {
+        Task.reset();
+        setCharacterCountNeeded();
+        setCurrentCharacterCount(0);
     }
 }
