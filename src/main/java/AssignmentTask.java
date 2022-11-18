@@ -1,35 +1,36 @@
 public class AssignmentTask extends Task{
-    protected boolean completed = false;
-    protected int characterCountNeeded;
-    protected int currentCharacterCount;
+    private static final int COUNT_UPPERBOUND = 50;
+    private static final int COUNT_LOWERBOUND = 30;
+    protected static boolean completed = false;
+    protected static int characterCountNeeded;
+    protected static int currentCharacterCount;
 
     public AssignmentTask(){
-        this.completed = false;
+        completed = false;
         setCharacterCountNeeded();
-        this.currentCharacterCount = 0;
+        currentCharacterCount = 0;
     }
 
 
-    public void setCharacterCountNeeded(){
+    public static void setCharacterCountNeeded(){
         // generate random number from lowerbound and upperbound
-        int COUNT_UPPERBOUND = 50;
-        int COUNT_LOWERBOUND = 30;
-        this.characterCountNeeded =
+        characterCountNeeded =
                 (int) Math.floor(Math.random()*(COUNT_UPPERBOUND - COUNT_LOWERBOUND +1)+ COUNT_LOWERBOUND);
     }
 
-    public void setCurrentCharacterCount(int currCharCount){
-        this.currentCharacterCount = currCharCount;
+    public static void setCurrentCharacterCount(int currCharCount){
+        currentCharacterCount = currCharCount;
     }
 
-    public void checkCount(){
-        if (this.currentCharacterCount >= this.characterCountNeeded){
-            this.setCompletionStatus(true);
-            this.setActivatedStatus(false);
+    public static void checkCount(){
+        if (currentCharacterCount >= characterCountNeeded){
+            setCompletionStatus(true);
+            setActivatedStatus(false);
         }
     }
 
+    @Override
+    public void reset() {
 
-
-
+    }
 }
