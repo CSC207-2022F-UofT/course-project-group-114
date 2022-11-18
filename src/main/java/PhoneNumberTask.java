@@ -1,4 +1,4 @@
-public class PhoneNumberTask extends Task{
+public class PhoneNumberTask extends Task {
     public int actual_number;
     public int pressed_number;
 
@@ -18,13 +18,4 @@ public class PhoneNumberTask extends Task{
         }
     }
 
-    @Override
-    public void setCompletedStatus(boolean completed) {
-
-    }
-
-    @Override
-    public boolean getCompletedStatus() {
-        return false;
-    }
 }
