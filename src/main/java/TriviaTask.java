@@ -1,14 +1,75 @@
-import java.util.Dictionary;
+import java.util.*;
 
 public class TriviaTask extends Task{
     public String currentQuestion;
     public String playerAnswer;
-    // public String actualAnswer;
+    public String actualAnswer;
 
-    public TriviaTask(String playerInput, String actualAnswer){
-        this.playerAnswer = playerAnswer; // change that to the answer inputted by the player
-        this.actualAnswer = playerInput;
-    }
+     //dictionary mapping questions to answers
+    Map<String, String> triviaDictionary = new Map<String, String>() {
+         @Override
+         public int size() {
+             return 0;
+         }
+
+         @Override
+         public boolean isEmpty() {
+             return false;
+         }
+
+         @Override
+         public boolean containsKey(Object key) {
+             return false;
+         }
+
+         @Override
+         public boolean containsValue(Object value) {
+             return false;
+         }
+
+         @Override
+         public String get(Object key) {
+             return null;
+         }
+
+         @Override
+         public String put(String key, String value) {
+             return null;
+         }
+
+         @Override
+         public String remove(Object key) {
+             return null;
+         }
+
+         @Override
+         public void putAll(Map<? extends String, ? extends String> m) {
+
+         }
+
+         @Override
+         public void clear() {
+
+         }
+
+         @Override
+         public Set<String> keySet() {
+             return null;
+         }
+
+         @Override
+         public Collection<String> values() {
+             return null;
+         }
+
+         @Override
+         public Set<Entry<String, String>> entrySet() {
+             return null;
+         }
+     }; // change second String to a list of strings
+//    triviaQA.put("What is the first letter of the alphabet", "a");
+//    triviaQA.put("What is the capital of Canada", "Ottawa");
+//    triviaQA.put("What is python", "a type of snake");
 
     // step 1: generate a question
     public void getQuestion(){
