@@ -64,7 +64,7 @@ public class Authenticator {
         Collections.sort(users);
 
         try{
-            FileWriter location = new FileWriter(new File("resources/users.csv"));
+            FileWriter location = new FileWriter(new File("src\\main\\java\\resources\\users.csv"));
             BufferedWriter output = new BufferedWriter(location);
 
             for (User user : users){
@@ -80,7 +80,7 @@ public class Authenticator {
 
     private static ArrayList<User> updateUser() throws FileNotFoundException {
         //updates users to all the existing users
-        Scanner scan = new Scanner(new File("resources/users.csv")); // goes to the path to find the file
+        Scanner scan = new Scanner(new File("src\\main\\java\\resources\\users.csv")); // goes to the path to find the file
         scan.useDelimiter(",");
         String line;
         String name;
