@@ -36,7 +36,7 @@ public class GameMaster {
                         times.remove(task);
                         task.activated = false;
                         lifeMaster.incrementTaskCount();
-                        if (task == (Task) assignmentTask) {
+                        if (task.getClass() == AssignmentTask.class) {
                             assignmentsCount--;
                         }
                     }
