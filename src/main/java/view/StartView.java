@@ -13,6 +13,8 @@ public class StartView extends JFrame implements ActionListener {
     private ImageIcon highscore;
     private ImageIcon bg;
 
+    private JLabel background;
+
     private JLayeredPane menuPanel;
     private JPanel startPanel;
 
@@ -26,9 +28,9 @@ public class StartView extends JFrame implements ActionListener {
         start.addActionListener(this);
         startPanel.add(start);
 
-        bg = new ImageIcon("src\\main\\java\\resources\\menu.jpg");
         menuPanel = new JLayeredPane();
-        JLabel background = new JLabel(bg);
+        bg = new ImageIcon("src\\main\\java\\resources\\menu.jpg");
+        background = new JLabel(bg);
         background.setPreferredSize(new Dimension(1920,1080));
         menuPanel.add(background);
 
@@ -43,16 +45,17 @@ public class StartView extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
+        menuPanel.setVisible(false);
         startPanel.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new StartView();
-    }
+//    public static void main(String[] args) {
+//        new StartView();
+//    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        menuPanel.setVisible(true);
         startPanel.setVisible(false);
+        menuPanel.setVisible(true);
     }
 }
