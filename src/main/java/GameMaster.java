@@ -11,24 +11,18 @@ public class GameMaster {
     public static Task[] tasks;
 
     public static void main(String[] args) {
-        // Create a clock to keep track of time as well as an instance of each Task child class
+        // Create a clock to keep track of time
         Clock clock = Clock.systemDefaultZone();
-        HeatAdjustmentTask heatAdjustmentTask = new HeatAdjustmentTask();
-        TriviaTask triviaTask = new TriviaTask();
-        WireTask wireTask = new WireTask();
-        ClickTask clickTask = new ClickTask();
-        PhoneNumberTask phoneNumberTask = new PhoneNumberTask();
-        AssignmentTask assignmentTask = new AssignmentTask();
-        MemoryTask memoryTask = new MemoryTask();
-        tasks = new Task[] {heatAdjustmentTask, triviaTask, wireTask, clickTask, phoneNumberTask, assignmentTask, memoryTask};
         // Create an instance of the LifeMaster
         LifeMaster lifeMaster = new LifeMaster();
         long currTime = clock.millis(); // Find the current time in milliseconds
         while (playing) {
+            tasks = new Task[] {HeatAdjustmentTask.class, TriviaTask.class, WireTask.class, ClickTask.class,
+                    PhoneNumberTask.class, AssignmentTask.class, MemoryTask.class};
             if (clock.millis() >= currTime + taskInterval) { // Enough time has passed, turn on a new task
                 Task newTask = createTask(tasks); // Pick a random task
                 if (!times.containsKey(newTask)) { // If the task isn't already running, then run it
-                    if (newTask == (Task) assignmentTask) {
+                    if (newTask.getClass() == AssignmentTask.class) {
                         assignmentsCount++;
                     }
                     newTask.activated = true;
