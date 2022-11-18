@@ -1,30 +1,58 @@
 package view;
-import javax.imageio.ImageIO;
+import controller.NonGameController;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.Objects;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class StartView extends JFrame{
-    private ImageIcon image;
-    private JLabel label;
+public class StartView extends JFrame implements ActionListener {
+    private JPanel main;
+    private JButton start;
+    private ImageIcon door;
+    private ImageIcon play;
+    private ImageIcon highscore;
+    private ImageIcon bg;
 
-    public void view(){
-        setLayout(new FlowLayout());
+    private JLayeredPane menuPanel;
+    private JPanel startPanel;
 
-        image = new ImageIcon(Objects.requireNonNull(getClass().getResource("view/start.jpg")));
-        label = new JLabel(image);
-        label.setSize(1920,1080);
-        add(label);
+    StartView(){
+        NonGameController controller = new NonGameController();
+
+        startPanel = new JPanel();
+        door = new ImageIcon("src\\main\\java\\resources\\start.jpg");
+        start = new JButton(door);
+        start.setPreferredSize(new Dimension(1920,1080));
+        start.addActionListener(this);
+        startPanel.add(start);
+
+        bg = new ImageIcon("src\\main\\java\\resources\\menu.jpg");
+        menuPanel = new JLayeredPane();
+        JLabel background = new JLabel(bg);
+        background.setPreferredSize(new Dimension(1920,1080));
+        menuPanel.add(background);
+
+        main = new JPanel(new CardLayout());
+        main.add(menuPanel, "MENUPANEL");
+        main.add(startPanel, "STARTPANEL");
+        add(main);
+        start.add(new JLabel("Start"));
+
+        setTitle("StartMenu");
+        setSize(1920,1080);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+        startPanel.setVisible(true);
     }
 
-    public static void main(String[] args){
-        StartView gui = new StartView();
-        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gui.setVisible(true);
-        gui.setSize(1920, 1080);
-        gui.setTitle("Phone Number Task");
+    public static void main(String[] args) {
+        new StartView();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        menuPanel.setVisible(true);
+        startPanel.setVisible(false);
     }
 }
