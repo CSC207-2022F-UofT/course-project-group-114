@@ -11,7 +11,7 @@ public class Menu {
 
     public static String[] getScores() throws FileNotFoundException // should be triggered after highscore screen open is clicked
     {
-        Scanner scan = new Scanner(new File("users.csv")); // goes to the path to find the file
+        Scanner scan = new Scanner(new File("resources/users.csv")); // goes to the path to find the file
         
         int index = 0;
         String line;
