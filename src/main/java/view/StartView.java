@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 public class StartView extends JFrame implements ActionListener {
     private JPanel main;
     private JButton start;
+    private JButton playButton;
+    private JButton highscoreButton;
     private ImageIcon door;
     private ImageIcon play;
     private ImageIcon highscore;
@@ -15,8 +17,9 @@ public class StartView extends JFrame implements ActionListener {
 
     private JLabel background;
 
-    private JLayeredPane menuPanel;
     private JPanel startPanel;
+
+    private JLayeredPane menuPanel;
 
     StartView(){
         NonGameController controller = new NonGameController();
@@ -24,15 +27,25 @@ public class StartView extends JFrame implements ActionListener {
         startPanel = new JPanel();
         door = new ImageIcon("src\\main\\java\\resources\\start.jpg");
         start = new JButton(door);
-        start.setPreferredSize(new Dimension(1920,1080));
+        start.setPreferredSize(new Dimension(1280,720));
         start.addActionListener(this);
         startPanel.add(start);
 
         menuPanel = new JLayeredPane();
+        menuPanel.setPreferredSize(new Dimension(1280,1080));
+        play = new ImageIcon("src\\main\\java\\resources\\play_button.png");
+        playButton = new JButton(play);
+        playButton.setBorderPainted(false);
+        playButton.setBorder(null);
+        playButton.setMargin(new Insets(0, 0, 0, 0));
+        playButton.setContentAreaFilled(false);
+        playButton.setBounds(320, 300, play.getIconWidth(), play.getIconHeight());
         bg = new ImageIcon("src\\main\\java\\resources\\menu.jpg");
         background = new JLabel(bg);
-        background.setPreferredSize(new Dimension(1920,1080));
-        menuPanel.add(background);
+        background.setPreferredSize(new Dimension(1280,720));
+        background.setBounds(0,     0, 1280, 720);
+        menuPanel.add(background, Integer.valueOf(0));
+        menuPanel.add(playButton, Integer.valueOf(1));
 
         main = new JPanel(new CardLayout());
         main.add(menuPanel, "MENUPANEL");
@@ -42,7 +55,7 @@ public class StartView extends JFrame implements ActionListener {
         start.add(new JLabel("Start"));
 
         setTitle("StartMenu");
-        setSize(1920,1080);
+        setSize(1280,720);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -56,7 +69,7 @@ public class StartView extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        startPanel.setVisible(false);
         menuPanel.setVisible(true);
+        startPanel.setVisible(false);
     }
 }
