@@ -1,4 +1,6 @@
-public class AssignmentTask extends Task{
+package entities;
+
+public class AssignmentTask extends Task {
     private static final int COUNT_UPPERBOUND = 50;
     private static final int COUNT_LOWERBOUND = 30;
     protected static int characterCountNeeded =
@@ -18,8 +20,8 @@ public class AssignmentTask extends Task{
 
     public static void checkCount(){
         if (currentCharacterCount >= characterCountNeeded){
-            setCompletionStatus(true);
-            setActivatedStatus(false);
+            Task.setCompletionStatus(true);
+            Task.setActivatedStatus(false);
         }
     }
 

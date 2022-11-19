@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.Hashtable;
 import java.util.Random;
 import java.time.Clock;
@@ -13,7 +15,7 @@ public class GameMaster {
     public static void main(String[] args) {
         // Create a clock to keep track of time
         Clock clock = Clock.systemDefaultZone();
-        // Create an instance of the LifeMaster
+        // Create an instance of the entities.LifeMaster
         LifeMaster lifeMaster = new LifeMaster();
         long currTime = clock.millis(); // Find the current time in milliseconds
         while (playing) {
@@ -32,7 +34,7 @@ public class GameMaster {
             }
             for (Task task : times.keySet()) {
                 if (clock.millis() >= times.get(task)) { // If the time is up for the task
-                    if (task.getCompletionStatus()) { // Task was completed successfully
+                    if (task.getCompletionStatus()) { // entities.Task was completed successfully
                         times.remove(task);
                         task.activated = false;
                         lifeMaster.incrementTaskCount();
@@ -43,7 +45,7 @@ public class GameMaster {
                     else {
                         lifeMaster.deductLife();
                     }
-                } else if (task.getCompletionStatus()) { // Task was completed early
+                } else if (task.getCompletionStatus()) { // entities.Task was completed early
                     times.remove(task);
                     task.activated = false;
                     lifeMaster.incrementTaskCount();

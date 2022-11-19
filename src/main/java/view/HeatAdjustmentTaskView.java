@@ -2,6 +2,7 @@ package view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import controller.HeatAdjustmentTaskController;
 
 public class HeatAdjustmentTaskView extends JFrame implements ActionListener{
     JLayeredPane layers;
@@ -14,16 +15,28 @@ public class HeatAdjustmentTaskView extends JFrame implements ActionListener{
     ImageIcon downIcon;
     JLabel upButton;
     JLabel downButton;
+    private static int neededTemp; // ignore this warning, temps will be needed in another method later
+    private static int currentTemp;
 
     public HeatAdjustmentTaskView() {
+        // Set the needed and current temperatures of the controller, and update the view's temps as well
+        int[] temps = HeatAdjustmentTaskController.initTemps();
+        neededTemp = temps[0];
+        currentTemp = temps[1];
+
         layers = new JLayeredPane();
 
         // Get the image icons and create their corresponding JLabels
-        backgroundImage = new ImageIcon("src\\main\\java\\resources\\HeatAdjustmentTask\\too cold.jpg");
+        if (currentTemp < neededTemp) {
+            backgroundImage = new ImageIcon("src\\main\\java\\resources\\entities.HeatAdjustmentTask\\too cold.jpg");
+        } else {
+            backgroundImage = new ImageIcon("src\\main\\java\\resources\\entities.HeatAdjustmentTask\\too hot.png");
+        }
+
         background = new JLabel();
         background.setIcon(backgroundImage);
-        upIcon = new ImageIcon("src\\main\\java\\resources\\HeatAdjustmentTask\\up.png");
-        downIcon = new ImageIcon("src\\main\\java\\resources\\HeatAdjustmentTask\\down.png");
+        upIcon = new ImageIcon("src\\main\\java\\resources\\entities.HeatAdjustmentTask\\up.png");
+        downIcon = new ImageIcon("src\\main\\java\\resources\\entities.HeatAdjustmentTask\\down.png");
         upButton = new JLabel();
         downButton = new JLabel();
         upButton.setIcon(upIcon);

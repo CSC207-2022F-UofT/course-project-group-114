@@ -1,3 +1,5 @@
+package entities;
+
 public abstract class Task {
 
     protected static boolean completed = false;
