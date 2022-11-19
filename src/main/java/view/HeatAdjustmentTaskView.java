@@ -8,8 +8,6 @@ public class HeatAdjustmentTaskView extends JFrame implements ActionListener{
     JLayeredPane layers;
     ImageIcon backgroundImage;
     JLabel background;
-    JLabel currTemperatureText;
-    JLabel neededTemperatureText;
 
     ImageIcon upIcon;
     ImageIcon downIcon;
