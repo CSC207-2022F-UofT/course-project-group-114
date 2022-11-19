@@ -39,13 +39,21 @@ public class StartView extends JFrame implements ActionListener {
         playButton.setBorder(null);
         playButton.setMargin(new Insets(0, 0, 0, 0));
         playButton.setContentAreaFilled(false);
-        playButton.setBounds(320, 300, play.getIconWidth(), play.getIconHeight());
+        playButton.setBounds(320, 200, play.getIconWidth(), play.getIconHeight());
+        highscore = new ImageIcon("src\\main\\java\\resources\\highscore_button.png");
+        highscoreButton = new JButton(highscore);
+        highscoreButton.setBorderPainted(false);
+        highscoreButton.setBorder(null);
+        highscoreButton.setMargin(new Insets(0, 0, 0, 0));
+        highscoreButton.setContentAreaFilled(false);
+        highscoreButton.setBounds(320, 420, play.getIconWidth() + 50, play.getIconHeight());
         bg = new ImageIcon("src\\main\\java\\resources\\menu.jpg");
         background = new JLabel(bg);
         background.setPreferredSize(new Dimension(1280,720));
         background.setBounds(0,     0, 1280, 720);
         menuPanel.add(background, Integer.valueOf(0));
         menuPanel.add(playButton, Integer.valueOf(1));
+        menuPanel.add(highscoreButton, Integer.valueOf(1));
 
         main = new JPanel(new CardLayout());
         main.add(menuPanel, "MENUPANEL");
