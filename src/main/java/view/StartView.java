@@ -51,8 +51,6 @@ public class StartView extends JFrame implements ActionListener {
         main.add(menuPanel, "MENUPANEL");
         main.add(startPanel, "STARTPANEL");
         add(main);
-        // for the pull request
-        start.add(new JLabel("Start"));
 
         setTitle("StartMenu");
         setSize(1280,720);
