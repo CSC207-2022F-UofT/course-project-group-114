@@ -1,3 +1,4 @@
+package entities;
 import java.util.Random;
 public class HeatAdjustmentTask extends Task {
     public static int answerTemp; // The actual temperature the user must achieve

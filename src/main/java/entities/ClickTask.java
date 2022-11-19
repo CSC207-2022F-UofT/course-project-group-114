@@ -1,6 +1,8 @@
+package entities;
+
 import java.util.Random;
 
-public class ClickTask extends Task{
+public class ClickTask extends Task {
     private int currentClicks;
     private int neededClicks;
     // changes as difficulty level increases, so I'm making upperbond static for now

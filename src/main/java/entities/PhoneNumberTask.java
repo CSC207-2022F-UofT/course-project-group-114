@@ -1,3 +1,5 @@
+package entities;
+
 public class PhoneNumberTask extends Task {
     public int actual_number;
     public int pressed_number;

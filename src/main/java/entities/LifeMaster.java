@@ -1,3 +1,5 @@
+package entities;
+
 public class LifeMaster {
     private static int lives = 0;
     private static int tasksCompletedCount = 0; // Number of completed tasks in total, AKA the score
