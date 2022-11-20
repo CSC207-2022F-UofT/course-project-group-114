@@ -5,9 +5,9 @@ import java.awt.*;
 import java.util.Random;
 
 public class TriviaTaskView extends JFrame {
-    Random questionNum = new Random();
-    private String currentQuestion = "question in dictionary at random index";
-    private String actualAnswer = "corresponding answer to that";
+//    Random questionNum = new Random();  // generate a random number between zero and index of last question
+//    private String currentQuestion = "question in dictionary at random index";
+//    private String actualAnswer = "corresponding answer to that";
 
     TriviaTaskView(){
         TriviaTaskController TriviaController = new TriviaTaskController();
