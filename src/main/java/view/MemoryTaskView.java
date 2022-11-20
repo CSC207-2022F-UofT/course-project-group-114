@@ -76,13 +76,13 @@ public class MemoryTaskView extends JFrame{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-                // passes the text collected to the controller
+//                 passes the text collected to the controller
                 boolean success = controller.passer(actual_password, password);
                 if(success){
-                    JOptionPane.showMessageDialog(null, "Correct");
+                    JOptionPane.showMessageDialog(null, "Successful");
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Incorrect");
+                    JOptionPane.showMessageDialog(null, "Unsuccessful");
                 }
                 setVisible(false);
                 dispose();
