@@ -18,10 +18,10 @@ public class TriviaTask extends Task {
     // if the answer is correct
     // if the answer is incorrect
 
-    @Override
-    public void reset() {
-
-    }
+//    @Override
+//    public void reset() {
+//
+//    }
 //    public void check_answer(String actual_answer, String player_answer){
 //        // if the answer is correct
 //        // add to score
