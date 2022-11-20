@@ -23,7 +23,7 @@ public class GameMaster {
         LifeMaster lifeMaster = new LifeMaster();
         long currTime = clock.millis(); // Find the current time in milliseconds
         while (playing) {
-            tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "WireTask", "ClickTask", "PhoneNumberTask",
+            tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "entities.WireTask", "ClickTask", "PhoneNumberTask",
                     "AssignmentTask", "MemoryTask"};
             if (clock.millis() >= currTime + taskInterval) { // Enough time has passed, turn on a new task
                 String newTaskName = chooseTask(tasks); // Pick a random task
