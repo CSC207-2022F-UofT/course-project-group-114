@@ -29,8 +29,8 @@ public class TriviaTask extends Task {
     // if the answer is correct
     // if the answer is incorrect
 
-    @Override
-    public void reset() { // inherited reset method, generate random question
+
+    public static void reset() { // inherited reset method, generate random question
         // public int questionNum = random number between 0 and last index of dictionary
         //
     }
