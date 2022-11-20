@@ -1,7 +1,5 @@
 package entities;
 
-import controller.HeatAdjustmentTaskController;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
@@ -28,7 +26,7 @@ public class GameMaster {
             tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "WireTask", "ClickTask", "PhoneNumberTask",
                     "AssignmentTask", "MemoryTask"};
             if (clock.millis() >= currTime + taskInterval) { // Enough time has passed, turn on a new task
-                String newTaskName = createTask(tasks); // Pick a random task
+                String newTaskName = chooseTask(tasks); // Pick a random task
                 Class<?> taskClass = Class.forName("entities." + newTaskName); // Get the task class
                 if (!times.containsKey(newTaskName)) { // If the task isn't already running, then run it
                     if (Objects.equals(newTaskName, "AssignmentTask")) {
@@ -66,7 +64,7 @@ public class GameMaster {
         }
     }
 
-    private static String createTask(String[] tasks) {
+    private static String chooseTask(String[] tasks) {
         Random rand = new Random();
         int randIndex = rand.nextInt(tasks.length);
         return tasks[randIndex];
