@@ -15,10 +15,11 @@ public class HeatAdjustmentTask extends Task {
         Random rand = new Random();
         return rand.nextInt(30);
     }
-    public static void tempUp() { // Method to be called when up button is pressed
-        currentTemp++;
-    }
-    public static void tempDown() { // Method to be called when down button is pressed
-        currentTemp--;
+    public static void setCurrentTemp(int temp) {
+        currentTemp = temp;
+        if (currentTemp == answerTemp) { // If current is answer, the task is complete
+            activated = false;
+            completed = true;
+        }
     }
 }
