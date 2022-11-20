@@ -48,12 +48,11 @@ public class StartView extends JFrame {
         notepad.setPreferredSize(maxSize);
         notepad.setBounds(0,     0, 1280, 720);
         //go when button pressed, tell controller to tell user to grab stuff then here we ask view to grab from controller
-        JTextField scores = new JTextField(NonGameController.getScores());
+        JTextArea scores = new JTextArea(NonGameController.getScores());
         scores.setEditable(false);
-        scores.setHorizontalAlignment(JTextField.CENTER);
-        scores.setFont(new Font("Serif", Font.ITALIC | Font.BOLD, 50));
+        scores.setFont(new Font("Snell Roundhand", Font.ITALIC | Font.BOLD, 40));
         scores.setForeground(Color.BLACK);
-        scores.setBounds(0, 0, 1280, 720); // FIX THIS LATER
+        scores.setBounds(460, 300, 1280, 720); // FIX THIS LATER
         scores.setOpaque(false);
         scores.setBorder(null);
         scores.setMargin(new Insets(0, 0, 0, 0));
@@ -83,8 +82,6 @@ public class StartView extends JFrame {
 
         start.addActionListener(e -> {
             menuPanel.setVisible(true);
-            playButton.setVisible(true);
-            highscoreButton.setVisible(true);
             startPanel.setVisible(false);
         });
 
