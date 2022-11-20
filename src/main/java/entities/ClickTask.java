@@ -2,42 +2,24 @@ package entities;
 
 import java.util.Random;
 public class ClickTask{
-    private int currentClicks;
-    private int neededClicks;
-    // changes as difficulty level increases, so I'm making upperbond static for now
-    private int upperbond = 30;
-    private boolean portion;
+    public static int currentClicks;
+    public static int neededClicks;
+    private static final int UPPERBOUND = 30;
+    public static boolean portion;
 
-    public ClickTask() {
-        super();
-        this.setNeededClicks();
-        this.portion = false;
-    }
-
-    private void setNeededClicks() {
+    public static void setNeededClicks(){
         Random newNeed = new Random();
-        this.neededClicks = newNeed.nextInt(upperbond);
+        neededClicks = newNeed.nextInt(UPPERBOUND);
     }
 
-    public int getNeededClicks(){
-        return this.neededClicks;
+    public static int getNeededClicks() {
+        return neededClicks;
     }
 
-    public int getCurrentClicks(){ return this.currentClicks;}
-
-    public void setCurrentClicks(int newCurrentClicks){
-        this.currentClicks = newCurrentClicks;
+    public static void setCurrentClicks(int newCurrentClicks){
+        currentClicks = newCurrentClicks;
         if (neededClicks / 2 <= newCurrentClicks) {
-            setPortion(true);
+            portion = true;
         }
     }
-
-    private void setPortion(boolean eat){
-        portion = eat;
-    }
-
-    public boolean getPortion(){
-        return portion;
-    }
-
 }

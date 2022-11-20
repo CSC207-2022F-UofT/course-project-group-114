@@ -3,27 +3,28 @@ package controller;
 import entities.ClickTask;
 
 public class ClickTaskController {
-    private int neededClicks;
-    private int currentClicks;
-    private boolean[] portion;
+    private static int neededClicks;
+    private static int currentClicks;
 
-    ClickTask clickTask = new ClickTask();
 
-    public int getNeededClicks(){
-        this.neededClicks = clickTask.getNeededClicks();
-        return this.neededClicks;
+   public static void setNeededClicks(){
+       ClickTask.setNeededClicks();
+   }
+    public static void setCurrentClicks(int newCurrentClicks){
+        currentClicks = newCurrentClicks;
+        ClickTask.setCurrentClicks(newCurrentClicks);
     }
 
-    public void setCurrentClicks(int newCurrentClicks){
-        this.currentClicks = newCurrentClicks;
-        clickTask.setCurrentClicks(newCurrentClicks);
+    public static int getNeededClicks(){
+        neededClicks = ClickTask.getNeededClicks();
+        return neededClicks;
     }
 
-    public int getCurrentClicks(){
-        return clickTask.getCurrentClicks();
+    public static int getCurrentClicks(){
+        return ClickTask.currentClicks;
     }
 
-    public boolean getPortion(){
-        return clickTask.getPortion();
+    public static boolean getPortion(){
+        return ClickTask.portion;
     }
 }

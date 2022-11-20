@@ -14,14 +14,15 @@ public class ClickTaskView extends JFrame{
     // 5. Print message before closing?
 
     public ClickTaskView(){
-        ClickTaskController clickTaskController = new ClickTaskController();
+        ClickTaskController.setNeededClicks();
 
         // Click Task plane
         JLayeredPane clickTaskPanel = new JLayeredPane();
         clickTaskPanel.setPreferredSize(new Dimension(1920,1080));
 
         // Header settings
-        JTextField header = new JTextField("TODO: CLICK TO EAT AND DON'T WASTE FOOD!! \n Current Clicks: 0");
+        JTextField header = new JTextField("TODO: CLICK TO EAT AND DON'T WASTE FOOD!! \n " +
+                "Current Clicks: 0 \n Needed Clicks: " + ClickTaskController.getNeededClicks());
         header.setHorizontalAlignment(JTextField.RIGHT);
         header.setEditable(false);
         header.setFont(new java.awt.Font("Serif", Font.ITALIC | Font.BOLD, 28));
@@ -49,23 +50,25 @@ public class ClickTaskView extends JFrame{
         button.setBounds(0,0,full.getIconWidth(), full.getIconHeight());
         button.setPreferredSize(new Dimension(full.getIconWidth(),full.getIconHeight()));
         button.addActionListener(e -> {
-            int currentClicks = clickTaskController.getCurrentClicks() + 1;
-            clickTaskController.setCurrentClicks(currentClicks);
-            header.setText("TODO: CLICK TO EAT AND DON'T WASTE FOOD!! \nCurrent Clicks: " + currentClicks);
+            int currentClicks = ClickTaskController.getCurrentClicks() + 1;
+            int neededClicks = ClickTaskController.getNeededClicks();
+            ClickTaskController.setCurrentClicks(currentClicks);
+            header.setText("TODO: CLICK TO EAT AND DON'T WASTE FOOD!! \nCurrent Clicks: " +
+                    currentClicks + "\n Needed Clicks: "+ ClickTaskController.getNeededClicks());
 
             // Change icons as users make more clicks
-            if (currentClicks == clickTaskController.getNeededClicks() - 1) {
+            if (currentClicks == neededClicks - 1) {
                 button.setIcon(last);
-            } else if (currentClicks == clickTaskController.getNeededClicks() - 2){
+            } else if (currentClicks == neededClicks - 2){
                 button.setIcon(third);
-            } else if (clickTaskController.getPortion()) {
+            } else if (ClickTaskController.getPortion()) {
                 button.setIcon(second);
             } else {
                 button.setIcon(first);
             }
 
             // determines if the requirement is met
-            boolean success = (clickTaskController.getNeededClicks() == currentClicks);
+            boolean success = (neededClicks == currentClicks);
             if (success){
                 dispose();
             }
@@ -74,13 +77,12 @@ public class ClickTaskView extends JFrame{
         // Add layers
         clickTaskPanel.add(background, Integer.valueOf(0));
         clickTaskPanel.add(button, Integer.valueOf(1));
-//        clickTaskPanel.add(info, Integer.valueOf(2));
         clickTaskPanel.add(header, Integer.valueOf(2));
 
         add(clickTaskPanel);
 
         // JFrame settings
-        setTitle("Click Task v.1.1.0");
+        setTitle("Click Task v.1.1.1");
         setSize(1295,760);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
