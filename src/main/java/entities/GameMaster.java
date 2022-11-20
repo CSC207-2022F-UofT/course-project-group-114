@@ -45,7 +45,7 @@ public class GameMaster {
                 Class<?> taskClass = Class.forName("entities." + taskName);
                 boolean completionStatus = (boolean) taskClass.getDeclaredMethod("getCompletionStatus").invoke(null);
                 if (clock.millis() >= times.get(taskName)) { // If the time is up for the task
-                    if (completionStatus) { // entities.Task was completed successfully
+                    if (completionStatus) { // The task was completed successfully
                         times.remove(taskName);
                         taskClass.getDeclaredMethod("setActivatedStatus").invoke(false);
                         lifeMaster.incrementTaskCount();
