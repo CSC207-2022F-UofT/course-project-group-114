@@ -1,6 +1,4 @@
-import java.security.MessageDigest;
-import java.math.BigInteger;
-import java.security.NoSuchAlgorithmException;
+package entities;
 
 public class User implements Comparable<User>{
     // keeps track of user data
