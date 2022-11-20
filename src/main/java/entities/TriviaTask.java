@@ -30,7 +30,6 @@ public class TriviaTask extends Task {
     @Override
     public void reset() { // inherited reset method, generate random question
         // public int questionNum = random number between 0 and last index of dictionary
-        //
     }
     public boolean checkAnswer (String actualAnswer, String playerAnswer){
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
@@ -40,5 +39,7 @@ public class TriviaTask extends Task {
         else{
             return false;
         }
+        // if i want to change it to categories and more than one correct answer or to accept variations of the same answer will
+        // need to check that playerAnswer is in the list of possible answers
     }
 }
