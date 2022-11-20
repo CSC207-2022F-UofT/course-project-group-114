@@ -1,8 +1,19 @@
 package entities;
 
-import entities.Task;
-
 public class TriviaTask extends Task {
+//    public int triviaCategory; can later make changes to code to add categories and get questions and answers from a csv file
+    public int questionNum;
+    public String currentQuestion;
+    public String playerAnswer;
+    public String actualAnswer;
+
+
+//    Hashmap<String, ArrayList<String>> category0 = new HashMap<String, List<String>>();
+//    category0.put("What is the missing word: S***D Design Principles?"), Arrays.asList("solid");
+//    category0.put("Who wrote clean architecture?"), Arrays.asList("uncle bob", "real name");
+
+
+
 //    public String current_question;
 //    public String player_answer;
 //    public String actual_answer;
@@ -19,18 +30,17 @@ public class TriviaTask extends Task {
     // if the answer is incorrect
 
     @Override
-    public void reset() {
-
+    public void reset() { // inherited reset method, generate random question
+        // public int questionNum = random number between 0 and last index of dictionary
+        //
     }
-//    public void check_answer(String actual_answer, String player_answer){
-//        // if the answer is correct
-//        // add to score
-//        // do what you do if someone answers correct in trivia
-//
-//        // else (aka if answer is incorrect)
-//        // subtract the number of points that the question is worth from the player's score
-//        // if the player's Trivia score is LESS THAN ZERO
-//        // game's over and deduct a life
-//        // lifeMaster.deductLife()
-//    }
+    public boolean checkAnswer (String actualAnswer, String playerAnswer){
+        if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
+            setCompletionStatus(true);
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
