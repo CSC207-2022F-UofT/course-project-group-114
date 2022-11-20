@@ -1,6 +1,9 @@
 package view;
+import controller.GameMasterController;
+
 import java.awt.*;
 import javax.swing.*;
+import java.time.Clock;
 
 public class GameMasterView extends JFrame{
     JLayeredPane layers;
@@ -73,6 +76,17 @@ public class GameMasterView extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         layers.setVisible(true);
+
+        // Check for every task activation or de-activation
+//        Clock clock = Clock.systemDefaultZone();
+//        long currTime = clock.millis();
+//        int checkInterval = 500; // Interval for checking task status in milliseconds
+//        while (GameMasterController.getPlayingStatus()) {
+//            if (clock.millis() >= currTime + checkInterval) { // Enough time has passed; check tasks' status
+//                currTime = clock.millis(); // Update current time
+//                if ()
+//            }
+//        }
     }
 
     public static void main(String[] args) {

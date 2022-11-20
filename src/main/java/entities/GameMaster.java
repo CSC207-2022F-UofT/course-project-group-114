@@ -9,9 +9,8 @@ import java.time.Clock;
 
 public class GameMaster {
     private static int taskInterval = 20000; // Time between tasks in milliseconds
-    private static int assignmentsCount = 0; // Number of stacked assignment tasks
     private static int timeAllowed = 10000; // Amount of time allowed for each task in milliseconds
-    private static boolean playing = true;
+    public static boolean playing = true;
     private static Hashtable<String, Long> times = new Hashtable<String, Long>();
     public static String[] tasks;
 
@@ -26,12 +25,10 @@ public class GameMaster {
             tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "entities.WireTask", "ClickTask", "PhoneNumberTask",
                     "AssignmentTask", "MemoryTask"};
             if (clock.millis() >= currTime + taskInterval) { // Enough time has passed, turn on a new task
+                currTime = clock.millis(); // Update the current time
                 String newTaskName = chooseTask(tasks); // Pick a random task
                 Class<?> taskClass = Class.forName("entities." + newTaskName); // Get the task class
                 if (!times.containsKey(newTaskName)) { // If the task isn't already running, then run it
-                    if (Objects.equals(newTaskName, "AssignmentTask")) {
-                        assignmentsCount++;
-                    }
                     Method completionMethod  = taskClass.getDeclaredMethod("setCompletionStatus");
                     completionMethod.invoke(false);
                     Method activatedMethod = taskClass.getDeclaredMethod("setActivatedStatus");
@@ -47,9 +44,6 @@ public class GameMaster {
                         times.remove(taskName);
                         taskClass.getDeclaredMethod("setActivatedStatus").invoke(false);
                         lifeMaster.incrementTaskCount();
-                        if (Objects.equals(taskName, "AssignmentTask")) {
-                            assignmentsCount--;
-                        }
                     }
                     else {
                         lifeMaster.deductLife();
