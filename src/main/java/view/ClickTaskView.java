@@ -1,3 +1,7 @@
+package view;
+
+import controller.ClickTaskController;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -15,7 +19,7 @@ public class ClickTaskView extends JFrame implements ActionListener{
     ClickTaskController clickTaskController;
     public ClickTaskView(){
         clickTaskController = new ClickTaskController();
-        setTitle("Click Task v.1.0.0");
+        setTitle("Click entities.Task v.1.0.0");
         setSize(1920,1080);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
