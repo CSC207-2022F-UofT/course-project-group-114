@@ -1,3 +1,7 @@
+package view;
+
+import controller.PhoneNumberTaskController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,9 +11,9 @@ import java.util.Random;
 public class PhoneNumberTaskView extends JFrame{
 
     Random rand = new Random();
-    int actual_number = rand.nextInt((999999999-100000000) + 1) + 100000000;
-    int numbers_dialed;
-    public String number_so_far = "";
+    private final int actual_number = rand.nextInt((999999999-100000000) + 1) + 100000000;
+
+    private String number_so_far = "";
 
     PhoneNumberTaskView(){
         PhoneNumberTaskController controller = new PhoneNumberTaskController();
@@ -132,7 +136,6 @@ public class PhoneNumberTaskView extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 // write what you want to do once the button is pressed
                 number_so_far += "1";
-                numbers_dialed ++;
             }
         });
 
@@ -145,7 +148,6 @@ public class PhoneNumberTaskView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 number_so_far += "2";
-                numbers_dialed ++;
             }
         });
 
@@ -158,7 +160,6 @@ public class PhoneNumberTaskView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 number_so_far += "3";
-                numbers_dialed ++;
             }
         });
 
@@ -171,7 +172,6 @@ public class PhoneNumberTaskView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 number_so_far += "4";
-                numbers_dialed ++;
             }
         });
 
@@ -184,7 +184,6 @@ public class PhoneNumberTaskView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 number_so_far += "5";
-                numbers_dialed ++;
             }
         });
 
@@ -197,7 +196,6 @@ public class PhoneNumberTaskView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 number_so_far += "6";
-                numbers_dialed ++;
             }
         });
 
@@ -210,7 +208,6 @@ public class PhoneNumberTaskView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 number_so_far += "7";
-                numbers_dialed ++;
             }
         });
 
@@ -223,7 +220,6 @@ public class PhoneNumberTaskView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 number_so_far += "8";
-                numbers_dialed ++;
             }
         });
 
@@ -236,7 +232,6 @@ public class PhoneNumberTaskView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 number_so_far += "9";
-                numbers_dialed ++;
             }
         });
 
@@ -249,7 +244,6 @@ public class PhoneNumberTaskView extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 number_so_far += "0";
-                numbers_dialed ++;
             }
         });
 
@@ -262,16 +256,15 @@ public class PhoneNumberTaskView extends JFrame{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                //String number_to_pass = number_so_far.substring(0,9);
                 boolean success = controller.passer(actual_number, number_so_far);
                 if(success){
                     JOptionPane.showMessageDialog(null, "Correct");
-                    System.exit(0);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Incorrect");
-                    System.exit(0);
                 }
+                setVisible(false);
+                dispose();
             }
         });
 
