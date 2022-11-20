@@ -18,33 +18,23 @@ public class ClickTaskView extends JFrame{
 
         // Click Task plane
         JLayeredPane clickTaskPanel = new JLayeredPane();
-        clickTaskPanel.setPreferredSize(new Dimension(1280,720));
+        clickTaskPanel.setPreferredSize(new Dimension(1920,1080));
 
         // Header settings
-        JTextField header = new JTextField("TODO: CLICK TO EAT AND DON'T WASTE FOOD!");
+        JTextField header = new JTextField("TODO: CLICK TO EAT AND DON'T WASTE FOOD!! \n Current Clicks: 0");
+        header.setHorizontalAlignment(JTextField.RIGHT);
         header.setEditable(false);
-        header.setHorizontalAlignment(JTextField.CENTER);
         header.setFont(new java.awt.Font("Serif", Font.ITALIC | Font.BOLD, 28));
         header.setBounds(0,0,1280,80);
         header.setOpaque(false);
         header.setBorder(null);
         header.setMargin(new Insets(0,0,0,0));
 
-        // Info section settings
-        JTextField info = new JTextField("Current clicks: 0");
-        info.setEditable(false);
-        info.setHorizontalAlignment(JTextField.BOTTOM);
-        info.setFont(new java.awt.Font("Serif", Font.ITALIC | Font.BOLD, 28));
-        info.setBounds(0,0,1280,80);
-        info.setOpaque(false);
-        info.setBorder(null);
-        info.setMargin(new Insets(0,0,0,0));
-
         // Set background
         ImageIcon bgImg = new ImageIcon("src\\main\\java\\resources\\ClickTask\\background.jpg");
         JLabel background = new JLabel(bgImg);
-        background.setPreferredSize(new Dimension(1280,720));
-        background.setBounds(0,0,1280,720);
+        background.setPreferredSize(new Dimension(1920,1080));
+        background.setBounds(0,0,1920,1080);
 
         // Read images from folder ClickTask
         ImageIcon full = new ImageIcon("src\\main\\java\\resources\\ClickTask\\full.png");
@@ -55,11 +45,13 @@ public class ClickTaskView extends JFrame{
 
         // Add the fries
         JButton button = new JButton(full);
-        button.setPreferredSize(new Dimension(1920,1080));
+        button.setContentAreaFilled(false);
+        button.setBounds(0,0,full.getIconWidth(), full.getIconHeight());
+        button.setPreferredSize(new Dimension(full.getIconWidth(),full.getIconHeight()));
         button.addActionListener(e -> {
             int currentClicks = clickTaskController.getCurrentClicks() + 1;
             clickTaskController.setCurrentClicks(currentClicks);
-            info.setText("Current clicks: " + currentClicks);
+            header.setText("TODO: CLICK TO EAT AND DON'T WASTE FOOD!! \nCurrent Clicks: " + currentClicks);
 
             // Change icons as users make more clicks
             if (currentClicks == clickTaskController.getNeededClicks() - 1) {
@@ -81,9 +73,9 @@ public class ClickTaskView extends JFrame{
 
         // Add layers
         clickTaskPanel.add(background, Integer.valueOf(0));
-        clickTaskPanel.add(header, Integer.valueOf(1));
-        clickTaskPanel.add(info, Integer.valueOf(2));
-        clickTaskPanel.add(button, Integer.valueOf(3));
+        clickTaskPanel.add(button, Integer.valueOf(1));
+//        clickTaskPanel.add(info, Integer.valueOf(2));
+        clickTaskPanel.add(header, Integer.valueOf(2));
 
         add(clickTaskPanel);
 
