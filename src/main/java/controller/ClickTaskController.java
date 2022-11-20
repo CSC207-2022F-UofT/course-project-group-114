@@ -5,10 +5,10 @@ import entities.ClickTask;
 public class ClickTaskController {
     private int neededClicks;
     private int currentClicks;
+    private boolean[] portion;
 
-    // haven't figured out how the folders and linkings work so ill put it here for now
-    // pass on new added clicks
     ClickTask clickTask = new ClickTask();
+
     public int getNeededClicks(){
         this.neededClicks = clickTask.getNeededClicks();
         return this.neededClicks;
@@ -20,6 +20,10 @@ public class ClickTaskController {
     }
 
     public int getCurrentClicks(){
-        return this.currentClicks;
+        return clickTask.getCurrentClicks();
+    }
+
+    public boolean getPortion(){
+        return clickTask.getPortion();
     }
 }
