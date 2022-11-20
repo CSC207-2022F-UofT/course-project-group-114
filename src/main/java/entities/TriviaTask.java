@@ -1,11 +1,45 @@
 package entities;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TriviaTask extends Task {
-//    public int triviaCategory; //can later make changes to code to add categories and get questions and answers from a csv file
+    public int triviaCategory; //can later make changes to code to add categories and get questions and answers from a csv file
     public int questionNum; //randomly generated num to select a random question from that category
     public String currentQuestion; // the question
     public String playerAnswer; // what the player actually answered
     public String actualAnswer; // the correct answer
+
+    List<Map<Key, Value>> dictList = new ArrayList<Map<Key, Value>>();
+    HashMap<String, String> category0 = new HashMap<String, String>();
+    category0.put("What are the first three letters of the alphabet?", "abc");
+    category0.put("What kind of animal is a Python?", "snake");
+    category0.put("In what country is Java located?", "Indonesia");
+    category0.put("What does 'poissson' mean in english?", "fish");
+    Map<String, String> category1 = new HashMap<String, String>();
+    category1.put("What is the missing word: S***D Design Principles", "solid");
+    category1.put("The dude who wrote clean architecture is nicknamed ...", "uncle bob");
+    category1.put("In what room are the csc207 lectures?", "br200");
+    category1.put("What do you call code where the use case depends on the user interface?", "dirty architecture");
+    Map<String, String> category2 = new HashMap<String, String>();
+    category2.put("Canada is divided into how many electoral districts aka ridings?", "308");
+    category2.put("How many electoral votes are needed to becoome President of the United States?", "270");
+    category2.put("How many seats are there in the United States Senate?", "100");
+    category2.put("How many 4-year terms can a US president serve, at most?", "2");
+    category3.put("Who is the Prime Minister of Canada (first and last name)", "Justin Trudeau");
+    Map<String, String> category3 = new HashMap<String, String>();
+    category3.put("What song do the following lyrics come from: it's me, hi, i'm the problem it's me", "antihero");
+    category3.put("Mean girls day is *insert month name* 3rd. What is the month?", "October");
+    category3.put("Who played Cady herron in the original mean girls", "Lindsey Lohan");
+
+
+
+
+//    public List triviaCategories;
+//
+//    {
+//        triviaCategories = List < Map >;
+//    }
 
 
 //    Hashmap<String, ArrayList<String>> category0 = new HashMap<String, List<String>>();
@@ -32,6 +66,7 @@ public class TriviaTask extends Task {
         // public int questionNum = random number between 0 and last index of dictionary
     }
     public boolean checkAnswer (String actualAnswer, String playerAnswer){
+        // case for if the actual answer is an integer?????
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
             setCompletionStatus(true);
             return true;
