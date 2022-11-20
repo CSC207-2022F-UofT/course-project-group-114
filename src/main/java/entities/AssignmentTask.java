@@ -7,6 +7,10 @@ public class AssignmentTask extends Task {
             (int) Math.floor(Math.random()*(COUNT_UPPERBOUND - COUNT_LOWERBOUND +1)+ COUNT_LOWERBOUND);
     protected static int currentCharacterCount;
 
+    public static int getCharacterCountNeeded(){
+        return characterCountNeeded;
+    }
+
 
     public static void setCharacterCountNeeded(){
         // generate random number from lowerbound and upperbound
