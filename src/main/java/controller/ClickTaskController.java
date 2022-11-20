@@ -1,3 +1,7 @@
+package controller;
+
+import entities.ClickTask;
+
 public class ClickTaskController {
     private int neededClicks;
     private int currentClicks;
