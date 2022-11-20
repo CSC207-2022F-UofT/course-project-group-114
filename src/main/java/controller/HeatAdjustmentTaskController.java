@@ -18,4 +18,9 @@ public class HeatAdjustmentTaskController {
     public static int getCurrentTemp() {
         return currentTemp;
     }
+
+    public static void changeCurrentTemp(int val) {
+        currentTemp += val;
+        HeatAdjustmentTask.currentTemp = currentTemp;
+    }
 }
