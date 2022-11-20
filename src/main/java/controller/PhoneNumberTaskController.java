@@ -1,7 +1,6 @@
 package controller;
 import entities.PhoneNumberTask;
 public class PhoneNumberTaskController {
-
     PhoneNumberTask usecase = new PhoneNumberTask();
 
     public boolean passer(int actual_number, String pressed_number){
