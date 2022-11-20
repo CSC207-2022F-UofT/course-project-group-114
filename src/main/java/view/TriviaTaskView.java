@@ -1,5 +1,10 @@
 package view;
+import controller.TriviaTaskController;
+import javax.swing.*;
 
-public class TriviaTaskView {
-    // this is where the view for the TriviaTask will be implemented
+public class TriviaTaskView extends JFrame {
+    TriviaTaskController controller = new TriviaTaskController();
+    String currentQuestion = "abc";     // this is where the current question will be randomly selected and displayed
+
+
 }
