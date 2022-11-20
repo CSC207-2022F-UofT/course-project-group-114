@@ -11,7 +11,6 @@ public class TriviaTaskView extends JFrame {
 
     TriviaTaskView(){
         TriviaTaskController TriviaController = new TriviaTaskController();
-
     }
 
 //    public JPanel chooseCategoryPopup;

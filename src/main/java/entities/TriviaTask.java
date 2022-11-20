@@ -61,12 +61,17 @@ public class TriviaTask extends Task {
 
     // is called by entities.TriviaTask controller
 
-
     public static void reset() { // inherited reset method, generate random question
         // public int questionNum = random number between 0 and last index of dictionary
     }
+    // checks if the answer is correct
+
+    public static int getNum(){
+        // return a random integer between 0 and last index of triviaDict
+        return 1;
+    }
     public boolean checkAnswer (String actualAnswer, String playerAnswer){
-        // case for if the actual answer is an integer?????
+        // case for if the actual answer is an integer????? this can be added later.
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
             setCompletionStatus(true);
             return true;
