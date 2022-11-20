@@ -8,7 +8,7 @@ import java.util.Random;
 import java.time.Clock;
 
 public class GameMaster {
-    private static int taskInterval; // Time between tasks
+    private static int taskInterval = 20000; // Time between tasks in milliseconds
     private static int assignmentsCount = 0; // Number of stacked assignment tasks
     private static int timeAllowed = 10000; // Amount of time allowed for each task in milliseconds
     private static boolean playing = true;
