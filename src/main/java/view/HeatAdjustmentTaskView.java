@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import controller.HeatAdjustmentTaskController;
 
-public class HeatAdjustmentTaskView extends JFrame implements ActionListener{
+public class HeatAdjustmentTaskView extends JFrame{
     JLayeredPane layers;
     ImageIcon backgroundImage;
     JLabel background;
@@ -13,13 +13,13 @@ public class HeatAdjustmentTaskView extends JFrame implements ActionListener{
     ImageIcon downIcon;
     JLabel upButton;
     JLabel downButton;
-    private static int neededTemp; // ignore this warning, temps will be needed in another method later
     private static int currentTemp;
 
     public HeatAdjustmentTaskView() {
         // Set the needed and current temperatures of the controller, and update the view's temps as well
         int[] temps = HeatAdjustmentTaskController.initTemps();
-        neededTemp = temps[0];
+        // ignore this warning, temps will be needed in another method later
+        int neededTemp = temps[0];
         currentTemp = temps[1];
 
         layers = new JLayeredPane();
@@ -131,11 +131,4 @@ public class HeatAdjustmentTaskView extends JFrame implements ActionListener{
         new HeatAdjustmentTaskView();
     }
 
-    public void actionPerformed(ActionEvent e) {
-        Object source = e.getSource();
-        System.out.println("click");
-        if (source == upButton) {
-            System.out.println("up clicked!");
-        }
-    }
 }
