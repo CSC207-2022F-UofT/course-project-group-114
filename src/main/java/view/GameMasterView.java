@@ -153,58 +153,58 @@ public class GameMasterView extends JFrame{
         trivia.setVisible(false);
 
         // Create image icons for activated versions of heat, phone and click tasks
-        activeCatClockIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\clock\\eat alert.gif");
+        activeCatClockIcon = new ImageIcon("src\\main\\java\\resources\\GameMaster\\clock\\eat alert.gif");
         activePhoneIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\phone\\phone alert.png");
         activeThermostatIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\heat\\heat alert.png");
 
         // Create invisible buttons for each task to click
         clickableAssignment = new JButton();
         clickableAssignment.setVisible(false);
-//        clickableAssignment.setOpaque(false);
-//        clickableAssignment.setContentAreaFilled(false);
-//        clickableAssignment.setBorderPainted(false);
+        clickableAssignment.setOpaque(false);
+        clickableAssignment.setContentAreaFilled(false);
+        clickableAssignment.setBorderPainted(false);
         clickableAssignment.setBounds(530, 450, 60, 60);
 
         clickableClick = new JButton();
         clickableClick.setVisible(false);
-//        clickableClick.setOpaque(false);
-//        clickableClick.setContentAreaFilled(false);
-//        clickableClick.setBorderPainted(false);
+        clickableClick.setOpaque(false);
+        clickableClick.setContentAreaFilled(false);
+        clickableClick.setBorderPainted(false);
         clickableClick.setBounds(690, 235, 200, 230);
 
         clickableHeat = new JButton();
         clickableHeat.setVisible(false);
-//        clickableHeat.setOpaque(false);
-//        clickableHeat.setContentAreaFilled(false);
-//        clickableHeat.setBorderPainted(false);
+        clickableHeat.setOpaque(false);
+        clickableHeat.setContentAreaFilled(false);
+        clickableHeat.setBorderPainted(false);
         clickableHeat.setBounds(1050, 0, 230, 70);
 
         clickableMemory = new JButton();
         clickableMemory.setVisible(false);
-//        clickableMemory.setOpaque(false);
-//        clickableMemory.setContentAreaFilled(false);
-//        clickableMemory.setBorderPainted(false);
+        clickableMemory.setOpaque(false);
+        clickableMemory.setContentAreaFilled(false);
+        clickableMemory.setBorderPainted(false);
         clickableMemory.setBounds(40, 450, 182, 70);
 
         clickablePhone = new JButton();
         clickablePhone.setVisible(false);
-//        clickablePhone.setOpaque(false);
-//        clickablePhone.setContentAreaFilled(false);
-//        clickablePhone.setBorderPainted(false);
+        clickablePhone.setOpaque(false);
+        clickablePhone.setContentAreaFilled(false);
+        clickablePhone.setBorderPainted(false);
         clickablePhone.setBounds(1000, 520, 280, 200);
 
         clickableWire = new JButton();
         clickableWire.setVisible(false);
-//        clickableWire.setOpaque(false);
-//        clickableWire.setContentAreaFilled(false);
-//        clickableWire.setBorderPainted(false);
+        clickableWire.setOpaque(false);
+        clickableWire.setContentAreaFilled(false);
+        clickableWire.setBorderPainted(false);
         clickableWire.setBounds(40, 200, 190, 70);
 
         clickableTrivia = new JButton();
         clickableTrivia.setVisible(false);
-//        clickableTrivia.setOpaque(false);
-//        clickableTrivia.setContentAreaFilled(false);
-//        clickableTrivia.setBorderPainted(false);
+        clickableTrivia.setOpaque(false);
+        clickableTrivia.setContentAreaFilled(false);
+        clickableTrivia.setBorderPainted(false);
         clickableTrivia.setBounds(42, 295, 170, 65);
 
         // Add buttons which are initially invisible to JLayeredPane
