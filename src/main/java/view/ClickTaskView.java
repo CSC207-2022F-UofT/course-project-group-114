@@ -2,6 +2,8 @@ package view;
 
 import java.awt.*;
 import controller.ClickTaskController;
+import controller.PhoneNumberTaskController;
+
 import javax.swing.*;
 
 public class ClickTaskView extends JLayeredPane{
@@ -69,6 +71,7 @@ public class ClickTaskView extends JLayeredPane{
             // determines if the requirement is met
             boolean success = (neededClicks == currentClicks);
             if (success){
+                JOptionPane.showMessageDialog(null, "Congrats!");
                 ClickTaskController.setActivatedStatus(false);
                 ClickTaskController.setCompletionStatus(true);
                 GameMasterView.backToMain(GameMasterView.clickTaskView);
