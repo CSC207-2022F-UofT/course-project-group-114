@@ -30,6 +30,8 @@ public class GameMaster {
                 String newTaskName = chooseTask(tasks); // Pick a random task
                 Class<?> taskClass = Class.forName("entities." + newTaskName); // Get the task class
                 if (!times.containsKey(newTaskName)) { // If the task isn't already running, then run it
+                    Method resetMethod = taskClass.getMethod("reset");
+                    resetMethod.invoke(taskClass);
                     Method completionMethod  = taskClass.getMethod("setCompletionStatus", boolean.class);
                     completionMethod.invoke(taskClass,false);
                     Method activatedMethod = taskClass.getMethod("setActivatedStatus", boolean.class);
