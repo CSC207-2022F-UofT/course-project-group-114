@@ -13,15 +13,17 @@ public class GameMaster {
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<String, Long>();
     public static String[] tasks;
+    private static Clock clock = Clock.systemDefaultZone();
+    private static LifeMaster lifeMaster = new LifeMaster();
+    private static long currTime = clock.millis(); // Find the current time in milliseconds
 
     // Ensure that the method throws the needed exceptions when searching for classes and methods
     public static void startGame() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         // Create a clock to keep track of time
-        Clock clock = Clock.systemDefaultZone();
+
         // Create an instance of the entities.LifeMaster
-        LifeMaster lifeMaster = new LifeMaster();
-        long currTime = clock.millis(); // Find the current time in milliseconds
-        while (playing) {
+
+//        while (playing) {
 //            tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "WireTask", "ClickTask", "PhoneNumberTask",
 //                    "AssignmentTask", "MemoryTask"};
             tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask", "AssignmentTask", "MemoryTask"};
@@ -58,7 +60,7 @@ public class GameMaster {
                 }
             }
 
-        }
+//        }
     }
 
     private static String chooseTask(String[] tasks) {

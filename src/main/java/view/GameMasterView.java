@@ -62,7 +62,6 @@ public class GameMasterView extends JFrame{
     public static JLayeredPane triviaTaskView;
 
     public GameMasterView() {
-        GameMasterController.startGame();
         main = new JPanel(new CardLayout());
         layers = new JLayeredPane();
 
@@ -208,6 +207,7 @@ public class GameMasterView extends JFrame{
         Hashtable<String, Long> times;
         while (GameMasterController.getPlayingStatus()) {
             if (clock.millis() >= currTime + checkInterval) { // Enough time has passed; check tasks' status
+                GameMasterController.startGame();
                 currTime = clock.millis(); // Update current time
                 times = GameMaster.getTimes();
                 Set<String> activeTasks = times.keySet();
