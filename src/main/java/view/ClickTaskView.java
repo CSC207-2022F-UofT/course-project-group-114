@@ -1,7 +1,7 @@
 package view;
 
 import java.awt.*;
-import controller.ClickTaskController;
+import entities.controller.ClickTaskController;
 import javax.swing.*;
 
 public class ClickTaskView extends JLayeredPane{
@@ -14,6 +14,7 @@ public class ClickTaskView extends JLayeredPane{
     // 5. Print message before closing?
     public ClickTaskView(){
         ClickTaskController.setNeededClicks();
+        ClickTaskController.reset();
 
         // Click Task plane
         setPreferredSize(new Dimension(1280,720));
