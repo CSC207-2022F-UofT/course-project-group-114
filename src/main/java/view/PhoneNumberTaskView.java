@@ -8,21 +8,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
-public class PhoneNumberTaskView extends JFrame{
+public class PhoneNumberTaskView extends JLayeredPane{
 
     Random rand = new Random();
     private final int actual_number = rand.nextInt((999999999-100000000) + 1) + 100000000;
 
     private String number_so_far = "";
 
-    public static JLayeredPane phoneTaskPanel;
-
     PhoneNumberTaskView(){
         PhoneNumberTaskController controller = new PhoneNumberTaskController();
 
         //private JPanel main;
-        phoneTaskPanel = new JLayeredPane();
-        phoneTaskPanel.setPreferredSize(new Dimension(1280, 720));
+        setPreferredSize(new Dimension(1280, 720));
 
         JTextField textField = new JTextField("TO DO : DIAL THE NUMBER ON THE STICKY NOTE");
         textField.setEditable(false);
@@ -102,30 +99,23 @@ public class PhoneNumberTaskView extends JFrame{
         ImageIcon dial = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\dial.png");
         JButton dial_button = new JButton(dial);
         dial_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        dial_button.setBounds(800, 625, dial.getIconWidth(), dial.getIconHeight());
+        dial_button.setBounds(800, 640, dial.getIconWidth(), dial.getIconHeight());
 
-        phoneTaskPanel.add(background, Integer.valueOf(0));
-        phoneTaskPanel.add(zero_button, Integer.valueOf(1));
-        phoneTaskPanel.add(one_button, Integer.valueOf(2));
-        phoneTaskPanel.add(two_button, Integer.valueOf(3));
-        phoneTaskPanel.add(three_button, Integer.valueOf(4));
-        phoneTaskPanel.add(four_button, Integer.valueOf(5));
-        phoneTaskPanel.add(five_button, Integer.valueOf(6));
-        phoneTaskPanel.add(six_button, Integer.valueOf(7));
-        phoneTaskPanel.add(seven_button, Integer.valueOf(8));
-        phoneTaskPanel.add(eight_button, Integer.valueOf(9));
-        phoneTaskPanel.add(nine_button, Integer.valueOf(10));
-        phoneTaskPanel.add(dial_button, Integer.valueOf(11));
-        phoneTaskPanel.add(textField, Integer.valueOf(12));
-        phoneTaskPanel.add(number, Integer.valueOf(13));
+        add(background, Integer.valueOf(0));
+        add(zero_button, Integer.valueOf(1));
+        add(one_button, Integer.valueOf(2));
+        add(two_button, Integer.valueOf(3));
+        add(three_button, Integer.valueOf(4));
+        add(four_button, Integer.valueOf(5));
+        add(five_button, Integer.valueOf(6));
+        add(six_button, Integer.valueOf(7));
+        add(seven_button, Integer.valueOf(8));
+        add(eight_button, Integer.valueOf(9));
+        add(nine_button, Integer.valueOf(10));
+        add(dial_button, Integer.valueOf(11));
+        add(textField, Integer.valueOf(12));
+        add(number, Integer.valueOf(13));
 
-        add(phoneTaskPanel);
-
-
-        setTitle("Phone Number Task");
-        setSize(1295,760);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
         one_button.addActionListener(new ActionListener() {
@@ -266,7 +256,7 @@ public class PhoneNumberTaskView extends JFrame{
                     JOptionPane.showMessageDialog(null, "Incorrect");
                 }
                 setVisible(false);
-                dispose();
+                GameMasterView.backToMain();
             }
         });
 

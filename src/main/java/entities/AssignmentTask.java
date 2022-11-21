@@ -1,8 +1,8 @@
 package entities;
 
 public class AssignmentTask extends Task {
-    private static final int COUNT_UPPERBOUND = 50;
-    private static final int COUNT_LOWERBOUND = 30;
+    private static final int COUNT_UPPERBOUND = 70;
+    private static final int COUNT_LOWERBOUND = 50;
     protected static int characterCountNeeded =
             (int) Math.floor(Math.random()*(COUNT_UPPERBOUND - COUNT_LOWERBOUND +1)+ COUNT_LOWERBOUND);
     protected static int currentCharacterCount;
