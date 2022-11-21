@@ -8,7 +8,7 @@ public class TriviaTaskController {
 
     // public int passCategory (JTextField chosen)
     // if it's ... return respective integer
-    public String currentQuestion(){
+    public String passRandomQuestion(){
         return usecase.getRandomQuestion();
     }
 
