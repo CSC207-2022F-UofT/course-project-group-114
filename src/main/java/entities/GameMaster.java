@@ -17,9 +17,6 @@ public class GameMaster {
 //            tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "WireTask", "ClickTask", "PhoneNumberTask",
 //                    "AssignmentTask", "MemoryTask"};
 
-    // Create an instance of the LifeMaster
-    private static final LifeMaster lifeMaster = new LifeMaster();
-
     // Ensure that the method throws the needed exceptions when searching for classes and methods
     public static void createNewTask(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         String newTaskName = chooseTask(tasks); // Pick a random task
@@ -46,18 +43,18 @@ public class GameMaster {
                 if (completionStatus) { // The task was completed successfully
                     times.remove(taskName);
                     taskClass.getMethod("setActivatedStatus", boolean.class).invoke(taskClass, false);
-                    lifeMaster.incrementTaskCount();
+                    LifeMaster.incrementTaskCount();
                 }
                 else { // Task was not completed in time
-                    lifeMaster.deductLife();
+                    LifeMaster.deductLife();
                 }
             } else if (completionStatus) { // The task was completed early
                 times.remove(taskName);
                 taskClass.getMethod("setActivatedStatus", boolean.class).invoke(taskClass, false);
-                lifeMaster.incrementTaskCount();
+                //LifeMaster.incrementTaskCount();
             } else if (!activationStatus) { // Task was deactivated
                 times.remove(taskName);
-                lifeMaster.deductLife();
+                //LifeMaster.deductLife();
             }
         }
     }

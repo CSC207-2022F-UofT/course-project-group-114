@@ -1,6 +1,7 @@
 package controller;
 import entities.ClickTask;
 import entities.GameMaster;
+import entities.LifeMaster;
 
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
@@ -29,5 +30,8 @@ public class GameMasterController {
     }
     public static Hashtable<String, Long> getTimes() {
         return GameMaster.getTimes();
+    }
+    public static int getScore() {
+        return LifeMaster.getTaskCount();
     }
 }
