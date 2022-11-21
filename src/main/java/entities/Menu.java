@@ -1,8 +1,5 @@
 package entities;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.util.ArrayList;
 public class Menu {
     // this class controls the backend of the menu
     /* should have functions that do:
@@ -11,19 +8,20 @@ public class Menu {
 
     // we need to agree to a path to store the file for saving
 
-    public static String[] getScores() throws FileNotFoundException // should be triggered after highscore screen open is clicked
+    public static String getScores() // should be triggered after highscore screen open is clicked
     {
-        Scanner scan = new Scanner(new File("resources/users.csv")); // goes to the path to find the file
-        
+        ArrayList<User> users = Authenticator.users;
+        StringBuilder scores = new StringBuilder();
         int index = 0;
-        String line;
-        String[] scores = new String[7];
-        while(index < 7){
-            line = scan.next();  // reads the line
-            scores[index] = line.split(",")[3]; // extracts the highscore and adds to array
+        while(index < 7 && index < users.size()){
+            scores.append(users.get(index).toString()).append("\n");
             index += 1;
         }
-        
-        return scores;
+
+        return scores.toString();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getScores());
     }
 }

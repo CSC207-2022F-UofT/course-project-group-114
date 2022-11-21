@@ -9,7 +9,7 @@ import java.util.*;
 public class Authenticator {
     // holds all the methods useful for login and such
     private static User current;
-    private static ArrayList<User> users;
+    public static ArrayList<User> users;
 
     static {
         try {
@@ -35,12 +35,16 @@ public class Authenticator {
         }
         else {
             current = users.get(index);
-            return md5(password).equals(users.get(index).getPassword());
+            return md5(password).equals(current.getPassword());
         }
     }
     // sign up
-    public static boolean signIn(String name, String username, String password){
+    public static boolean signIn(String name, String username, String password, String password2){
         //gives true or false based on sign in attempt (if user already exists)
+        if (!password.equals(password2)){
+            return false;
+        }
+
         for (User user : users) {
             if (Objects.equals(user.getUsername(), username)) {
                 return false;
@@ -64,16 +68,15 @@ public class Authenticator {
     private static void updateCSV(){
         // rereads the score up to the player index then update the order
         Collections.sort(users);
-
         try{
-            FileWriter location = new FileWriter(new File("resources/users.csv"));
-            BufferedWriter output = new BufferedWriter(location);
+            FileWriter location = new FileWriter("src\\main\\java\\resources\\users.txt");
 
             for (User user : users){
-                output.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() +
-                        "," + user.getHighscore());
-                output.newLine();
+                location.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() +
+                        "," + user.getHighscore() + ",");
+
             }
+            location.close();
         }
         catch (IOException e){
             e.printStackTrace();
@@ -82,23 +85,21 @@ public class Authenticator {
 
     private static ArrayList<User> updateUser() throws FileNotFoundException {
         //updates users to all the existing users
-        Scanner scan = new Scanner(new File("resources/users.csv")); // goes to the path to find the file
+        Scanner scan = new Scanner(new File("src\\main\\java\\resources\\users.txt")); // goes to the path to find the file
         scan.useDelimiter(",");
-        String line;
+//        String line;
         String name;
         String username;
         String password;
         int highscore;
-        String[] temp;
+//        String[] temp;
         ArrayList<User> lst = new ArrayList<User>();
         
         while(scan.hasNext()){
-            line = scan.next();  // reads the line
-            temp = line.split(",");
-            name = temp[0];
-            username = temp[1];
-            password = md5(temp[2]);
-            highscore = Integer.parseInt(temp[3]);
+            name = scan.next();
+            username = scan.next();
+            password = scan.next();
+            highscore = Integer.parseInt(scan.next());
             lst.add(new User(name, username, password, highscore));
         }
 

@@ -19,8 +19,8 @@ public class HeatAdjustmentTaskController {
         return currentTemp;
     }
 
-    public static void changeCurrentTemp(int val) {
+    public static boolean changeCurrentTemp(int val) {
         currentTemp += val;
-        HeatAdjustmentTask.setCurrentTemp(val);
+        return HeatAdjustmentTask.setCurrentTemp(val);
     }
 }
