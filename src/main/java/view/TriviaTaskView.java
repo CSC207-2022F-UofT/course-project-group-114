@@ -1,18 +1,28 @@
 package view;
+
 import controller.TriviaTaskController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.UUID;
 
 public class TriviaTaskView extends JFrame {
-//    Random questionNum = new Random();  // generate a random number between zero and index of last question
-//    private String currentQuestion = "question in dictionary at random index";
-//    private String actualAnswer = "corresponding answer to that";
-
     TriviaTaskView(){
-        TriviaTaskController TriviaController = new TriviaTaskController();
+
+        TriviaTaskController controller = new TriviaTaskController();
+        String currentQuestion = controller.passRandomQuestion();
+
+        JPanel questionPopup = new JPanel();
+        JLabel questionMessage = new JLabel("You have 10 seconds to answer the following question correctly: " + currentQuestion);
+//        questionMessage.setPreferredSize(500, 500);
+//        questionMessage.setHoriziontalAlignment(JLabel.CENTER);
+
     }
 
+    // ignore this for now. can be added later once trivia is up and running
 //    public JPanel chooseCategoryPopup;
 //    public JButton submitAnswerButton;
 //
@@ -31,9 +41,5 @@ public class TriviaTaskView extends JFrame {
     // display the question & answer box and give player time to answer
 
     // the playerAnswer is the answer that the player has submitted. controller will have to relay this to the view
-
-
-
-
 
 }
