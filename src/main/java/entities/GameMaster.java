@@ -7,7 +7,7 @@ import java.util.Hashtable;
 import java.util.Random;
 
 public class GameMaster {
-    private static int taskInterval = 20000; // Time between tasks in milliseconds
+    private static int taskInterval = 10000; // Time between tasks in milliseconds
     private static int timeAllowed = 10000; // Amount of time allowed for each task in milliseconds
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<String, Long>();
@@ -46,12 +46,13 @@ public class GameMaster {
                     LifeMaster.incrementTaskCount();
                 }
                 else { // Task was not completed in time
-                    LifeMaster.deductLife();
+//                    LifeMaster.deductLife();
+
                 }
             } else if (completionStatus) { // The task was completed early
                 times.remove(taskName);
                 taskClass.getMethod("setActivatedStatus", boolean.class).invoke(taskClass, false);
-                //LifeMaster.incrementTaskCount();
+                LifeMaster.incrementTaskCount();
             } else if (!activationStatus) { // Task was deactivated
                 times.remove(taskName);
                 //LifeMaster.deductLife();
