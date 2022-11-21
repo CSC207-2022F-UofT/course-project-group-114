@@ -6,9 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
 
 public class AssignmentTaskView extends JFrame implements ActionListener{
     public static JLayeredPane layers;
+
     // IMAGES
     ImageIcon backgroundImage;
     ImageIcon b2;
@@ -20,9 +24,8 @@ public class AssignmentTaskView extends JFrame implements ActionListener{
     JLabel background;
 
 
-    JTextField textField;
+    JPanel textField;
     private static int countNeeded;
-    private int currentCount;
     private int totalCount;
     private int currentProgress;
     public AssignmentTaskView(){
@@ -51,10 +54,12 @@ public class AssignmentTaskView extends JFrame implements ActionListener{
         background.setBounds(0,     0, 1280, 720);
         layers.add(background, Integer.valueOf(0));
 
-        // JTextField where there player would type
-        textField = new JTextField();
+        // JPanel that acts like a textfield where there player would type
+        textField = new JPanel();
         textField.setBounds(300, 50, 1280, 720);
-        textField.addActionListener(this);
+        textField.setFocusable(true);
+        textField.requestFocusInWindow();
+        textField.addKeyListener(this);
         textField.setOpaque(false);
         layers.add(textField);
 
@@ -73,9 +78,13 @@ public class AssignmentTaskView extends JFrame implements ActionListener{
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        currentCount = textField.getText().length();
-        totalCount += Math.min(currentCount, Math.floor((double) countNeeded / 6));
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        totalCount++;
 
         if (totalCount >= currentProgress * (countNeeded / 6)){
             currentProgress++;
@@ -108,6 +117,11 @@ public class AssignmentTaskView extends JFrame implements ActionListener{
             default:
                 break;
         }
+
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 }
