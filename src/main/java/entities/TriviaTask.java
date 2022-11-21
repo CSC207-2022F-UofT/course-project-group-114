@@ -10,7 +10,6 @@ public class TriviaTask extends Task {
     public String actualAnswer; // the correct answer corresponding value to the key
 
     // creating the trivia dictionary
-
     public Map<String, String> getMap()
     {
        Map<String, String> triviaDict = new HashMap<>();
