@@ -126,7 +126,10 @@ public class GameMasterView extends JFrame{
         wire.setIcon(wireIcon);
 
         // Create trivia JLabel
-//        triviaIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\trivia\\wire task prompt.png");
+        triviaIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\trivia\\trivia task alert.png");
+        trivia = new JLabel();
+        trivia.setBounds(0, 0, 1280, 720);
+        trivia.setIcon(triviaIcon);
 
         // Create image icons for activated versions of heat, phone and click tasks
         activeCatClockIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\clock\\eat alert.gif");
@@ -170,10 +173,14 @@ public class GameMasterView extends JFrame{
         clickableWire.setBorderPainted(false);
         clickableWire.setBounds(40, 200, 190, 70);
 
+        clickableTrivia = new JButton();
+        clickableTrivia.setOpaque(false);
+        clickableTrivia.setContentAreaFilled(false);
+        clickableTrivia.setBorderPainted(false);
+        clickableTrivia.setBounds(42, 295, 170, 65);
+
         // Add click event listeners for clickable buttons to switch to correct view
         AddClickEvents();
-
-        // TODO add trivia task button
 
         main.add(layers);
         add(main);
@@ -261,7 +268,13 @@ public class GameMasterView extends JFrame{
             layers.remove(wire);
             layers.remove(clickableWire);
         }
-        // Must also add for trivia task, art not yet in resources
+        if (activeTasks.contains("TriviaTask") && !compsList.contains(trivia)) {
+            layers.add(trivia, Integer.valueOf(5));
+            layers.add(clickableTrivia, Integer.valueOf(6));
+        } else if (compsList.contains(trivia)) {
+            layers.remove(trivia);
+            layers.remove(clickableTrivia);
+        }
     }
 
     private static void AddClickEvents() {
@@ -283,7 +296,7 @@ public class GameMasterView extends JFrame{
         clickableClick.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(ClickTaskView.layers);
+                main.add(ClickTaskView.clickTaskPanel);
                 main.remove(layers);
             }
             @Override
@@ -298,7 +311,7 @@ public class GameMasterView extends JFrame{
         clickablePhone.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(PhoneNumberTaskView.layers);
+                main.add(PhoneNumberTaskView.phoneTaskPanel);
                 main.remove(layers);
             }
             @Override
@@ -328,7 +341,7 @@ public class GameMasterView extends JFrame{
         clickableMemory.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(MemoryTaskView.layers);
+                main.add(MemoryTaskView.memoryTaskPanel);
                 main.remove(layers);
             }
             @Override
