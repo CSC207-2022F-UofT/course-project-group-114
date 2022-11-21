@@ -126,7 +126,7 @@ public class AuthenticatorView extends JFrame {
         loginSubmit.addActionListener(e -> {
             if(NonGameController.login(loginUsername.getText(), loginPassword.getText())){
                 // call gamemaster view
-                JOptionPane.showMessageDialog(null, "works lol");
+                new GameMasterView();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Error loggin in!");
@@ -137,7 +137,7 @@ public class AuthenticatorView extends JFrame {
             if(NonGameController.signin(signinName.getText(),signinUsername.getText(),
                     signinPassword.getText(),signinPassword2.getText())){
                 // call gamemaster view
-                JOptionPane.showMessageDialog(null, "true");
+                new GameMasterView();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Sign in failed, please try again.");
