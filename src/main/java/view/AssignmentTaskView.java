@@ -7,8 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AssignmentTaskView extends JFrame implements ActionListener{
-    JLayeredPane layers;
+public class AssignmentTaskView extends JLayeredPane implements ActionListener{
     // IMAGES
     ImageIcon backgroundImage;
     ImageIcon b2;
@@ -30,7 +29,6 @@ public class AssignmentTaskView extends JFrame implements ActionListener{
         totalCount = 0;
         currentProgress = 0;
         countNeeded = AssignmentTaskController.getCharacterCountNeeded();
-        layers = new JLayeredPane();
 
         // store images into variables
         backgroundImage = new ImageIcon("src/main/java/resources/AssignmentTask/first.jpg");
@@ -42,30 +40,24 @@ public class AssignmentTaskView extends JFrame implements ActionListener{
         b7 = new ImageIcon("src/main/java/resources/AssignmentTask/last.jpg");
 
 
-        layers.setPreferredSize(new Dimension(1280,720));
-
         background = new JLabel();
         background.setIcon(backgroundImage);
 
         // this is for the background picture to cover the whole frame.
         background.setBounds(0,     0, 1280, 720);
-        layers.add(background, Integer.valueOf(0));
+        add(background, Integer.valueOf(0));
 
         // JTextField where there player would type
         textField = new JTextField();
         textField.setBounds(300, 50, 1280, 720);
         textField.addActionListener(this);
         textField.setOpaque(false);
-        layers.add(textField);
+        add(textField);
 
-        add(layers);
 
         // Display the layered pane
-        setSize(1280,720);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(1280,720));
         setVisible(true);
-        layers.setVisible(true);
 
     }
     public static void main(String[] args) {
