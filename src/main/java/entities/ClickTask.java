@@ -1,7 +1,7 @@
 package entities;
 
 import java.util.Random;
-public class ClickTask{
+public class ClickTask extends Task{
     public static int currentClicks;
     public static int neededClicks;
     private static final int UPPERBOUND = 30;

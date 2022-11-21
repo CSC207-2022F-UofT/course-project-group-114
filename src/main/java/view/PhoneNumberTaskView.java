@@ -256,7 +256,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                     JOptionPane.showMessageDialog(null, "Incorrect");
                 }
                 setVisible(false);
-                GameMasterView.backToMain();
+                GameMasterView.backToMain(GameMasterView.phoneTaskView);
             }
         });
 

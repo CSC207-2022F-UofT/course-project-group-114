@@ -62,6 +62,7 @@ public class GameMasterView extends JFrame{
     public static JLayeredPane triviaTaskView;
 
     public GameMasterView() {
+        GameMasterController.startGame();
         main = new JPanel(new CardLayout());
         layers = new JLayeredPane();
 
@@ -231,7 +232,7 @@ public class GameMasterView extends JFrame{
         List<Component> compsList = Arrays.asList(comps);
         Component[] alreadyClickable = layers.getComponentsInLayer(6);
         List<Component> alreadyClickableList = Arrays.asList(alreadyClickable);
-        if (activeTasks.contains("HeadAdjustmentTask") && !alreadyClickableList.contains(clickableHeat)) {
+        if (activeTasks.contains("HeatAdjustmentTask") && !alreadyClickableList.contains(clickableHeat)) {
             thermostat.setIcon(activeThermostatIcon);
             layers.add(clickableHeat, Integer.valueOf(6));
         } else if (alreadyClickableList.contains(clickableHeat)) {
@@ -335,8 +336,8 @@ public class GameMasterView extends JFrame{
         clickableWire.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                wireTaskView = new WireTaskView();
-                main.add(wireTaskView);
+//                wireTaskView = new WireTaskView();
+//                main.add(wireTaskView);
             }
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -380,8 +381,8 @@ public class GameMasterView extends JFrame{
         clickableTrivia.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                triviaTaskView = new TriviaTaskView();
-                main.add(triviaTaskView);
+//                triviaTaskView = new TriviaTaskView();
+//                main.add(triviaTaskView);
             }
             @Override
             public void mousePressed(MouseEvent e) {}

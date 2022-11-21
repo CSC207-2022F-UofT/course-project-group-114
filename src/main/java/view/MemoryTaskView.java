@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
-public class MemoryTaskView extends JPanel{
+public class MemoryTaskView extends JLayeredPane{
     public static JLayeredPane memoryTaskPanel;
 
     MemoryTaskView(){
@@ -83,7 +83,7 @@ public class MemoryTaskView extends JPanel{
                     JOptionPane.showMessageDialog(null, "Unsuccessful");
                 }
                 setVisible(false);
-                GameMasterView.backToMain();
+                GameMasterView.backToMain(GameMasterView.memoryTaskView);
             }
         });
 

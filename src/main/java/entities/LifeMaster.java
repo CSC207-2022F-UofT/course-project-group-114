@@ -3,7 +3,7 @@ package entities;
 import java.lang.reflect.InvocationTargetException;
 
 public class LifeMaster {
-    private static int lives = 0;
+    private static int lives = 5;
     private static int tasksCompletedCount = 0; // Number of completed tasks in total, AKA the score
     public void deductLife() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException { // Method for deducting a life
         lives--;
