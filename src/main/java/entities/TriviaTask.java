@@ -10,6 +10,7 @@ public class TriviaTask extends Task {
     public String actualAnswer; // the correct answer corresponding value to the key
 
     // creating the trivia dictionary
+    // want to change this to a csv to improve project
     public Map<String, String> getMap()
     {
        Map<String, String> triviaDict = new HashMap<>();
@@ -130,7 +131,7 @@ public class TriviaTask extends Task {
 //    }
 //    // checks if the answer is correct
 
-    public boolean checkAnswer (String actualAnswer, String playerAnswer){
+    public static boolean checkAnswer (String actualAnswer, String playerAnswer){
         // case for if the actual answer is an integer????? this can be added later.
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
             setCompletionStatus(true);
