@@ -1,11 +1,14 @@
 package controller;
 import entities.TriviaTask;
+import javax.swing.*;
 
 public class TriviaTaskController {
-    TriviaTask usecase = new TriviaTask();
+//    private String playerAnswer;
+//    private String[] actualAnswer;
+    TriviaTask TriviaTaskUsecase = new TriviaTask();
 
-    // public int passCategory (JTextField chosen)
-    // if it's ... return respective integer
+    public boolean answerChecker(String actualAnswer, JTextField playerAnswer){
+        return (TriviaTaskUsecase.checkAnswer(actualAnswer, playerAnswer.getText()));
+    }
 
-    // public boolean passAnswer
 }
