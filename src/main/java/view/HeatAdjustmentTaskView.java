@@ -66,6 +66,9 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
             public void mouseClicked(MouseEvent e) {
                 completed = HeatAdjustmentTaskController.changeCurrentTemp(-1); // Decrease current temp by 1
                 currentTemp--;
+                if (completed) {
+                    GameMasterView.backToMain(GameMasterView.heatTaskView);
+                }
             }
 
             @Override
@@ -87,7 +90,7 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
                 completed = HeatAdjustmentTaskController.changeCurrentTemp(1); // Increase current temp by 1
                 currentTemp++;
                 if (completed) {
-                    GameMasterView.backToMain();
+                    GameMasterView.backToMain(GameMasterView.heatTaskView);
                 }
             }
 
