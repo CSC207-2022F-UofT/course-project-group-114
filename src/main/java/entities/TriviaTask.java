@@ -2,10 +2,11 @@ package entities;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 public class TriviaTask extends Task {
     // public int triviaCategory; //can later make changes to code to add categories and get questions and answers from a csv file
-    public static int questionNum; //randomly generated num to select a random question from that category
+    // public static int questionNum; //randomly generated num to select a random question from that category
     public String currentQuestion; // the question. trivia dict at the randomly generated index
     public String playerAnswer; // what the player actually answered
     public String actualAnswer; // the correct answer corresponding value to the key
@@ -20,6 +21,14 @@ public class TriviaTask extends Task {
     triviaDict.put("The dude who wrote clean architecture is nicknamed ...", "uncle bob");
     triviaDict.put("In what room are the csc207 lectures?", "br200");
     triviaDict.put("What do you call code where the use case depends on the user interface?", "dirty architecture");
+
+    int questionNum = (int) Math.random();
+//    public static void getcurrentQuestion(){
+//
+//    }
+//    public static int getQuestionNum(){
+//    }
+
 
 
     // can be used to add categories of questions next week.
