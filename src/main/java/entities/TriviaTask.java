@@ -23,7 +23,7 @@ public class TriviaTask extends Task {
             triviaDict.put("In what room are the csc207 lectures?", "br200");
             return triviaDict;
     }
-    public String getRandomKey(){
+    public String getRandomQuestion(){
         Map<String, String> triviaDict = this.getMap();
         Random R = new Random();
         return triviaDict.get(R.nextInt(triviaDict.size()));

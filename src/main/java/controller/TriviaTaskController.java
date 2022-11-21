@@ -6,6 +6,9 @@ public class TriviaTaskController {
 //    private String playerAnswer;
 //    private String[] actualAnswer;
     TriviaTask TriviaTaskUsecase = new TriviaTask();
+    public String passRandomQuestion(){
+        return TriviaTaskUsecase.getRandomQuestion();
+    }
 
     // take the player's answer
     // translate it into something the backend can understand
