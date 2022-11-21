@@ -1,5 +1,7 @@
 package controller;
 import entities.TriviaTask;
+import javax.swing.*;
+
 
 public class TriviaTaskController {
     TriviaTask TriviaTaskUsecase = new TriviaTask();
