@@ -87,6 +87,7 @@ public class MemoryTaskView extends JFrame{
                 }
                 setVisible(false);
                 dispose();
+                GameMasterView.backToMain();
             }
         });
 
