@@ -52,6 +52,15 @@ public class GameMasterView extends JFrame{
     static JButton clickableAssignment;
     static JButton clickablePhone;
 
+    // JPanels representing task views
+    static JPanel assignmentTaskView;
+    static JPanel clickTaskView;
+    static JPanel phoneTaskView;
+    static JPanel memoryTaskView;
+    static JPanel wireTaskView;
+    static JPanel heatTaskView;
+    static JPanel triviaTaskView;
+
     public GameMasterView() {
         main = new JPanel(new CardLayout());
         layers = new JLayeredPane();
@@ -281,8 +290,8 @@ public class GameMasterView extends JFrame{
         clickableAssignment.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(AssignmentTaskView.layers);
-                main.remove(layers);
+                assignmentTaskView = new AssignmentTaskView();
+                main.add(assignmentTaskView);
             }
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -296,8 +305,8 @@ public class GameMasterView extends JFrame{
         clickableClick.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(ClickTaskView.clickTaskPanel);
-                main.remove(layers);
+                clickTaskView = new ClickTaskView();
+                main.add(clickTaskView);
             }
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -311,8 +320,8 @@ public class GameMasterView extends JFrame{
         clickablePhone.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(PhoneNumberTaskView.phoneTaskPanel);
-                main.remove(layers);
+                phoneTaskView = new PhoneNumberTaskView();
+                main.add(phoneTaskView);
             }
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -326,8 +335,8 @@ public class GameMasterView extends JFrame{
         clickableWire.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(WireTaskView.layers);
-                main.remove(layers);
+                wireTaskView = new WireTaskView();
+                main.add(wireTaskView);
             }
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -341,8 +350,8 @@ public class GameMasterView extends JFrame{
         clickableMemory.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(MemoryTaskView.memoryTaskPanel);
-                main.remove(layers);
+                memoryTaskView = new MemoryTaskView();
+                main.add(memoryTaskView);
             }
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -356,8 +365,8 @@ public class GameMasterView extends JFrame{
         clickableHeat.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(HeatAdjustmentTaskView.layers);
-                main.remove(layers);
+                heatTaskView = new HeatAdjustmentTaskView();
+                main.add(heatTaskView);
             }
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -371,8 +380,8 @@ public class GameMasterView extends JFrame{
         clickableTrivia.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                main.add(TriviaTaskView.layers);
-                main.remove(layers);
+                triviaTaskView = new TriviaTaskView();
+                main.add(triviaTaskView);
             }
             @Override
             public void mousePressed(MouseEvent e) {}
@@ -383,10 +392,5 @@ public class GameMasterView extends JFrame{
             @Override
             public void mouseExited(MouseEvent e) {}
         });
-    }
-
-    public static void backToMain() {
-        main.removeAll();
-        main.add(layers);
     }
 }
