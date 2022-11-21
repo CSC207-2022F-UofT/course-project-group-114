@@ -68,6 +68,8 @@ public class ClickTaskView extends JLayeredPane{
             // determines if the requirement is met
             boolean success = (neededClicks == currentClicks);
             if (success){
+                ClickTaskController.setActivatedStatus(false);
+                ClickTaskController.setCompletionStatus(true);
                 GameMasterView.backToMain(GameMasterView.clickTaskView);
             }
         });

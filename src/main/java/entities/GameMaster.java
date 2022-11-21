@@ -1,5 +1,6 @@
 package entities;
 
+import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
@@ -40,6 +41,7 @@ public class GameMaster {
         for (String taskName : times.keySet()) {
             Class<?> taskClass = Class.forName("entities." + taskName);
             boolean completionStatus = (boolean) taskClass.getMethod("getCompletionStatus").invoke(null);
+            boolean activationStatus = (boolean) taskClass.getMethod("getActivatedStatus").invoke(null);
             if (currTime >= times.get(taskName)) { // If the time is up for the task
                 if (completionStatus) { // The task was completed successfully
                     times.remove(taskName);
@@ -53,6 +55,9 @@ public class GameMaster {
                 times.remove(taskName);
                 taskClass.getMethod("setActivatedStatus", boolean.class).invoke(taskClass, false);
                 lifeMaster.incrementTaskCount();
+            } else if (!activationStatus) { // Task was deactivated
+                times.remove(taskName);
+                lifeMaster.deductLife();
             }
         }
     }

@@ -1,4 +1,5 @@
 package controller;
+import entities.ClickTask;
 import entities.TriviaTask;
 import javax.swing.*;
 
@@ -9,6 +10,12 @@ public class TriviaTaskController {
 
     public boolean answerChecker(String actualAnswer, JTextField playerAnswer){
         return (TriviaTaskUsecase.checkAnswer(actualAnswer, playerAnswer.getText()));
+    }
+    public static void setCompletionStatus(boolean status) {
+        TriviaTask.setCompletionStatus(status);
+    }
+    public static void setActivatedStatus(boolean status) {
+        TriviaTask.setActivatedStatus(status);
     }
 
 }

@@ -1,4 +1,5 @@
 package controller;
+import entities.ClickTask;
 import entities.PhoneNumberTask;
 public class PhoneNumberTaskController {
     PhoneNumberTask usecase = new PhoneNumberTask();
@@ -11,5 +12,11 @@ public class PhoneNumberTaskController {
         else{
             return(usecase.check_correctness(actual_number, Integer.parseInt(pressed_number)));
         }
+    }
+    public static void setCompletionStatus(boolean status) {
+        PhoneNumberTask.setCompletionStatus(status);
+    }
+    public static void setActivatedStatus(boolean status) {
+        PhoneNumberTask.setActivatedStatus(status);
     }
 }

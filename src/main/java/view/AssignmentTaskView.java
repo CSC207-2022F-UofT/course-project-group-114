@@ -1,6 +1,7 @@
 package view;
 
 import controller.AssignmentTaskController;
+import controller.ClickTaskController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -89,6 +90,8 @@ public class AssignmentTaskView extends JLayeredPane implements KeyListener{
                 if (AssignmentTaskController.validate(countNeeded)){
                     JOptionPane.showMessageDialog(null, "Congratulations! You Succeeded!");
                     this.setVisible(false);
+                    AssignmentTaskController.setActivatedStatus(false);
+                    AssignmentTaskController.setCompletionStatus(true);
                     GameMasterView.backToMain(GameMasterView.assignmentTaskView);
                 }
                 break;

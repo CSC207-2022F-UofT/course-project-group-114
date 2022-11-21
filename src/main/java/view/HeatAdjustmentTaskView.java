@@ -71,6 +71,8 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
                 currentTemp--;
                 currentTempDisplay.setText(Integer.toString(currentTemp));
                 if (completed) {
+                    HeatAdjustmentTaskController.setCompletionStatus(true);
+                    HeatAdjustmentTaskController.setActivationStatus(false);
                     GameMasterView.backToMain(GameMasterView.heatTaskView);
                 }
             }
@@ -95,6 +97,8 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
                 currentTemp++;
                 currentTempDisplay.setText(Integer.toString(currentTemp));
                 if (completed) {
+                    HeatAdjustmentTaskController.setCompletionStatus(true);
+                    HeatAdjustmentTaskController.setActivationStatus(false);
                     GameMasterView.backToMain(GameMasterView.heatTaskView);
                 }
             }
