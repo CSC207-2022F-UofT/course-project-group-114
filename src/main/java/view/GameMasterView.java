@@ -1,8 +1,6 @@
 package view;
 import controller.GameMasterController;
-import controller.HeatAdjustmentTaskController;
 import entities.GameMaster;
-import entities.PhoneNumberTask;
 
 import java.awt.*;
 import javax.swing.*;
@@ -62,7 +60,6 @@ public class GameMasterView extends JFrame{
     public static JLayeredPane triviaTaskView;
 
     public GameMasterView() {
-        GameMasterController.startGame();
         main = new JPanel(new CardLayout());
         layers = new JLayeredPane();
 
@@ -203,12 +200,16 @@ public class GameMasterView extends JFrame{
 
         // Check for every task activation or de-activation
         Clock clock = Clock.systemDefaultZone();
-        long currTime = clock.millis();
+        long currTime;
         int checkInterval = 500; // Interval for checking task status in milliseconds
         Hashtable<String, Long> times;
         while (GameMasterController.getPlayingStatus()) {
+            currTime = clock.millis(); // Update current time
             if (clock.millis() >= currTime + checkInterval) { // Enough time has passed; check tasks' status
-                currTime = clock.millis(); // Update current time
+                if (clock.millis() >= currTime + GameMasterController.getTaskInterval()) { // Create new task if interval has passed
+                    GameMasterController.createNewTask(currTime);
+                }
+                GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
                 times = GameMaster.getTimes();
                 Set<String> activeTasks = times.keySet();
                 activateTasks(activeTasks);
