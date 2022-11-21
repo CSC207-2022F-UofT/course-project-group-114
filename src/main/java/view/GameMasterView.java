@@ -53,13 +53,13 @@ public class GameMasterView extends JFrame{
     static JButton clickablePhone;
 
     // JPanels representing task views
-    static JPanel assignmentTaskView;
-    static JPanel clickTaskView;
-    static JPanel phoneTaskView;
-    static JPanel memoryTaskView;
-    static JPanel wireTaskView;
-    static JPanel heatTaskView;
-    static JPanel triviaTaskView;
+    public static JLayeredPane assignmentTaskView;
+    public static JLayeredPane clickTaskView;
+    public static JLayeredPane phoneTaskView;
+    public static JLayeredPane memoryTaskView;
+    public static JLayeredPane wireTaskView;
+    public static JLayeredPane heatTaskView;
+    public static JLayeredPane triviaTaskView;
 
     public GameMasterView() {
         main = new JPanel(new CardLayout());
@@ -392,5 +392,8 @@ public class GameMasterView extends JFrame{
             @Override
             public void mouseExited(MouseEvent e) {}
         });
+    }
+    public static void backToMain(JLayeredPane taskToRemove) {
+        main.remove(taskToRemove);
     }
 }
