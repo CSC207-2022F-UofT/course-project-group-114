@@ -1,8 +1,7 @@
 package entities;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.sql.Array;
+import java.util.*;
 
 public class TriviaTask extends Task {
     // public int triviaCategory; //can later make changes to code to add categories and get questions and answers from a csv file
@@ -12,23 +11,67 @@ public class TriviaTask extends Task {
     public String actualAnswer; // the correct answer corresponding value to the key
 
     // creating the trivia dictionary
-    HashMap<String, String> triviaDict = new HashMap<String, String>();
-    triviaDict.put("What are the first three letters of the alphabet?", "abc");
-    triviaDict.put("What kind of animal is a Python?", "snake");
-    triviaDict.put("In what country is Java located?", "Indonesia");
-    triviaDict.put("What does 'poissson' mean in english?", "fish");
-    triviaDict.put("What is the missing word: S***D Design Principles", "solid");
-    triviaDict.put("The dude who wrote clean architecture is nicknamed ...", "uncle bob");
-    triviaDict.put("In what room are the csc207 lectures?", "br200");
-    triviaDict.put("What do you call code where the use case depends on the user interface?", "dirty architecture");
 
-    int questionNum = (int) Math.random();
+    public Map<String, String> getMap()
+    {
+       Map<String, String> triviaDict = new HashMap<>();
+            triviaDict.put("What kind of animal is a Python?", "snake");
+            triviaDict.put("In what country is Java located?", "Indonesia");
+            triviaDict.put("What does 'poissson' mean in english?", "fish");
+            triviaDict.put("What is the missing word: S***D Design Principles", "solid");
+            triviaDict.put("The dude who wrote clean architecture is nicknamed ...", "uncle bob");
+            triviaDict.put("In what room are the csc207 lectures?", "br200");
+            return triviaDict;
+    }
+    public String getRandomKey(){
+        Random R = new Random();
+        Map<String, String> triviaDict = this.getMap();
+        return triviaDict.get(R.nextInt(triviaDict.size()));
+    }
+
+//    public String getRandomQuestion(){
+//        Map<String, String> triviaDict = this.getMap();
+////        Random randomKey = new Random();
+//        String randomQuestion = triviaDict.get(this.getRandomKey());
+////        int randomKeyNum = ((int) Math.floor(Math.random()*(triviaDict.size()+1)+0));
+
+//    int questionNum = (int) Math.random();
 //    public static void getcurrentQuestion(){
 //
 //    }
-//    public static int getQuestionNum(){
-//    }
+//        public int getSize(){
+//            return triviaDict.size();
+//        }
+//        public static void getRandomQuestion(){
+//            List<Integer> KeysAsArray = new ArrayList(questionAnswer.keySet());
+//        }
+//        public int getRandomQ() {
+//            return (int) Math.floor(Math.random() * (triviaDict.size() + 1) + 0);
+//        }
+//        public String getRandomQuestion(){
+//            Random generator = new Random();
+//            Integer[] keys = questionAnswer.keys().toArray();
+//            String currentQuestion = keys[generator.nextInt(questionAnswer.size())];
+//            return currentQuestion;
+//        }
 
+//        public String getQuestion(){
+//            int questionNum = getRandomQ();
+//            Object[] keys =  questionAnswer.keys().toArray();
+////            this.currentQuestion = triviaDict.get(keysAsArray.get(questionNum));
+//            return currentQuestion;
+//            }
+
+//        private static Object[] keys() {
+//            return keys;
+//        }
+////            int questionNum = (int) Math.floor(Math.random()*(triviaDict.size()+1)+0);
+//            this.currentQuestion = triviaDict.get(keysAsArray.get(questionNum));
+//            return currentQuestion;
+
+//    public String getCurrentQuestion(){
+//        this.currentQuestion = triviaDict.get(keysAsArray.get(questionAnswer.getRandomQ()));
+//    }
 
 
     // can be used to add categories of questions next week.
@@ -75,10 +118,6 @@ public class TriviaTask extends Task {
     }
     // checks if the answer is correct
 
-    public static int getNum(){
-        // return a random integer between 0 and last index of triviaDict
-        return 1;
-    }
     public boolean checkAnswer (String actualAnswer, String playerAnswer){
         // case for if the actual answer is an integer????? this can be added later.
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
