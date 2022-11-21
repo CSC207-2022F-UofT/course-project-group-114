@@ -12,12 +12,12 @@ public class GameMaster {
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<String, Long>();
     public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
-            "AssignmentTask", "MemoryTask"};
-    // TODO Remember to change the above line to include all tasks:
+            "AssignmentTask"};
 //            tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "WireTask", "ClickTask", "PhoneNumberTask",
 //                    "AssignmentTask", "MemoryTask"};
 
     // Ensure that the method throws the needed exceptions when searching for classes and methods
+
     public static void createNewTask(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         String newTaskName = chooseTask(tasks); // Pick a random task
         Class<?> taskClass = Class.forName("entities." + newTaskName); // Get the task class
