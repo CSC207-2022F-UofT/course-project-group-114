@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AssignmentTaskView extends JFrame implements ActionListener{
-    JLayeredPane layers;
+    public static JLayeredPane layers;
     // IMAGES
     ImageIcon backgroundImage;
     ImageIcon b2;

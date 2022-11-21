@@ -12,12 +12,12 @@ public class ClickTaskView extends JFrame{
     // 3. Test cases
     // 4. Life deduction
     // 5. Print message before closing?
-
+    public static JLayeredPane clickTaskPanel;
     public ClickTaskView(){
         ClickTaskController.setNeededClicks();
 
         // Click Task plane
-        JLayeredPane clickTaskPanel = new JLayeredPane();
+        clickTaskPanel = new JLayeredPane();
         clickTaskPanel.setPreferredSize(new Dimension(1920,1080));
 
         // Header settings

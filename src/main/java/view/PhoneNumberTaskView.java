@@ -15,11 +15,13 @@ public class PhoneNumberTaskView extends JFrame{
 
     private String number_so_far = "";
 
+    public static JLayeredPane phoneTaskPanel;
+
     PhoneNumberTaskView(){
         PhoneNumberTaskController controller = new PhoneNumberTaskController();
 
         //private JPanel main;
-        JLayeredPane phoneTaskPanel = new JLayeredPane();
+        phoneTaskPanel = new JLayeredPane();
         phoneTaskPanel.setPreferredSize(new Dimension(1280, 720));
 
         JTextField textField = new JTextField("TO DO : DIAL THE NUMBER ON THE STICKY NOTE");
