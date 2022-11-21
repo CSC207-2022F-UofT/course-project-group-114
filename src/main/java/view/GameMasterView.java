@@ -66,8 +66,9 @@ public class GameMasterView extends JFrame{
         layers = new JLayeredPane();
 
         scoreDisplay = new JLabel("0");
-        scoreDisplay.setBounds(100, 0, 50, 50);
-        scoreDisplay.setSize(20, 20);
+        scoreDisplay.setBounds(780, 270, 200, 250);
+        scoreDisplay.setForeground(new Color(200, 255, 255));
+        scoreDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 
         // Create background JLabel
         backgroundIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\background.jpg");

@@ -11,6 +11,9 @@ public class HeatAdjustmentTask extends Task {
     public static void reset() { // Inherit reset method; generate random answer and current temperatures
         answerTemp = randomizeCurrentTemp();
         currentTemp = randomizeCurrentTemp();
+        while (currentTemp == answerTemp) {
+            currentTemp = randomizeCurrentTemp();
+        }
     }
     private static int randomizeCurrentTemp() { // Return a random integer between 0 and 30
         Random rand = new Random();
