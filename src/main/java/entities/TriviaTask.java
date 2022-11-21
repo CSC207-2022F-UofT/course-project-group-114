@@ -23,10 +23,15 @@ public class TriviaTask extends Task {
             triviaDict.put("In what room are the csc207 lectures?", "br200");
             return triviaDict;
     }
+    // method to choose a random key from the dictionary
+    // has some errors in terms of choosing the right key and value
     public String getRandomQuestion(){
         Map<String, String> triviaDict = this.getMap();
         Random R = new Random();
-        return triviaDict.get(R.nextInt(triviaDict.size()));
+        this.currentQuestion = triviaDict.get(R.nextInt(triviaDict.size()));
+        this.actualAnswer = triviaDict.get(currentQuestion);
+        return currentQuestion;
+        //return triviaDict.get(R.nextInt(triviaDict.size()));
     }
 
 //    public String getRandomQuestion(){
