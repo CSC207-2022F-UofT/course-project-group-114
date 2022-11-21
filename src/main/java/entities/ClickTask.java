@@ -22,4 +22,8 @@ public class ClickTask extends Task{
             portion = true;
         }
     }
+
+    public static void reset(){
+        setCurrentClicks(0);
+    }
 }
