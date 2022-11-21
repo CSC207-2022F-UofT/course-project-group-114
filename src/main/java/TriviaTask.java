@@ -122,8 +122,8 @@ public class TriviaTask extends Task {
     public static void reset() { // inherited reset method, generate random question
         // public int questionNum = random number between 0 and last index of dictionary
     }
+    
     // checks if the answer is correct
-
     public boolean checkAnswer (String actualAnswer, String playerAnswer){
         // case for if the actual answer is an integer????? this can be added later.
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
