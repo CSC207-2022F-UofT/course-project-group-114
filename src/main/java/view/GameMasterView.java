@@ -1,9 +1,13 @@
 package view;
 import controller.GameMasterController;
+import controller.HeatAdjustmentTaskController;
 import entities.GameMaster;
+import entities.PhoneNumberTask;
 
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.time.Clock;
 import java.util.Arrays;
 import java.util.Hashtable;
@@ -11,7 +15,8 @@ import java.util.List;
 import java.util.Set;
 
 public class GameMasterView extends JFrame{
-    JLayeredPane layers;
+    public static JPanel main;
+    public static JLayeredPane layers;
     ImageIcon backgroundIcon;
     JLabel background;
     ImageIcon catClockIcon;
@@ -35,8 +40,20 @@ public class GameMasterView extends JFrame{
     JLabel memoryButton;
     ImageIcon wireIcon;
     JLabel wire;
+    ImageIcon triviaIcon;
+    JLabel trivia;
+
+    // Buttons for each task
+    static JButton clickableHeat;
+    static JButton clickableClick;
+    static JButton clickableMemory;
+    static JButton clickableTrivia;
+    static JButton clickableWire;
+    static JButton clickableAssignment;
+    static JButton clickablePhone;
 
     public GameMasterView() {
+        main = new JPanel(new CardLayout());
         layers = new JLayeredPane();
 
         // Create background JLabel
@@ -108,12 +125,65 @@ public class GameMasterView extends JFrame{
         wire.setBounds(0, 0, 1280, 720);
         wire.setIcon(wireIcon);
 
+        // Create trivia JLabel
+        triviaIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\trivia\\trivia task alert.png");
+        trivia = new JLabel();
+        trivia.setBounds(0, 0, 1280, 720);
+        trivia.setIcon(triviaIcon);
+
         // Create image icons for activated versions of heat, phone and click tasks
         activeCatClockIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\clock\\eat alert.gif");
         activePhoneIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\phone\\phone alert.png");
         activeThermostatIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\heat\\heat alert.png");
 
-        add(layers);
+        // Create invisible buttons for each task to click
+        clickableAssignment = new JButton();
+        clickableAssignment.setOpaque(false);
+        clickableAssignment.setContentAreaFilled(false);
+        clickableAssignment.setBorderPainted(false);
+        clickableAssignment.setBounds(530, 450, 60, 60);
+
+        clickableClick = new JButton();
+        clickableClick.setOpaque(false);
+        clickableClick.setContentAreaFilled(false);
+        clickableClick.setBorderPainted(false);
+        clickableClick.setBounds(690, 235, 200, 230);
+
+        clickableHeat = new JButton();
+        clickableHeat.setOpaque(false);
+        clickableHeat.setContentAreaFilled(false);
+        clickableHeat.setBorderPainted(false);
+        clickableHeat.setBounds(1050, 0, 230, 70);
+
+        clickableMemory = new JButton();
+        clickableMemory.setOpaque(false);
+        clickableMemory.setContentAreaFilled(false);
+        clickableMemory.setBorderPainted(false);
+        clickableMemory.setBounds(40, 450, 182, 70);
+
+        clickablePhone = new JButton();
+        clickablePhone.setOpaque(false);
+        clickablePhone.setContentAreaFilled(false);
+        clickablePhone.setBorderPainted(false);
+        clickablePhone.setBounds(1000, 520, 280, 200);
+
+        clickableWire = new JButton();
+        clickableWire.setOpaque(false);
+        clickableWire.setContentAreaFilled(false);
+        clickableWire.setBorderPainted(false);
+        clickableWire.setBounds(40, 200, 190, 70);
+
+        clickableTrivia = new JButton();
+        clickableTrivia.setOpaque(false);
+        clickableTrivia.setContentAreaFilled(false);
+        clickableTrivia.setBorderPainted(false);
+        clickableTrivia.setBounds(42, 295, 170, 65);
+
+        // Add click event listeners for clickable buttons to switch to correct view
+        AddClickEvents();
+
+        main.add(layers);
+        add(main);
 
         setSize(1280,720);
         setLocationRelativeTo(null);
@@ -146,44 +216,177 @@ public class GameMasterView extends JFrame{
         return new ImageIcon(icon.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
     }
 
-    // Helper method for visually activating the given tasks
+    // Helper method for activating the given tasks
     private void activateTasks(Set<String> activeTasks) {
         Component[] comps = layers.getComponentsInLayer(5);
         List<Component> compsList = Arrays.asList(comps);
-        if (activeTasks.contains("HeadAdjustmentTask")) {
+        Component[] alreadyClickable = layers.getComponentsInLayer(6);
+        List<Component> alreadyClickableList = Arrays.asList(alreadyClickable);
+        if (activeTasks.contains("HeadAdjustmentTask") && !alreadyClickableList.contains(clickableHeat)) {
             thermostat.setIcon(activeThermostatIcon);
-        } else {
+            layers.add(clickableHeat, Integer.valueOf(6));
+        } else if (alreadyClickableList.contains(clickableHeat)) {
             thermostat.setIcon(thermostatIcon);
+            layers.remove(clickableHeat);
         }
-        if (activeTasks.contains("ClickTask")) {
+        if (activeTasks.contains("ClickTask") && !alreadyClickableList.contains(clickableClick)) {
             catClock.setIcon(activeCatClockIcon);
-        } else {
+            layers.add(clickableClick, Integer.valueOf(6));
+        } else if (alreadyClickableList.contains(clickableClick)){
             catClock.setIcon(catClockIcon);
+            layers.remove(clickableClick);
         }
-        if (activeTasks.contains("PhoneNumberTask")) {
+        if (activeTasks.contains("PhoneNumberTask") && !alreadyClickableList.contains(clickablePhone)) {
             phone.setIcon(activePhoneIcon);
-        } else {
+            layers.add(clickablePhone, Integer.valueOf(6));
+        } else if (alreadyClickableList.contains(clickablePhone)){
             phone.setIcon(phoneIcon);
+            layers.remove(clickablePhone);
         }
         if (activeTasks.contains("AssignmentTask") && !compsList.contains(assignmentButton)) {
             layers.add(assignmentButton, Integer.valueOf(5));
             layers.add(assignmentWarning, Integer.valueOf(5));
+            layers.add(clickableAssignment, Integer.valueOf(6));
         } else if (compsList.contains(assignmentButton)) {
             layers.remove(assignmentButton);
             layers.remove(assignmentWarning);
+            layers.remove(clickableAssignment);
         }
         if (activeTasks.contains("MemoryTask") && !compsList.contains(memoryButton)) {
             layers.add(memoryButton, Integer.valueOf(5));
             layers.add(memoryWarning, Integer.valueOf(5));
+            layers.add(clickableMemory, Integer.valueOf(6));
         } else if (compsList.contains(memoryButton)) {
             layers.remove(memoryButton);
             layers.remove(memoryWarning);
+            layers.remove(clickableMemory);
         }
         if (activeTasks.contains("WireTask") && !compsList.contains(wire)) {
             layers.add(wire, Integer.valueOf(5));
+            layers.add(clickableWire, Integer.valueOf(6));
         } else if (compsList.contains(wire)) {
             layers.remove(wire);
+            layers.remove(clickableWire);
         }
-        // Must also add for trivia task, art not yet in resources
+        if (activeTasks.contains("TriviaTask") && !compsList.contains(trivia)) {
+            layers.add(trivia, Integer.valueOf(5));
+            layers.add(clickableTrivia, Integer.valueOf(6));
+        } else if (compsList.contains(trivia)) {
+            layers.remove(trivia);
+            layers.remove(clickableTrivia);
+        }
+    }
+
+    private static void AddClickEvents() {
+        clickableAssignment.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                main.add(AssignmentTaskView.layers);
+                main.remove(layers);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+        clickableClick.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                main.add(ClickTaskView.clickTaskPanel);
+                main.remove(layers);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+        clickablePhone.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                main.add(PhoneNumberTaskView.phoneTaskPanel);
+                main.remove(layers);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+        clickableWire.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                main.add(WireTaskView.layers);
+                main.remove(layers);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+        clickableMemory.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                main.add(MemoryTaskView.memoryTaskPanel);
+                main.remove(layers);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+        clickableHeat.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                main.add(HeatAdjustmentTaskView.layers);
+                main.remove(layers);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+        clickableTrivia.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                main.add(TriviaTaskView.layers);
+                main.remove(layers);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
+    }
+
+    public static void backToMain() {
+        main.removeAll();
+        main.add(layers);
     }
 }

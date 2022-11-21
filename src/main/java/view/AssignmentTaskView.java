@@ -9,8 +9,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class AssignmentTaskView extends JFrame implements KeyListener {
-    JLayeredPane layers;
+
+public class AssignmentTaskView extends JFrame implements ActionListener{
+    public static JLayeredPane layers;
+
     // IMAGES
     ImageIcon backgroundImage;
     ImageIcon b2;

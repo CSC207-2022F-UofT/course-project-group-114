@@ -15,11 +15,13 @@ public class PhoneNumberTaskView extends JFrame{
 
     private String number_so_far = "";
 
+    public static JLayeredPane phoneTaskPanel;
+
     PhoneNumberTaskView(){
         PhoneNumberTaskController controller = new PhoneNumberTaskController();
 
         //private JPanel main;
-        JLayeredPane phoneTaskPanel = new JLayeredPane();
+        phoneTaskPanel = new JLayeredPane();
         phoneTaskPanel.setPreferredSize(new Dimension(1280, 720));
 
         JTextField textField = new JTextField("TO DO : DIAL THE NUMBER ON THE STICKY NOTE");
@@ -100,7 +102,7 @@ public class PhoneNumberTaskView extends JFrame{
         ImageIcon dial = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\dial.png");
         JButton dial_button = new JButton(dial);
         dial_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        dial_button.setBounds(800, 625, dial.getIconWidth(), dial.getIconHeight());
+        dial_button.setBounds(800, 640, dial.getIconWidth(), dial.getIconHeight());
 
         phoneTaskPanel.add(background, Integer.valueOf(0));
         phoneTaskPanel.add(zero_button, Integer.valueOf(1));
@@ -265,6 +267,7 @@ public class PhoneNumberTaskView extends JFrame{
                 }
                 setVisible(false);
                 dispose();
+                GameMasterView.backToMain();
             }
         });
 

@@ -5,7 +5,7 @@ import javax.swing.*;
 import controller.HeatAdjustmentTaskController;
 
 public class HeatAdjustmentTaskView extends JFrame{
-    JLayeredPane layers;
+    public static JLayeredPane layers;
     ImageIcon backgroundImage;
     JLabel background;
 
@@ -14,6 +14,7 @@ public class HeatAdjustmentTaskView extends JFrame{
     JLabel upButton;
     JLabel downButton;
     private static int currentTemp;
+    private boolean completed;
 
     public HeatAdjustmentTaskView() {
         // Set the needed and current temperatures of the controller, and update the view's temps as well
@@ -72,25 +73,16 @@ public class HeatAdjustmentTaskView extends JFrame{
         downButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                HeatAdjustmentTaskController.changeCurrentTemp(-1); // Decrease current temp by 1
+                completed = HeatAdjustmentTaskController.changeCurrentTemp(-1); // Decrease current temp by 1
                 currentTemp--;
             }
 
             @Override
-            public void mousePressed(MouseEvent e) {
-                // do nothing, but must implement
-            }
-
+            public void mousePressed(MouseEvent e) {}
             @Override
-            public void mouseReleased(MouseEvent e) {
-                // do nothing, but must implement
-            }
-
+            public void mouseReleased(MouseEvent e) {}
             @Override
-            public void mouseEntered(MouseEvent e) {
-                // do nothing, but must implement
-            }
-
+            public void mouseEntered(MouseEvent e) {}
             @Override
             public void mouseExited(MouseEvent e) {
                 // do nothing, but must implement
@@ -101,29 +93,21 @@ public class HeatAdjustmentTaskView extends JFrame{
         upButton.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                HeatAdjustmentTaskController.changeCurrentTemp(1); // Increase current temp by 1
+                completed = HeatAdjustmentTaskController.changeCurrentTemp(1); // Increase current temp by 1
                 currentTemp++;
+                if (completed) {
+                    GameMasterView.backToMain();
+                }
             }
 
             @Override
-            public void mousePressed(MouseEvent e) {
-                // do nothing, but must implement
-            }
-
+            public void mousePressed(MouseEvent e) {}
             @Override
-            public void mouseReleased(MouseEvent e) {
-                // do nothing, but must implement
-            }
-
+            public void mouseReleased(MouseEvent e) {}
             @Override
-            public void mouseEntered(MouseEvent e) {
-                // do nothing, but must implement
-            }
-
+            public void mouseEntered(MouseEvent e) {}
             @Override
-            public void mouseExited(MouseEvent e) {
-                // do nothing, but must implement
-            }
+            public void mouseExited(MouseEvent e) {}
         });
     }
 

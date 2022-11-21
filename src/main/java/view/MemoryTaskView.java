@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.UUID;
 
 public class MemoryTaskView extends JFrame{
+    public static JLayeredPane memoryTaskPanel;
 
     MemoryTaskView(){
 
@@ -22,7 +23,7 @@ public class MemoryTaskView extends JFrame{
         message.setFont(new java.awt.Font("Serif", Font.BOLD, 22));
         password_popup.add(message);
 
-        JLayeredPane memoryTaskPanel = new JLayeredPane();
+        memoryTaskPanel = new JLayeredPane();
         memoryTaskPanel.setPreferredSize(new Dimension(1280, 720));
 
         ImageIcon bg = new ImageIcon("src\\main\\java\\resources\\MemoryTask\\bg.jpg");
@@ -86,6 +87,7 @@ public class MemoryTaskView extends JFrame{
                 }
                 setVisible(false);
                 dispose();
+                GameMasterView.backToMain();
             }
         });
 
