@@ -1,4 +1,4 @@
-package entities.controller;
+package controller;
 
 import entities.ClickTask;
 

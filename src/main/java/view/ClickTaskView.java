@@ -1,7 +1,7 @@
 package view;
 
 import java.awt.*;
-import entities.controller.ClickTaskController;
+import controller.ClickTaskController;
 import javax.swing.*;
 
 public class ClickTaskView extends JLayeredPane{
