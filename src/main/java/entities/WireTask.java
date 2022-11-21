@@ -49,19 +49,23 @@ public class WireTask extends Task{
         return RightWires;
     }
 
-    public static void checkWiresSelected() {
-        // Checks whether the two last wires the user selected are matching. If so, remove this colour from the list,
-        // and add to the completed list of wires.
+    public static boolean checkWiresSelected(String firstSelected, String secondSelected) {
+        // Checks whether the two last wires the user selected are matching. If so, remove this colour from the lists.
+        current = firstSelected;
+        previous = secondSelected;
+
         if (current.equals(previous)) {
             LeftWires.remove(current);
             RightWires.remove(current);
+            return true;
         }
+        return false;
     }
-
     public static void checkCompletion(){
         if (LeftWires.isEmpty()){
             setCompletionStatus(true);
             setActivatedStatus(false);
+
         }
     }
 }
