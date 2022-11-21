@@ -65,7 +65,7 @@ public class StartView extends JFrame {
         goBack.setBounds(860, 550, backButton.getIconWidth(), backButton.getIconHeight());
         highscorePanel.add(notepad, Integer.valueOf(0));
         highscorePanel.add(scores, Integer.valueOf(1));
-        highscorePanel.add(goBack, Integer.valueOf(1));
+        highscorePanel.add(goBack, Integer.valueOf(2));
 
 
         JPanel main = new JPanel(new CardLayout());

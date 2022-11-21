@@ -145,52 +145,93 @@ public class GameMasterView extends JFrame{
 
         // Create invisible buttons for each task to click
         clickableAssignment = new JButton();
-        clickableAssignment.setOpaque(false);
-        clickableAssignment.setContentAreaFilled(false);
-        clickableAssignment.setBorderPainted(false);
+//        clickableAssignment.setOpaque(false);
+//        clickableAssignment.setContentAreaFilled(false);
+//        clickableAssignment.setBorderPainted(false);
         clickableAssignment.setBounds(530, 450, 60, 60);
 
         clickableClick = new JButton();
-        clickableClick.setOpaque(false);
-        clickableClick.setContentAreaFilled(false);
-        clickableClick.setBorderPainted(false);
+//        clickableClick.setOpaque(false);
+//        clickableClick.setContentAreaFilled(false);
+//        clickableClick.setBorderPainted(false);
         clickableClick.setBounds(690, 235, 200, 230);
 
         clickableHeat = new JButton();
-        clickableHeat.setOpaque(false);
-        clickableHeat.setContentAreaFilled(false);
-        clickableHeat.setBorderPainted(false);
+//        clickableHeat.setOpaque(false);
+//        clickableHeat.setContentAreaFilled(false);
+//        clickableHeat.setBorderPainted(false);
         clickableHeat.setBounds(1050, 0, 230, 70);
 
         clickableMemory = new JButton();
-        clickableMemory.setOpaque(false);
-        clickableMemory.setContentAreaFilled(false);
-        clickableMemory.setBorderPainted(false);
+//        clickableMemory.setOpaque(false);
+//        clickableMemory.setContentAreaFilled(false);
+//        clickableMemory.setBorderPainted(false);
         clickableMemory.setBounds(40, 450, 182, 70);
 
         clickablePhone = new JButton();
-        clickablePhone.setOpaque(false);
-        clickablePhone.setContentAreaFilled(false);
-        clickablePhone.setBorderPainted(false);
+//        clickablePhone.setOpaque(false);
+//        clickablePhone.setContentAreaFilled(false);
+//        clickablePhone.setBorderPainted(false);
         clickablePhone.setBounds(1000, 520, 280, 200);
 
         clickableWire = new JButton();
-        clickableWire.setOpaque(false);
-        clickableWire.setContentAreaFilled(false);
-        clickableWire.setBorderPainted(false);
+//        clickableWire.setOpaque(false);
+//        clickableWire.setContentAreaFilled(false);
+//        clickableWire.setBorderPainted(false);
         clickableWire.setBounds(40, 200, 190, 70);
 
         clickableTrivia = new JButton();
-        clickableTrivia.setOpaque(false);
-        clickableTrivia.setContentAreaFilled(false);
-        clickableTrivia.setBorderPainted(false);
+//        clickableTrivia.setOpaque(false);
+//        clickableTrivia.setContentAreaFilled(false);
+//        clickableTrivia.setBorderPainted(false);
         clickableTrivia.setBounds(42, 295, 170, 65);
-
-        // Add click event listeners for clickable buttons to switch to correct view
-        AddClickEvents();
 
         main.add(layers);
         add(main);
+
+        // Add click event listeners for clickable buttons to switch to correct view
+        clickableAssignment.addActionListener(e -> {
+            assignmentTaskView = new AssignmentTaskView();
+            main.add(assignmentTaskView);
+            assignmentTaskView.setVisible(true);
+            layers.setVisible(false);
+        });
+        clickableClick.addActionListener(e -> {
+            clickTaskView = new ClickTaskView();
+            main.add(clickTaskView);
+            clickTaskView.setVisible(true);
+            layers.setVisible(false);
+        });
+        clickablePhone.addActionListener(e -> {
+            phoneTaskView = new PhoneNumberTaskView();
+            main.add(phoneTaskView);
+            phoneTaskView.setVisible(true);
+            layers.setVisible(false);
+        });
+        clickableWire.addActionListener(e -> {
+            //wireTaskView = new WireTaskView();
+//                main.add(wireTaskView);
+            JOptionPane.showMessageDialog(null, "i should pop up");
+
+        });
+        clickableMemory.addActionListener(e -> {
+            memoryTaskView = new MemoryTaskView();
+            main.add(memoryTaskView);
+            memoryTaskView.setVisible(true);
+            layers.setVisible(false);
+        });
+        clickableHeat.addActionListener(e -> {
+            heatTaskView = new HeatAdjustmentTaskView();
+            main.add(heatTaskView);
+            heatTaskView.setVisible(true);
+            layers.setVisible(false);
+        });
+        clickableTrivia.addActionListener(e -> {
+//                triviaTaskView = new TriviaTaskView();
+//                main.add(triviaTaskView);
+            JOptionPane.showMessageDialog(null, "i should pop up");
+
+        });
 
         setSize(1280,720);
         setLocationRelativeTo(null);
@@ -203,6 +244,11 @@ public class GameMasterView extends JFrame{
         long currTime;
         int checkInterval = 500; // Interval for checking task status in milliseconds
         Hashtable<String, Long> times;
+        currTime = clock.millis();
+        GameMasterController.createNewTask(currTime);
+        times = GameMaster.getTimes();
+        Set<String> activeTasks = times.keySet();
+        activateTasks(activeTasks);
         while (GameMasterController.getPlayingStatus()) {
             currTime = clock.millis(); // Update current time
             if (clock.millis() >= currTime + checkInterval) { // Enough time has passed; check tasks' status
@@ -211,7 +257,7 @@ public class GameMasterView extends JFrame{
                 }
                 GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
                 times = GameMaster.getTimes();
-                Set<String> activeTasks = times.keySet();
+                activeTasks = times.keySet();
                 activateTasks(activeTasks);
             }
         }
@@ -288,114 +334,8 @@ public class GameMasterView extends JFrame{
         }
     }
 
-    private static void AddClickEvents() {
-        clickableAssignment.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                assignmentTaskView = new AssignmentTaskView();
-                main.add(assignmentTaskView);
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {}
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
-        clickableClick.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                clickTaskView = new ClickTaskView();
-                main.add(clickTaskView);
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {}
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
-        clickablePhone.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                phoneTaskView = new PhoneNumberTaskView();
-                main.add(phoneTaskView);
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {}
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
-        clickableWire.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-//                wireTaskView = new WireTaskView();
-//                main.add(wireTaskView);
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {}
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
-        clickableMemory.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                memoryTaskView = new MemoryTaskView();
-                main.add(memoryTaskView);
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {}
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
-        clickableHeat.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                heatTaskView = new HeatAdjustmentTaskView();
-                main.add(heatTaskView);
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {}
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
-        clickableTrivia.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-//                triviaTaskView = new TriviaTaskView();
-//                main.add(triviaTaskView);
-            }
-            @Override
-            public void mousePressed(MouseEvent e) {}
-            @Override
-            public void mouseReleased(MouseEvent e) {}
-            @Override
-            public void mouseEntered(MouseEvent e) {}
-            @Override
-            public void mouseExited(MouseEvent e) {}
-        });
-    }
     public static void backToMain(JLayeredPane taskToRemove) {
-        main.remove(taskToRemove);
+        layers.setVisible(true);
+        taskToRemove.setVisible(false);
     }
 }
