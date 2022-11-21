@@ -40,6 +40,8 @@ public class GameMasterView extends JFrame{
     JLabel memoryButton;
     ImageIcon wireIcon;
     JLabel wire;
+    ImageIcon triviaIcon;
+    JLabel trivia;
 
     // Buttons for each task
     static JButton clickableHeat;
@@ -122,6 +124,9 @@ public class GameMasterView extends JFrame{
         wire = new JLabel();
         wire.setBounds(0, 0, 1280, 720);
         wire.setIcon(wireIcon);
+
+        // Create trivia JLabel
+//        triviaIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\trivia\\wire task prompt.png");
 
         // Create image icons for activated versions of heat, phone and click tasks
         activeCatClockIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\clock\\eat alert.gif");
