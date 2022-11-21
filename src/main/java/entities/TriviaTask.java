@@ -7,7 +7,6 @@ public class TriviaTask extends Task {
     // public int triviaCategory; //can later make changes to code to add categories and get questions and answers from a csv file
     // public static int questionNum; //randomly generated num to select a random question from that category
     public String currentQuestion; // the question. trivia dict at the randomly generated index
-    public String playerAnswer; // what the player actually answered
     public String actualAnswer; // the correct answer corresponding value to the key
 
     // creating the trivia dictionary
@@ -28,9 +27,15 @@ public class TriviaTask extends Task {
     // ask ta for some assistance fixing this
     public String getRandomQuestion(){
         Map<String, String> triviaDict = this.getMap();
-        Random R = new Random();
-        this.currentQuestion = triviaDict.get(R.nextInt(triviaDict.size()));
+        Set <String> keySet = triviaDict.keySet();
+        List<String> keys = new ArrayList<>(keySet);
+        int size = keys.size();
+        int randomKeyIndex = new Random().nextInt(size);
+        this.currentQuestion = keys.get(randomKeyIndex);
         this.actualAnswer = triviaDict.get(currentQuestion);
+//        Random R = new Random();
+//        this.currentQuestion = triviaDict.get(R.nextInt(triviaDict.size()));
+        //this.actualAnswer = triviaDict.get(currentQuestion);
         return currentQuestion;
         //return triviaDict.get(R.nextInt(triviaDict.size()));
     }
