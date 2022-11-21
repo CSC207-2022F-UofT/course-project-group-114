@@ -24,8 +24,8 @@ public class TriviaTask extends Task {
             return triviaDict;
     }
     public String getRandomKey(){
-        Random R = new Random();
         Map<String, String> triviaDict = this.getMap();
+        Random R = new Random();
         return triviaDict.get(R.nextInt(triviaDict.size()));
     }
 
