@@ -1,23 +1,17 @@
-package controller;
+package entities.controller;
 
 import entities.ClickTask;
 
 public class ClickTaskController {
-    private static int neededClicks;
-    private static int currentClicks;
-
-
-   public static void setNeededClicks(){
+    public static void setNeededClicks(){
        ClickTask.setNeededClicks();
    }
     public static void setCurrentClicks(int newCurrentClicks){
-        currentClicks = newCurrentClicks;
         ClickTask.setCurrentClicks(newCurrentClicks);
     }
 
     public static int getNeededClicks(){
-        neededClicks = ClickTask.getNeededClicks();
-        return neededClicks;
+        return ClickTask.getNeededClicks();
     }
 
     public static int getCurrentClicks(){
@@ -26,6 +20,10 @@ public class ClickTaskController {
 
     public static boolean getPortion(){
         return ClickTask.portion;
+    }
+
+    public static void reset(){
+        ClickTask.reset();
     }
 
     public static void setCompletionStatus(boolean status) {
