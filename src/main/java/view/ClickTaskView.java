@@ -68,7 +68,7 @@ public class ClickTaskView extends JLayeredPane{
             // determines if the requirement is met
             boolean success = (neededClicks == currentClicks);
             if (success){
-                GameMasterView.backToMain();
+                GameMasterView.backToMain(GameMasterView.clickTaskView);
             }
         });
 
