@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
-public class MemoryTaskView extends JFrame{
+public class MemoryTaskView extends JPanel{
     public static JLayeredPane memoryTaskPanel;
 
     MemoryTaskView(){
@@ -49,10 +49,7 @@ public class MemoryTaskView extends JFrame{
         memoryTaskPanel.add(log_in_button, Integer.valueOf(1));
         memoryTaskPanel.add(password, Integer.valueOf(2));
 
-        setTitle("Memory Task");
-        setSize(1295,760);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(1280,720));
         setVisible(true);
 
 
@@ -86,7 +83,6 @@ public class MemoryTaskView extends JFrame{
                     JOptionPane.showMessageDialog(null, "Unsuccessful");
                 }
                 setVisible(false);
-                dispose();
                 GameMasterView.backToMain();
             }
         });
