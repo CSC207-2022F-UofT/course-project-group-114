@@ -18,6 +18,7 @@ public class GameMasterView extends JFrame{
     public static JLayeredPane layers;
     ImageIcon backgroundIcon;
     JLabel background;
+    JLabel scoreDisplay;
     ImageIcon catClockIcon;
     ImageIcon activeCatClockIcon;
     JLabel catClock;
@@ -64,6 +65,10 @@ public class GameMasterView extends JFrame{
         main = new JPanel(new CardLayout());
         layers = new JLayeredPane();
 
+        scoreDisplay = new JLabel("0");
+        scoreDisplay.setBounds(100, 0, 50, 50);
+        scoreDisplay.setSize(20, 20);
+
         // Create background JLabel
         backgroundIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\background.jpg");
         background = new JLabel();
@@ -100,6 +105,7 @@ public class GameMasterView extends JFrame{
         layers.add(thermostat, Integer.valueOf(2));
         layers.add(phone, Integer.valueOf(3));
         layers.add(screen, Integer.valueOf(4));
+        layers.add(scoreDisplay, Integer.valueOf(4));
         layers.setPreferredSize(new Dimension(1280, 720));
 
         // Create the non-neutral JLabels; that is, the ones that are not visible at the start of the game
@@ -292,6 +298,7 @@ public class GameMasterView extends JFrame{
                 times = GameMasterController.getTimes();
                 activeTasks = times.keySet();
                 activateTasks(activeTasks);
+                scoreDisplay.setText(Integer.toString(GameMasterController.getScore()));
             }
         }
     }
