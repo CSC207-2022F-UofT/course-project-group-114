@@ -124,7 +124,7 @@ public class TriviaTask extends Task {
     }
     // checks if the answer is correct
 
-    public boolean checkAnswer (String actualAnswer, String playerAnswer){
+    public static boolean checkAnswer (String actualAnswer, String playerAnswer){
         // case for if the actual answer is an integer????? this can be added later.
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
             setCompletionStatus(true);
