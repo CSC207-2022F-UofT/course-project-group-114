@@ -4,7 +4,7 @@ import java.awt.*;
 import controller.ClickTaskController;
 import javax.swing.*;
 
-public class ClickTaskView extends JLayeredPane{
+public class ClickTaskView extends JFrame{
 
     // 1. Declare variables, but I'm not sure if I should add private/public before type
     // IntelliJ gives warnings when I make it private: variable might be final
@@ -12,12 +12,13 @@ public class ClickTaskView extends JLayeredPane{
     // 3. Test cases
     // 4. Life deduction
     // 5. Print message before closing?
-
+    public static JLayeredPane clickTaskPanel;
     public ClickTaskView(){
         ClickTaskController.setNeededClicks();
 
         // Click Task plane
-        setPreferredSize(new Dimension(1280,720));
+        clickTaskPanel = new JLayeredPane();
+        clickTaskPanel.setPreferredSize(new Dimension(1920,1080));
 
         // Header settings
         JTextField header = new JTextField("TODO: CLICK TO EAT AND DON'T WASTE FOOD!! \n " +
@@ -69,17 +70,22 @@ public class ClickTaskView extends JLayeredPane{
             // determines if the requirement is met
             boolean success = (neededClicks == currentClicks);
             if (success){
-                GameMasterView.backToMain();
+                dispose();
             }
         });
 
         // Add layers
-        add(background, Integer.valueOf(0));
-        add(button, Integer.valueOf(1));
-        add(header, Integer.valueOf(2));
+        clickTaskPanel.add(background, Integer.valueOf(0));
+        clickTaskPanel.add(button, Integer.valueOf(1));
+        clickTaskPanel.add(header, Integer.valueOf(2));
 
+        add(clickTaskPanel);
 
         // JFrame settings
+        setTitle("Click Task v.1.1.1");
+        setSize(1295,760);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
 
