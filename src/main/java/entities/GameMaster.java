@@ -46,6 +46,7 @@ public class GameMaster {
                     LifeMaster.incrementTaskCount();
                 }
                 else { // Task was not completed in time
+                    taskClass.getMethod("setActivatedStatus", boolean.class).invoke(taskClass, false);
 //                    LifeMaster.deductLife();
 
                 }
