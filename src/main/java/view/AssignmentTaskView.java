@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 
-public class AssignmentTaskView extends JFrame implements ActionListener{
+public class AssignmentTaskView extends JFrame implements KeyListener{
     public static JLayeredPane layers;
 
     // IMAGES
