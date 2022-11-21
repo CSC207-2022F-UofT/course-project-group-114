@@ -26,8 +26,8 @@ public class AssignmentTask extends Task {
 
     public static void checkCount(){
         if (currentCharacterCount >= characterCountNeeded){
-            Task.setCompletionStatus(true);
-            Task.setActivatedStatus(false);
+            setCompletionStatus(true);
+            setActivatedStatus(false);
         }
     }
 
