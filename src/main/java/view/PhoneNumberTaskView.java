@@ -1,6 +1,8 @@
 package view;
 
+import controller.MemoryTaskController;
 import controller.PhoneNumberTaskController;
+import entities.PhoneNumberTask;
 
 import javax.swing.*;
 import java.awt.*;
@@ -250,12 +252,15 @@ public class PhoneNumberTaskView extends JLayeredPane{
             public void actionPerformed(ActionEvent e) {
                 boolean success = controller.passer(actual_number, number_so_far);
                 if(success){
+                    PhoneNumberTaskController.setCompletionStatus(true);
                     JOptionPane.showMessageDialog(null, "Correct");
 
                 } else {
+                    PhoneNumberTaskController.setCompletionStatus(false);
                     JOptionPane.showMessageDialog(null, "Incorrect");
                 }
                 setVisible(false);
+                PhoneNumberTaskController.setActivatedStatus(false);
                 GameMasterView.backToMain(GameMasterView.phoneTaskView);
             }
         });

@@ -1,6 +1,7 @@
 package view;
 import controller.GameMasterController;
 import entities.GameMaster;
+import entities.HeatAdjustmentTask;
 
 import java.awt.*;
 import javax.swing.*;
@@ -107,36 +108,42 @@ public class GameMasterView extends JFrame{
         assignmentButton = new JLabel();
         assignmentButton.setBounds(0, 0, 1280, 720);
         assignmentButton.setIcon(assignmentButtonIcon);
+        assignmentButton.setVisible(false);
 
         // Create assignment warning JLabel
         assignmentWarningIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\assignment task warning.png");
         assignmentWarning = new JLabel();
         assignmentWarning.setBounds(0, 0, 1280, 720);
         assignmentWarning.setIcon(assignmentWarningIcon);
+        assignmentWarning.setVisible(false);
 
         // Create memory warning JLabel
         memoryWarningIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\memory task warning.png");
         memoryWarning = new JLabel();
         memoryWarning.setBounds(0, 0, 1280, 720);
         memoryWarning.setIcon(memoryWarningIcon);
+        memoryWarning.setVisible(false);
 
         // Create memory button JLabel
         memoryButtonIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\memory task prompt.png");
         memoryButton = new JLabel();
         memoryButton.setBounds(0, 0, 1280, 720);
         memoryButton.setIcon(memoryButtonIcon);
+        memoryButton.setVisible(false);
 
         // Create wire JLabel
         wireIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\wire task prompt.png");
         wire = new JLabel();
         wire.setBounds(0, 0, 1280, 720);
         wire.setIcon(wireIcon);
+        wire.setVisible(false);
 
         // Create trivia JLabel
         triviaIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\trivia\\trivia task alert.png");
         trivia = new JLabel();
         trivia.setBounds(0, 0, 1280, 720);
         trivia.setIcon(triviaIcon);
+        trivia.setVisible(false);
 
         // Create image icons for activated versions of heat, phone and click tasks
         activeCatClockIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\clock\\eat alert.gif");
@@ -145,46 +152,68 @@ public class GameMasterView extends JFrame{
 
         // Create invisible buttons for each task to click
         clickableAssignment = new JButton();
+        clickableAssignment.setVisible(false);
 //        clickableAssignment.setOpaque(false);
 //        clickableAssignment.setContentAreaFilled(false);
 //        clickableAssignment.setBorderPainted(false);
         clickableAssignment.setBounds(530, 450, 60, 60);
 
         clickableClick = new JButton();
+        clickableClick.setVisible(false);
 //        clickableClick.setOpaque(false);
 //        clickableClick.setContentAreaFilled(false);
 //        clickableClick.setBorderPainted(false);
         clickableClick.setBounds(690, 235, 200, 230);
 
         clickableHeat = new JButton();
+        clickableHeat.setVisible(false);
 //        clickableHeat.setOpaque(false);
 //        clickableHeat.setContentAreaFilled(false);
 //        clickableHeat.setBorderPainted(false);
         clickableHeat.setBounds(1050, 0, 230, 70);
 
         clickableMemory = new JButton();
+        clickableMemory.setVisible(false);
 //        clickableMemory.setOpaque(false);
 //        clickableMemory.setContentAreaFilled(false);
 //        clickableMemory.setBorderPainted(false);
         clickableMemory.setBounds(40, 450, 182, 70);
 
         clickablePhone = new JButton();
+        clickablePhone.setVisible(false);
 //        clickablePhone.setOpaque(false);
 //        clickablePhone.setContentAreaFilled(false);
 //        clickablePhone.setBorderPainted(false);
         clickablePhone.setBounds(1000, 520, 280, 200);
 
         clickableWire = new JButton();
+        clickableWire.setVisible(false);
 //        clickableWire.setOpaque(false);
 //        clickableWire.setContentAreaFilled(false);
 //        clickableWire.setBorderPainted(false);
         clickableWire.setBounds(40, 200, 190, 70);
 
         clickableTrivia = new JButton();
+        clickableTrivia.setVisible(false);
 //        clickableTrivia.setOpaque(false);
 //        clickableTrivia.setContentAreaFilled(false);
 //        clickableTrivia.setBorderPainted(false);
         clickableTrivia.setBounds(42, 295, 170, 65);
+
+        // Add buttons which are initially invisible to JLayeredPane
+        layers.add(assignmentButton, Integer.valueOf(5));
+        layers.add(assignmentWarning, Integer.valueOf(5));
+        layers.add(memoryButton, Integer.valueOf(5));
+        layers.add(memoryWarning, Integer.valueOf(5));
+        layers.add(trivia, Integer.valueOf(5));
+        layers.add(wire, Integer.valueOf(5));
+        layers.add(clickableHeat, Integer.valueOf(6));
+        layers.add(clickableAssignment, Integer.valueOf(6));
+        layers.add(clickablePhone, Integer.valueOf(6));
+        layers.add(clickableTrivia, Integer.valueOf(6));
+        layers.add(clickableWire, Integer.valueOf(6));
+        layers.add(clickableMemory, Integer.valueOf(6));
+        layers.add(clickableClick, Integer.valueOf(6));
 
         main.add(layers);
         add(main);
@@ -241,22 +270,26 @@ public class GameMasterView extends JFrame{
 
         // Check for every task activation or de-activation
         Clock clock = Clock.systemDefaultZone();
-        long currTime;
+        long currTime = clock.millis();
+        long checkTime;
         int checkInterval = 500; // Interval for checking task status in milliseconds
         Hashtable<String, Long> times;
-        currTime = clock.millis();
         GameMasterController.createNewTask(currTime);
         times = GameMaster.getTimes();
         Set<String> activeTasks = times.keySet();
         activateTasks(activeTasks);
+        checkTime = currTime + checkInterval; // Update current time
+        long newIntTimeNext = clock.millis() + GameMasterController.getTaskInterval();
         while (GameMasterController.getPlayingStatus()) {
-            currTime = clock.millis(); // Update current time
-            if (clock.millis() >= currTime + checkInterval) { // Enough time has passed; check tasks' status
-                if (clock.millis() >= currTime + GameMasterController.getTaskInterval()) { // Create new task if interval has passed
+            currTime = clock.millis();
+            if (clock.millis() >= checkTime) { // Enough time has passed; check tasks' status
+                checkTime = clock.millis() + checkInterval; // Update current time
+                if (clock.millis() >= newIntTimeNext) { // Create new task if interval has passed
+                    newIntTimeNext = clock.millis() + GameMasterController.getTaskInterval();
                     GameMasterController.createNewTask(currTime);
                 }
                 GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
-                times = GameMaster.getTimes();
+                times = GameMasterController.getTimes();
                 activeTasks = times.keySet();
                 activateTasks(activeTasks);
             }
@@ -275,62 +308,58 @@ public class GameMasterView extends JFrame{
 
     // Helper method for activating the given tasks
     private void activateTasks(Set<String> activeTasks) {
-        Component[] comps = layers.getComponentsInLayer(5);
-        List<Component> compsList = Arrays.asList(comps);
-        Component[] alreadyClickable = layers.getComponentsInLayer(6);
-        List<Component> alreadyClickableList = Arrays.asList(alreadyClickable);
-        if (activeTasks.contains("HeatAdjustmentTask") && !alreadyClickableList.contains(clickableHeat)) {
+        if (activeTasks.contains("HeatAdjustmentTask")) {
             thermostat.setIcon(activeThermostatIcon);
-            layers.add(clickableHeat, Integer.valueOf(6));
-        } else if (alreadyClickableList.contains(clickableHeat)) {
+            clickableHeat.setVisible(true);
+        } else {
             thermostat.setIcon(thermostatIcon);
-            layers.remove(clickableHeat);
+            clickableHeat.setVisible(false);
         }
-        if (activeTasks.contains("ClickTask") && !alreadyClickableList.contains(clickableClick)) {
+        if (activeTasks.contains("ClickTask")) {
             catClock.setIcon(activeCatClockIcon);
-            layers.add(clickableClick, Integer.valueOf(6));
-        } else if (alreadyClickableList.contains(clickableClick)){
+            clickableClick.setVisible(true);
+        } else {
             catClock.setIcon(catClockIcon);
-            layers.remove(clickableClick);
+            clickableClick.setVisible(false);
         }
-        if (activeTasks.contains("PhoneNumberTask") && !alreadyClickableList.contains(clickablePhone)) {
+        if (activeTasks.contains("PhoneNumberTask")) {
             phone.setIcon(activePhoneIcon);
-            layers.add(clickablePhone, Integer.valueOf(6));
-        } else if (alreadyClickableList.contains(clickablePhone)){
+            clickablePhone.setVisible(true);
+        } else {
             phone.setIcon(phoneIcon);
-            layers.remove(clickablePhone);
+            clickablePhone.setVisible(false);
         }
-        if (activeTasks.contains("AssignmentTask") && !compsList.contains(assignmentButton)) {
-            layers.add(assignmentButton, Integer.valueOf(5));
-            layers.add(assignmentWarning, Integer.valueOf(5));
-            layers.add(clickableAssignment, Integer.valueOf(6));
-        } else if (compsList.contains(assignmentButton)) {
-            layers.remove(assignmentButton);
-            layers.remove(assignmentWarning);
-            layers.remove(clickableAssignment);
+        if (activeTasks.contains("AssignmentTask")) {
+            assignmentButton.setVisible(true);
+            assignmentWarning.setVisible(true);
+            clickableAssignment.setVisible(true);
+        } else {
+            assignmentButton.setVisible(false);
+            assignmentWarning.setVisible(false);
+            clickableAssignment.setVisible(false);
         }
-        if (activeTasks.contains("MemoryTask") && !compsList.contains(memoryButton)) {
-            layers.add(memoryButton, Integer.valueOf(5));
-            layers.add(memoryWarning, Integer.valueOf(5));
-            layers.add(clickableMemory, Integer.valueOf(6));
-        } else if (compsList.contains(memoryButton)) {
-            layers.remove(memoryButton);
-            layers.remove(memoryWarning);
-            layers.remove(clickableMemory);
+        if (activeTasks.contains("MemoryTask")) {
+            memoryButton.setVisible(true);
+            memoryWarning.setVisible(true);
+            clickableMemory.setVisible(true);
+        } else {
+            memoryButton.setVisible(false);
+            memoryWarning.setVisible(false);
+            clickableMemory.setVisible(false);
         }
-        if (activeTasks.contains("WireTask") && !compsList.contains(wire)) {
-            layers.add(wire, Integer.valueOf(5));
-            layers.add(clickableWire, Integer.valueOf(6));
-        } else if (compsList.contains(wire)) {
-            layers.remove(wire);
-            layers.remove(clickableWire);
+        if (activeTasks.contains("WireTask")) {
+            wire.setVisible(true);
+            clickableWire.setVisible(true);
+        } else {
+            wire.setVisible(false);
+            clickableWire.setVisible(false);
         }
-        if (activeTasks.contains("TriviaTask") && !compsList.contains(trivia)) {
-            layers.add(trivia, Integer.valueOf(5));
-            layers.add(clickableTrivia, Integer.valueOf(6));
-        } else if (compsList.contains(trivia)) {
-            layers.remove(trivia);
-            layers.remove(clickableTrivia);
+        if (activeTasks.contains("TriviaTask")) {
+            trivia.setVisible(true);
+            clickableTrivia.setVisible(true);
+        } else {
+            trivia.setVisible(false);
+            clickableTrivia.setVisible(false);
         }
     }
 

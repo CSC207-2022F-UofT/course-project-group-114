@@ -1,5 +1,6 @@
 package view;
 
+import controller.AssignmentTaskController;
 import controller.MemoryTaskController;
 
 import javax.swing.*;
@@ -78,11 +79,14 @@ public class MemoryTaskView extends JLayeredPane{
                 boolean success = controller.passer(actual_password, password);
                 if(success){
                     JOptionPane.showMessageDialog(null, "Successful");
+                    MemoryTaskController.setCompletionStatus(true);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Unsuccessful");
+                    MemoryTaskController.setCompletionStatus(false);
                 }
                 setVisible(false);
+                MemoryTaskController.setActivatedStatus(false);
                 GameMasterView.backToMain(GameMasterView.memoryTaskView);
             }
         });

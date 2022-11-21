@@ -12,6 +12,7 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
     ImageIcon downIcon;
     JLabel upButton;
     JLabel downButton;
+    JLabel currentTempDisplay;
     private static int currentTemp;
     private boolean completed;
 
@@ -22,6 +23,8 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
         int neededTemp = temps[0];
         currentTemp = temps[1];
 
+        currentTempDisplay = new JLabel(Integer.toString(currentTemp));
+        currentTempDisplay.setBounds(0, 0, 100, 100);
 
         // Get the image icons and create their corresponding JLabels
         if (currentTemp < neededTemp) {
@@ -66,7 +69,10 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
             public void mouseClicked(MouseEvent e) {
                 completed = HeatAdjustmentTaskController.changeCurrentTemp(-1); // Decrease current temp by 1
                 currentTemp--;
+                currentTempDisplay.setText(Integer.toString(currentTemp));
                 if (completed) {
+                    HeatAdjustmentTaskController.setCompletionStatus(true);
+                    HeatAdjustmentTaskController.setActivationStatus(false);
                     GameMasterView.backToMain(GameMasterView.heatTaskView);
                 }
             }
@@ -89,7 +95,10 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
             public void mouseClicked(MouseEvent e) {
                 completed = HeatAdjustmentTaskController.changeCurrentTemp(1); // Increase current temp by 1
                 currentTemp++;
+                currentTempDisplay.setText(Integer.toString(currentTemp));
                 if (completed) {
+                    HeatAdjustmentTaskController.setCompletionStatus(true);
+                    HeatAdjustmentTaskController.setActivationStatus(false);
                     GameMasterView.backToMain(GameMasterView.heatTaskView);
                 }
             }

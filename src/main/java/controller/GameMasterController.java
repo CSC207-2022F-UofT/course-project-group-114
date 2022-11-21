@@ -4,6 +4,7 @@ import entities.GameMaster;
 
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Hashtable;
 
 public class GameMasterController {
     public static boolean getPlayingStatus() {
@@ -25,5 +26,8 @@ public class GameMasterController {
             JOptionPane.showMessageDialog(null, "Class or method couldn't be found!");
             throw new RuntimeException(e);
         }
+    }
+    public static Hashtable<String, Long> getTimes() {
+        return GameMaster.getTimes();
     }
 }

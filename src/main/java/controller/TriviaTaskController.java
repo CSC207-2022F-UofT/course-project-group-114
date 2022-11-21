@@ -1,4 +1,5 @@
 package controller;
+import entities.ClickTask;
 import entities.TriviaTask;
 import javax.swing.*;
 
@@ -19,6 +20,12 @@ public class TriviaTaskController {
         // backend checkAnswer compares the playerAnswer to the actualAnswer to determine
         // if it is correct
         return (TriviaTaskUsecase.checkAnswer(actualAnswer, playerAnswer.getText()));
+    }
+    public static void setCompletionStatus(boolean status) {
+        TriviaTask.setCompletionStatus(status);
+    }
+    public static void setActivatedStatus(boolean status) {
+        TriviaTask.setActivatedStatus(status);
     }
 
 }

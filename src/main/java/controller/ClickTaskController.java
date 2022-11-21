@@ -27,4 +27,11 @@ public class ClickTaskController {
     public static boolean getPortion(){
         return ClickTask.portion;
     }
+
+    public static void setCompletionStatus(boolean status) {
+       ClickTask.setCompletionStatus(status);
+    }
+    public static void setActivatedStatus(boolean status) {
+        ClickTask.setActivatedStatus(status);
+    }
 }
