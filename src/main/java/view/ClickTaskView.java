@@ -16,14 +16,14 @@ public class ClickTaskView extends JLayeredPane{
         ClickTaskController.setNeededClicks();
 
         // Click Task plane
-        setPreferredSize(new Dimension(1920,1080));
+        setPreferredSize(new Dimension(1280,720));
 
         // Header settings
         JTextField header = new JTextField("TODO: CLICK TO EAT AND DON'T WASTE FOOD!! \n " +
                 "Current Clicks: 0 \n Needed Clicks: " + ClickTaskController.getNeededClicks());
-        header.setHorizontalAlignment(JTextField.RIGHT);
+        header.setHorizontalAlignment(JTextField.CENTER);
         header.setEditable(false);
-        header.setFont(new java.awt.Font("Serif", Font.ITALIC | Font.BOLD, 28));
+        header.setFont(new java.awt.Font("Serif", Font.ITALIC | Font.BOLD, 20));
         header.setBounds(0,0,1280,80);
         header.setOpaque(false);
         header.setBorder(null);
@@ -32,8 +32,8 @@ public class ClickTaskView extends JLayeredPane{
         // Set background
         ImageIcon bgImg = new ImageIcon("src\\main\\java\\resources\\ClickTask\\background.jpg");
         JLabel background = new JLabel(bgImg);
-        background.setPreferredSize(new Dimension(1920,1080));
-        background.setBounds(0,0,1920,1080);
+        background.setPreferredSize(new Dimension(1280,720));
+        background.setBounds(0,0,1280,720);
 
         // Read images from folder ClickTask
         ImageIcon full = new ImageIcon("src\\main\\java\\resources\\ClickTask\\full.png");
