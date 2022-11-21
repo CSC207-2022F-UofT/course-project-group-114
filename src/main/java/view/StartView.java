@@ -56,16 +56,16 @@ public class StartView extends JFrame {
         scores.setOpaque(false);
         scores.setBorder(null);
         scores.setMargin(new Insets(0, 0, 0, 0));
-        ImageIcon backButton = new ImageIcon("src/main/java/resources/play_button.png");
+        ImageIcon backButton = new ImageIcon("src/main/java/resources/return.png");
         JButton goBack = new JButton(backButton);
         goBack.setBorderPainted(false);
         goBack.setBorder(null);
         goBack.setMargin(new Insets(0, 0, 0, 0));
         goBack.setContentAreaFilled(false);
-        goBack.setBounds(340, 200, backButton.getIconWidth(), backButton.getIconHeight());
+        goBack.setBounds(860, 550, backButton.getIconWidth(), backButton.getIconHeight());
         highscorePanel.add(notepad, Integer.valueOf(0));
         highscorePanel.add(scores, Integer.valueOf(1));
-        highscorePanel.add(goBack, Integer.valueOf(1));
+        highscorePanel.add(goBack, Integer.valueOf(2));
 
 
         JPanel main = new JPanel(new CardLayout());
@@ -91,6 +91,11 @@ public class StartView extends JFrame {
         });
 
         playButton.addActionListener(e -> {
+            this.dispose();
+            new AuthenticatorView();
+        });
+
+        goBack.addActionListener(e -> {
             this.dispose();
             new AuthenticatorView();
         });

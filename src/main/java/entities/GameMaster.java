@@ -3,58 +3,57 @@ package entities;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
-import java.util.Objects;
 import java.util.Random;
-import java.time.Clock;
 
 public class GameMaster {
     private static int taskInterval = 20000; // Time between tasks in milliseconds
     private static int timeAllowed = 10000; // Amount of time allowed for each task in milliseconds
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<String, Long>();
-    public static String[] tasks;
+    public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
+            "AssignmentTask", "MemoryTask"};
+    // TODO Remember to change the above line to include all tasks:
+//            tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "WireTask", "ClickTask", "PhoneNumberTask",
+//                    "AssignmentTask", "MemoryTask"};
+
+    // Create an instance of the LifeMaster
+    private static final LifeMaster lifeMaster = new LifeMaster();
 
     // Ensure that the method throws the needed exceptions when searching for classes and methods
-    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        // Create a clock to keep track of time
-        Clock clock = Clock.systemDefaultZone();
-        // Create an instance of the entities.LifeMaster
-        LifeMaster lifeMaster = new LifeMaster();
-        long currTime = clock.millis(); // Find the current time in milliseconds
-        while (playing) {
-            tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "WireTask", "ClickTask", "PhoneNumberTask",
-                    "AssignmentTask", "MemoryTask"};
-            if (clock.millis() >= currTime + taskInterval) { // Enough time has passed, turn on a new task
-                currTime = clock.millis(); // Update the current time
-                String newTaskName = chooseTask(tasks); // Pick a random task
-                Class<?> taskClass = Class.forName("entities." + newTaskName); // Get the task class
-                if (!times.containsKey(newTaskName)) { // If the task isn't already running, then run it
-                    Method completionMethod  = taskClass.getDeclaredMethod("setCompletionStatus");
-                    completionMethod.invoke(false);
-                    Method activatedMethod = taskClass.getDeclaredMethod("setActivatedStatus");
-                    activatedMethod.invoke(true);
-                    times.put(newTaskName, clock.millis() + timeAllowed); // Record the deadline for this task in the hashmap
-                }
-            }
-            for (String taskName : times.keySet()) {
-                Class<?> taskClass = Class.forName("entities." + taskName);
-                boolean completionStatus = (boolean) taskClass.getDeclaredMethod("getCompletionStatus").invoke(null);
-                if (clock.millis() >= times.get(taskName)) { // If the time is up for the task
-                    if (completionStatus) { // The task was completed successfully
-                        times.remove(taskName);
-                        taskClass.getDeclaredMethod("setActivatedStatus").invoke(false);
-                        lifeMaster.incrementTaskCount();
-                    }
-                    else {
-                        lifeMaster.deductLife();
-                    }
-                } else if (completionStatus) { // The task was completed early
+    public static void createNewTask(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        String newTaskName = chooseTask(tasks); // Pick a random task
+        Class<?> taskClass = Class.forName("entities." + newTaskName); // Get the task class
+        if (!times.containsKey(newTaskName)) { // If the task isn't already running, then run it
+            Method resetMethod = taskClass.getMethod("reset");
+            resetMethod.invoke(taskClass);
+            Method completionMethod  = taskClass.getMethod("setCompletionStatus", boolean.class);
+            completionMethod.invoke(taskClass,false);
+            Method activatedMethod = taskClass.getMethod("setActivatedStatus", boolean.class);
+            activatedMethod.invoke(taskClass, true);
+            times.put(newTaskName, currTime + timeAllowed); // Record the deadline for this task in the hashmap
+        }
+    }
+    public static int getTaskInterval() {
+        return taskInterval;
+    }
+    public static void checkTasksCompletion(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        for (String taskName : times.keySet()) {
+            Class<?> taskClass = Class.forName("entities." + taskName);
+            boolean completionStatus = (boolean) taskClass.getMethod("getCompletionStatus").invoke(null);
+            if (currTime >= times.get(taskName)) { // If the time is up for the task
+                if (completionStatus) { // The task was completed successfully
                     times.remove(taskName);
-                    taskClass.getDeclaredMethod("setActivatedStatus").invoke(false);
+                    taskClass.getMethod("setActivatedStatus", boolean.class).invoke(taskClass, false);
                     lifeMaster.incrementTaskCount();
                 }
+                else { // Task was not completed in time
+                    lifeMaster.deductLife();
+                }
+            } else if (completionStatus) { // The task was completed early
+                times.remove(taskName);
+                taskClass.getMethod("setActivatedStatus", boolean.class).invoke(taskClass, false);
+                lifeMaster.incrementTaskCount();
             }
-
         }
     }
 
