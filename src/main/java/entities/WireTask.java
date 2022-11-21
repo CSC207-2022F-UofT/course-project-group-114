@@ -11,14 +11,13 @@ public class WireTask extends Task{
     private static ArrayList<String> RightWires;
     // The list containing strings of the colours of the wires on the right side
 
-    private static String previous;
-    // The node that the user clicked before currentClick. If the user did not click anything or only clicked once
-    // , then previous is set to Null.
-
-    private static String current;
-    // The node that the user last clicked. If the user did not click anything, then current is Null.
-
-
+    public WireTask(){
+        reset();
+    }
+    public static void reset(){
+        LeftWires = setLeftWires();
+        RightWires = setRightWires();
+    }
     public static ArrayList<String> setLeftWires(){
         // Shuffles a random list from LeftWires for the left side
         if (!LeftWires.contains("RED")){
@@ -49,12 +48,10 @@ public class WireTask extends Task{
         return RightWires;
     }
 
-    public static boolean checkWiresSelected(String firstSelected, String secondSelected) {
+    public static boolean checkWiresSelected(String previous, String current) {
         // Checks whether the two last wires the user selected are matching. If so, remove this colour from the lists.
-        current = firstSelected;
-        previous = secondSelected;
 
-        if (current.equals(previous)) {
+        if (previous.equals(current)) {
             LeftWires.remove(current);
             RightWires.remove(current);
             return true;
@@ -65,7 +62,6 @@ public class WireTask extends Task{
         if (LeftWires.isEmpty()){
             setCompletionStatus(true);
             setActivatedStatus(false);
-
         }
     }
 }
