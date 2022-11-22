@@ -10,15 +10,35 @@ import java.awt.event.ActionListener;
 import java.util.UUID;
 
 public class TriviaTaskView extends JFrame {
+
+    public static JLayeredPane TriviaTaskPanel;
+
     TriviaTaskView(){
 
         TriviaTaskController controller = new TriviaTaskController();
         String currentQuestion = controller.passRandomQuestion();
 
-        JPanel questionPopup = new JPanel();
-        JLabel questionMessage = new JLabel("You have 10 seconds to answer the following question correctly: " + currentQuestion);
+        JPanel popup = new JPanel();
+        JLabel question = new JLabel("You have 10 seconds to answer the following question correctly: " + currentQuestion);
+        question.setPreferredSize(new Dimension(1280, 80));
+        question.setHorizontalAlignment(JLabel.CENTER);
+        question.setFont(new java.awt.Font("Calibri", Font.BOLD, 18));
+        popup.add(question);
 //        questionMessage.setPreferredSize(500, 500);
 //        questionMessage.setHoriziontalAlignment(JLabel.CENTER);
+
+        TriviaTaskPanel = new JLayeredPane();
+        TriviaTaskPanel.setPreferredSize(new Dimension(1280, 800));
+
+        // setting up player input for their answer
+        // will be sent into the controller to be sent to backend to be checked
+        // mvc model
+        JTextField playerAnswer = new JTextField();
+        playerAnswer.setEditable(true);
+        playerAnswer.setHorizontalAlignment(JTextField.CENTER);
+//        playerAnswer.setFont(new java.awt.Font("Calibri", Font.Bold, 14));
+
+
 
     }
 

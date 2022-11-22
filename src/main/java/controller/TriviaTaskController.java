@@ -14,6 +14,9 @@ public class TriviaTaskController {
 
     // public boolean passAnswer
     public boolean passAnswer(String actualAnswer, JTextField playerAnswer){
-        return usecase.checkAnswer(actualAnswer, String.valueOf(playerAnswer));
+        // sends the actualAnswer & playerAnswer into the backend
+        // "translates" playerAnswer into a String which the backend can then understand
+        // & compare to the actualAnswer to check for correctness
+        return TriviaTask.checkAnswer(actualAnswer, String.valueOf(playerAnswer));
     }
 }
