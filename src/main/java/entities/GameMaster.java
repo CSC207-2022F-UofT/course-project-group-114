@@ -48,7 +48,7 @@ public class GameMaster {
                 else { // Task was not completed in time
                     times.remove(taskName);
                     taskClass.getMethod("setActivatedStatus", boolean.class).invoke(taskClass, false);
-//                    LifeMaster.deductLife();
+                    LifeMaster.deductLife();
 
                 }
             } else if (completionStatus) { // The task was completed early
@@ -57,7 +57,7 @@ public class GameMaster {
                 LifeMaster.incrementTaskCount();
             } else if (!activationStatus) { // Task was deactivated
                 times.remove(taskName);
-                //LifeMaster.deductLife();
+                LifeMaster.deductLife();
             }
         }
     }
