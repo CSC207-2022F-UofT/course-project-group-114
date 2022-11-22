@@ -1,7 +1,6 @@
 package view;
 
 import controller.AssignmentTaskController;
-import controller.ClickTaskController;
 
 import javax.swing.*;
 import java.awt.*;
