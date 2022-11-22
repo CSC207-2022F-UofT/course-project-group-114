@@ -11,6 +11,10 @@ public class WireTask extends Task{
     private static ArrayList<String> RightWires;
     // The list containing strings of the colours of the wires on the right side
 
+    private static String previous;
+
+    private static String current;
+
     public WireTask(){
         reset();
     }
@@ -48,8 +52,11 @@ public class WireTask extends Task{
         return RightWires;
     }
 
-    public static boolean checkWiresSelected(String previous, String current) {
+    public static boolean checkWiresSelected(String pre, String curr) {
         // Checks whether the two last wires the user selected are matching. If so, remove this colour from the lists.
+
+        previous = pre;
+        current = curr;
 
         if (previous.equals(current)) {
             LeftWires.remove(current);
