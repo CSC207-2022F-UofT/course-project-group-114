@@ -1,8 +1,6 @@
 package view;
 
-import controller.MemoryTaskController;
 import controller.PhoneNumberTaskController;
-import entities.PhoneNumberTask;
 
 import javax.swing.*;
 import java.awt.*;
