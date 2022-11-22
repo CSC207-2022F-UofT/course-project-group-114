@@ -12,7 +12,7 @@ public class GameMaster {
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<String, Long>();
     public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
-            "AssignmentTask"};
+            "AssignmentTask", "MemoryTask"};
 //            tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "WireTask", "ClickTask", "PhoneNumberTask",
 //                    "AssignmentTask", "MemoryTask"};
 
