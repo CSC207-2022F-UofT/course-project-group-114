@@ -269,7 +269,7 @@ public class GameMasterView extends JFrame{
 
         });
 
-        setSize(1280,720);
+        setSize(1920,1080);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
