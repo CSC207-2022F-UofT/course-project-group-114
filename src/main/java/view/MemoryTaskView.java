@@ -1,31 +1,28 @@
 package view;
 
-import controller.AssignmentTaskController;
 import controller.MemoryTaskController;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.TimerTask;
 import java.util.UUID;
 
+import java.util.Timer;
+
 public class MemoryTaskView extends JLayeredPane{
-    public static JLayeredPane memoryTaskPanel;
 
     MemoryTaskView(){
 
         MemoryTaskController controller = new MemoryTaskController();
         String actual_password = (UUID.randomUUID().toString().replaceAll("-", "")).substring(0,8);
 
-        JPanel password_popup = new JPanel();
         JLabel message = new JLabel("Your password to remember is: " + actual_password);
-        message.setPreferredSize(new Dimension(1280,80));
+        message.setPreferredSize(new Dimension(1280,720));
         message.setHorizontalAlignment(JLabel.CENTER);
         message.setFont(new java.awt.Font("Serif", Font.BOLD, 22));
-        password_popup.add(message);
-
-        memoryTaskPanel = new JLayeredPane();
-        memoryTaskPanel.setPreferredSize(new Dimension(1280, 720));
+        message.setBounds(0,     0, 1280, 720);
 
         ImageIcon bg = new ImageIcon("src\\main\\java\\resources\\MemoryTask\\bg.jpg");
         JLabel background = new JLabel(bg);
@@ -46,26 +43,25 @@ public class MemoryTaskView extends JLayeredPane{
         password.setOpaque(false);
         password.setMargin(new Insets(0, 0, 0, 0));
 
-        memoryTaskPanel.add(background, Integer.valueOf(0));
-        memoryTaskPanel.add(log_in_button, Integer.valueOf(1));
-        memoryTaskPanel.add(password, Integer.valueOf(2));
 
         setPreferredSize(new Dimension(1280,720));
         setVisible(true);
 
+        add(message, Integer.valueOf(0));
 
-        javax.swing.Timer timer = new Timer(5000, null);
-        timer.setRepeats(false);
-        timer.start();
-        add(password_popup);
-        while(timer.isRunning()){
-            password_popup.setVisible(true);
-            memoryTaskPanel.setVisible(false);
-        }
-        timer.stop();
-        add(memoryTaskPanel);
-        memoryTaskPanel.setVisible(true);
-        password_popup.setVisible(false);
+        Timer timer = new Timer();
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                remove(0);
+                add(background, Integer.valueOf(0));
+                add(log_in_button, Integer.valueOf(1));
+                add(password, Integer.valueOf(2));
+            }
+        };
+
+        timer.schedule(task, 5000);
 
         log_in_button.addActionListener(new ActionListener() {
             /**
