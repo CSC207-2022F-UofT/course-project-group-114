@@ -2,18 +2,18 @@ package view;
 
 import java.awt.*;
 import controller.ClickTaskController;
-import controller.PhoneNumberTaskController;
 
 import javax.swing.*;
 
+/**
+ * The ClickTaskView program creates a JLayeredPane that displays all components
+ * needed for the Click Task.
+ *
+ * @author Siyuan Deng
+ * @version  2.0
+ * @since 2022-10-28
+ */
 public class ClickTaskView extends JLayeredPane{
-
-    // 1. Declare variables, but I'm not sure if I should add private/public before type
-    // IntelliJ gives warnings when I make it private: variable might be final
-    // 2. java doc
-    // 3. Test cases
-    // 4. Life deduction
-    // 5. Print message before closing?
     public ClickTaskView(){
         ClickTaskController.setNeededClicks();
         ClickTaskController.reset();
@@ -68,14 +68,8 @@ public class ClickTaskView extends JLayeredPane{
                 button.setIcon(first);
             }
 
-            // determines if the requirement is met
             boolean success = (neededClicks == currentClicks);
-            if (success){
-                JOptionPane.showMessageDialog(null, "Congrats!");
-                ClickTaskController.setActivatedStatus(false);
-                ClickTaskController.setCompletionStatus(true);
-                GameMasterView.backToMain(GameMasterView.clickTaskView);
-            }
+            endGame(success);
         });
 
         // Add layers
@@ -90,5 +84,20 @@ public class ClickTaskView extends JLayeredPane{
     // Main method
     public static void main(String[] args) {
         new ClickTaskView();
+    }
+
+    /**
+     * This method is used to determine whether the game needs to be ended. If
+     * the game ends, show message and tell Game Master.
+     * @param success This is the boolean value that is true when a user has made
+     *                enough clicks.
+     */
+    public void endGame(boolean success){
+        if (success){
+            JOptionPane.showMessageDialog(null, "Congrats!");
+            ClickTaskController.setActivatedStatus(false);
+            ClickTaskController.setCompletionStatus(true);
+            GameMasterView.backToMain(GameMasterView.clickTaskView);
+        }
     }
 }
