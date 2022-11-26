@@ -3,6 +3,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.Random;
 
+
+/**
+ * The ClickTaskTest class checks methods in ClickTask.java.
+ *
+ * @author Siyuan Deng
+ * @version 2.0
+ * @since 2022-11-24
+ */
 public class ClickTaskTest {
 
     @Test
