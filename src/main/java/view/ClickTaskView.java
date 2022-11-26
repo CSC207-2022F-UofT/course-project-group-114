@@ -12,6 +12,7 @@ import javax.swing.*;
  * @author Siyuan Deng
  * @version  2.0
  * @since 2022-10-28
+ * @inheritDoc JLayeredPane
  */
 public class ClickTaskView extends JLayeredPane{
     public ClickTaskView(){
