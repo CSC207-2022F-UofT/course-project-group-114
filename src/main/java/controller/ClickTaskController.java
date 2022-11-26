@@ -2,6 +2,14 @@ package controller;
 
 import entities.ClickTask;
 
+/**
+ * The ClickTaskController class passes information between the ClickTask
+ * and the ClickTaskView.
+ *
+ * @author Siyuan Deng
+ * @version 2.0
+ * @since 2022-10-27
+ */
 public class ClickTaskController {
     public static void setNeededClicks(){
        ClickTask.setNeededClicks();
