@@ -22,7 +22,7 @@ public class TriviaTaskView extends JFrame {
         JLabel question = new JLabel("You have 10 seconds to answer the following question correctly: " + currentQuestion);
         question.setPreferredSize(new Dimension(1280, 80));
         question.setHorizontalAlignment(JLabel.CENTER);
-        question.setFont(new java.awt.Font("Calibri", Font.BOLD, 18));
+        question.setFont(new Font("Calibri", Font.BOLD, 18));
         popup.add(question);
 //        questionMessage.setPreferredSize(500, 500);
 //        questionMessage.setHoriziontalAlignment(JLabel.CENTER);
@@ -36,12 +36,28 @@ public class TriviaTaskView extends JFrame {
         JTextField playerAnswer = new JTextField();
         playerAnswer.setEditable(true);
         playerAnswer.setHorizontalAlignment(JTextField.CENTER);
-        playerAnswer.setFont(new java.awt.Font("Calibri", Font.BOLD, 20));
+        playerAnswer.setFont(new Font("Calibri", Font.BOLD, 20));
         playerAnswer.setForeground(Color.GRAY);
         playerAnswer.setBounds(150, 500, 250, 100);
         playerAnswer.setOpaque(false);
         playerAnswer.setMargin(new Insets(1, 1, 1, 1));
 
+
+        setPreferredSize(new Dimension(1280, 720));
+        setVisible(true);
+
+        javax.swing.Timer timer = new Timer(5000, null);
+        timer.setRepeats(false);
+        timer.start();
+        add(popup);
+        while(timer.isRunning()){
+            popup.setVisible(true);
+            // set the triviaTaskPanel visible to True
+        }
+        timer.stop();
+        add(TriviaTaskPanel);
+        TriviaTaskPanel.setVisible(true);
+        popup.setVisible(true);
 
 
 
