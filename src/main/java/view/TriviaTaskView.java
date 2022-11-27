@@ -36,7 +36,12 @@ public class TriviaTaskView extends JFrame {
         JTextField playerAnswer = new JTextField();
         playerAnswer.setEditable(true);
         playerAnswer.setHorizontalAlignment(JTextField.CENTER);
-//        playerAnswer.setFont(new java.awt.Font("Calibri", Font.Bold, 14));
+        playerAnswer.setFont(new java.awt.Font("Calibri", Font.BOLD, 20));
+        playerAnswer.setForeground(Color.GRAY);
+        playerAnswer.setBounds(150, 500, 250, 100);
+        playerAnswer.setOpaque(false);
+        playerAnswer.setMargin(new Insets(1, 1, 1, 1));
+
 
 
 
