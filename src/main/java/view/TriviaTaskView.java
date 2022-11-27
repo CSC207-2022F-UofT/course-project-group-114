@@ -59,6 +59,8 @@ public class TriviaTaskView extends JFrame {
         TriviaTaskPanel.setVisible(true);
         popup.setVisible(true);
 
+        // add submit button
+
 
 
     }
