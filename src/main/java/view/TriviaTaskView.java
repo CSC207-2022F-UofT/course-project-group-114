@@ -28,7 +28,7 @@ public class TriviaTaskView extends JFrame {
 //        questionMessage.setHoriziontalAlignment(JLabel.CENTER);
 
         TriviaTaskPanel = new JLayeredPane();
-        TriviaTaskPanel.setPreferredSize(new Dimension(1280, 800));
+        TriviaTaskPanel.setPreferredSize(new Dimension(1280, 720));
 
         // setting up player input for their answer
         // will be sent into the controller to be sent to backend to be checked

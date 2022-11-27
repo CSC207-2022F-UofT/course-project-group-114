@@ -3,7 +3,11 @@ package entities;
 import java.sql.Array;
 import java.util.*;
 
+
+
 public class TriviaTask extends Task {
+    // this is where it'll be changed to a csv
+    // figure this out asap
     // public int triviaCategory; //can later make changes to code to add categories and get questions and answers from a csv file
     public String currentQuestion; // the question. generated from trivia dict at the randomly generated index
     public String actualAnswer; // the correct answer corresponding value to the key in triviaDict
