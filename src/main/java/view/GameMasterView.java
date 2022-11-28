@@ -75,7 +75,7 @@ public class GameMasterView extends JFrame{
         scoreDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 
         livesDisplay = new JLabel((Integer.toString(LifeMaster.getLives())));
-        livesDisplay.setBounds(100, 0, 200, 250);
+        livesDisplay.setBounds(360, 0, 200, 100);
         livesDisplay.setForeground(new Color(200, 255, 255));
         livesDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 
@@ -304,11 +304,11 @@ public class GameMasterView extends JFrame{
 //        while (GameMasterController.getPlayingStatus()) {
             @Override
             public void run() {
-                System.out.println("IN THE RUN METHOD");
                 currTime = clock.millis();
                 if (clock.millis() >= checkTime) { // Create new task if interval has passed
                     checkTime = clock.millis() + taskInterval; // Update current time
                     GameMasterController.createNewTask(currTime);
+                    System.out.println("Task created");
                 }
                 GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
                 times[0] = GameMasterController.getTimes();
@@ -319,7 +319,7 @@ public class GameMasterView extends JFrame{
             }
         };
 
-        timer.schedule(gameLoop, 0, 500);
+        timer.schedule(gameLoop, 5, 1000);
         if (!GameMasterController.getPlayingStatus()) {
             gameLoop.cancel();
         }
