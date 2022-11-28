@@ -2,18 +2,19 @@ package view;
 
 import java.awt.*;
 import controller.ClickTaskController;
-import controller.PhoneNumberTaskController;
 
 import javax.swing.*;
 
+/**
+ * The ClickTaskView program creates a JLayeredPane that displays all components
+ * needed for the Click Task.
+ *
+ * @author Siyuan Deng
+ * @version  2.0
+ * @since 2022-10-28
+ * @inheritDoc JLayeredPane
+ */
 public class ClickTaskView extends JLayeredPane{
-
-    // 1. Declare variables, but I'm not sure if I should add private/public before type
-    // IntelliJ gives warnings when I make it private: variable might be final
-    // 2. java doc
-    // 3. Test cases
-    // 4. Life deduction
-    // 5. Print message before closing?
     public ClickTaskView(){
         ClickTaskController.setNeededClicks();
         ClickTaskController.reset();
@@ -33,17 +34,17 @@ public class ClickTaskView extends JLayeredPane{
         header.setMargin(new Insets(0,0,0,0));
 
         // Set background
-        ImageIcon bgImg = new ImageIcon("src\\main\\java\\resources\\ClickTask\\background.jpg");
+        ImageIcon bgImg = new ImageIcon("src/main/java/resources/ClickTask/background.jpg");
         JLabel background = new JLabel(bgImg);
         background.setPreferredSize(new Dimension(1280,720));
         background.setBounds(0,0,1280,720);
 
         // Read images from folder ClickTask
-        ImageIcon full = new ImageIcon("src\\main\\java\\resources\\ClickTask\\full.png");
-        ImageIcon first = new ImageIcon("src\\main\\java\\resources\\ClickTask\\first.png");
-        ImageIcon second = new ImageIcon("src\\main\\java\\resources\\ClickTask\\second.png");
-        ImageIcon third = new ImageIcon("src\\main\\java\\resources\\ClickTask\\third.png");
-        ImageIcon last = new ImageIcon("src\\main\\java\\resources\\ClickTask\\last.png");
+        ImageIcon full = new ImageIcon("src/main/java/resources/ClickTask/full.png");
+        ImageIcon first = new ImageIcon("src/main/java/resources/ClickTask/first.png");
+        ImageIcon second = new ImageIcon("src/main/java/resources/ClickTask/second.png");
+        ImageIcon third = new ImageIcon("src/main/java/resources/ClickTask/third.png");
+        ImageIcon last = new ImageIcon("src/main/java/resources/ClickTask/last.png");
 
         // Add the fries
         JButton button = new JButton(full);
@@ -68,14 +69,8 @@ public class ClickTaskView extends JLayeredPane{
                 button.setIcon(first);
             }
 
-            // determines if the requirement is met
             boolean success = (neededClicks == currentClicks);
-            if (success){
-                JOptionPane.showMessageDialog(null, "Congrats!");
-                ClickTaskController.setActivatedStatus(false);
-                ClickTaskController.setCompletionStatus(true);
-                GameMasterView.backToMain(GameMasterView.clickTaskView);
-            }
+            endGame(success);
         });
 
         // Add layers
@@ -90,5 +85,20 @@ public class ClickTaskView extends JLayeredPane{
     // Main method
     public static void main(String[] args) {
         new ClickTaskView();
+    }
+
+    /**
+     * This method is used to determine whether the game needs to be ended. If
+     * the game ends, show message and tell Game Master.
+     * @param success This is the boolean value that is true when a user has made
+     *                enough clicks.
+     */
+    public void endGame(boolean success){
+        if (success){
+            JOptionPane.showMessageDialog(null, "Congrats!");
+            ClickTaskController.setActivatedStatus(false);
+            ClickTaskController.setCompletionStatus(true);
+            GameMasterView.backToMain(GameMasterView.clickTaskView);
+        }
     }
 }

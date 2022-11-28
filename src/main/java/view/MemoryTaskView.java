@@ -24,12 +24,12 @@ public class MemoryTaskView extends JLayeredPane{
         message.setFont(new java.awt.Font("Serif", Font.BOLD, 22));
         message.setBounds(0,     0, 1280, 720);
 
-        ImageIcon bg = new ImageIcon("src\\main\\java\\resources\\MemoryTask\\bg.jpg");
+        ImageIcon bg = new ImageIcon("src/main/java/resources/MemoryTask/bg.jpg");
         JLabel background = new JLabel(bg);
         background.setPreferredSize(new Dimension(1280,720));
         background.setBounds(0,     0, 1280, 720);
 
-        ImageIcon log_in = new ImageIcon("src\\main\\java\\resources\\MemoryTask\\login.png");
+        ImageIcon log_in = new ImageIcon("src/main/java/resources/MemoryTask/login.png");
         JButton log_in_button = new JButton(log_in);
         log_in_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         log_in_button.setBounds(200, 580, log_in.getIconWidth(), log_in.getIconHeight());

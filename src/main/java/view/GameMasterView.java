@@ -80,31 +80,31 @@ public class GameMasterView extends JFrame{
         livesDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 
         // Create background JLabel
-        backgroundIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\background.jpg");
+        backgroundIcon = scaleIcon("src/main/java/resources/GameMaster/background.jpg");
         background = new JLabel();
         background.setBounds(0, 0, 1280, 720);
         background.setIcon(backgroundIcon);
 
         // Create cat clock JLabel
-        catClockIcon = new ImageIcon("src\\main\\java\\resources\\GameMaster\\clock\\catclock.gif");
+        catClockIcon = new ImageIcon("src/main/java/resources/GameMaster/clock/catclock.gif");
         catClock = new JLabel();
         catClock.setBounds(0, 0, 1280, 720);
         catClock.setIcon(catClockIcon);
 
         // Create thermostat JLabel
-        thermostatIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\heat\\heat neutral.png");
+        thermostatIcon = scaleIcon("src/main/java/resources/GameMaster/heat/heat neutral.png");
         thermostat = new JLabel();
         thermostat.setBounds(0, 0, 1280, 720);
         thermostat.setIcon(thermostatIcon);
 
         // Create phone JLabel
-        phoneIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\phone\\phone neutral.png");
+        phoneIcon = scaleIcon("src/main/java/resources/GameMaster/phone/phone neutral.png");
         phone = new JLabel();
         phone.setBounds(0, 0, 1280, 720);
         phone.setIcon(phoneIcon);
 
         // Create screen JLabel
-        screenIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\screen neutral.png");
+        screenIcon = scaleIcon("src/main/java/resources/GameMaster/screen/screen neutral.png");
         screen = new JLabel();
         screen.setBounds(0, 0, 1280, 720);
         screen.setIcon(screenIcon);
@@ -120,51 +120,51 @@ public class GameMasterView extends JFrame{
 
         // Create the non-neutral JLabels; that is, the ones that are not visible at the start of the game
         // Create assignment button JLabel
-        assignmentButtonIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\assignment task button.png");
+        assignmentButtonIcon = scaleIcon("src/main/java/resources/GameMaster/screen/assignment task button.png");
         assignmentButton = new JLabel();
         assignmentButton.setBounds(0, 0, 1280, 720);
         assignmentButton.setIcon(assignmentButtonIcon);
         assignmentButton.setVisible(false);
 
         // Create assignment warning JLabel
-        assignmentWarningIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\assignment task warning.png");
+        assignmentWarningIcon = scaleIcon("src/main/java/resources/GameMaster/screen/assignment task warning.png");
         assignmentWarning = new JLabel();
         assignmentWarning.setBounds(0, 0, 1280, 720);
         assignmentWarning.setIcon(assignmentWarningIcon);
         assignmentWarning.setVisible(false);
 
         // Create memory warning JLabel
-        memoryWarningIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\memory task warning.png");
+        memoryWarningIcon = scaleIcon("src/main/java/resources/GameMaster/screen/memory task warning.png");
         memoryWarning = new JLabel();
         memoryWarning.setBounds(0, 0, 1280, 720);
         memoryWarning.setIcon(memoryWarningIcon);
         memoryWarning.setVisible(false);
 
         // Create memory button JLabel
-        memoryButtonIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\memory task prompt.png");
+        memoryButtonIcon = scaleIcon("src/main/java/resources/GameMaster/screen/memory task prompt.png");
         memoryButton = new JLabel();
         memoryButton.setBounds(0, 0, 1280, 720);
         memoryButton.setIcon(memoryButtonIcon);
         memoryButton.setVisible(false);
 
         // Create wire JLabel
-        wireIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\screen\\wire task prompt.png");
+        wireIcon = scaleIcon("src/main/java/resources/GameMaster/screen/wire task prompt.png");
         wire = new JLabel();
         wire.setBounds(0, 0, 1280, 720);
         wire.setIcon(wireIcon);
         wire.setVisible(false);
 
         // Create trivia JLabel
-        triviaIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\trivia\\trivia task alert.png");
+        triviaIcon = scaleIcon("src/main/java/resources/GameMaster/trivia/trivia task alert.png");
         trivia = new JLabel();
         trivia.setBounds(0, 0, 1280, 720);
         trivia.setIcon(triviaIcon);
         trivia.setVisible(false);
 
         // Create image icons for activated versions of heat, phone and click tasks
-        activeCatClockIcon = new ImageIcon("src\\main\\java\\resources\\GameMaster\\clock\\eat alert.gif");
-        activePhoneIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\phone\\phone alert.png");
-        activeThermostatIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\heat\\heat alert.png");
+        activeCatClockIcon = new ImageIcon("src/main/java/resources/GameMaster/clock/eat alert.gif");
+        activePhoneIcon = scaleIcon("src/main/java/resources/GameMaster/phone/phone alert.png");
+        activeThermostatIcon = scaleIcon("src/main/java/resources/GameMaster/heat/heat alert.png");
 
         // Create invisible buttons for each task to click
         clickableAssignment = new JButton();
@@ -321,10 +321,6 @@ public class GameMasterView extends JFrame{
         if (!GameMasterController.getPlayingStatus()) {
             gameLoop.cancel();
         }
-    }
-
-    public static void main(String[] args) {
-        new GameMasterView();
     }
 
     // Helper method for rescaling an ImageIcon

@@ -28,9 +28,9 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
 
         // Get the image icons and create their corresponding JLabels
         if (currentTemp < neededTemp) {
-            backgroundImage = new ImageIcon("src\\main\\java\\resources\\HeatAdjustmentTask\\too cold.jpg");
+            backgroundImage = new ImageIcon("src/main/java/resources/HeatAdjustmentTask/too cold.jpg");
         } else {
-            backgroundImage = new ImageIcon("src\\main\\java\\resources\\HeatAdjustmentTask\\too hot.png");
+            backgroundImage = new ImageIcon("src/main/java/resources/HeatAdjustmentTask/too hot.png");
         }
 
         Image image = backgroundImage.getImage().getScaledInstance(1280, 720, java.awt.Image.SCALE_SMOOTH);
@@ -38,10 +38,10 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
 
         background = new JLabel();
         background.setIcon(backgroundImage);
-        upIcon = new ImageIcon("src\\main\\java\\resources\\HeatAdjustmentTask\\up.png");
+        upIcon = new ImageIcon("src/main/java/resources/HeatAdjustmentTask/up.png");
         Image upImage = upIcon.getImage().getScaledInstance(240, 180, Image.SCALE_SMOOTH);
         upIcon = new ImageIcon(upImage);
-        downIcon = new ImageIcon("src\\main\\java\\resources\\HeatAdjustmentTask\\down.png");
+        downIcon = new ImageIcon("src/main/java/resources/HeatAdjustmentTask/down.png");
         Image downImage = downIcon.getImage().getScaledInstance(240, 180, Image.SCALE_SMOOTH);
         downIcon = new ImageIcon(downImage);
         upButton = new JLabel();
