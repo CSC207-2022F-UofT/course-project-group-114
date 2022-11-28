@@ -13,11 +13,11 @@ public class GameMaster {
     private static final Hashtable<String, Long> times = new Hashtable<String, Long>();
     public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
             "AssignmentTask", "MemoryTask"};
-    // TODO Remember to change the above line to include all tasks:
 //            tasks = new String[] {"HeatAdjustmentTask", "TriviaTask", "WireTask", "ClickTask", "PhoneNumberTask",
 //                    "AssignmentTask", "MemoryTask"};
 
     // Ensure that the method throws the needed exceptions when searching for classes and methods
+
     public static void createNewTask(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         String newTaskName = chooseTask(tasks); // Pick a random task
         Class<?> taskClass = Class.forName("entities." + newTaskName); // Get the task class
@@ -46,8 +46,9 @@ public class GameMaster {
                     LifeMaster.incrementTaskCount();
                 }
                 else { // Task was not completed in time
+                    times.remove(taskName);
                     taskClass.getMethod("setActivatedStatus", boolean.class).invoke(taskClass, false);
-//                    LifeMaster.deductLife();
+                    LifeMaster.deductLife();
 
                 }
             } else if (completionStatus) { // The task was completed early
@@ -56,7 +57,7 @@ public class GameMaster {
                 LifeMaster.incrementTaskCount();
             } else if (!activationStatus) { // Task was deactivated
                 times.remove(taskName);
-                //LifeMaster.deductLife();
+                LifeMaster.deductLife();
             }
         }
     }

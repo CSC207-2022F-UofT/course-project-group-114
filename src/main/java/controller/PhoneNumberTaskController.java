@@ -1,15 +1,15 @@
 package controller;
-import entities.ClickTask;
+
 import entities.PhoneNumberTask;
 public class PhoneNumberTaskController {
 
-    public boolean passer(int actual_number, String pressed_number){
-        if(pressed_number.length() > 9){
-            int input_number = Integer.parseInt(pressed_number.substring(0,9));
-            return (PhoneNumberTask.check_correctness(actual_number, input_number));
+    public boolean passer(int actualNumber, String pressedNumber){
+        if(pressedNumber.length() > 9){
+            int input_number = Integer.parseInt(pressedNumber.substring(0,9));
+            return (PhoneNumberTask.checkCorrectness(actualNumber, input_number));
         }
         else{
-            return(PhoneNumberTask.check_correctness(actual_number, Integer.parseInt(pressed_number)));
+            return(PhoneNumberTask.checkCorrectness(actualNumber, Integer.parseInt(pressedNumber)));
         }
     }
     public static void setCompletionStatus(boolean status) {
