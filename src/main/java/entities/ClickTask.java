@@ -7,8 +7,6 @@ import java.util.Random;
  * contains four instances.
  *
  * @author Siyuan Deng
- * @version 2.0
- * @since 2022-10-27
  * @inheritDoc Task
  */
 public class ClickTask extends Task{
@@ -45,5 +43,10 @@ public class ClickTask extends Task{
 
     public static void reset(){
         setCurrentClicks(0);
+        setNeededClicks();
+    }
+
+    public static int getUpperbound(){
+        return UPPERBOUND;
     }
 }
