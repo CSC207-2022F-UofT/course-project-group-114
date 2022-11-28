@@ -12,6 +12,8 @@ import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Set;
+import java.util.TimerTask;
+import java.util.Timer;
 
 public class GameMasterView extends JFrame{
     public static JPanel main;
@@ -276,31 +278,39 @@ public class GameMasterView extends JFrame{
         layers.setVisible(true);
 
         // Check for every task activation or de-activation
+        Timer timer = new Timer();
         Clock clock = Clock.systemDefaultZone();
         long currTime = clock.millis();
-        long checkTime;
-        int checkInterval = 500; // Interval for checking task status in milliseconds
-        Hashtable<String, Long> times;
+        int taskInterval = GameMaster.getTaskInterval(); // Interval for creating tasks
         GameMasterController.createNewTask(currTime);
-        times = GameMaster.getTimes();
-        Set<String> activeTasks = times.keySet();
-        activateTasks(activeTasks);
-        checkTime = currTime + checkInterval; // Update current time
-        long newIntTimeNext = clock.millis() + GameMasterController.getTaskInterval();
-        while (GameMasterController.getPlayingStatus()) {
-            currTime = clock.millis();
-            if (clock.millis() >= checkTime) { // Enough time has passed; check tasks' status
-                checkTime = clock.millis() + checkInterval; // Update current time
-                if (clock.millis() >= newIntTimeNext) { // Create new task if interval has passed
-                    newIntTimeNext = clock.millis() + GameMasterController.getTaskInterval();
+        final Hashtable[] times = new Hashtable[1];
+        times[0] = GameMaster.getTimes();
+        final Set<String>[] activeTasks = new Set[]{times[0].keySet()};
+        activateTasks(activeTasks[0]);
+
+        TimerTask gameLoop = new TimerTask() {
+            long currTime = clock.millis();
+            long checkTime = currTime + taskInterval;
+//        while (GameMasterController.getPlayingStatus()) {
+            @Override
+            public void run() {
+                System.out.println("IN THE RUN METHOD");
+                currTime = clock.millis();
+                if (clock.millis() >= checkTime) { // Create new task if interval has passed
+                    checkTime = clock.millis() + taskInterval; // Update current time
                     GameMasterController.createNewTask(currTime);
                 }
                 GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
-                times = GameMasterController.getTimes();
-                activeTasks = times.keySet();
-                activateTasks(activeTasks);
+                times[0] = GameMasterController.getTimes();
+                activeTasks[0] = (Set<String>) times[0].keySet();
+                activateTasks(activeTasks[0]);
                 scoreDisplay.setText(Integer.toString(GameMasterController.getScore()));
             }
+        };
+
+        timer.schedule(gameLoop, 0, 500);
+        if (!GameMasterController.getPlayingStatus()) {
+            gameLoop.cancel();
         }
     }
 
