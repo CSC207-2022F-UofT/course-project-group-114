@@ -116,6 +116,7 @@ public class GameMasterView extends JFrame{
         layers.add(phone, Integer.valueOf(3));
         layers.add(screen, Integer.valueOf(4));
         layers.add(scoreDisplay, Integer.valueOf(4));
+        layers.add(livesDisplay, Integer.valueOf(4));
         layers.setPreferredSize(new Dimension(1280, 720));
 
         // Create the non-neutral JLabels; that is, the ones that are not visible at the start of the game
@@ -311,9 +312,10 @@ public class GameMasterView extends JFrame{
                 }
                 GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
                 times[0] = GameMasterController.getTimes();
-                activeTasks[0] = (Set<String>) times[0].keySet();
+                activeTasks[0] = times[0].keySet();
                 activateTasks(activeTasks[0]);
                 scoreDisplay.setText(Integer.toString(GameMasterController.getScore()));
+                livesDisplay.setText(Integer.toString(LifeMaster.getLives()));
             }
         };
 
@@ -384,6 +386,10 @@ public class GameMasterView extends JFrame{
             trivia.setVisible(false);
             clickableTrivia.setVisible(false);
         }
+    }
+    // TODO delete main method
+    public static void main(String[] args) {
+        new GameMasterView();
     }
 
     public static void backToMain(JLayeredPane taskToRemove) {
