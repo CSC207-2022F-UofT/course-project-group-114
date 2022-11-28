@@ -26,4 +26,7 @@ public class LifeMaster {
             taskClass.getDeclaredMethod("setActivatedStatus").invoke(false);
         }
     }
+    public static int getLives() {
+        return lives;
+    }
 }

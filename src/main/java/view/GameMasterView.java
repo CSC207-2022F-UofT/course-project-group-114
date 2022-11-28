@@ -2,6 +2,7 @@ package view;
 import controller.GameMasterController;
 import entities.GameMaster;
 import entities.HeatAdjustmentTask;
+import entities.LifeMaster;
 
 import java.awt.*;
 import javax.swing.*;
@@ -21,6 +22,7 @@ public class GameMasterView extends JFrame{
     ImageIcon backgroundIcon;
     JLabel background;
     JLabel scoreDisplay;
+    JLabel livesDisplay;
     ImageIcon catClockIcon;
     ImageIcon activeCatClockIcon;
     JLabel catClock;
@@ -71,6 +73,11 @@ public class GameMasterView extends JFrame{
         scoreDisplay.setBounds(780, 270, 200, 250);
         scoreDisplay.setForeground(new Color(200, 255, 255));
         scoreDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+
+        livesDisplay = new JLabel((Integer.toString(LifeMaster.getLives())));
+        livesDisplay.setBounds(100, 0, 200, 250);
+        livesDisplay.setForeground(new Color(200, 255, 255));
+        livesDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 
         // Create background JLabel
         backgroundIcon = scaleIcon("src\\main\\java\\resources\\GameMaster\\background.jpg");
@@ -283,8 +290,10 @@ public class GameMasterView extends JFrame{
         long currTime = clock.millis();
         int taskInterval = GameMaster.getTaskInterval(); // Interval for creating tasks
         GameMasterController.createNewTask(currTime);
-        final Hashtable[] times = new Hashtable[1];
+        @SuppressWarnings("unchecked")
+        final Hashtable<String, Long>[] times = new Hashtable[1];
         times[0] = GameMaster.getTimes();
+        @SuppressWarnings("unchecked")
         final Set<String>[] activeTasks = new Set[]{times[0].keySet()};
         activateTasks(activeTasks[0]);
 
