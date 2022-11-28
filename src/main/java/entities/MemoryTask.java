@@ -5,8 +5,8 @@ public class MemoryTask extends Task{   // memory task backend code
    
     // checks the correctness of the password entered by the user.
     // typed password relayed here from view by the controller
-    public static boolean check_correctness(String actual_password, String typed_password){
-        if(typed_password.equals(actual_password)){
+    public static boolean checkCorrectness(String actualPassword, String typedPassword){
+        if(typedPassword.equals(actualPassword)){
             setCompletionStatus(true);
             return true;
         }
