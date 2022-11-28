@@ -128,7 +128,7 @@ public class AuthenticatorView extends JFrame {
             if(NonGameController.login(loginUsername.getText(), loginPassword.getText())){
                 // call gamemaster view
                 new GameMasterView();
-//                this.dispose();
+                this.dispose();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Error loggin in!");
@@ -139,7 +139,7 @@ public class AuthenticatorView extends JFrame {
             if(NonGameController.signin(signinName.getText(),signinUsername.getText(),
                     signinPassword.getText(),signinPassword2.getText())){
                 new GameMasterView();
-//                this.dispose();
+                this.dispose();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Sign in failed, please try again.");
