@@ -35,7 +35,7 @@ public class TriviaTask extends Task {
         return currentQuestion;
     }
     public String getActualAnswer(){
-        return this.actualAnswer;
+        return actualAnswer;
     }
 
     // is called by entities.TriviaTask controller

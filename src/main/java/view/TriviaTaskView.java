@@ -31,7 +31,13 @@ public class TriviaTaskView extends JFrame {
         TriviaTaskPanel = new JLayeredPane();
         TriviaTaskPanel.setPreferredSize(new Dimension(1280, 720));
 
-            // setting up submit button
+        //replace these next two ImageIcons with TriviaTask art
+        ImageIcon backgroundImage = new ImageIcon("src\\main\\java\\resources\\MemoryTask\\bg.jpg");
+        JLabel triviaBackground = new JLabel(backgroundImage);
+        triviaBackground.setPreferredSize(new Dimension(1280, 720));
+        triviaBackground.setBounds(0, 0, 1280, 720);
+
+        // setting up submit button
         ImageIcon submit = new ImageIcon("src\\main\\java\\resources\\MemoryTask\\login.png");
         JButton submitButton = new JButton(submit);
         submitButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
@@ -50,23 +56,18 @@ public class TriviaTaskView extends JFrame {
         playerAnswer.setMargin(new Insets(1, 1, 1, 1));
 
 
+        TriviaTaskPanel.add(triviaBackground, Integer.valueOf(0));
+        TriviaTaskPanel.add(submitButton, Integer.valueOf(1));
+        TriviaTaskPanel.add(question, Integer.valueOf(2));
+
         setPreferredSize(new Dimension(1280, 720));
         setVisible(true);
 
-//        javax.swing.Timer timer = new Timer(5000, null);
-//        timer.setRepeats(false);
-//        timer.start();
-//        add(popup);
-//        while(timer.isRunning()){
-//            popup.setVisible(true);
-//            // set the triviaTaskPanel visible to True
-//        }
-//        timer.stop();
         add(TriviaTaskPanel);
         TriviaTaskPanel.setVisible(true);
         popup.setVisible(true);
 
-        // add submit button
+        // add submit button here
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -84,30 +85,5 @@ public class TriviaTaskView extends JFrame {
         {
 
         }
-
-
-
-
-
-        // ignore this for now. can be added later once trivia is up and running
-//    public JPanel chooseCategoryPopup;
-//    public JButton submitAnswerButton;
-//
-//    TriviaTaskController controller = new TriviaTaskController();
-////    String currentQuestion = "abc";     // this is where the current question will be randomly selected and displayed
-//
-//    // have the user choose a category
-//    chooseCategoryPopup = newJPanel();
-//    Jlabel chooseMessage = new JLabel("Choose a category");
-//    chooseMessage.setPreferredSize(new Dimension(1200, 100));
-//    chooseMessage.setHorizontalAlignment(JLabel.CENTER);
-//    chooseMessage.setFont(new java.awt.Font("Serif", Font.BOLD, 24));
-//    chooseCategoryPopup.add(chooseMessage);
-
-
-        // display the question & answer box and give player time to answer
-
-        // the playerAnswer is the answer that the player has submitted. controller will have to relay this to the view
-
     }
 }
