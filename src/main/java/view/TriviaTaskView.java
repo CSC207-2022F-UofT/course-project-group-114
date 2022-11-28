@@ -17,6 +17,7 @@ public class TriviaTaskView extends JFrame {
 
         TriviaTaskController controller = new TriviaTaskController();
         String currentQuestion = controller.passRandomQuestion();
+        String actualAnswer = controller.passActualAnswer();
 
         JPanel popup = new JPanel();
         JLabel question = new JLabel("You have 10 seconds to answer the following question correctly: " + currentQuestion);
@@ -69,15 +70,15 @@ public class TriviaTaskView extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // pass the playerAnswer to the controller
-                //boolean correct = controller.passAnswer(playerAnswer);
-                // if it is correct
-                // show a message that the answer is correct
-
-                // if not, show message that answer is incorrect
-
-            setVisible(false);
-            GameMasterView.backToMain(GameMasterView.triviaTaskView);
+                boolean correct = controller.passAnswer(actualAnswer, playerAnswer);
+                if(correct){
+                    JOptionPane.showMessageDialog(null, "Correct");
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "Incorrect");
+                }
+                setVisible(false);
+                GameMasterView.backToMain(GameMasterView.triviaTaskView);
             }
         });
         {

@@ -11,6 +11,7 @@ public class TriviaTaskController {
     public String passRandomQuestion(){
         return usecase.getRandomQuestion();
     }
+    public String passActualAnswer(){return usecase.getActualAnswer();}
 
     // public boolean passAnswer
     public boolean passAnswer(String actualAnswer, JTextField playerAnswer){
