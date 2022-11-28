@@ -100,4 +100,8 @@ public class StartView extends JFrame {
             new AuthenticatorView();
         });
     }
+
+    public static void main(String[] args) {
+        new StartView();
+    }
 }

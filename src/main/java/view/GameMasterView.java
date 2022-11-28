@@ -304,16 +304,6 @@ public class GameMasterView extends JFrame{
         }
     }
 
-    public static void main(String[] args) {
-        new StartView();
-        while (true){
-            if (AuthenticatorView.startGame){
-                break;
-            }
-        }
-        JOptionPane.showMessageDialog(null, "Gamemaster should run");
-    }
-
     // Helper method for rescaling an ImageIcon
     private ImageIcon scaleIcon(String iconSource) {
         ImageIcon icon = new ImageIcon(iconSource);
@@ -380,9 +370,5 @@ public class GameMasterView extends JFrame{
     public static void backToMain(JLayeredPane taskToRemove) {
         layers.setVisible(true);
         taskToRemove.setVisible(false);
-    }
-
-    public static void startGame(){
-        new GameMasterView();
     }
 }

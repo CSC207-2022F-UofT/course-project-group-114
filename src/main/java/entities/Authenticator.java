@@ -69,7 +69,7 @@ public class Authenticator {
         // rereads the score up to the player index then update the order
         Collections.sort(users);
         try{
-            FileWriter location = new FileWriter("src\\main\\java\\resources\\users.txt");
+            FileWriter location = new FileWriter("src/main/java/resources/users.txt");
 
             for (User user : users){
                 location.write(user.getName() + "," + user.getUsername() + "," + user.getPassword() +
@@ -85,7 +85,7 @@ public class Authenticator {
 
     private static ArrayList<User> updateUser() throws FileNotFoundException {
         //updates users to all the existing users
-        Scanner scan = new Scanner(new File("src\\main\\java\\resources\\users.txt")); // goes to the path to find the file
+        Scanner scan = new Scanner(new File("src/main/java/resources/users.txt")); // goes to the path to find the file
         scan.useDelimiter(",");
 //        String line;
         String name;

@@ -127,7 +127,7 @@ public class AuthenticatorView extends JFrame {
         loginSubmit.addActionListener(e -> {
             if(NonGameController.login(loginUsername.getText(), loginPassword.getText())){
                 // call gamemaster view
-                GameMasterView.startGame();
+                new GameMasterView();
 //                this.dispose();
             }
             else {
@@ -138,8 +138,7 @@ public class AuthenticatorView extends JFrame {
         signinSubmit.addActionListener(e -> {
             if(NonGameController.signin(signinName.getText(),signinUsername.getText(),
                     signinPassword.getText(),signinPassword2.getText())){
-                // call gamemaster view
-                GameMasterView.startGame();
+                new GameMasterView();
 //                this.dispose();
             }
             else {
