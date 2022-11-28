@@ -34,17 +34,17 @@ public class ClickTaskView extends JLayeredPane{
         header.setMargin(new Insets(0,0,0,0));
 
         // Set background
-        ImageIcon bgImg = new ImageIcon("src\\main\\java\\resources\\ClickTask\\background.jpg");
+        ImageIcon bgImg = new ImageIcon("src/main/java/resources/ClickTask/background.jpg");
         JLabel background = new JLabel(bgImg);
         background.setPreferredSize(new Dimension(1280,720));
         background.setBounds(0,0,1280,720);
 
         // Read images from folder ClickTask
-        ImageIcon full = new ImageIcon("src\\main\\java\\resources\\ClickTask\\full.png");
-        ImageIcon first = new ImageIcon("src\\main\\java\\resources\\ClickTask\\first.png");
-        ImageIcon second = new ImageIcon("src\\main\\java\\resources\\ClickTask\\second.png");
-        ImageIcon third = new ImageIcon("src\\main\\java\\resources\\ClickTask\\third.png");
-        ImageIcon last = new ImageIcon("src\\main\\java\\resources\\ClickTask\\last.png");
+        ImageIcon full = new ImageIcon("src/main/java/resources/ClickTask/full.png");
+        ImageIcon first = new ImageIcon("src/main/java/resources/ClickTask/first.png");
+        ImageIcon second = new ImageIcon("src/main/java/resources/ClickTask/second.png");
+        ImageIcon third = new ImageIcon("src/main/java/resources/ClickTask/third.png");
+        ImageIcon last = new ImageIcon("src/main/java/resources/ClickTask/last.png");
 
         // Add the fries
         JButton button = new JButton(full);

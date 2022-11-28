@@ -41,62 +41,62 @@ public class PhoneNumberTaskView extends JLayeredPane{
         number.setBorder(null);
         number.setMargin(new Insets(0, 0, 0, 0));
 
-        ImageIcon bg = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\bg.jpg");
+        ImageIcon bg = new ImageIcon("src/main/java/resources/PhoneNumberTask/bg.jpg");
         JLabel background = new JLabel(bg);
         background.setPreferredSize(new Dimension(1280,720));
         background.setBounds(0,     0, 1280, 720);
 
-        ImageIcon zero = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\0.png");
+        ImageIcon zero = new ImageIcon("src/main/java/resources/PhoneNumberTask/0.png");
         JButton zero_button = new JButton(zero);
         zero_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         zero_button.setBounds(700, 625, zero.getIconWidth(), zero.getIconHeight());
 
-        ImageIcon one = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\1.png");
+        ImageIcon one = new ImageIcon("src/main/java/resources/PhoneNumberTask/1.png");
         JButton one_button = new JButton(one);
         one_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         one_button.setBounds(600, 380, one.getIconWidth(), one.getIconHeight());
 
-        ImageIcon two = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\2.png");
+        ImageIcon two = new ImageIcon("src/main/java/resources/PhoneNumberTask/2.png");
         JButton two_button = new JButton(two);
         two_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         two_button.setBounds(700, 380, two.getIconWidth(), two.getIconHeight());
 
-        ImageIcon three = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\3.png");
+        ImageIcon three = new ImageIcon("src/main/java/resources/PhoneNumberTask/3.png");
         JButton three_button = new JButton(three);
         three_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         three_button.setBounds(800, 380, three.getIconWidth(), three.getIconHeight());
 
-        ImageIcon four = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\4.png");
+        ImageIcon four = new ImageIcon("src/main/java/resources/PhoneNumberTask/4.png");
         JButton four_button = new JButton(four);
         four_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         four_button.setBounds(600, 460, four.getIconWidth(), four.getIconHeight());
 
-        ImageIcon five = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\5.png");
+        ImageIcon five = new ImageIcon("src/main/java/resources/PhoneNumberTask/5.png");
         JButton five_button = new JButton(five);
         five_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         five_button.setBounds(700, 460, five.getIconWidth(), five.getIconHeight());
 
-        ImageIcon six = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\6.png");
+        ImageIcon six = new ImageIcon("src/main/java/resources/PhoneNumberTask/6.png");
         JButton six_button = new JButton(six);
         six_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         six_button.setBounds(800, 460, six.getIconWidth(), six.getIconHeight());
 
-        ImageIcon seven = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\7.png");
+        ImageIcon seven = new ImageIcon("src/main/java/resources/PhoneNumberTask/7.png");
         JButton seven_button = new JButton(seven);
         seven_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         seven_button.setBounds(600, 540, seven.getIconWidth(), seven.getIconHeight());
 
-        ImageIcon eight = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\8.png");
+        ImageIcon eight = new ImageIcon("src/main/java/resources/PhoneNumberTask/8.png");
         JButton eight_button = new JButton(eight);
         eight_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         eight_button.setBounds(700, 540, eight.getIconWidth(), eight.getIconHeight());
 
-        ImageIcon nine = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\9.png");
+        ImageIcon nine = new ImageIcon("src/main/java/resources/PhoneNumberTask/9.png");
         JButton nine_button = new JButton(nine);
         nine_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         nine_button.setBounds(800, 540, nine.getIconWidth(), nine.getIconHeight());
 
-        ImageIcon dial = new ImageIcon("src\\main\\java\\resources\\PhoneNumberTask\\dial.png");
+        ImageIcon dial = new ImageIcon("src/main/java/resources/PhoneNumberTask/dial.png");
         JButton dial_button = new JButton(dial);
         dial_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         dial_button.setBounds(800, 640, dial.getIconWidth(), dial.getIconHeight());

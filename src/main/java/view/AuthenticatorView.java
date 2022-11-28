@@ -5,6 +5,7 @@ import java.awt.*;
 import controller.NonGameController;
 
 public class AuthenticatorView extends JFrame {
+    public static boolean startGame = false;
     AuthenticatorView(){
         Dimension maxSize = new Dimension(1280, 720);
         ImageIcon loginIcon = new ImageIcon("src/main/java/resources/log_in_button.png");
@@ -127,7 +128,7 @@ public class AuthenticatorView extends JFrame {
             if(NonGameController.login(loginUsername.getText(), loginPassword.getText())){
                 // call gamemaster view
                 new GameMasterView();
-                this.dispose();
+//                this.dispose();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Error loggin in!");
@@ -137,9 +138,8 @@ public class AuthenticatorView extends JFrame {
         signinSubmit.addActionListener(e -> {
             if(NonGameController.signin(signinName.getText(),signinUsername.getText(),
                     signinPassword.getText(),signinPassword2.getText())){
-                // call gamemaster view
                 new GameMasterView();
-                this.dispose();
+//                this.dispose();
             }
             else {
                 JOptionPane.showMessageDialog(null, "Sign in failed, please try again.");
