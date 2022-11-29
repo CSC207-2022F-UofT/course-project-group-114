@@ -1,12 +1,15 @@
 package entities;
 
-import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
-import java.util.Set;
+
+/**
+ * Class representing the GameMaster entity, which is responsible for the main game functions such as generating
+ * and deactivating tasks as needed
+ */
 
 public class GameMaster {
     private static int taskInterval = 10000; // Time between tasks in milliseconds
@@ -21,6 +24,14 @@ public class GameMaster {
 
     // Ensure that the method throws the needed exceptions when searching for classes and methods
 
+    /**
+     * Method for creating / activating a new task and adding it to the times hashmap
+     * @param currTime The time in milliseconds at which the task is being created
+     * @throws ClassNotFoundException If task class is not found
+     * @throws NoSuchMethodException If method is not found
+     * @throws InvocationTargetException If method cannot be invoked with passed parameters
+     * @throws IllegalAccessException If method cannot be accessed
+     */
     public static void createNewTask(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         System.out.println("Create task method!");
         String newTaskName = chooseTask(tasks); // Pick a random task
@@ -36,9 +47,40 @@ public class GameMaster {
             times.put(newTaskName, currTime + timeAllowed); // Record the deadline for this task in the hashmap
         }
     }
+
+    /**
+     * Getter method for the task interval
+     * @return The task interval, or the amount of time between each task being generated
+     */
     public static int getTaskInterval() {
         return taskInterval;
     }
+
+    /**
+     * Setter method for the task interval
+     * @param newInterval The new value for the time, in milliseconds, between tasks being generated
+     */
+    public static void setTaskInterval(int newInterval) {
+        taskInterval = newInterval;
+    }
+
+    /**
+     * Getter method for the LifeMaster's task count, in order to uphold clean architecture
+     * @return The number of tasks completed so far
+     */
+    public static int getTaskCount() {
+        return LifeMaster.getTaskCount();
+    }
+
+    /**
+     * Method for checking every task in times and deactivating them, removing them from times, deducting lives
+     * and incrementing the total task count as needed.
+     * @param currTime The time in milliseconds at which the method is being called
+     * @throws ClassNotFoundException If task class is not found
+     * @throws NoSuchMethodException If method is not found
+     * @throws InvocationTargetException If method cannot be invoked with passed parameters
+     * @throws IllegalAccessException If method cannot be accessed
+     */
     public static void checkTasksCompletion(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         ArrayList<String> tasksToRemove = new ArrayList<>();
         System.out.println(times.keySet());
@@ -80,12 +122,21 @@ public class GameMaster {
         }
     }
 
+    /**
+     * Choose a random task name and return it
+     * @param tasks The set of all task names to choose from
+     * @return The randomly chosen task
+     */
     private static String chooseTask(String[] tasks) {
         Random rand = new Random();
         int randIndex = rand.nextInt(tasks.length);
         return tasks[randIndex];
     }
 
+    /**
+     * Getter method for the times hashmap
+     * @return The times hashmap
+     */
     public static Hashtable<String, Long> getTimes() {
         return times;
     }

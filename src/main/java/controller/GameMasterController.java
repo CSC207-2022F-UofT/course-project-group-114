@@ -12,6 +12,9 @@ public class GameMasterController {
         return GameMaster.playing;
     }
     public static int getTaskInterval() {return GameMaster.getTaskInterval();}
+    public static void setTaskInterval(int newInterval) {
+        GameMaster.setTaskInterval(newInterval);
+    }
     public static void createNewTask(long currTime) {
         try {
             GameMaster.createNewTask(currTime);
@@ -33,5 +36,8 @@ public class GameMasterController {
     }
     public static int getScore() {
         return LifeMaster.getTaskCount();
+    }
+    public static int getTaskCount() {
+        return GameMaster.getTaskCount();
     }
 }

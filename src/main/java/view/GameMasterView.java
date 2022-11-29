@@ -1,13 +1,10 @@
 package view;
 import controller.GameMasterController;
 import entities.GameMaster;
-import entities.HeatAdjustmentTask;
 import entities.LifeMaster;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.time.Clock;
 import java.util.Arrays;
 import java.util.Hashtable;
@@ -289,7 +286,7 @@ public class GameMasterView extends JFrame{
         Timer timer = new Timer();
         Clock clock = Clock.systemDefaultZone();
 //        long currTime = clock.millis();
-        int taskInterval = GameMaster.getTaskInterval(); // Interval for creating tasks
+        int taskInterval = GameMasterController.getTaskInterval(); // Interval for creating tasks
 //        GameMasterController.createNewTask(currTime);
         @SuppressWarnings("unchecked")
         final Hashtable<String, Long>[] times = new Hashtable[1];
@@ -301,6 +298,7 @@ public class GameMasterView extends JFrame{
         TimerTask gameLoop = new TimerTask() {
             long currTime = clock.millis();
             long checkTime = currTime + taskInterval;
+            boolean coolDown = false;
             @Override
             public void run() {
                 currTime = clock.millis();
@@ -316,6 +314,15 @@ public class GameMasterView extends JFrame{
                 activateTasks(activeTasks[0]);
                 scoreDisplay.setText(Integer.toString(GameMasterController.getScore()));
                 livesDisplay.setText(Integer.toString(LifeMaster.getLives()));
+                int currentTaskCount = GameMasterController.getTaskCount();
+                if (currentTaskCount % 10 == 0 && currentTaskCount > 0 && !coolDown) { // Speed up every 10 won tasks
+                    int currentTaskInterval = GameMasterController.getTaskInterval();
+                    GameMasterController.setTaskInterval((int) (currentTaskInterval / 1.75));
+                    coolDown = true; // Make sure we don't speed up again until the next 10th task
+                } else if (currentTaskCount % 10 == 1) {
+                    coolDown = false;
+                }
+                System.out.println(GameMasterController.getTaskInterval());
             }
         };
 
