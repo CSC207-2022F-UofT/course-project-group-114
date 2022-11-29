@@ -61,7 +61,7 @@ public class GameMaster {
         }
     }
 
-    private static String chooseTask(String[] tasks) {
+    public static String chooseTask(String[] tasks) {
         Random rand = new Random();
         int randIndex = rand.nextInt(tasks.length);
         return tasks[randIndex];
