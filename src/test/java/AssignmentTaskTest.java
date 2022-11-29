@@ -21,10 +21,12 @@ public class AssignmentTaskTest {
 
     @Test
     void testCheckCountWrong(){
+        boolean oldActivatedStatus = AssignmentTask.getActivatedStatus("AssignmentTask");
         AssignmentTask.setCharacterCountNeeded();
         AssignmentTask.setCurrentCharacterCount(-1);   // which is always wrong by the precondition/design
         AssignmentTask.checkCount();
-        assert(!AssignmentTask.getActivatedStatus("AssignmentTask"));  //this should be kept false until GameMaster activates
+        // if checkCount fails, activatedStatus should remain the same
+        assert(AssignmentTask.getActivatedStatus("AssignmentTask") == oldActivatedStatus);
         assert(!AssignmentTask.getCompletionStatus("AssignmentTask"));
     }
 
