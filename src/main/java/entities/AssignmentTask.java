@@ -23,16 +23,28 @@ public class AssignmentTask extends Task {
     public static void setCurrentCharacterCount(int currCharCount){
         currentCharacterCount = currCharCount;
     }
+//    public static void setCompletionStatus(boolean status) {
+//        completed = status;
+//    }
+//    public static boolean getCompletionStatus() {
+//        return completed;
+//    }
+//    public static void setActivatedStatus(boolean status) {
+//        activated = status;
+//    }
+//    public static boolean getActivatedStatus() {
+//        return activated;
+//    }
 
     public static void checkCount(){
         if (currentCharacterCount >= characterCountNeeded){
-            setCompletionStatus(true);
-            setActivatedStatus(false);
+            setCompletionStatus("AssignmentTask",true);
+            setActivatedStatus("AssignmentTask",false);
         }
     }
 
     public static void reset(){
-        Task.reset();
+        Task.reset("AssignmentTask");
         setCharacterCountNeeded();
         setCurrentCharacterCount(0);
     }

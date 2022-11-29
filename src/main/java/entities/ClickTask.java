@@ -45,5 +45,6 @@ public class ClickTask extends Task{
 
     public static void reset(){
         setCurrentClicks(0);
+        Task.reset("ClickTask");
     }
 }

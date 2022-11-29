@@ -11,14 +11,25 @@ import java.util.UUID;
 
 import java.util.Timer;
 
+/**
+ * The View class for the Memory Task which creates a JLayeredPane that
+ * displays all components needed for the Memory Task.
+ * @author Kaavya
+ * @inheritDoc JLayeredPane
+ */
 public class MemoryTaskView extends JLayeredPane{
 
+    /**
+     * The constructor for the MemoryTaskView which creates and places all the
+     * required components on the JLayeredPane and has event listeners which
+     * pass information to the controller when needed.
+     */
     MemoryTaskView(){
 
         MemoryTaskController controller = new MemoryTaskController();
-        String actual_password = (UUID.randomUUID().toString().replaceAll("-", "")).substring(0,8);
+        String actualPassword = (UUID.randomUUID().toString().replaceAll("-", "")).substring(0,8);
 
-        JLabel message = new JLabel("Your password to remember is: " + actual_password);
+        JLabel message = new JLabel("Your password to remember is: " + actualPassword);
         message.setPreferredSize(new Dimension(1280,720));
         message.setHorizontalAlignment(JLabel.CENTER);
         message.setFont(new java.awt.Font("Serif", Font.BOLD, 22));
@@ -29,10 +40,10 @@ public class MemoryTaskView extends JLayeredPane{
         background.setPreferredSize(new Dimension(1280,720));
         background.setBounds(0,     0, 1280, 720);
 
-        ImageIcon log_in = new ImageIcon("src/main/java/resources/MemoryTask/login.png");
-        JButton log_in_button = new JButton(log_in);
-        log_in_button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-        log_in_button.setBounds(200, 580, log_in.getIconWidth(), log_in.getIconHeight());
+        ImageIcon logIn = new ImageIcon("src/main/java/resources/MemoryTask/login.png");
+        JButton logInButton = new JButton(logIn);
+        logInButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        logInButton.setBounds(200, 580, logIn.getIconWidth(), logIn.getIconHeight());
 
         JTextField password = new JTextField();
         password.setEditable(true);
@@ -56,14 +67,14 @@ public class MemoryTaskView extends JLayeredPane{
             public void run() {
                 remove(0);
                 add(background, Integer.valueOf(0));
-                add(log_in_button, Integer.valueOf(1));
+                add(logInButton, Integer.valueOf(1));
                 add(password, Integer.valueOf(2));
             }
         };
 
         timer.schedule(task, 5000);
 
-        log_in_button.addActionListener(new ActionListener() {
+        logInButton.addActionListener(new ActionListener() {
             /**
              * Invoked when an action occurs.
              *
@@ -72,7 +83,7 @@ public class MemoryTaskView extends JLayeredPane{
             @Override
             public void actionPerformed(ActionEvent e) {
 //                 passes the text collected to the controller
-                boolean success = controller.passer(actual_password, password);
+                boolean success = controller.passer(actualPassword, password);
                 if(success){
                     JOptionPane.showMessageDialog(null, "Successful");
                     MemoryTaskController.setCompletionStatus(true);

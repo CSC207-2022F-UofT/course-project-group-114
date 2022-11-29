@@ -15,8 +15,8 @@ public class AssignmentTaskTest {
         AssignmentTask.setCharacterCountNeeded();
         AssignmentTask.setCurrentCharacterCount(AssignmentTask.getCharacterCountNeeded());
         AssignmentTask.checkCount();
-        assert(!AssignmentTask.getActivatedStatus());
-        assert(AssignmentTask.getCompletionStatus());
+        assert(!AssignmentTask.getActivatedStatus("AssignmentTask"));
+        assert(AssignmentTask.getCompletionStatus("AssignmentTask"));
     }
 
     @Test
@@ -24,14 +24,16 @@ public class AssignmentTaskTest {
         AssignmentTask.setCharacterCountNeeded();
         AssignmentTask.setCurrentCharacterCount(-1);   // which is always wrong by the precondition/design
         AssignmentTask.checkCount();
+
         assert(AssignmentTask.getActivatedStatus());
         assert(!AssignmentTask.getCompletionStatus());
+
     }
 
     @Test
     void testReset(){
         // test if reset() properly resets needed variables
         AssignmentTask.reset();
-        assert(!AssignmentTask.getCompletionStatus());
+        assert(!AssignmentTask.getCompletionStatus("AssignmentTask"));
     }
 }

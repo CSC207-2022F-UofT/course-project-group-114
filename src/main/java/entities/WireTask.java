@@ -60,8 +60,8 @@ public class WireTask extends Task{
     }
     public static void checkCompletion(){
         if (LeftWires.isEmpty()){
-            setCompletionStatus(true);
-            setActivatedStatus(false);
+            setCompletionStatus("WireTask", true);
+            setActivatedStatus("WireTask", false);
         }
     }
 }

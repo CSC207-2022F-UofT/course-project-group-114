@@ -35,9 +35,9 @@ public class ClickTaskController {
     }
 
     public static void setCompletionStatus(boolean status) {
-       ClickTask.setCompletionStatus(status);
+       ClickTask.setCompletionStatus("ClickTask", status);
     }
     public static void setActivatedStatus(boolean status) {
-        ClickTask.setActivatedStatus(status);
+        ClickTask.setActivatedStatus("ClickTask", status);
     }
 }
