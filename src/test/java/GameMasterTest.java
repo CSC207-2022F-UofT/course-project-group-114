@@ -1,5 +1,7 @@
 import entities.GameMaster;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.time.Clock;
 import java.util.Objects;
 import org.junit.jupiter.api.Assertions;
@@ -13,11 +15,41 @@ import org.junit.jupiter.api.Test;
 public class GameMasterTest {
 
     @Test
-    public void createNewTaskTest(){
-        // JUnit test for exceptions
+    public void createNewTaskSetCompletionTest() throws ClassNotFoundException, InvocationTargetException,
+            NoSuchMethodException, IllegalAccessException {
         Clock clock = Clock.systemDefaultZone();
         long currTime = clock.millis();
+        GameMaster.createNewTask(currTime);
+        boolean taskRun = false;
+        for (int i = 0; i < GameMaster.tasks.length; i++){
+            String task = GameMaster.tasks[i];
+            Class<?> taskClass = Class.forName("entities." + task);
+            Method completionMethod  = taskClass.getMethod("getCompletionStatus");
+            taskRun = (Boolean) completionMethod.invoke(taskClass);
+            if (taskRun){
+                break;
+            }
+        }
+        Assertions.assertTrue(taskRun);
+    }
 
+    @Test
+    public void createNewTaskSetActivatedTest() throws ClassNotFoundException, InvocationTargetException,
+            NoSuchMethodException, IllegalAccessException {
+        Clock clock = Clock.systemDefaultZone();
+        long currTime = clock.millis();
+        GameMaster.createNewTask(currTime);
+        boolean taskRun = false;
+        for (int i = 0; i < GameMaster.tasks.length; i++){
+            String task = GameMaster.tasks[i];
+            Class<?> taskClass = Class.forName("entities." + task);
+            Method activatedMethod  = taskClass.getMethod("getActivatedStatus");
+            taskRun = (Boolean) activatedMethod.invoke(taskClass);
+            if (taskRun){
+                break;
+            }
+        }
+        Assertions.assertTrue(taskRun);
     }
 
     @Test
@@ -29,6 +61,7 @@ public class GameMasterTest {
     @Test
     public void checkTasksCompletionTest(){
         // JUnit test for exceptions
+        // Since nobody is playing the game, it should always be false
     }
 
     @Test
@@ -48,6 +81,6 @@ public class GameMasterTest {
 
     @Test
     public void getTimesTest(){
-
+        // Since nobody is playing, it's the default value
     }
 }
