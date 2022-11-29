@@ -3,7 +3,8 @@ import java.util.Random;
 public class HeatAdjustmentTask extends Task {
     public static int answerTemp; // The actual temperature the user must achieve
     public static int currentTemp; // The user's current temperature
-    public static boolean completed = false;
+//    private static boolean completed;
+//    private static boolean activated;
     public HeatAdjustmentTask() {
         reset();
     }
@@ -14,6 +15,7 @@ public class HeatAdjustmentTask extends Task {
         while (currentTemp == answerTemp) {
             currentTemp = randomizeCurrentTemp();
         }
+        Task.reset("HeatAdjustmentTask");
     }
     private static int randomizeCurrentTemp() { // Return a random integer between 0 and 30
         Random rand = new Random();
@@ -22,9 +24,21 @@ public class HeatAdjustmentTask extends Task {
     public static boolean setCurrentTemp(int temp) {
         currentTemp = temp;
         if (currentTemp == answerTemp) { // If current is answer, the task is complete
-            activated = false;
-            completed = true;
+            setActivatedStatus("HeatAdjustmentTask", false);
+            setCompletionStatus("HeatAdjustmentTask", true);
         }
-        return completed;
+        return getCompletionStatus("HeatAdjustmentTask");
     }
+//    public static void setCompletionStatus(boolean status) {
+//        completed = status;
+//    }
+//    public static boolean getCompletionStatus() {
+//        return completed;
+//    }
+//    public static void setActivatedStatus(boolean status) {
+//        activated = status;
+//    }
+//    public static boolean getActivatedStatus() {
+//        return activated;
+//    }
 }
