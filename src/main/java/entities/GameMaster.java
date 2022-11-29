@@ -15,7 +15,7 @@ public class GameMaster {
     final static int TIME_ALLOWED = 10000; // Constant amount of time allowed per task
     private static int taskInterval = 10000; // Time between tasks in milliseconds
     public static boolean playing = true;
-    private static final Hashtable<String, Long> times = new Hashtable<String, Long>();
+    private static final Hashtable<String, Long> times = new Hashtable<>();
 
     public static String[] tasks = new String[] {"ClickTask", "AssignmentTask", "MemoryTask", "HeatAdjustmentTask",
     "PhoneNumberTask"};

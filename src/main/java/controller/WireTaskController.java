@@ -18,5 +18,8 @@ public class WireTaskController {
     public static void setActivationStatus(boolean status) {
         WireTask.setActivatedStatus("WireTask", status);
     }
+    public static boolean getActivatedStatus() {
+        return WireTask.getActivatedStatus("WireTask");
+    }
 
 }

@@ -19,4 +19,7 @@ public class AssignmentTaskController {
     public static void setActivatedStatus(boolean status) {
         AssignmentTask.setActivatedStatus("AssignmentTask", status);
     }
+    public static boolean getActivatedStatus() {
+        return AssignmentTask.getActivatedStatus("AssignmentTask");
+    }
 }

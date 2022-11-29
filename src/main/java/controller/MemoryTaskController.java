@@ -38,5 +38,8 @@ public class MemoryTaskController {
     public static void setActivatedStatus(boolean status) {
         MemoryTask.setActivatedStatus("MemoryTask", status);
     }
+    public static boolean getActivatedStatus() {
+        return MemoryTask.getActivatedStatus("MemoryTask");
+    }
 
 }

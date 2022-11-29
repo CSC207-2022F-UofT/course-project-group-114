@@ -323,10 +323,14 @@ public class GameMasterView extends JFrame{
                     coolDown = false;
                 }
                 System.out.println(GameMasterController.getTaskInterval());
+                if (!GameMasterController.getPlayingStatus()) { // If game is over, stop the game
+                    this.cancel();
+                }
             }
         };
 
         timer.schedule(gameLoop, 50, 1000);
+
         if (!GameMasterController.getPlayingStatus()) {
             gameLoop.cancel();
         }

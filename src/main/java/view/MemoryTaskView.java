@@ -1,5 +1,6 @@
 package view;
 
+import controller.ClickTaskController;
 import controller.MemoryTaskController;
 
 import javax.swing.*;
@@ -69,6 +70,10 @@ public class MemoryTaskView extends JLayeredPane{
                 add(background, Integer.valueOf(0));
                 add(logInButton, Integer.valueOf(1));
                 add(password, Integer.valueOf(2));
+                // Check if time ran out / task was deactivated
+                if (!MemoryTaskController.getActivatedStatus()) {
+                    GameMasterView.backToMain(GameMasterView.memoryTaskView);
+                }
             }
         };
 
