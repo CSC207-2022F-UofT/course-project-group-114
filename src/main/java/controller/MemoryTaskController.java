@@ -28,7 +28,7 @@ public class MemoryTaskController {
      * @param status boolean value the CompletionStatus of the MemoryTask needs to be set to
      */
     public static void setCompletionStatus(boolean status) {
-        MemoryTask.setCompletionStatus(status);
+        MemoryTask.setCompletionStatus("MemoryTask", status);
     }
 
     /**
@@ -36,7 +36,7 @@ public class MemoryTaskController {
      * @param status boolean value the ActivatedStatus of the MemoryTask needs to be set to
      */
     public static void setActivatedStatus(boolean status) {
-        MemoryTask.setActivatedStatus(status);
+        MemoryTask.setActivatedStatus("MemoryTask", status);
     }
 
 }

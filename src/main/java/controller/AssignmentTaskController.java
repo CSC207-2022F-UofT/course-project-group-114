@@ -10,13 +10,13 @@ public class AssignmentTaskController {
     public static boolean validate(int currentCharacterCount){
         AssignmentTask.setCurrentCharacterCount(currentCharacterCount);
         AssignmentTask.checkCount();
-        return AssignmentTask.getCompletionStatus();
+        return AssignmentTask.getCompletionStatus("AssignmentTask");
     }
 
     public static void setCompletionStatus(boolean status) {
-        AssignmentTask.setCompletionStatus(status);
+        AssignmentTask.setCompletionStatus("AssignmentTask", status);
     }
     public static void setActivatedStatus(boolean status) {
-        AssignmentTask.setActivatedStatus(status);
+        AssignmentTask.setActivatedStatus("AssignmentTask", status);
     }
 }

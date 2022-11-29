@@ -33,7 +33,7 @@ public class PhoneNumberTaskController {
      * @param status boolean value the CompletionStatus of the PhoneNumberTask needs to be set to
      */
     public static void setCompletionStatus(boolean status) {
-        PhoneNumberTask.setCompletionStatus(status);
+        PhoneNumberTask.setCompletionStatus("PhoneNumberTask", status);
     }
 
     /**
@@ -41,6 +41,6 @@ public class PhoneNumberTaskController {
      * @param status boolean value the ActivatedStatus of the PhoneNumberTask needs to be set to
      */
     public static void setActivatedStatus(boolean status) {
-        PhoneNumberTask.setActivatedStatus(status);
+        PhoneNumberTask.setActivatedStatus("PhoneNumberTask", status);
     }
 }

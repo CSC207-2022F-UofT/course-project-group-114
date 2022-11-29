@@ -17,13 +17,16 @@ public class MemoryTask extends Task{
      */
     public static boolean checkCorrectness(String actualPassword, String typedPassword){
         if(typedPassword.equals(actualPassword)){
-            setCompletionStatus(true);
+            setCompletionStatus("MemoryTask",true);
             return true;
         }
         else{
             return false;
         }
 
+    }
+    public static void reset() {
+        Task.reset("MemoryTask");
     }
 
 }
