@@ -11,8 +11,19 @@ import java.util.UUID;
 
 import java.util.Timer;
 
+/**
+ * The View class for the Memory Task which creates a JLayeredPane that
+ * displays all components needed for the Memory Task.
+ * @author Kaavya
+ * @inheritDoc JLayeredPane
+ */
 public class MemoryTaskView extends JLayeredPane{
 
+    /**
+     * The constructor for the MemoryTaskView which creates and places all the
+     * required components on the JLayeredPane and has event listeners which
+     * pass information to the controller when needed.
+     */
     MemoryTaskView(){
 
         MemoryTaskController controller = new MemoryTaskController();

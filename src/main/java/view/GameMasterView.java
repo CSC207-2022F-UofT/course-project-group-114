@@ -2,6 +2,7 @@ package view;
 import controller.GameMasterController;
 import entities.GameMaster;
 import entities.HeatAdjustmentTask;
+import entities.LifeMaster;
 
 import java.awt.*;
 import javax.swing.*;
@@ -21,6 +22,7 @@ public class GameMasterView extends JFrame{
     ImageIcon backgroundIcon;
     JLabel background;
     JLabel scoreDisplay;
+    JLabel livesDisplay;
     ImageIcon catClockIcon;
     ImageIcon activeCatClockIcon;
     JLabel catClock;
@@ -72,6 +74,11 @@ public class GameMasterView extends JFrame{
         scoreDisplay.setForeground(new Color(200, 255, 255));
         scoreDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 
+        livesDisplay = new JLabel((Integer.toString(LifeMaster.getLives())));
+        livesDisplay.setBounds(360, 0, 200, 100);
+        livesDisplay.setForeground(new Color(200, 255, 255));
+        livesDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+
         // Create background JLabel
         backgroundIcon = scaleIcon("src/main/java/resources/GameMaster/background.jpg");
         background = new JLabel();
@@ -109,6 +116,7 @@ public class GameMasterView extends JFrame{
         layers.add(phone, Integer.valueOf(3));
         layers.add(screen, Integer.valueOf(4));
         layers.add(scoreDisplay, Integer.valueOf(4));
+        layers.add(livesDisplay, Integer.valueOf(4));
         layers.setPreferredSize(new Dimension(1280, 720));
 
         // Create the non-neutral JLabels; that is, the ones that are not visible at the start of the game
@@ -280,35 +288,38 @@ public class GameMasterView extends JFrame{
         // Check for every task activation or de-activation
         Timer timer = new Timer();
         Clock clock = Clock.systemDefaultZone();
-        long currTime = clock.millis();
+//        long currTime = clock.millis();
         int taskInterval = GameMaster.getTaskInterval(); // Interval for creating tasks
-        GameMasterController.createNewTask(currTime);
-        final Hashtable[] times = new Hashtable[1];
+//        GameMasterController.createNewTask(currTime);
+        @SuppressWarnings("unchecked")
+        final Hashtable<String, Long>[] times = new Hashtable[1];
         times[0] = GameMaster.getTimes();
+        @SuppressWarnings("unchecked")
         final Set<String>[] activeTasks = new Set[]{times[0].keySet()};
-        activateTasks(activeTasks[0]);
+//        activateTasks(activeTasks[0]);
 
         TimerTask gameLoop = new TimerTask() {
             long currTime = clock.millis();
             long checkTime = currTime + taskInterval;
-//        while (GameMasterController.getPlayingStatus()) {
             @Override
             public void run() {
-                System.out.println("IN THE RUN METHOD");
                 currTime = clock.millis();
                 if (clock.millis() >= checkTime) { // Create new task if interval has passed
                     checkTime = clock.millis() + taskInterval; // Update current time
                     GameMasterController.createNewTask(currTime);
+                    System.out.println("Task created");
                 }
                 GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
                 times[0] = GameMasterController.getTimes();
-                activeTasks[0] = (Set<String>) times[0].keySet();
+                activeTasks[0] = times[0].keySet();
+//                System.out.println(Arrays.toString(activeTasks));
                 activateTasks(activeTasks[0]);
                 scoreDisplay.setText(Integer.toString(GameMasterController.getScore()));
+                livesDisplay.setText(Integer.toString(LifeMaster.getLives()));
             }
         };
 
-        timer.schedule(gameLoop, 0, 500);
+        timer.schedule(gameLoop, 50, 1000);
         if (!GameMasterController.getPlayingStatus()) {
             gameLoop.cancel();
         }
@@ -375,6 +386,10 @@ public class GameMasterView extends JFrame{
             trivia.setVisible(false);
             clickableTrivia.setVisible(false);
         }
+    }
+    // TODO delete main method
+    public static void main(String[] args) {
+        new GameMasterView();
     }
 
     public static void backToMain(JLayeredPane taskToRemove) {

@@ -8,6 +8,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+/**
+ * The View class for the Phone Number Task which creates a JLayeredPane that
+ * displays all components needed for the Phone Number Task.
+ * @author Kaavya
+ * @inheritDoc JLayeredPane
+ */
 public class PhoneNumberTaskView extends JLayeredPane{
 
     Random rand = new Random();
@@ -15,6 +21,11 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
     private String numberSoFar = "";
 
+    /**
+     * The constructor for the PhoneNumberTaskView which creates and places all the
+     * required components on the JLayeredPane and has event listeners which keep track
+     * of the actions and pass information to the controller when needed.
+     */
     PhoneNumberTaskView(){
         PhoneNumberTaskController controller = new PhoneNumberTaskController();
 
