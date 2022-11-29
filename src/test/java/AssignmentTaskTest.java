@@ -15,25 +15,25 @@ public class AssignmentTaskTest {
         AssignmentTask.setCharacterCountNeeded();
         AssignmentTask.setCurrentCharacterCount(AssignmentTask.getCharacterCountNeeded());
         AssignmentTask.checkCount();
-        assert(!AssignmentTask.getActivatedStatus());
-        assert(AssignmentTask.getCompletionStatus());
+        assert(!AssignmentTask.getActivatedStatus("AssignmentTask"));
+        assert(AssignmentTask.getCompletionStatus("AssignmentTask"));
     }
 
     @Test
     void testCheckCountWrong(){
-        boolean oldActivatedStatus = AssignmentTask.getActivatedStatus();
+        boolean oldActivatedStatus = AssignmentTask.getActivatedStatus("AssignmentTask");
         AssignmentTask.setCharacterCountNeeded();
         AssignmentTask.setCurrentCharacterCount(-1);   // which is always wrong by the precondition/design
         AssignmentTask.checkCount();
         // if checkCount fails, activatedStatus should remain the same
-        assert(AssignmentTask.getActivatedStatus() == oldActivatedStatus);
-        assert(!AssignmentTask.getCompletionStatus());
+        assert(AssignmentTask.getActivatedStatus("AssignmentTask") == oldActivatedStatus);
+        assert(!AssignmentTask.getCompletionStatus("AssignmentTask"));
     }
 
     @Test
     void testReset(){
         // test if reset() properly resets needed variables
         AssignmentTask.reset();
-        assert(!AssignmentTask.getCompletionStatus());
+        assert(!AssignmentTask.getCompletionStatus("AssignmentTask"));
     }
 }
