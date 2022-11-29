@@ -24,7 +24,7 @@ public class AssignmentTaskTest {
         AssignmentTask.setCharacterCountNeeded();
         AssignmentTask.setCurrentCharacterCount(-1);   // which is always wrong by the precondition/design
         AssignmentTask.checkCount();
-        assert(!AssignmentTask.getActivatedStatus());  //this should be kept false until GameMaster activates
+        assert(AssignmentTask.getActivatedStatus());
         assert(!AssignmentTask.getCompletionStatus());
     }
 
