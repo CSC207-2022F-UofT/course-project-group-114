@@ -30,7 +30,8 @@ public class LifeMaster {
     public static int getLives() {
         return lives;
     }
-    public static void setLives(int newLives) {
-        lives = newLives;
+    public static void reset() {
+        lives = 5;
+        tasksCompletedCount = 0;
     }
 }
