@@ -10,10 +10,10 @@ public class MemoryTaskController {
         return (MemoryTask.checkCorrectness(actualPassword, typedPassword.getText()));
     }
     public static void setCompletionStatus(boolean status) {
-        MemoryTask.setCompletionStatus(status);
+        MemoryTask.setCompletionStatus("MemoryTask", status);
     }
     public static void setActivatedStatus(boolean status) {
-        MemoryTask.setActivatedStatus(status);
+        MemoryTask.setActivatedStatus("MemoryTask", status);
     }
 
 }

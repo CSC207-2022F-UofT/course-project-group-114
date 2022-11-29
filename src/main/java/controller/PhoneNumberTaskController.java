@@ -13,9 +13,9 @@ public class PhoneNumberTaskController {
         }
     }
     public static void setCompletionStatus(boolean status) {
-        PhoneNumberTask.setCompletionStatus(status);
+        PhoneNumberTask.setCompletionStatus("PhoneNumberTask", status);
     }
     public static void setActivatedStatus(boolean status) {
-        PhoneNumberTask.setActivatedStatus(status);
+        PhoneNumberTask.setActivatedStatus("PhoneNumberTask", status);
     }
 }
