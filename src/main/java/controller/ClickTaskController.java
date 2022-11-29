@@ -40,4 +40,7 @@ public class ClickTaskController {
     public static void setActivatedStatus(boolean status) {
         ClickTask.setActivatedStatus("ClickTask", status);
     }
+    public static boolean getActivatedStatus() {
+        return ClickTask.getActivatedStatus("ClickTask");
+    }
 }

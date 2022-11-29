@@ -74,6 +74,8 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
                     HeatAdjustmentTaskController.setCompletionStatus(true);
                     HeatAdjustmentTaskController.setActivationStatus(false);
                     GameMasterView.backToMain(GameMasterView.heatTaskView);
+                } else if (!HeatAdjustmentTaskController.getActivatedStatus()) { // automatically back to main,
+                    GameMasterView.backToMain(GameMasterView.heatTaskView); // time ran out during task
                 }
             }
 
@@ -100,6 +102,8 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
                     HeatAdjustmentTaskController.setCompletionStatus(true);
                     HeatAdjustmentTaskController.setActivationStatus(false);
                     GameMasterView.backToMain(GameMasterView.heatTaskView);
+                } else if (!HeatAdjustmentTaskController.getActivatedStatus()) { // automatically back to main,
+                    GameMasterView.backToMain(GameMasterView.heatTaskView); // time ran out during task
                 }
             }
 

@@ -54,6 +54,12 @@ public class ClickTaskView extends JLayeredPane{
         button.addActionListener(e -> {
             int currentClicks = ClickTaskController.getCurrentClicks() + 1;
             int neededClicks = ClickTaskController.getNeededClicks();
+
+            // Check if time ran out / task was deactivated
+            if (!ClickTaskController.getActivatedStatus()) {
+                GameMasterView.backToMain(GameMasterView.clickTaskView);
+            }
+
             ClickTaskController.setCurrentClicks(currentClicks);
             header.setText("TODO: CLICK TO EAT AND DON'T WASTE FOOD!! \nCurrent Clicks: " +
                     currentClicks + "\n Needed Clicks: "+ ClickTaskController.getNeededClicks());
