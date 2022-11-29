@@ -22,10 +22,10 @@ public class TriviaTaskController {
         return (TriviaTaskUsecase.checkAnswer(actualAnswer, playerAnswer.getText()));
     }
     public static void setCompletionStatus(boolean status) {
-        TriviaTask.setCompletionStatus(status);
+        TriviaTask.setCompletionStatus("WireTask", status);
     }
     public static void setActivatedStatus(boolean status) {
-        TriviaTask.setActivatedStatus(status);
+        TriviaTask.setActivatedStatus("WireTask", status);
     }
 
 }

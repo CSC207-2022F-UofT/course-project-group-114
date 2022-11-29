@@ -12,11 +12,11 @@ public class WireTaskController {
     }
 
     public static void setCompletionStatus(boolean status) {
-        WireTask.setCompletionStatus(status);
+        WireTask.setCompletionStatus("WireTask", status);
     }
 
     public static void setActivationStatus(boolean status) {
-        WireTask.setActivatedStatus(status);
+        WireTask.setActivatedStatus("WireTask", status);
     }
 
 }
