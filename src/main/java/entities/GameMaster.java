@@ -12,8 +12,8 @@ import java.util.Random;
  */
 
 public class GameMaster {
+    final static int TIME_ALLOWED = 10000; // Constant amount of time allowed per task
     private static int taskInterval = 10000; // Time between tasks in milliseconds
-    private static int timeAllowed = 10000; // Amount of time allowed for each task in milliseconds
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<String, Long>();
 
@@ -21,8 +21,6 @@ public class GameMaster {
     "PhoneNumberTask"};
 //    public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
 //            "AssignmentTask", "MemoryTask", "WireTask", "TriviaTask"};
-
-    // Ensure that the method throws the needed exceptions when searching for classes and methods
 
     /**
      * Method for creating / activating a new task and adding it to the times hashmap
@@ -44,7 +42,8 @@ public class GameMaster {
             completionMethod.invoke(taskClass, newTaskName, false);
             Method activatedMethod = taskClass.getMethod("setActivatedStatus", String.class, boolean.class);
             activatedMethod.invoke(taskClass, newTaskName, true);
-            times.put(newTaskName, currTime + timeAllowed); // Record the deadline for this task in the hashmap
+            // Amount of time allowed for each task in milliseconds
+            times.put(newTaskName, currTime + TIME_ALLOWED); // Record the deadline for this task in the hashmap
         }
     }
 
