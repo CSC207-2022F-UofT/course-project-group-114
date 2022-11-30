@@ -1,7 +1,7 @@
 package usecases;
 
 import entities.User;
-import presenter.AuthenticatorPresentor;
+import presenter.AuthenticatorPresenter;
 
 import java.io.*;
 import java.math.BigInteger;
@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 /**
- *  This class contains the methods that relate to logging in,
+ *  This use case class contains the methods that relate to logging in,
  *  signing up, writing the CSV, encrypting the inputted password,
  *  storing/remembering the current player's User class, and updating
  *  the current player's high score after they lose.
@@ -21,6 +21,10 @@ import java.util.*;
 public class Authenticator {
     private static User current; // the current user
     public static ArrayList<User> users; // an ArrayList of all the users
+
+    public static boolean signin = false;
+
+    public static boolean login = false;
 
     static {
         try {
@@ -47,18 +51,11 @@ public class Authenticator {
         }
 
         if(index == -1){
-            AuthenticatorPresentor.loginFail();
+            login = false;
         }
         else {
             current = users.get(index);
-            if(md5(password).equals(current.getPassword()))
-            {
-                AuthenticatorPresentor.startGame();
-            }
-            else
-            {
-                AuthenticatorPresentor.loginFail();
-            }
+            login = md5(password).equals(current.getPassword());
         }
     }
 
@@ -73,19 +70,20 @@ public class Authenticator {
      */
     public static void signIn(String name, String username, String password, String password2){
         if (!password.equals(password2)){
-            AuthenticatorPresentor.signinFail();
+            signin = false;
         }
 
         for (User user : users) {
             if (Objects.equals(user.getUsername(), username)) {
-                AuthenticatorPresentor.signinFail();
+                signin = false;
+                return;
             }
         }
 
         users.add(new User(name, username, md5(password), 0));
         current = users.get(users.size() - 1);
         updateCSV();
-        AuthenticatorPresentor.startGame();
+        signin = true;
     }
 
     /**

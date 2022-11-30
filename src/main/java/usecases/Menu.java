@@ -1,16 +1,16 @@
 package usecases;
 import entities.User;
-import presenter.HighscorePresentor;
 
 import java.util.ArrayList;
 
 /**
- * This class contains a method used to get the score for
+ * This use case class contains a method used to get the score for
  * the high score board during the start menu.
  *
  * @author Ming Hin Joshua Li
  */
 public class Menu {
+    public static String highScores;
 
     /**
      * This method gets the users from Authenticator and picks the first 7
@@ -26,6 +26,6 @@ public class Menu {
             index += 1;
         }
 
-        HighscorePresentor.showscore(scores.toString());
+        highScores = scores.toString();
     }
 }
