@@ -146,6 +146,8 @@ public class Authenticator {
             lst.add(new User(name, username, password, highscore));
         }
 
+        Collections.sort(lst);
+        Collections.reverse(lst);
         return lst;
     }
 
