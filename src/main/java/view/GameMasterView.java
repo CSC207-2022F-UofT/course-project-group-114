@@ -1,5 +1,6 @@
 package view;
 import controller.GameMasterController;
+import presenter.GameMasterPresenter;
 import usecases.GameMaster;
 import usecases.LifeMaster;
 
@@ -286,11 +287,9 @@ public class GameMasterView extends JFrame{
 //        long currTime = clock.millis();
         int taskInterval = GameMasterController.getTaskInterval(); // Interval for creating tasks
 //        GameMasterController.createNewTask(currTime);
+
         @SuppressWarnings("unchecked")
-        final Hashtable<String, Long>[] times = new Hashtable[1];
-        times[0] = GameMaster.getTimes();
-        @SuppressWarnings("unchecked")
-        final Set<String>[] activeTasks = new Set[]{times[0].keySet()};
+        final Set<String>[] activeTasks = new Set[]{GameMasterPresenter.getActivateTasks()};
 //        activateTasks(activeTasks[0]);
 
         TimerTask gameLoop = new TimerTask() {
@@ -306,13 +305,12 @@ public class GameMasterView extends JFrame{
                     System.out.println("Task created");
                 }
                 GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
-                times[0] = GameMasterController.getTimes();
-                activeTasks[0] = times[0].keySet();
+                activeTasks[0] = GameMasterPresenter.getActivateTasks();
 //                System.out.println(Arrays.toString(activeTasks));
                 activateTasks(activeTasks[0]);
-                scoreDisplay.setText(Integer.toString(GameMasterController.getScore()));
-                livesDisplay.setText(Integer.toString(LifeMaster.getLives()));
-                int currentTaskCount = GameMasterController.getTaskCount();
+                scoreDisplay.setText(GameMasterPresenter.getScoreText());
+                livesDisplay.setText(GameMasterPresenter.getLivesText());
+                int currentTaskCount = GameMasterPresenter.getTaskCount();
                 if (currentTaskCount % 10 == 0 && currentTaskCount > 0 && !coolDown) { // Speed up every 10 won tasks
                     int currentTaskInterval = GameMasterController.getTaskInterval();
                     GameMasterController.setTaskInterval((int) (currentTaskInterval / 1.75));
@@ -320,7 +318,6 @@ public class GameMasterView extends JFrame{
                 } else if (currentTaskCount % 10 == 1) {
                     coolDown = false;
                 }
-                System.out.println(GameMasterController.getTaskInterval());
                 if (!GameMasterController.getPlayingStatus()) { // If game is over, stop the game
                     this.cancel();
                 }
@@ -328,10 +325,6 @@ public class GameMasterView extends JFrame{
         };
 
         timer.schedule(gameLoop, 50, 1000);
-
-        if (!GameMasterController.getPlayingStatus()) {
-            gameLoop.cancel();
-        }
     }
 
     // Helper method for rescaling an ImageIcon
