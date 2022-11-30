@@ -1,4 +1,7 @@
 package entities;
+import presentor.HighscorePresentor;
+
+import javax.swing.*;
 import java.util.ArrayList;
 public class Menu {
     // this class controls the backend of the menu
@@ -8,7 +11,7 @@ public class Menu {
 
     // we need to agree to a path to store the file for saving
 
-    public static String getScores() // should be triggered after highscore screen open is clicked
+    public static void getScores(JTextArea base, JLayeredPane highscorePanel) // should be triggered after highscore screen open is clicked
     {
         ArrayList<User> users = Authenticator.users;
         StringBuilder scores = new StringBuilder();
@@ -18,10 +21,6 @@ public class Menu {
             index += 1;
         }
 
-        return scores.toString();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(getScores());
+        HighscorePresentor.showscore(base, scores.toString(), highscorePanel);
     }
 }
