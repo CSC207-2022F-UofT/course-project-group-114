@@ -1,7 +1,7 @@
 package usecases;
 
 /**
- * PhoneNumberTask is a subclass of the abstact class Task and represents the PhoneNumberTask game.
+ * PhoneNumberTask is a subclass of the abstract class Task and represents the PhoneNumberTask game.
  *
  * @author Kaavya Kalani
  * @inheritDoc Task
