@@ -7,8 +7,9 @@ import java.util.Hashtable;
 import java.util.Random;
 
 /**
- * Class representing the GameMaster entity, which is responsible for the main game functions such as generating
+ * Class representing the GameMaster use case, which is responsible for the main game functions such as generating
  * and deactivating tasks as needed
+ * @author Elena
  */
 
 public class GameMaster {
@@ -90,9 +91,7 @@ public class GameMaster {
             Method setActivatedStatus = taskClass.getMethod("setActivatedStatus", String.class, boolean.class);
             Method setCompletionStatus = taskClass.getMethod("setCompletionStatus", String.class, boolean.class);
             if (currTime >= times.get(taskName)) { // If the time is up for the task
-                System.out.println("Time up for: " + taskName);
                 if (completionStatus) { // The task was completed successfully
-                    times.remove(taskName);
                     setActivatedStatus.invoke(taskClass, taskName, false);
                     setCompletionStatus.invoke(taskClass, taskName, false);
                     LifeMaster.incrementTaskCount();
