@@ -30,4 +30,7 @@ public class HeatAdjustmentTaskController {
     public static void setActivationStatus(boolean status) {
         HeatAdjustmentTask.setActivatedStatus("HeatAdjustmentTask", status);
     }
+    public static boolean getActivatedStatus() {
+        return HeatAdjustmentTask.getActivatedStatus("HeatAdjustmentTask");
+    }
 }

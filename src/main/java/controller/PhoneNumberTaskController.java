@@ -43,4 +43,7 @@ public class PhoneNumberTaskController {
     public static void setActivatedStatus(boolean status) {
         PhoneNumberTask.setActivatedStatus("PhoneNumberTask", status);
     }
+    public static boolean getActivatedStatus() {
+        return PhoneNumberTask.getActivatedStatus("PhoneNumberTask");
+    }
 }

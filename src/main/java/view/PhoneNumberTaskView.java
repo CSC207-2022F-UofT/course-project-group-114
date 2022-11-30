@@ -1,5 +1,6 @@
 package view;
 
+import controller.ClickTaskController;
 import controller.PhoneNumberTaskController;
 
 import javax.swing.*;
@@ -149,6 +150,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 // write what you want to do once the button is pressed
                 numberSoFar += "1";
                 numberTyped.setText(numberSoFar);
@@ -163,6 +165,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 numberSoFar += "2";
                 numberTyped.setText(numberSoFar);
             }
@@ -176,6 +179,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 numberSoFar += "3";
                 numberTyped.setText(numberSoFar);
             }
@@ -189,6 +193,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 numberSoFar += "4";
                 numberTyped.setText(numberSoFar);
             }
@@ -202,6 +207,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 numberSoFar += "5";
                 numberTyped.setText(numberSoFar);
             }
@@ -215,6 +221,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 numberSoFar += "6";
                 numberTyped.setText(numberSoFar);
             }
@@ -228,6 +235,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 numberSoFar += "7";
                 numberTyped.setText(numberSoFar);
             }
@@ -241,6 +249,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 numberSoFar += "8";
                 numberTyped.setText(numberSoFar);
             }
@@ -254,6 +263,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 numberSoFar += "9";
                 numberTyped.setText(numberSoFar);
             }
@@ -267,6 +277,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
              */
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 numberSoFar += "0";
                 numberTyped.setText(numberSoFar);
             }
@@ -299,5 +310,11 @@ public class PhoneNumberTaskView extends JLayeredPane{
     }
     public static void main(String[] args) {
         new PhoneNumberTaskView();
+    }
+    private static void checkIfTimeRanOut() {
+        // Check if time ran out / task was deactivated
+        if (!PhoneNumberTaskController.getActivatedStatus()) {
+            GameMasterView.backToMain(GameMasterView.phoneTaskView);
+        }
     }
 }

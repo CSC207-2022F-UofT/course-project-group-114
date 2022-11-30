@@ -82,6 +82,11 @@ public class AssignmentTaskView extends JLayeredPane implements KeyListener{
             currentProgress++;
         }
 
+        // Check if time ran out / task was deactivated
+        if (!AssignmentTaskController.getActivatedStatus()) {
+            GameMasterView.backToMain(GameMasterView.assignmentTaskView);
+        }
+
         // changing backgroung pictures to reflect changes
         switch (currentProgress){
             case 6:
