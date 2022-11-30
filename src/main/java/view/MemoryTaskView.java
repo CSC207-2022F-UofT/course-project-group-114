@@ -1,6 +1,5 @@
 package view;
 
-import controller.ClickTaskController;
 import controller.MemoryTaskController;
 
 import javax.swing.*;
@@ -88,7 +87,8 @@ public class MemoryTaskView extends JLayeredPane{
             @Override
             public void actionPerformed(ActionEvent e) {
 //                 passes the text collected to the controller
-                boolean success = controller.passer(actualPassword, password);
+                String typedPassword = password.getText();
+                boolean success = controller.passer(actualPassword, typedPassword);
                 if(success){
                     JOptionPane.showMessageDialog(null, "Successful");
                     MemoryTaskController.setCompletionStatus(true);
