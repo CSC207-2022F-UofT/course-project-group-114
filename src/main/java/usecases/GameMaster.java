@@ -7,8 +7,9 @@ import java.util.Hashtable;
 import java.util.Random;
 
 /**
- * Class representing the GameMaster entity, which is responsible for the main game functions such as generating
+ * Class representing the GameMaster use case, which is responsible for the main game functions such as generating
  * and deactivating tasks as needed
+ * @author Elena
  */
 
 public class GameMaster {
@@ -34,7 +35,7 @@ public class GameMaster {
         System.out.println("Create task method!");
         String newTaskName = chooseTask(tasks); // Pick a random task
         System.out.println(newTaskName);
-        Class<?> taskClass = Class.forName("entities." + newTaskName); // Get the task class
+        Class<?> taskClass = Class.forName("usecases." + newTaskName); // Get the task class
         if (!times.containsKey(newTaskName)) { // If the task isn't already running, then run it
             Method resetMethod = taskClass.getMethod("reset");
             resetMethod.invoke(taskClass);
@@ -84,15 +85,13 @@ public class GameMaster {
         ArrayList<String> tasksToRemove = new ArrayList<>();
         System.out.println(times.keySet());
         for (String taskName : times.keySet()) {
-            Class<?> taskClass = Class.forName("entities." + taskName);
+            Class<?> taskClass = Class.forName("usecases." + taskName);
             boolean completionStatus = (boolean) taskClass.getMethod("getCompletionStatus", String.class).invoke(taskClass, taskName);
             boolean activationStatus = (boolean) taskClass.getMethod("getActivatedStatus", String.class).invoke(taskClass, taskName);
             Method setActivatedStatus = taskClass.getMethod("setActivatedStatus", String.class, boolean.class);
             Method setCompletionStatus = taskClass.getMethod("setCompletionStatus", String.class, boolean.class);
             if (currTime >= times.get(taskName)) { // If the time is up for the task
-                System.out.println("Time up for: " + taskName);
                 if (completionStatus) { // The task was completed successfully
-                    times.remove(taskName);
                     setActivatedStatus.invoke(taskClass, taskName, false);
                     setCompletionStatus.invoke(taskClass, taskName, false);
                     LifeMaster.incrementTaskCount();

@@ -33,10 +33,6 @@ public class GameMasterController {
     public static Hashtable<String, Long> getTimes() {
         return GameMaster.getTimes();
     }
-    public static int getScore() {
-        return LifeMaster.getTaskCount();
-    }
-    public static int getTaskCount() {
-        return GameMaster.getTaskCount();
-    }
+
+
 }
