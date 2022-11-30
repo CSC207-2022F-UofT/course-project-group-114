@@ -25,8 +25,6 @@ public class TriviaTaskView extends JFrame {
         question.setHorizontalAlignment(JLabel.CENTER);
         question.setFont(new Font("Calibri", Font.BOLD, 18));
         popup.add(question);
-//        questionMessage.setPreferredSize(500, 500);
-//        questionMessage.setHoriziontalAlignment(JLabel.CENTER);
 
         TriviaTaskPanel = new JLayeredPane();
         TriviaTaskPanel.setPreferredSize(new Dimension(1280, 720));
