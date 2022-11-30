@@ -1,14 +1,12 @@
 package view;
 import controller.GameMasterController;
-import entities.GameMaster;
-import entities.LifeMaster;
+import usecases.GameMaster;
+import usecases.LifeMaster;
 
 import java.awt.*;
 import javax.swing.*;
 import java.time.Clock;
-import java.util.Arrays;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.Set;
 import java.util.TimerTask;
 import java.util.Timer;

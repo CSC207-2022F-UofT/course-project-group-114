@@ -1,6 +1,4 @@
-package entities;
-
-import view.GameMasterView;
+package usecases;
 
 public class AssignmentTask extends Task {
     private static final int COUNT_UPPERBOUND = 70;

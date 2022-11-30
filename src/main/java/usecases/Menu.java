@@ -1,7 +1,7 @@
-package entities;
-import presentor.HighscorePresentor;
+package usecases;
+import entities.User;
+import presenter.HighscorePresentor;
 
-import javax.swing.*;
 import java.util.ArrayList;
 public class Menu {
     // this class controls the backend of the menu

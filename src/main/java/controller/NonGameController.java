@@ -1,9 +1,6 @@
 package controller;
-import entities.Menu;
-import entities.Authenticator;
-import view.AuthenticatorView;
-
-import javax.swing.*;
+import usecases.Menu;
+import usecases.Authenticator;
 
 public class NonGameController {
     public static void getScores(){

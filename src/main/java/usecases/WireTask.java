@@ -1,4 +1,4 @@
-package entities;
+package usecases;
 
 import java.util.ArrayList;
 import java.util.Collections;

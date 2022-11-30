@@ -1,7 +1,7 @@
-package entities;
+package usecases;
 
-import presentor.AuthenticatorPresentor;
-import view.AuthenticatorView;
+import entities.User;
+import presenter.AuthenticatorPresentor;
 
 import java.io.*;
 import java.math.BigInteger;
