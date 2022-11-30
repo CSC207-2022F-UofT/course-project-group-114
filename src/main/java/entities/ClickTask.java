@@ -47,4 +47,8 @@ public class ClickTask extends Task{
         setCurrentClicks(0);
         Task.reset("ClickTask");
     }
+
+    public static int getUpperbound() {
+        return UPPERBOUND;
+    }
 }
