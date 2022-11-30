@@ -17,8 +17,9 @@ public class GameMaster {
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<>();
 
-    public static String[] tasks = new String[] {"ClickTask", "AssignmentTask", "MemoryTask", "HeatAdjustmentTask",
-    "PhoneNumberTask"};
+    public static String[] tasks = new String[] {"PhoneNumberTask"};
+//    public static String[] tasks = new String[] {"ClickTask", "AssignmentTask", "MemoryTask", "HeatAdjustmentTask",
+//    "PhoneNumberTask"};
 //    public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
 //            "AssignmentTask", "MemoryTask", "WireTask", "TriviaTask"};
 
@@ -34,7 +35,7 @@ public class GameMaster {
         System.out.println("Create task method!");
         String newTaskName = chooseTask(tasks); // Pick a random task
         System.out.println(newTaskName);
-        Class<?> taskClass = Class.forName("entities." + newTaskName); // Get the task class
+        Class<?> taskClass = Class.forName("usecases." + newTaskName); // Get the task class
         if (!times.containsKey(newTaskName)) { // If the task isn't already running, then run it
             Method resetMethod = taskClass.getMethod("reset");
             resetMethod.invoke(taskClass);
@@ -84,7 +85,7 @@ public class GameMaster {
         ArrayList<String> tasksToRemove = new ArrayList<>();
         System.out.println(times.keySet());
         for (String taskName : times.keySet()) {
-            Class<?> taskClass = Class.forName("entities." + taskName);
+            Class<?> taskClass = Class.forName("usecases." + taskName);
             boolean completionStatus = (boolean) taskClass.getMethod("getCompletionStatus", String.class).invoke(taskClass, taskName);
             boolean activationStatus = (boolean) taskClass.getMethod("getActivatedStatus", String.class).invoke(taskClass, taskName);
             Method setActivatedStatus = taskClass.getMethod("setActivatedStatus", String.class, boolean.class);

@@ -1,6 +1,6 @@
 package view;
 
-import controller.ClickTaskController;
+import presenter.PhoneNumberTaskPresenter;
 import controller.PhoneNumberTaskController;
 
 import javax.swing.*;
@@ -29,6 +29,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
      */
     PhoneNumberTaskView(){
         PhoneNumberTaskController controller = new PhoneNumberTaskController();
+        PhoneNumberTaskPresenter presenter = new PhoneNumberTaskPresenter();
 
         setPreferredSize(new Dimension(1280, 720));
 
@@ -292,15 +293,9 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                boolean success = controller.passer(actualNumber, numberSoFar);
-                if(success){
-                    PhoneNumberTaskController.setCompletionStatus(true);
-                    JOptionPane.showMessageDialog(null, "Correct");
-
-                } else {
-                    PhoneNumberTaskController.setCompletionStatus(false);
-                    JOptionPane.showMessageDialog(null, "Incorrect");
-                }
+                controller.passer(actualNumber, numberSoFar);
+                String status = presenter.SuccessfullnessStatus();
+                JOptionPane.showMessageDialog(null, status);
                 setVisible(false);
                 PhoneNumberTaskController.setActivatedStatus(false);
                 GameMasterView.backToMain(GameMasterView.phoneTaskView);

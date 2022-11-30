@@ -16,15 +16,14 @@ public class PhoneNumberTaskController {
      *
      * @param actualNumber the int which was generated and expected to be pressed.
      * @param pressedNumber the String where was actually pressed by the user.
-     * @return the boolean value returned by the checkCorrectness method in PhoneNumberTask
      */
-    public boolean passer(int actualNumber, String pressedNumber){
+    public void passer(int actualNumber, String pressedNumber){
         if(pressedNumber.length() > 9){
             int input_number = Integer.parseInt(pressedNumber.substring(0,9));
-            return (PhoneNumberTask.checkCorrectness(actualNumber, input_number));
+            PhoneNumberTask.checkCorrectness(actualNumber, input_number);
         }
         else{
-            return(PhoneNumberTask.checkCorrectness(actualNumber, Integer.parseInt(pressedNumber)));
+            PhoneNumberTask.checkCorrectness(actualNumber, Integer.parseInt(pressedNumber));
         }
     }
 

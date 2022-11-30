@@ -1,6 +1,6 @@
 package controller;
 
-import entities.MemoryTask;
+import usecases.MemoryTask;
 
 /**
  * The controller for the Memory Task which is responsible to take inputs from the view and

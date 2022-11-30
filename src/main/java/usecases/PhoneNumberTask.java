@@ -8,19 +8,20 @@ package usecases;
  */
 public class PhoneNumberTask extends Task {
 
+    public static boolean correct;
+
     /**
      * Checks if given actualNumber and pressedNumber are the same
      *
      * @param actualNumber the int which was generated and expected to be typed.
      * @param pressedNumber the int which was actually pressed by the user.
-     * @return true if given actualNumber and pressedPassword are the same and false otherwise.
      */
-    public static boolean checkCorrectness(int actualNumber, int pressedNumber){
+    public static void checkCorrectness(int actualNumber, int pressedNumber){
         if(actualNumber == pressedNumber){
             setCompletionStatus("PhoneNumberTask", true);
-            return true;
+            correct = true;
         } else {
-            return false;
+            correct = false;
         }
     }
 
