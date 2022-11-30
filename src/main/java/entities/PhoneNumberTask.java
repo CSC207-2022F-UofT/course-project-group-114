@@ -23,6 +23,10 @@ public class PhoneNumberTask extends Task {
             return false;
         }
     }
+
+    /**
+     * Resets the task everytime the PhoneNumberTask is called
+     */
     public static void reset() {
         Task.reset("PhoneNumberTask");
     }

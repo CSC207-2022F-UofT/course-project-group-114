@@ -1,7 +1,6 @@
 package controller;
 
 import entities.MemoryTask;
-import javax.swing.*;
 
 /**
  * The controller for the Memory Task which is responsible to take inputs from the view and
@@ -16,11 +15,11 @@ public class MemoryTaskController {
      * datatypes for the use case and passes it to them.
      *
      * @param actualPassword the String which was generated and expected to be typed.
-     * @param typedPassword the JTextField where the user has typed the password.
+     * @param typedPassword the String which the user has typed.
      * @return the boolean value returned by the checkCorrectness method in MemoryTask
      */
-    public boolean passer(String actualPassword, JTextField typedPassword){
-        return (MemoryTask.checkCorrectness(actualPassword, typedPassword.getText()));
+    public boolean passer(String actualPassword, String typedPassword){
+        return (MemoryTask.checkCorrectness(actualPassword, typedPassword));
     }
 
     /**
@@ -38,6 +37,11 @@ public class MemoryTaskController {
     public static void setActivatedStatus(boolean status) {
         MemoryTask.setActivatedStatus("MemoryTask", status);
     }
+
+    /**
+     * gets the ActivatedStatus of the Memory Task
+     * @return boolean value associated with Activated Status
+     */
     public static boolean getActivatedStatus() {
         return MemoryTask.getActivatedStatus("MemoryTask");
     }
