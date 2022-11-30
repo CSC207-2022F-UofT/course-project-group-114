@@ -1,13 +1,16 @@
 package presentor;
 
 import controller.NonGameController;
+import view.AuthenticatorView;
+import view.StartView;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class HighscorePresentor {
-    public static void showscore(JTextArea base, String scores, JLayeredPane highscorePanel){
-        base = new JTextArea(scores);
+    public static void showscore(String scores){
+        JLayeredPane highscorePanel = StartView.highscorePanel;
+        JTextArea base = new JTextArea(scores);
         base.setEditable(false);
         base.setFont(new Font("Snell Roundhand", Font.ITALIC | Font.BOLD, 40));
         base.setForeground(Color.BLACK);
