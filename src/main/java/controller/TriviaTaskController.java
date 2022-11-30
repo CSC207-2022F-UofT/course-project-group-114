@@ -1,6 +1,5 @@
 package controller;
-import entities.ClickTask;
-import entities.TriviaTask;
+import usecases.TriviaTask;
 import javax.swing.*;
 
 public class TriviaTaskController {

@@ -1,4 +1,4 @@
-package entities;
+package usecases;
 
 import java.util.Random;
 
@@ -46,5 +46,9 @@ public class ClickTask extends Task{
     public static void reset(){
         setCurrentClicks(0);
         Task.reset("ClickTask");
+    }
+
+    public static int getUpperbound() {
+        return UPPERBOUND;
     }
 }

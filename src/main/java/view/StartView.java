@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StartView extends JFrame {
+    public static JLayeredPane highscorePanel;
+    public static AuthenticatorView view;
 
     StartView(){
         Dimension maxSize = new Dimension(1280, 720);
@@ -41,21 +43,14 @@ public class StartView extends JFrame {
         menuPanel.add(playButton, Integer.valueOf(1));
         menuPanel.add(highscoreButton, Integer.valueOf(1));
 
-        JLayeredPane highscorePanel = new JLayeredPane();
+        highscorePanel = new JLayeredPane();
         highscorePanel.setPreferredSize(maxSize);
         ImageIcon highscoreBackground = new ImageIcon("src/main/java/resources/highscore_bg.jpg");
         JLabel notepad = new JLabel(highscoreBackground);
         notepad.setPreferredSize(maxSize);
         notepad.setBounds(0,     0, 1280, 720);
         //go when button pressed, tell controller to tell user to grab stuff then here we ask view to grab from controller
-        JTextArea scores = new JTextArea(NonGameController.getScores());
-        scores.setEditable(false);
-        scores.setFont(new Font("Snell Roundhand", Font.ITALIC | Font.BOLD, 40));
-        scores.setForeground(Color.BLACK);
-        scores.setBounds(460, 300, 1280, 720); // FIX THIS LATER
-        scores.setOpaque(false);
-        scores.setBorder(null);
-        scores.setMargin(new Insets(0, 0, 0, 0));
+        NonGameController.getScores();
         ImageIcon backButton = new ImageIcon("src/main/java/resources/return.png");
         JButton goBack = new JButton(backButton);
         goBack.setBorderPainted(false);
@@ -64,7 +59,6 @@ public class StartView extends JFrame {
         goBack.setContentAreaFilled(false);
         goBack.setBounds(860, 550, backButton.getIconWidth(), backButton.getIconHeight());
         highscorePanel.add(notepad, Integer.valueOf(0));
-        highscorePanel.add(scores, Integer.valueOf(1));
         highscorePanel.add(goBack, Integer.valueOf(2));
 
 
@@ -92,12 +86,12 @@ public class StartView extends JFrame {
 
         playButton.addActionListener(e -> {
             this.dispose();
-            new AuthenticatorView();
+            view = new AuthenticatorView();
         });
 
         goBack.addActionListener(e -> {
             this.dispose();
-            new AuthenticatorView();
+            view = new AuthenticatorView();
         });
     }
 

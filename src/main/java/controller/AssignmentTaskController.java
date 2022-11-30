@@ -1,6 +1,5 @@
 package controller;
-import entities.AssignmentTask;
-import entities.PhoneNumberTask;
+import usecases.AssignmentTask;
 
 public class AssignmentTaskController {
     public static int getCharacterCountNeeded(){

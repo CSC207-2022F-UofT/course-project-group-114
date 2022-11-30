@@ -1,6 +1,5 @@
-package entities;
+package usecases;
 
-import java.sql.Array;
 import java.util.*;
 
 public class TriviaTask extends Task {

@@ -1,5 +1,5 @@
 package controller;
-import entities.HeatAdjustmentTask;
+import usecases.HeatAdjustmentTask;
 
 public class HeatAdjustmentTaskController {
     private static int neededTemp;

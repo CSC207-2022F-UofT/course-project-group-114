@@ -1,4 +1,4 @@
-package entities;
+package usecases;
 
 /**
  * PhoneNumberTask is a subclass of the abstact class Task and represents the PhoneNumberTask game.

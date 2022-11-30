@@ -1,7 +1,6 @@
 package controller;
-import entities.ClickTask;
-import entities.GameMaster;
-import entities.LifeMaster;
+import usecases.GameMaster;
+import usecases.LifeMaster;
 
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;
