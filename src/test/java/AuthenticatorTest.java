@@ -5,6 +5,13 @@ import usecases.Authenticator;
 
 public class AuthenticatorTest {
 
+    @Test void logIn(){
+        // showcases that the player is stored and login works properly
+        Authenticator.signIn("My name", "username", "password", "password");
+        Authenticator.login("username", "password");
+        assert Authenticator.login;
+    }
+
     @Test
     public void passwordEncryption(){
         //showcases the Md5 method encrypts properly

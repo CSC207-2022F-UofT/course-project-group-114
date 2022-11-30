@@ -23,7 +23,7 @@ public class LifeMaster {
         Authenticator.updateScore(tasksCompletedCount); // Update the user's high score
         GameMaster.playing = false; // Stop game loop
         for (String taskName : GameMaster.tasks) { // Deactivate all tasks
-            Class<?> taskClass = Class.forName("entities." + taskName); // Get the task class
+            Class<?> taskClass = Class.forName("usecases." + taskName); // Get the task class
             taskClass.getDeclaredMethod("setActivatedStatus").invoke(false);
         }
     }
