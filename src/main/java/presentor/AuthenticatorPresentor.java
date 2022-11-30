@@ -2,6 +2,7 @@ package presentor;
 
 import view.AuthenticatorView;
 import view.GameMasterView;
+import view.StartView;
 
 import javax.swing.*;
 
@@ -17,7 +18,8 @@ public class AuthenticatorPresentor {
     }
     // switch window to gamemaster
 
-    public static void startGame(AuthenticatorView view){
+    public static void startGame(){
+        AuthenticatorView view = StartView.view;
         view.dispose();
         new GameMasterView();
     }

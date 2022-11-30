@@ -11,7 +11,7 @@ public class Menu {
 
     // we need to agree to a path to store the file for saving
 
-    public static void getScores(JTextArea base, JLayeredPane highscorePanel) // should be triggered after highscore screen open is clicked
+    public static void getScores() // should be triggered after highscore screen open is clicked
     {
         ArrayList<User> users = Authenticator.users;
         StringBuilder scores = new StringBuilder();
@@ -21,6 +21,6 @@ public class Menu {
             index += 1;
         }
 
-        HighscorePresentor.showscore(base, scores.toString(), highscorePanel);
+        HighscorePresentor.showscore(scores.toString());
     }
 }

@@ -6,7 +6,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StartView extends JFrame {
-    public static JTextArea scores;
+    public static JLayeredPane highscorePanel;
+    public static AuthenticatorView view;
 
     StartView(){
         Dimension maxSize = new Dimension(1280, 720);
@@ -42,14 +43,14 @@ public class StartView extends JFrame {
         menuPanel.add(playButton, Integer.valueOf(1));
         menuPanel.add(highscoreButton, Integer.valueOf(1));
 
-        JLayeredPane highscorePanel = new JLayeredPane();
+        highscorePanel = new JLayeredPane();
         highscorePanel.setPreferredSize(maxSize);
         ImageIcon highscoreBackground = new ImageIcon("src/main/java/resources/highscore_bg.jpg");
         JLabel notepad = new JLabel(highscoreBackground);
         notepad.setPreferredSize(maxSize);
         notepad.setBounds(0,     0, 1280, 720);
         //go when button pressed, tell controller to tell user to grab stuff then here we ask view to grab from controller
-        NonGameController.getScores(scores, highscorePanel);
+        NonGameController.getScores();
         ImageIcon backButton = new ImageIcon("src/main/java/resources/return.png");
         JButton goBack = new JButton(backButton);
         goBack.setBorderPainted(false);
@@ -85,12 +86,12 @@ public class StartView extends JFrame {
 
         playButton.addActionListener(e -> {
             this.dispose();
-            new AuthenticatorView();
+            view = new AuthenticatorView();
         });
 
         goBack.addActionListener(e -> {
             this.dispose();
-            new AuthenticatorView();
+            view = new AuthenticatorView();
         });
     }
 

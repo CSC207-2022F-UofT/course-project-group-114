@@ -125,12 +125,12 @@ public class AuthenticatorView extends JFrame {
         });
 
         loginSubmit.addActionListener(e -> {
-            NonGameController.login(loginUsername.getText(), loginPassword.getText(), this);
+            NonGameController.login(loginUsername.getText(), loginPassword.getText());
         });
 
         signinSubmit.addActionListener(e -> {
             NonGameController.signin(signinName.getText(),signinUsername.getText(),
-                    signinPassword.getText(),signinPassword2.getText(), this);
+                    signinPassword.getText(),signinPassword2.getText());
         });
     }
 }

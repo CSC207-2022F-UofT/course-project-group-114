@@ -38,7 +38,7 @@ public class Authenticator {
      * @param password a string input representing the user's password
      * @return
      */
-    public static void login(String username, String password, AuthenticatorView view){
+    public static void login(String username, String password){
         int index = -1;
         for (int i = 0; i < users.size(); i++){
             if (Objects.equals(users.get(i).getUsername(), username)){
@@ -54,7 +54,7 @@ public class Authenticator {
             current = users.get(index);
             if(md5(password).equals(current.getPassword()))
             {
-                AuthenticatorPresentor.startGame(view);
+                AuthenticatorPresentor.startGame();
             }
             else
             {
@@ -63,8 +63,7 @@ public class Authenticator {
         }
     }
     // sign up
-    public static void signIn(String name, String username, String password, String password2,
-                                 AuthenticatorView view){
+    public static void signIn(String name, String username, String password, String password2){
         //gives true or false based on sign in attempt (if user already exists)
         if (!password.equals(password2)){
             AuthenticatorPresentor.signinFail();
@@ -79,7 +78,7 @@ public class Authenticator {
         users.add(new User(name, username, md5(password), 0));
         current = users.get(users.size() - 1);
         updateCSV();
-        AuthenticatorPresentor.startGame(view);
+        AuthenticatorPresentor.startGame();
     }
     // store highscore (based on the score) (maybe move this to another class later if its easier) (ended up moving lol
     public static void updateScore(int updated){
