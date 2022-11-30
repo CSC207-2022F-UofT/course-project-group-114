@@ -5,12 +5,6 @@ import org.junit.jupiter.api.Test;
 import entities.Authenticator;
 
 public class AuthenticatorTest {
-    @Test
-    public void csvSignInWritingTest(){
-        // showcases that the sign in writes on the csv which is proven to be in it by the login method
-        Authenticator.signIn("My name", "test", "password", "password");
-        assert Authenticator.login("test", "password");
-    }
 
     @Test
     public void passwordEncryption(){

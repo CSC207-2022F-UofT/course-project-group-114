@@ -125,25 +125,12 @@ public class AuthenticatorView extends JFrame {
         });
 
         loginSubmit.addActionListener(e -> {
-            if(NonGameController.login(loginUsername.getText(), loginPassword.getText())){
-                // call gamemaster view
-                new GameMasterView();
-                this.dispose();
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Error loggin in!");
-            }
+            NonGameController.login(loginUsername.getText(), loginPassword.getText(), this);
         });
 
         signinSubmit.addActionListener(e -> {
-            if(NonGameController.signin(signinName.getText(),signinUsername.getText(),
-                    signinPassword.getText(),signinPassword2.getText())){
-                new GameMasterView();
-                this.dispose();
-            }
-            else {
-                JOptionPane.showMessageDialog(null, "Sign in failed, please try again.");
-            }
+            NonGameController.signin(signinName.getText(),signinUsername.getText(),
+                    signinPassword.getText(),signinPassword2.getText(), this);
         });
     }
 }

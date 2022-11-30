@@ -1,18 +1,22 @@
 package controller;
 import entities.Menu;
 import entities.Authenticator;
+import view.AuthenticatorView;
+
+import javax.swing.*;
 
 public class NonGameController {
-    public static String getScores(){
+    public static void getScores(JTextArea scores, JLayeredPane highscorePanel){
         // get the scores
-        return Menu.getScores();
+        Menu.getScores(scores, highscorePanel);
     }
 
-    public static boolean login(String username, String password){
-        return Authenticator.login(username, password);
+    public static void login(String username, String password, AuthenticatorView view){
+        Authenticator.login(username, password, view);
     }
 
-    public static boolean signin(String name, String username, String password, String password2){
-        return Authenticator.signIn(name,username,password,password2);
+    public static void signin(String name, String username, String password, String password2,
+                                 AuthenticatorView view){
+        Authenticator.signIn(name,username,password,password2, view);
     }
 }
