@@ -1,7 +1,6 @@
 package view;
 
 import controller.AssignmentTaskController;
-import controller.ClickTaskController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -81,6 +80,11 @@ public class AssignmentTaskView extends JLayeredPane implements KeyListener{
 
         if (totalCount >= currentProgress * (countNeeded / 6)){
             currentProgress++;
+        }
+
+        // Check if time ran out / task was deactivated
+        if (!AssignmentTaskController.getActivatedStatus()) {
+            GameMasterView.backToMain(GameMasterView.assignmentTaskView);
         }
 
         // changing backgroung pictures to reflect changes

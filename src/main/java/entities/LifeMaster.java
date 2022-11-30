@@ -7,6 +7,7 @@ public class LifeMaster {
     private static int tasksCompletedCount = 0; // Number of completed tasks in total, AKA the score
     public static void deductLife() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException { // Method for deducting a life
         lives--;
+        System.out.println("life deducted, lives: " + lives);
         if (lives < 0) {
             gameOver();
         }
@@ -25,5 +26,12 @@ public class LifeMaster {
             Class<?> taskClass = Class.forName("entities." + taskName); // Get the task class
             taskClass.getDeclaredMethod("setActivatedStatus").invoke(false);
         }
+    }
+    public static int getLives() {
+        return lives;
+    }
+    public static void reset() {
+        lives = 5;
+        tasksCompletedCount = 0;
     }
 }

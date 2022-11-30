@@ -25,9 +25,12 @@ public class HeatAdjustmentTaskController {
         return HeatAdjustmentTask.setCurrentTemp(currentTemp);
     }
     public static void setCompletionStatus(boolean status) {
-        HeatAdjustmentTask.setCompletionStatus(status);
+        HeatAdjustmentTask.setCompletionStatus("HeatAdjustmentTask", status);
     }
     public static void setActivationStatus(boolean status) {
-        HeatAdjustmentTask.setActivatedStatus(status);
+        HeatAdjustmentTask.setActivatedStatus("HeatAdjustmentTask", status);
+    }
+    public static boolean getActivatedStatus() {
+        return HeatAdjustmentTask.getActivatedStatus("HeatAdjustmentTask");
     }
 }
