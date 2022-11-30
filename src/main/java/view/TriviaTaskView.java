@@ -20,20 +20,20 @@ public class TriviaTaskView extends JFrame {
         String actualAnswer = controller.passActualAnswer();
 
         JPanel popup = new JPanel();
-       // JLabel question = new JLabel("You have 10 seconds to answer the following question correctly: " + currentQuestion);
-//        question.setPreferredSize(new Dimension(1280, 80));
-//        question.setHorizontalAlignment(JLabel.CENTER);
-//        question.setFont(new Font("Calibri", Font.BOLD, 18));
-//        popup.add(question);
+        JLabel question = new JLabel("You have 10 seconds to answer the following question correctly: " + currentQuestion);
+        question.setPreferredSize(new Dimension(1280, 80));
+        question.setHorizontalAlignment(JLabel.CENTER);
+        question.setFont(new Font("Calibri", Font.BOLD, 18));
+        popup.add(question);
 
         TriviaTaskPanel = new JLayeredPane();
         TriviaTaskPanel.setPreferredSize(new Dimension(1280, 720));
 
         //replace these next two ImageIcons with TriviaTask art
-//        ImageIcon backgroundImage = new ImageIcon("src\\main\\java\\resources\\MemoryTask\\bg.jpg");
-//        JLabel triviaBackground = new JLabel(backgroundImage);
-//        triviaBackground.setPreferredSize(new Dimension(1280, 720));
-//        triviaBackground.setBounds(0, 0, 1280, 720);
+        ImageIcon backgroundImage = new ImageIcon("src\\main\\java\\resources\\MemoryTask\\bg.jpg");
+        JLabel triviaBackground = new JLabel(backgroundImage);
+        triviaBackground.setPreferredSize(new Dimension(1280, 720));
+        triviaBackground.setBounds(0, 0, 1280, 720);
 
         // setting up submit button
         ImageIcon submit = new ImageIcon("src\\main\\java\\resources\\MemoryTask\\login.png");
@@ -54,9 +54,9 @@ public class TriviaTaskView extends JFrame {
         playerAnswer.setMargin(new Insets(1, 1, 1, 1));
 
 
-//        TriviaTaskPanel.add(triviaBackground, Integer.valueOf(0));
-//        TriviaTaskPanel.add(submitButton, Integer.valueOf(1));
-//        TriviaTaskPanel.add(question, Integer.valueOf(2));
+        TriviaTaskPanel.add(triviaBackground, Integer.valueOf(0));
+        TriviaTaskPanel.add(submitButton, Integer.valueOf(1));
+        TriviaTaskPanel.add(question, Integer.valueOf(2));
 
         setPreferredSize(new Dimension(1280, 720));
         setVisible(true);
