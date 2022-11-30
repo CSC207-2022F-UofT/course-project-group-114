@@ -3,6 +3,11 @@ import org.junit.jupiter.api.Test;
 
 import usecases.Authenticator;
 
+/**
+ * This class contains unit tests meant for the Authenticator class, testing the
+ * data saving, string encryption, and score updating.
+ * @author Ming Hin Joshua Li
+ */
 public class AuthenticatorTest {
 
     @Test void logIn(){
