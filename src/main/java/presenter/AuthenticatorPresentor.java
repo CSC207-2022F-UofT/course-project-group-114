@@ -1,4 +1,4 @@
-package presentor;
+package presenter;
 
 import view.AuthenticatorView;
 import view.GameMasterView;

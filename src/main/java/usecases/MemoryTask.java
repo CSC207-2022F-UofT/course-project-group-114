@@ -1,4 +1,4 @@
-package entities;
+package usecases;
 
 /**
  * MemoryTask is a subclass of the abstact class Task and represents the MemoryTask game.

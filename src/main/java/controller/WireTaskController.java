@@ -1,5 +1,5 @@
 package controller;
-import entities.WireTask;
+import usecases.WireTask;
 
 
 public class WireTaskController {

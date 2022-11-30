@@ -1,7 +1,5 @@
-package presentor;
+package presenter;
 
-import controller.NonGameController;
-import view.AuthenticatorView;
 import view.StartView;
 
 import javax.swing.*;

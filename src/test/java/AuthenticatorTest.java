@@ -1,8 +1,7 @@
 import entities.User;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import entities.Authenticator;
+import usecases.Authenticator;
 
 public class AuthenticatorTest {
 

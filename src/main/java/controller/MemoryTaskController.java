@@ -1,6 +1,6 @@
 package controller;
 
-import entities.MemoryTask;
+import usecases.MemoryTask;
 import javax.swing.*;
 
 /**

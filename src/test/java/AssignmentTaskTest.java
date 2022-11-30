@@ -1,7 +1,6 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import entities.AssignmentTask;
+import usecases.AssignmentTask;
 
 public class AssignmentTaskTest {
     // to test the use case:
