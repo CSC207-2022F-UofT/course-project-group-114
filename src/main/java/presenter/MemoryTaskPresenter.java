@@ -1,15 +1,15 @@
 package presenter;
 
-import controller.PhoneNumberTaskController;
-import usecases.PhoneNumberTask;
+import controller.MemoryTaskController;
+import usecases.MemoryTask;
 
 /**
- * The Presenter class for PhoneNumberTask which gets information from the
+ * The Presenter class for MemoryTask which gets information from the
  * use case and decides what needs to be changed/shown on the view
  *
  * @author Kaavya Kalani
  */
-public class PhoneNumberTaskPresenter {
+public class MemoryTaskPresenter {
     /**
      * Gets the status from the use case and decided what update needs
      * to be made to the view.
@@ -17,16 +17,14 @@ public class PhoneNumberTaskPresenter {
      * @return String form of the message that needs to be displayed in the view
      */
     public String correctnessStatus(){
-        boolean status = PhoneNumberTask.correct;
+        boolean status = MemoryTask.correct;
         if(status){
-            PhoneNumberTaskController.setCompletionStatus(true);
+            MemoryTaskController.setCompletionStatus(true);
             return("Correct");
         }
         else {
-            PhoneNumberTaskController.setCompletionStatus(false);
+            MemoryTaskController.setCompletionStatus(false);
             return("Incorrect");
         }
     }
-
-
 }

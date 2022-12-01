@@ -145,14 +145,13 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         oneButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when oneButton is pressed.
              *
              * @param e the event to be processed
              */
             @Override
             public void actionPerformed(ActionEvent e) {
                 checkIfTimeRanOut();
-                // write what you want to do once the button is pressed
                 numberSoFar += "1";
                 numberTyped.setText(numberSoFar);
             }
@@ -160,7 +159,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         twoButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when twoButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -174,7 +173,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         threeButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when threeButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -188,7 +187,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         fourButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when fourButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -202,7 +201,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         fiveButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when fiveButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -216,7 +215,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         sixButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when sixButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -230,7 +229,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         sevenButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when sevenButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -244,7 +243,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         eightButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when eightButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -258,7 +257,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         nineButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when nineButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -272,7 +271,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         zeroButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when zeroButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -286,7 +285,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
         dialButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when dialButton is pressed.
              *
              * @param e the event to be processed
              */
@@ -294,7 +293,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
             @Override
             public void actionPerformed(ActionEvent e) {
                 controller.passer(actualNumber, numberSoFar);
-                String status = presenter.SuccessfullnessStatus();
+                String status = presenter.correctnessStatus();
                 JOptionPane.showMessageDialog(null, status);
                 setVisible(false);
                 PhoneNumberTaskController.setActivatedStatus(false);
@@ -306,8 +305,13 @@ public class PhoneNumberTaskView extends JLayeredPane{
     public static void main(String[] args) {
         new PhoneNumberTaskView();
     }
+
+    /**
+     * Checks if the time has run out by checking if the task
+     * is deactivated and returns to the GameMasterView
+     * if it has
+     */
     private static void checkIfTimeRanOut() {
-        // Check if time ran out / task was deactivated
         if (!PhoneNumberTaskController.getActivatedStatus()) {
             GameMasterView.backToMain(GameMasterView.phoneTaskView);
         }
