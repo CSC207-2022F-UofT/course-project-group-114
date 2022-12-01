@@ -86,14 +86,7 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
              */
             @Override
             public void mouseClicked(MouseEvent e) {
-                currentTempDisplay.setText(Integer.toString(HeatAdjustmentTaskPresenter.getCurrentTemp()));
-                if (HeatAdjustmentTaskController.changeCurrentTemp(-1)) {
-                    HeatAdjustmentTaskController.setCompletionStatus(true);
-                    HeatAdjustmentTaskController.setActivationStatus(false);
-                    GameMasterView.backToMain(GameMasterView.heatTaskView);
-                } else if (!HeatAdjustmentTaskPresenter.getActivatedStatus()) { // automatically back to main,
-                    GameMasterView.backToMain(GameMasterView.heatTaskView); // time ran out during task
-                }
+                arrowClicked(-1);
             }
 
             /**
@@ -131,14 +124,7 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
              */
             @Override
             public void mouseClicked(MouseEvent e) {
-                currentTempDisplay.setText(Integer.toString(HeatAdjustmentTaskPresenter.getCurrentTemp()));
-                if (HeatAdjustmentTaskController.changeCurrentTemp(1)) {
-                    HeatAdjustmentTaskController.setCompletionStatus(true);
-                    HeatAdjustmentTaskController.setActivationStatus(false);
-                    GameMasterView.backToMain(GameMasterView.heatTaskView);
-                } else if (!HeatAdjustmentTaskPresenter.getActivatedStatus()) { // automatically back to main,
-                    GameMasterView.backToMain(GameMasterView.heatTaskView); // time ran out during task
-                }
+                arrowClicked(1);
             }
 
             /**
@@ -164,6 +150,21 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
             @Override
             public void mouseExited(MouseEvent e) {}
         });
+    }
+
+    /**
+     * Helper method for updating the UI and calling the controller when either the up or down button is clicked.
+     * @param val Amount to add to the currentTemp; 1 if up button is pressed, -1 if down button is pressed.
+     */
+    public void arrowClicked(int val) {
+        currentTempDisplay.setText(Integer.toString(HeatAdjustmentTaskPresenter.getCurrentTemp()));
+        if (HeatAdjustmentTaskController.changeCurrentTemp(val)) {
+            HeatAdjustmentTaskController.setCompletionStatus(true);
+            HeatAdjustmentTaskController.setActivationStatus(false);
+            GameMasterView.backToMain(GameMasterView.heatTaskView);
+        } else if (!HeatAdjustmentTaskPresenter.getActivatedStatus()) { // automatically back to main,
+            GameMasterView.backToMain(GameMasterView.heatTaskView); // time ran out during task
+        }
     }
 
     /**
