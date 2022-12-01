@@ -8,8 +8,8 @@ import java.util.Random;
  * @author Elena Scobici
  */
 public class HeatAdjustmentTask extends Task {
-    public static int answerTemp; // The actual temperature the user must achieve
-    public static int currentTemp; // The user's current temperature
+    private static int answerTemp; // The actual temperature the user must achieve
+    private static int currentTemp; // The user's current temperature
 
     /**
      * Constructor for the HeatAdjustmentTask class, which resets the task.
@@ -54,5 +54,13 @@ public class HeatAdjustmentTask extends Task {
             setCompletionStatus("HeatAdjustmentTask", true);
         }
         return getCompletionStatus("HeatAdjustmentTask");
+    }
+
+    public static int getCurrentTemp() {
+        return currentTemp;
+    }
+
+    public static int getAnswerTemp() {
+        return answerTemp;
     }
 }
