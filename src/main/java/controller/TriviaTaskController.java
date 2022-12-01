@@ -9,6 +9,7 @@ public class TriviaTaskController {
 
     // passes the random question thru the controller from backend to view
     public String passRandomQuestion(){
+
         return TriviaTaskUsecase.getRandomQuestion();
     }
 
@@ -18,7 +19,7 @@ public class TriviaTaskController {
     public boolean answerChecker(String actualAnswer, JTextField playerAnswer){
         // backend checkAnswer compares the playerAnswer to the actualAnswer to determine
         // if it is correct
-        return (TriviaTaskUsecase.checkAnswer(actualAnswer, playerAnswer.getText()));
+        return (TriviaTask.checkAnswer(actualAnswer, playerAnswer.getText()));
     }
     public static void setCompletionStatus(boolean status) {
         TriviaTask.setCompletionStatus("TriviaTask", status);
