@@ -13,6 +13,10 @@ public class TriviaTaskController {
         return TriviaTaskUsecase.getRandomQuestion();
     }
 
+    public String passActualAnswer(){
+        return TriviaTaskUsecase.getActualAnswer();
+    }
+
     // take the player's answer
     // translate it into something the backend can understand
     // relay it to the backend code and call the backend here
