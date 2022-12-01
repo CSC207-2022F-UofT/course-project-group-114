@@ -1,14 +1,17 @@
 package controller;
 import usecases.TriviaTask;
 import javax.swing.*;
-
+// controller is responsible for passing info from view to backend & ensuring that the
+// dependency rule & clean architecture are not violated
+// talk about the difference between controller & presenter
+// what is in the controller? presenter? why?
 public class TriviaTaskController {
 //    private String playerAnswer;
 //    private String[] actualAnswer;
-    TriviaTask TriviaTaskUsecase = new TriviaTask();
+static TriviaTask TriviaTaskUsecase = new TriviaTask();
 
     // passes the random question thru the controller from backend to view
-    public String passRandomQuestion(){
+    public static String passRandomQuestion(){
 
         return TriviaTaskUsecase.getRandomQuestion();
     }
