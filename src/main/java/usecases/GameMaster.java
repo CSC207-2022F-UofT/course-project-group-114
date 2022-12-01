@@ -8,8 +8,9 @@ import java.util.Random;
 
 /**
  * Class representing the GameMaster use case, which is responsible for the main game functions such as generating
- * and deactivating tasks as needed
- * @author Elena
+ * and deactivating tasks as needed.
+ *
+ * @author Elena Scobici
  */
 
 public class GameMaster {

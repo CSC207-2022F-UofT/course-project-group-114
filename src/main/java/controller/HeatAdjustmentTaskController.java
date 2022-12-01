@@ -1,6 +1,11 @@
 package controller;
 import usecases.HeatAdjustmentTask;
 
+/**
+ * A class representing the HeatAdjustmentTaskController, which is responsible for TODO
+ *
+ * @author Elena Scobici
+ */
 public class HeatAdjustmentTaskController {
     private static int neededTemp;
     private static int currentTemp;
