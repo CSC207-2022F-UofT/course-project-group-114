@@ -2,6 +2,13 @@ import org.junit.jupiter.api.Test;
 
 import usecases.AssignmentTask;
 
+/**
+ * The AssignmentTaskTest class checks methods in AssignmentTask.java.
+ *
+ * @author uoft-flyfreejay
+ * @version 1.0
+ * @since 2022-11-30
+ */
 public class AssignmentTaskTest {
     // to test the use case:
     // of other classes calling the class methods
