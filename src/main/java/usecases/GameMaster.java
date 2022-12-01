@@ -126,7 +126,7 @@ public class GameMaster {
      * @param tasks The set of all task names to choose from
      * @return The randomly chosen task
      */
-    private static String chooseTask(String[] tasks) {
+    public static String chooseTask(String[] tasks) {
         Random rand = new Random();
         int randIndex = rand.nextInt(tasks.length);
         return tasks[randIndex];
