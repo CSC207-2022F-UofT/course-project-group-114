@@ -1,14 +1,29 @@
 package view;
 
 import controller.NonGameController;
+import presenter.HighscorePresenter;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This view class draws the JFrame that displays the start menu
+ * and high score board
+ *
+ * @author Ming Hin Joshua Li
+ */
 public class StartView extends JFrame {
-    public static JLayeredPane highscorePanel;
-    public static AuthenticatorView view;
 
+    /**
+     * This constructor creates multiple panels that are stored into a
+     * CardLayout. The panels include: a start menu that contains
+     * a button to start the game, a menu that allows the player to
+     * switch to the AuthenticatorView or view the high scores, and
+     * a high score board that showcases the highest scores retrieved from
+     * the txt file by the use case (retrieved from the controller and
+     * presenters) with a button that switched the view to the
+     * AuthenticatorView.
+     */
     StartView(){
         Dimension maxSize = new Dimension(1280, 720);
 
@@ -43,7 +58,7 @@ public class StartView extends JFrame {
         menuPanel.add(playButton, Integer.valueOf(1));
         menuPanel.add(highscoreButton, Integer.valueOf(1));
 
-        highscorePanel = new JLayeredPane();
+        JLayeredPane highscorePanel = new JLayeredPane();
         highscorePanel.setPreferredSize(maxSize);
         ImageIcon highscoreBackground = new ImageIcon("src/main/java/resources/highscore_bg.jpg");
         JLabel notepad = new JLabel(highscoreBackground);
@@ -68,12 +83,13 @@ public class StartView extends JFrame {
         main.add(highscorePanel);
         add(main);
 
-        setTitle("StartMenu");
+        setTitle("Start Menu");
         setSize(1290,750);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
+        // these buttons switches the panels
         start.addActionListener(e -> {
             menuPanel.setVisible(true);
             startPanel.setVisible(false);
@@ -81,17 +97,20 @@ public class StartView extends JFrame {
 
         highscoreButton.addActionListener(e -> {
             menuPanel.setVisible(false);
+            NonGameController.getScores();
+            highscorePanel.add(HighscorePresenter.getScore(), Integer.valueOf(1));
             highscorePanel.setVisible(true);
         });
 
+        // both these buttons doe the same thing (switches to the AuthenticatorView)
         playButton.addActionListener(e -> {
             this.dispose();
-            view = new AuthenticatorView();
+            new AuthenticatorView();
         });
 
         goBack.addActionListener(e -> {
             this.dispose();
-            view = new AuthenticatorView();
+            new AuthenticatorView();
         });
     }
 
