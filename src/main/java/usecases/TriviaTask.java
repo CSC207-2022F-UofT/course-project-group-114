@@ -13,11 +13,12 @@ public class TriviaTask extends Task {
     {
        Map<String, String> triviaDict = new HashMap<>();
             triviaDict.put("What kind of animal is a Python?", "snake");
-            triviaDict.put("In what country is Java located?", "Indonesia");
-            triviaDict.put("What does 'poissson' mean in english?", "fish");
+            triviaDict.put("In what country is Java located?", "indonesia");
+            triviaDict.put("A poisson is a... ", "FISH");
             triviaDict.put("What is the missing word: S***D Design Principles", "solid");
-            triviaDict.put("The dude who wrote clean architecture is nicknamed ...", "uncle bob");
-            triviaDict.put("In what room are the csc207 lectures?", "br200");
+            triviaDict.put("A violation of clean architecture is called *missing word* architecture", "dIrTy");
+            triviaDict.put("The dude who wrote clean architecture is nicknamed ...", "unclE bOb");
+            triviaDict.put("In what room are the csc207 lectures?", "hell");
             return triviaDict;
     }
     // method to choose a random key from the dictionary

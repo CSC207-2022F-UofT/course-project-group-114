@@ -15,7 +15,7 @@ public class TriviaTaskView extends JFrame {
 
     TriviaTaskView(){
         JPanel popup = new JPanel();
-        JLabel question = new JLabel("you have 10 seconds to answer the question");
+        JLabel question = new JLabel("you will have 10 seconds to answer the question");
         question.setPreferredSize(new Dimension(1280, 80));
         question.setHorizontalAlignment(JLabel.CENTER);
         question.setFont(new Font("Cambria", Font.BOLD, 16));
@@ -25,6 +25,9 @@ public class TriviaTaskView extends JFrame {
         triviaTaskPanel.setPreferredSize(new Dimension(1280, 720));
 
         //replace these with trivia art
+        ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/Background.png");
+        JLabel triviaBackground = new JLabel(backgroundPng);
+        //triviaBackground.setPreferredSize()
 
         // setting up the submit button. replace with trivia submit button
         ImageIcon submit = new ImageIcon();
@@ -38,7 +41,7 @@ public class TriviaTaskView extends JFrame {
         playerAnswer.setHorizontalAlignment(JTextField.CENTER);
         playerAnswer.setFont(new Font("Cambria", Font.BOLD, 16));
         playerAnswer.setForeground(Color.GRAY);
-        playerAnswer.setBounds(150, 500, 250, 100);
+        playerAnswer.setBounds(120, 476, 268, 62);
         playerAnswer.setOpaque(false);
         playerAnswer.setMargin(new Insets(1, 1, 1, 1));
 
