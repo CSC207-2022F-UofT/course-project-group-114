@@ -1,19 +1,21 @@
 package view;
 import controller.GameMasterController;
-import entities.GameMaster;
-import entities.HeatAdjustmentTask;
+import presenter.GameMasterPresenter;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.time.Clock;
-import java.util.Arrays;
-import java.util.Hashtable;
-import java.util.List;
 import java.util.Set;
 import java.util.TimerTask;
 import java.util.Timer;
+
+/**
+ * Class representing the GameMasterView, which is responsible for showing everything in the main game view,
+ * calling the GameMasterController to activate GameMaster methods and calling the GameMasterPresenter to retrieve
+ * the needed information to update the UI.
+ *
+ * @author Elena Scobici
+ */
 
 public class GameMasterView extends JFrame{
     public static JPanel main;
@@ -21,6 +23,7 @@ public class GameMasterView extends JFrame{
     ImageIcon backgroundIcon;
     JLabel background;
     JLabel scoreDisplay;
+    JLabel livesDisplay;
     ImageIcon catClockIcon;
     ImageIcon activeCatClockIcon;
     JLabel catClock;
@@ -59,10 +62,13 @@ public class GameMasterView extends JFrame{
     public static JLayeredPane clickTaskView;
     public static JLayeredPane phoneTaskView;
     public static JLayeredPane memoryTaskView;
-    public static JLayeredPane wireTaskView;
+//    public static JLayeredPane wireTaskView;
     public static JLayeredPane heatTaskView;
-    public static JLayeredPane triviaTaskView;
+//    public static JLayeredPane triviaTaskView;
 
+    /**
+     * GameMaster constructor, which sets up the view panel and all the elements on it
+     */
     public GameMasterView() {
         main = new JPanel(new CardLayout());
         layers = new JLayeredPane();
@@ -71,6 +77,11 @@ public class GameMasterView extends JFrame{
         scoreDisplay.setBounds(780, 270, 200, 250);
         scoreDisplay.setForeground(new Color(200, 255, 255));
         scoreDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
+
+        livesDisplay = new JLabel((GameMasterPresenter.getLivesText()));
+        livesDisplay.setBounds(360, 0, 200, 100);
+        livesDisplay.setForeground(new Color(200, 255, 255));
+        livesDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 
         // Create background JLabel
         backgroundIcon = scaleIcon("src/main/java/resources/GameMaster/background.jpg");
@@ -109,6 +120,7 @@ public class GameMasterView extends JFrame{
         layers.add(phone, Integer.valueOf(3));
         layers.add(screen, Integer.valueOf(4));
         layers.add(scoreDisplay, Integer.valueOf(4));
+        layers.add(livesDisplay, Integer.valueOf(4));
         layers.setPreferredSize(new Dimension(1280, 720));
 
         // Create the non-neutral JLabels; that is, the ones that are not visible at the start of the game
@@ -247,9 +259,8 @@ public class GameMasterView extends JFrame{
             layers.setVisible(false);
         });
         clickableWire.addActionListener(e -> {
-            //wireTaskView = new WireTaskView();
+//            wireTaskView = new WireTaskView();
 //                main.add(wireTaskView);
-            JOptionPane.showMessageDialog(null, "i should pop up");
 
         });
         clickableMemory.addActionListener(e -> {
@@ -280,47 +291,64 @@ public class GameMasterView extends JFrame{
         // Check for every task activation or de-activation
         Timer timer = new Timer();
         Clock clock = Clock.systemDefaultZone();
-        long currTime = clock.millis();
-        int taskInterval = GameMaster.getTaskInterval(); // Interval for creating tasks
-        GameMasterController.createNewTask(currTime);
-        final Hashtable[] times = new Hashtable[1];
-        times[0] = GameMaster.getTimes();
-        final Set<String>[] activeTasks = new Set[]{times[0].keySet()};
-        activateTasks(activeTasks[0]);
+        int taskInterval = GameMasterController.getTaskInterval(); // Interval for creating tasks
+
+        @SuppressWarnings("unchecked")
+        final Set<String>[] activeTasks = new Set[]{GameMasterPresenter.getActivateTasks()};
 
         TimerTask gameLoop = new TimerTask() {
             long currTime = clock.millis();
             long checkTime = currTime + taskInterval;
-//        while (GameMasterController.getPlayingStatus()) {
+            boolean coolDown = false;
+
+            /**
+             * This run method is called on a timer, every 1 second, and represents the "main game loop" except
+             * without using a loop as this would cause issues due to the single-threaded program.
+             */
             @Override
             public void run() {
-                System.out.println("IN THE RUN METHOD");
                 currTime = clock.millis();
                 if (clock.millis() >= checkTime) { // Create new task if interval has passed
                     checkTime = clock.millis() + taskInterval; // Update current time
                     GameMasterController.createNewTask(currTime);
                 }
                 GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
-                times[0] = GameMasterController.getTimes();
-                activeTasks[0] = (Set<String>) times[0].keySet();
-                activateTasks(activeTasks[0]);
-                scoreDisplay.setText(Integer.toString(GameMasterController.getScore()));
+                activeTasks[0] = GameMasterPresenter.getActivateTasks(); // Get set of all currently active tasks
+                activateTasks(activeTasks[0]); // Activate the tasks visually (update UI)
+                scoreDisplay.setText(GameMasterPresenter.getScoreText());
+                livesDisplay.setText(GameMasterPresenter.getLivesText());
+                int currentTaskCount = GameMasterPresenter.getTaskCount();
+                if (currentTaskCount % 10 == 0 && currentTaskCount > 0 && !coolDown) { // Speed up every 10 won tasks
+                    int currentTaskInterval = GameMasterController.getTaskInterval();
+                    GameMasterController.setTaskInterval((int) (currentTaskInterval / 1.75));
+                    coolDown = true; // Make sure we don't speed up again until the next 10th task
+                } else if (currentTaskCount % 10 == 1) {
+                    coolDown = false;
+                }
+                if (!GameMasterController.getPlayingStatus()) { // If game is over, stop the "game loop"
+                    this.cancel();
+                }
             }
         };
 
-        timer.schedule(gameLoop, 0, 500);
-        if (!GameMasterController.getPlayingStatus()) {
-            gameLoop.cancel();
-        }
+        timer.schedule(gameLoop, 50, 1000); // Call the run method of the TimerTask every 1 second
     }
 
-    // Helper method for rescaling an ImageIcon
-    private ImageIcon scaleIcon(String iconSource) {
+    /**
+     * Helper method for scaling icons to 1280 x 720 size
+     * @param iconSource The string representation of the icon's filepath
+     * @return The scaled ImageIcon
+     */
+    public ImageIcon scaleIcon(String iconSource) {
         ImageIcon icon = new ImageIcon(iconSource);
         return new ImageIcon(icon.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
     }
 
-    // Helper method for activating the given tasks
+    /**
+     * Helper method for visually activating all the currently active tasks in the UI, by changing the icon image
+     * and turning on the needed buttons so the user can complete the task
+     * @param activeTasks Set of the names of all tasks that are currently active
+     */
     private void activateTasks(Set<String> activeTasks) {
         if (activeTasks.contains("HeatAdjustmentTask")) {
             thermostat.setIcon(activeThermostatIcon);
@@ -376,7 +404,14 @@ public class GameMasterView extends JFrame{
             clickableTrivia.setVisible(false);
         }
     }
+    public static void main(String[] args) {
+        new GameMasterView();
+    }
 
+    /**
+     * Method for switching back to the GameMaster's view and closing the view of the currently active task.
+     * @param taskToRemove The task whose view should be hidden.
+     */
     public static void backToMain(JLayeredPane taskToRemove) {
         layers.setVisible(true);
         taskToRemove.setVisible(false);

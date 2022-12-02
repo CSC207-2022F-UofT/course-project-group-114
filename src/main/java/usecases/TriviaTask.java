@@ -1,6 +1,5 @@
-package entities;
+package usecases;
 
-import java.sql.Array;
 import java.util.*;
 
 public class TriviaTask extends Task {
@@ -127,7 +126,7 @@ public class TriviaTask extends Task {
     public static boolean checkAnswer (String actualAnswer, String playerAnswer){
         // case for if the actual answer is an integer????? this can be added later.
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
-            setCompletionStatus(true);
+            setCompletionStatus("TriviaTask", true);
             return true;
         }
         else{

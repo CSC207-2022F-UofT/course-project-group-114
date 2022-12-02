@@ -1,6 +1,7 @@
 package view;
 
 import controller.MemoryTaskController;
+import presenter.MemoryTaskPresenter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,12 +12,25 @@ import java.util.UUID;
 
 import java.util.Timer;
 
+/**
+ * The View class for the Memory Task which creates a JLayeredPane that
+ * displays all components needed for the Memory Task.
+ * @author Kaavya
+ * @inheritDoc JLayeredPane
+ */
 public class MemoryTaskView extends JLayeredPane{
 
+    /**
+     * The constructor for the MemoryTaskView which creates and places all the
+     * required components on the JLayeredPane and has event listeners which
+     * pass information to the controller when needed.
+     */
     MemoryTaskView(){
 
         MemoryTaskController controller = new MemoryTaskController();
-        String actualPassword = (UUID.randomUUID().toString().replaceAll("-", "")).substring(0,8);
+        MemoryTaskPresenter presenter = new MemoryTaskPresenter();
+
+        String actualPassword = (UUID.randomUUID().toString().replaceAll("-", "")).substring(0,6);
 
         JLabel message = new JLabel("Your password to remember is: " + actualPassword);
         message.setPreferredSize(new Dimension(1280,720));
@@ -61,29 +75,32 @@ public class MemoryTaskView extends JLayeredPane{
             }
         };
 
-        timer.schedule(task, 5000);
+        timer.schedule(task, 4000);
 
         logInButton.addActionListener(new ActionListener() {
             /**
-             * Invoked when an action occurs.
+             * Invoked when logInButton is clicked.
              *
              * @param e the event to be processed
              */
             @Override
             public void actionPerformed(ActionEvent e) {
-//                 passes the text collected to the controller
-                boolean success = controller.passer(actualPassword, password);
-                if(success){
-                    JOptionPane.showMessageDialog(null, "Successful");
-                    MemoryTaskController.setCompletionStatus(true);
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Unsuccessful");
-                    MemoryTaskController.setCompletionStatus(false);
+                // Check if time ran out / task was deactivated
+                if (!MemoryTaskController.getActivatedStatus()) {
+                    GameMasterView.backToMain(GameMasterView.memoryTaskView);
+                    setVisible(false);
+                    MemoryTaskController.setActivatedStatus(false);
                 }
-                setVisible(false);
-                MemoryTaskController.setActivatedStatus(false);
-                GameMasterView.backToMain(GameMasterView.memoryTaskView);
+                else {
+                    String typedPassword = password.getText();
+                    controller.passer(actualPassword, typedPassword);
+                    String status = presenter.correctnessStatus();
+                    JOptionPane.showMessageDialog(null, status);
+                    setVisible(false);
+                    MemoryTaskController.setActivatedStatus(false);
+                    GameMasterView.backToMain(GameMasterView.memoryTaskView);
+                }
+
             }
         });
 

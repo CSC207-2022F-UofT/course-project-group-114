@@ -1,19 +1,40 @@
 package controller;
 
-import entities.MemoryTask;
+import usecases.MemoryTask;
 
-import javax.swing.*;
-
+/**
+ * The controller for the Memory Task which is responsible to take inputs from the view and
+ * convert them to appropriate datatypes for the use case; thus acting like a passer between them.
+ *
+ * @author Kaavya Kalani
+ */
 public class MemoryTaskController {
 
-    public boolean passer(String actualPassword, JTextField typedPassword){
-        return (MemoryTask.checkCorrectness(actualPassword, typedPassword.getText()));
+    /**
+     * Takes inputs passed by MemoryTaskView and converts them to appropriate
+     * datatypes for the use case and passes it to them.
+     *
+     * @param actualPassword the String which was generated and expected to be typed.
+     * @param typedPassword the String which the user has typed.
+     */
+    public void passer(String actualPassword, String typedPassword){
+        MemoryTask.checkCorrectness(actualPassword, typedPassword);
     }
-    public static void setCompletionStatus(boolean status) {
-        MemoryTask.setCompletionStatus(status);
-    }
+
+    /**
+     * sets the ActivatedStatus of the MemoryTask to the boolean passed
+     * @param status boolean value the ActivatedStatus of the MemoryTask needs to be set to
+     */
     public static void setActivatedStatus(boolean status) {
-        MemoryTask.setActivatedStatus(status);
+        MemoryTask.setActivatedStatus("MemoryTask", status);
+    }
+
+    /**
+     * gets the ActivatedStatus of the Memory Task
+     * @return boolean value associated with Activated Status
+     */
+    public static boolean getActivatedStatus() {
+        return MemoryTask.getActivatedStatus("MemoryTask");
     }
 
 }

@@ -3,7 +3,14 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import controller.HeatAdjustmentTaskController;
+import presenter.HeatAdjustmentTaskPresenter;
 
+/**
+ * A class representing the HeatAdjustmentTaskView, which is responsible for the UI of the HeatAdjustmentTask as well
+ * as communicating with the task's controller and presenter classes to update the UI and temperature values.
+ *
+ * @author Elena Scobici
+ */
 public class HeatAdjustmentTaskView extends JLayeredPane{
     ImageIcon backgroundImage;
     JLabel background;
@@ -12,22 +19,20 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
     ImageIcon downIcon;
     JLabel upButton;
     JLabel downButton;
+    ImageIcon upActiveIcon;
+    ImageIcon downActiveIcon;
     JLabel currentTempDisplay;
-    private static int currentTemp;
-    private boolean completed;
 
+    /**
+     * Constructor for the HeatAdjustmentTaskView, which creates all the needed images and buttons as well as the
+     * mouse events.
+     */
     public HeatAdjustmentTaskView() {
-        // Set the needed and current temperatures of the controller, and update the view's temps as well
-        int[] temps = HeatAdjustmentTaskController.initTemps();
-        // ignore this warning, temps will be needed in another method later
-        int neededTemp = temps[0];
-        currentTemp = temps[1];
-
-        currentTempDisplay = new JLabel(Integer.toString(currentTemp));
+        currentTempDisplay = new JLabel(Integer.toString(HeatAdjustmentTaskPresenter.getCurrentTemp()));
         currentTempDisplay.setBounds(0, 0, 100, 100);
 
         // Get the image icons and create their corresponding JLabels
-        if (currentTemp < neededTemp) {
+        if (HeatAdjustmentTaskPresenter.getCurrentTemp() < HeatAdjustmentTaskPresenter.getAnswerTemp()) {
             backgroundImage = new ImageIcon("src/main/java/resources/HeatAdjustmentTask/too cold.jpg");
         } else {
             backgroundImage = new ImageIcon("src/main/java/resources/HeatAdjustmentTask/too hot.png");
@@ -49,6 +54,15 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
         upButton.setIcon(upIcon);
         downButton.setIcon(downIcon);
 
+        upActiveIcon = new ImageIcon("src/main/java/resources/HeatAdjustmentTask/upActive.png");
+        Image upActiveImage = upActiveIcon.getImage().getScaledInstance(240, 180, Image.SCALE_SMOOTH);
+        upActiveIcon = new ImageIcon(upActiveImage);
+
+        downActiveIcon = new ImageIcon("src/main/java/resources/HeatAdjustmentTask/downActive.png");
+        Image downActiveImage = downActiveIcon.getImage().getScaledInstance(240, 180, Image.SCALE_SMOOTH);
+        downActiveIcon = new ImageIcon(downActiveImage);
+
+
         // Resize and position the buttons and background
         upButton.setBounds(300, 200, upIcon.getIconWidth(), upIcon.getIconHeight());
         downButton.setBounds(300, 400, downIcon.getIconWidth(), downIcon.getIconHeight());
@@ -63,24 +77,36 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
 
         setVisible(true);
 
-        // Add click event for down button
         downButton.addMouseListener(new MouseListener() {
+            /**
+             * Click event for the down button, which uses the HeatAdjustmentTaskController to update the
+             * current temperature, completion and activation statuses as needed, and also goes back to the main
+             * view if the task has been completed or deactivated.
+             * @param e the event to be processed
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
-                completed = HeatAdjustmentTaskController.changeCurrentTemp(-1); // Decrease current temp by 1
-                currentTemp--;
-                currentTempDisplay.setText(Integer.toString(currentTemp));
-                if (completed) {
-                    HeatAdjustmentTaskController.setCompletionStatus(true);
-                    HeatAdjustmentTaskController.setActivationStatus(false);
-                    GameMasterView.backToMain(GameMasterView.heatTaskView);
-                }
+                arrowClicked(-1);
             }
 
+            /**
+             * Press event for the down button, which changes the down button's icon to make it blue.
+             * @param e the event to be processed
+             */
             @Override
-            public void mousePressed(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {
+                downButton.setIcon(downActiveIcon);
+            }
+
+            /**
+             * Release event for the down button, which changes the down button's icon to make it go back to its
+             * original colour.
+             * @param e the event to be processed
+             */
             @Override
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+                downButton.setIcon(downIcon);
+            }
             @Override
             public void mouseEntered(MouseEvent e) {}
             @Override
@@ -89,24 +115,36 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
             }
         });
 
-        // Add click event for up button
         upButton.addMouseListener(new MouseListener() {
+            /**
+             * Click event for the down button, which uses the HeatAdjustmentTaskController to update the
+             * current temperature, completion and activation statuses as needed, and also goes back to the main
+             * view if the task has been completed or deactivated.
+             * @param e the event to be processed
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
-                completed = HeatAdjustmentTaskController.changeCurrentTemp(1); // Increase current temp by 1
-                currentTemp++;
-                currentTempDisplay.setText(Integer.toString(currentTemp));
-                if (completed) {
-                    HeatAdjustmentTaskController.setCompletionStatus(true);
-                    HeatAdjustmentTaskController.setActivationStatus(false);
-                    GameMasterView.backToMain(GameMasterView.heatTaskView);
-                }
+                arrowClicked(1);
             }
 
+            /**
+             * Press event for the up button, which changes the up button's icon to make it red.
+             * @param e the event to be processed
+             */
             @Override
-            public void mousePressed(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {
+                upButton.setIcon(upActiveIcon);
+            }
+
+            /**
+             * Release event for the up button, which changes the up button's icon to make it go back to its
+             * original colour.
+             * @param e the event to be processed
+             */
             @Override
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+                upButton.setIcon(upIcon);
+            }
             @Override
             public void mouseEntered(MouseEvent e) {}
             @Override
@@ -114,6 +152,25 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
         });
     }
 
+    /**
+     * Helper method for updating the UI and calling the controller when either the up or down button is clicked.
+     * @param val Amount to add to the currentTemp; 1 if up button is pressed, -1 if down button is pressed.
+     */
+    public void arrowClicked(int val) {
+        currentTempDisplay.setText(Integer.toString(HeatAdjustmentTaskPresenter.getCurrentTemp()));
+        if (HeatAdjustmentTaskController.changeCurrentTemp(val)) {
+            HeatAdjustmentTaskController.setCompletionStatus(true);
+            HeatAdjustmentTaskController.setActivationStatus(false);
+            GameMasterView.backToMain(GameMasterView.heatTaskView);
+        } else if (!HeatAdjustmentTaskPresenter.getActivatedStatus()) { // automatically back to main,
+            GameMasterView.backToMain(GameMasterView.heatTaskView); // time ran out during task
+        }
+    }
+
+    /**
+     * Main method for testing purposes.
+     * @param args Method call arguments
+     */
     public static void main(String[] args) {
         new HeatAdjustmentTaskView();
     }

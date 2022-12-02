@@ -1,5 +1,5 @@
 package controller;
-import entities.WireTask;
+import usecases.WireTask;
 
 
 public class WireTaskController {
@@ -13,11 +13,14 @@ public class WireTaskController {
         }
     }
     public static void setCompletionStatus(boolean status) {
-        WireTask.setCompletionStatus(status);
+        WireTask.setCompletionStatus("WireTask", status);
     }
 
     public static void setActivationStatus(boolean status) {
-        WireTask.setActivatedStatus(status);
+        WireTask.setActivatedStatus("WireTask", status);
+    }
+    public static boolean getActivatedStatus() {
+        return WireTask.getActivatedStatus("WireTask");
     }
 
 }

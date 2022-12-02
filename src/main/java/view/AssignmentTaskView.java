@@ -9,7 +9,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
+/**
+ * The View class for the Assignment Task which creates a JLayeredPane that
+ * displays all components needed for the Assignment Task.
+ * @author uoft-flyfreejay
+ * @inheritDoc JLayeredPane
+ */
 public class AssignmentTaskView extends JLayeredPane implements KeyListener{
 
     // IMAGES
@@ -27,6 +32,12 @@ public class AssignmentTaskView extends JLayeredPane implements KeyListener{
     private static int countNeeded;
     private int totalCount;
     private int currentProgress;
+
+    /**
+     * The constructor for the AssignmentTaskView which creates and places all the
+     * required components on the JLayeredPane and has event KeyListener which
+     * updates the view as the keys are pressed
+     */
     public AssignmentTaskView(){
         // use the controller to get the characterCountNeeded
         totalCount = 0;
@@ -76,10 +87,20 @@ public class AssignmentTaskView extends JLayeredPane implements KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
+        /**
+         * Invoked when any key is pressed
+         *
+         * @param e the event to be processed
+         */
         totalCount++;
 
         if (totalCount >= currentProgress * (countNeeded / 6)){
             currentProgress++;
+        }
+
+        // Check if time ran out / task was deactivated
+        if (!AssignmentTaskController.getActivatedStatus()) {
+            GameMasterView.backToMain(GameMasterView.assignmentTaskView);
         }
 
         // changing backgroung pictures to reflect changes

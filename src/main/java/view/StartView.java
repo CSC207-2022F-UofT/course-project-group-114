@@ -1,12 +1,29 @@
 package view;
 
 import controller.NonGameController;
+import presenter.HighscorePresenter;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * This view class draws the JFrame that displays the start menu
+ * and high score board
+ *
+ * @author Ming Hin Joshua Li
+ */
 public class StartView extends JFrame {
 
+    /**
+     * This constructor creates multiple panels that are stored into a
+     * CardLayout. The panels include: a start menu that contains
+     * a button to start the game, a menu that allows the player to
+     * switch to the AuthenticatorView or view the high scores, and
+     * a high score board that showcases the highest scores retrieved from
+     * the txt file by the use case (retrieved from the controller and
+     * presenters) with a button that switched the view to the
+     * AuthenticatorView.
+     */
     StartView(){
         Dimension maxSize = new Dimension(1280, 720);
 
@@ -48,14 +65,7 @@ public class StartView extends JFrame {
         notepad.setPreferredSize(maxSize);
         notepad.setBounds(0,     0, 1280, 720);
         //go when button pressed, tell controller to tell user to grab stuff then here we ask view to grab from controller
-        JTextArea scores = new JTextArea(NonGameController.getScores());
-        scores.setEditable(false);
-        scores.setFont(new Font("Snell Roundhand", Font.ITALIC | Font.BOLD, 40));
-        scores.setForeground(Color.BLACK);
-        scores.setBounds(460, 300, 1280, 720); // FIX THIS LATER
-        scores.setOpaque(false);
-        scores.setBorder(null);
-        scores.setMargin(new Insets(0, 0, 0, 0));
+        NonGameController.getScores();
         ImageIcon backButton = new ImageIcon("src/main/java/resources/return.png");
         JButton goBack = new JButton(backButton);
         goBack.setBorderPainted(false);
@@ -64,7 +74,6 @@ public class StartView extends JFrame {
         goBack.setContentAreaFilled(false);
         goBack.setBounds(860, 550, backButton.getIconWidth(), backButton.getIconHeight());
         highscorePanel.add(notepad, Integer.valueOf(0));
-        highscorePanel.add(scores, Integer.valueOf(1));
         highscorePanel.add(goBack, Integer.valueOf(2));
 
 
@@ -74,12 +83,13 @@ public class StartView extends JFrame {
         main.add(highscorePanel);
         add(main);
 
-        setTitle("StartMenu");
+        setTitle("Start Menu");
         setSize(1290,750);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
+        // these buttons switches the panels
         start.addActionListener(e -> {
             menuPanel.setVisible(true);
             startPanel.setVisible(false);
@@ -87,9 +97,12 @@ public class StartView extends JFrame {
 
         highscoreButton.addActionListener(e -> {
             menuPanel.setVisible(false);
+            NonGameController.getScores();
+            highscorePanel.add(HighscorePresenter.getScore(), Integer.valueOf(1));
             highscorePanel.setVisible(true);
         });
 
+        // both these buttons doe the same thing (switches to the AuthenticatorView)
         playButton.addActionListener(e -> {
             this.dispose();
             new AuthenticatorView();

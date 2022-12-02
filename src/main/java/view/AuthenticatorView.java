@@ -3,9 +3,23 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import controller.NonGameController;
+import presenter.AuthenticatorPresenter;
 
+/**
+ * This view class display the interface for the player to login or sign up
+ * to the game. The game view is also started from this view class.
+ *
+ * @author Ming Hin Joshua Li
+ * @inheritDoc JFrame
+ */
 public class AuthenticatorView extends JFrame {
-    public static boolean startGame = false;
+
+
+    /**
+     * This constructor draws two panels and stores them into a CardLayout.
+     * Both panels include input fields for the player, a button to switch between
+     * the panels, and a button to submit the inputted info.
+     */
     AuthenticatorView(){
         Dimension maxSize = new Dimension(1280, 720);
         ImageIcon loginIcon = new ImageIcon("src/main/java/resources/log_in_button.png");
@@ -114,36 +128,46 @@ public class AuthenticatorView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
+        // switches the view to the sign in panel
         signinSwitch.addActionListener(e -> {
             loginPanel.setVisible(false);
             signinPanel.setVisible(true);
         });
 
+        // switches the view to the login panel
         loginSwitch.addActionListener(e -> {
             signinPanel.setVisible(false);
             loginPanel.setVisible(true);
         });
 
+        // both buttons submits the input for evaluation and changes view accordingly
         loginSubmit.addActionListener(e -> {
-            if(NonGameController.login(loginUsername.getText(), loginPassword.getText())){
-                // call gamemaster view
-                new GameMasterView();
-//                this.dispose();
+            NonGameController.login(loginUsername.getText(), loginPassword.getText());
+            if(AuthenticatorPresenter.setLogin()){
+                startGame();
             }
             else {
-                JOptionPane.showMessageDialog(null, "Error loggin in!");
+                AuthenticatorPresenter.loginFail();
             }
         });
 
         signinSubmit.addActionListener(e -> {
-            if(NonGameController.signin(signinName.getText(),signinUsername.getText(),
-                    signinPassword.getText(),signinPassword2.getText())){
-                new GameMasterView();
-//                this.dispose();
+            NonGameController.signin(signinName.getText(),signinUsername.getText(),
+                    signinPassword.getText(),signinPassword2.getText());
+            if(AuthenticatorPresenter.setSignin()){
+                startGame();
             }
             else {
-                JOptionPane.showMessageDialog(null, "Sign in failed, please try again.");
+                AuthenticatorPresenter.signinFail();
             }
         });
+    }
+
+    /**
+     * This method disposes the current JFrame and calls the GameMasterView
+     */
+    private void startGame(){
+        this.dispose();
+        new GameMasterView();
     }
 }

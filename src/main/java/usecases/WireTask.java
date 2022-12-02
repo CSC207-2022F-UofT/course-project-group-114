@@ -1,4 +1,4 @@
-package entities;
+package usecases;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -67,8 +67,8 @@ public class WireTask extends Task{
     }
     public static void checkCompletion(){
         if (LeftWires.isEmpty()){
-            setCompletionStatus(true);
-            setActivatedStatus(false);
+            setCompletionStatus("WireTask", true);
+            setActivatedStatus("WireTask", false);
         }
     }
 }
