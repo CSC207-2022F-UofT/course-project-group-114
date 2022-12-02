@@ -16,7 +16,7 @@ public class TriviaTaskPresenter {
         return currentQuestion;
     }
 
-    public String tellViewCorrectness(){
+    public String tellViewCorrectness(String actualAnswer, JTextField playerAnswer){
         // if the answer is correct what should the view present to the user?
         if (isAnswerCorrect){
             return "that is correct!";
