@@ -14,11 +14,13 @@ public class TriviaTaskView extends JFrame {
     public static JLayeredPane triviaTaskPanel;
 
     TriviaTaskView(){
+        //TriviaTaskController controller = new TriviaTaskController();
+        TriviaTaskPresenter presenter = new TriviaTaskPresenter();
         JPanel popup = new JPanel();
         JLabel question = new JLabel("you will have 10 seconds to answer the question");
         question.setPreferredSize(new Dimension(1280, 80));
         question.setHorizontalAlignment(JLabel.CENTER);
-        question.setFont(new Font("Cambria", Font.BOLD, 16));
+        question.setFont(new Font("Serif", Font.BOLD, 16));
         popup.add(question);
 
         triviaTaskPanel = new JLayeredPane();
@@ -29,8 +31,7 @@ public class TriviaTaskView extends JFrame {
         JLabel triviaBackground = new JLabel(backgroundPng);
         //triviaBackground.setPreferredSize()
 
-        // setting up the submit button. replace with trivia submit button
-        ImageIcon submit = new ImageIcon();
+        ImageIcon submit = new ImageIcon("src/main/java/resources/submitbutton.png");
         JButton submitButton = new JButton(submit);
         submitButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         submitButton.setBounds(200, 580, submit.getIconWidth(), submit.getIconHeight());
@@ -39,7 +40,7 @@ public class TriviaTaskView extends JFrame {
         JTextField playerAnswer = new JTextField();
         playerAnswer.setEditable(true);
         playerAnswer.setHorizontalAlignment(JTextField.CENTER);
-        playerAnswer.setFont(new Font("Cambria", Font.BOLD, 16));
+        playerAnswer.setFont(new Font("Serif", Font.BOLD, 16));
         playerAnswer.setForeground(Color.GRAY);
         playerAnswer.setBounds(120, 476, 268, 62);
         playerAnswer.setOpaque(false);
@@ -52,15 +53,12 @@ public class TriviaTaskView extends JFrame {
         triviaTaskPanel.setVisible(true);
         popup.setVisible(true);
 
-        // add the submit button
-//        submitButton.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//
-//            }
-//
-//            }
-//        };){
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
 
     }
 
