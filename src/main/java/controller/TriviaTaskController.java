@@ -8,15 +8,20 @@ import javax.swing.*;
 public class TriviaTaskController {
 //    private String playerAnswer;
 //    private String[] actualAnswer;
-static TriviaTask TriviaTaskUsecase = new TriviaTask();
+public static TriviaTask TriviaTaskUsecase = new TriviaTask();
 
-    // passes the random question thru the controller from backend to view
-    public static String passRandomQuestion(){
+    // passes the random question through the controller from backend to view
+//    public static String passRandomQuestion(){
+//
+//        return TriviaTaskUsecase.getRandomQuestion();
+//    }
+    // got rid of pass random question bc now that the presenter is added i'm just gonna have the
+    // presenter call the usecase to tell the view what question to display
 
-        return TriviaTaskUsecase.getRandomQuestion();
-    }
-
+   // passActualAnswer is passing the user's answer "in" to the use case
+   // this will remain in the controller
     public String passActualAnswer(){
+
         return TriviaTaskUsecase.getActualAnswer();
     }
 

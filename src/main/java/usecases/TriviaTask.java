@@ -10,6 +10,9 @@ public class TriviaTask extends Task {
 
     // creating the trivia dictionary
 
+    // creating the trivia dict, this is ok but change it to a csv so that there can be more questions??
+    // ask urself if/how this adheres to clean architecture
+
     public Map<String, String> getMap()
     {
        Map<String, String> triviaDict = new HashMap<>();
