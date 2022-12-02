@@ -5,8 +5,8 @@ import javax.swing.*;
 /**
  * The trivia task controller is responsible for taking the player's input,
  * (player's answer to the trivia question), "translating" it into something that the usecase
- * can understand, and "passing" or "relaying" it to the usecase so that the use case can check
- * if it's correct.
+ * can understand, and "
+ *
  * @author talia
  */
 public class TriviaTaskController {
