@@ -71,6 +71,7 @@ public class Authenticator {
     public static void signIn(String name, String username, String password, String password2){
         if (!password.equals(password2)){
             signin = false;
+            return;
         }
 
         for (User user : users) {
