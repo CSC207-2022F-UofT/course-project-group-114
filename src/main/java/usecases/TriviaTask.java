@@ -5,13 +5,14 @@ import java.util.*;
 public class TriviaTask extends Task {
     // public int triviaCategory; //can later make changes to code to add categories and get questions and answers from a csv file
     // public static int questionNum; //randomly generated num to select a random question from that category
-    public String currentQuestion; // the question. trivia dict at the randomly generated index
+    public static String currentQuestion; // the question. trivia dict at the randomly generated index
     public String playerAnswer; // what the player actually answered
-    public String actualAnswer; // the correct answer corresponding value to the key
+    public static String actualAnswer; // the correct answer corresponding value to the key
+    public static boolean isAnswerCorrect;
 
     // creating the trivia dictionary
 
-    public Map<String, String> getMap()
+    public static Map<String, String> getMap()
     {
        Map<String, String> triviaDict = new HashMap<>();
             triviaDict.put("What kind of animal is a Python?", "snake");
@@ -25,11 +26,11 @@ public class TriviaTask extends Task {
     // method to choose a random key from the dictionary
     // has some errors in terms of choosing the right key and value
     // ask ta for some assistance fixing this
-    public String getRandomQuestion(){
-        Map<String, String> triviaDict = this.getMap();
+    public static String getRandomQuestion(){
+        Map<String, String> triviaDict = getMap();
         Random R = new Random();
-        this.currentQuestion = triviaDict.get(R.nextInt(triviaDict.size()));
-        this.actualAnswer = triviaDict.get(currentQuestion);
+        currentQuestion = triviaDict.get(R.nextInt(triviaDict.size()));
+        actualAnswer = triviaDict.get(currentQuestion);
         return currentQuestion;
         //return triviaDict.get(R.nextInt(triviaDict.size()));
     }
@@ -123,14 +124,14 @@ public class TriviaTask extends Task {
     }
     // checks if the answer is correct
 
-    public static boolean checkAnswer (String actualAnswer, String playerAnswer){
+    public static void checkAnswer (String actualAnswer, String playerAnswer){
         // case for if the actual answer is an integer????? this can be added later.
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
             setCompletionStatus("TriviaTask", true);
-            return true;
+            isAnswerCorrect = true;
         }
         else{
-            return false;
+            isAnswerCorrect = false;
         }
         // if i want to change it to categories and more than one correct answer or to accept variations of the same answer will
         // need to check that playerAnswer is in the list of possible answers
