@@ -23,9 +23,25 @@ public class ClickTaskPresenter {
     public void endGame(boolean success){
         if (success){
             JOptionPane.showMessageDialog(null, "Congrats!");
-            ClickTaskController.setActivatedStatus(false);
-            ClickTaskController.setCompletionStatus(true);
+            setActivatedStatus(false);
+            setCompletionStatus(true);
             GameMasterView.backToMain(GameMasterView.clickTaskView);
         }
+    }
+
+    /**
+     * sets the ActivatedStatus of the Click Task via the ClickTask class.
+     * @param status change the activation status of Click Task status.
+     */
+    public static void setActivatedStatus(boolean status){
+        ClickTask.setActivatedStatus("ClickTask", status);
+    }
+
+    /**
+     * sets the CompletionStatus of the Click Task via the ClickTask class.
+     * @param status change the completion status of Click Task status.
+     */
+    public static void setCompletionStatus(boolean status){
+        ClickTask.setCompletionStatus("ClickTask", status);
     }
 }
