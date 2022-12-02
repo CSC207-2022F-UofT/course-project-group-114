@@ -408,6 +408,10 @@ public class GameMasterView extends JFrame{
         new GameMasterView();
     }
 
+    /**
+     * Method for switching back to the GameMaster's view and closing the view of the currently active task.
+     * @param taskToRemove The task whose view should be hidden.
+     */
     public static void backToMain(JLayeredPane taskToRemove) {
         layers.setVisible(true);
         taskToRemove.setVisible(false);

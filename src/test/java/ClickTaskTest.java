@@ -52,6 +52,5 @@ public class ClickTaskTest {
         ClickTask.setCurrentClicks(tempCur);
         ClickTask.reset();
         Assertions.assertEquals(0, ClickTask.currentClicks);
-        Assertions.assertEquals(0,ClickTask.neededClicks);
     }
 }
