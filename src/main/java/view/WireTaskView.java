@@ -101,7 +101,35 @@ public class WireTaskView extends JLayeredPane{
 
         setPreferredSize(new Dimension(1280, 720));
         setVisible(true);
+
+        r1button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
     }
+
 
     public static void main(String[] args) {
         new WireTaskView();
