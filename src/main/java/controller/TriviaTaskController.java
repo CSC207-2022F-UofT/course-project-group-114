@@ -21,16 +21,17 @@ public static TriviaTask triviataskusecase = new TriviaTask();
    // passActualAnswer is passing the user's answer "in" to the use case
    // this will remain in the controller
 
-    public String passActualAnswer(){
-        /*
-        this method gets the actual answer from the usecase
-        the view will call it
-        ***** can the view directly call the usecase????? or does this have to be done through
-        the controller?
-         */
-
-        return triviataskusecase.getActualAnswer();
-    }
+//    public String passActualAnswer(){
+//        /*
+//        this method gets the actual answer from the usecase
+//        the view will call it
+//        ***** can the view directly call the usecase????? or does this have to be done through
+//        the controller?
+//        what the fuck do i not know how to read
+//         */
+//
+//        return triviataskusecase.getActualAnswer();
+//    }
 
     // take the player's answer
     // translate it into something the backend can understand

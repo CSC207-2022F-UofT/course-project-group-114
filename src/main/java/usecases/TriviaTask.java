@@ -25,7 +25,7 @@ public class TriviaTask extends Task {
             return triviaDict;
     }
 
-    public String getRandomQuestion(){
+    public static String getRandomQuestion(){
         Map<String, String> triviaDict = this.getMap();
         Set <String> keySet = triviaDict.keySet();
         List<String> keys = new ArrayList<>(keySet);
@@ -36,7 +36,7 @@ public class TriviaTask extends Task {
         return currentQuestion;
     }
 
-    public String getActualAnswer(){
+    public static String getActualAnswer(){
         return actualAnswer;
     }
 

@@ -20,7 +20,7 @@ public class TriviaTaskView extends JFrame{
         // figured it out on the line right below :)
         String currentQuestion = TriviaTaskPresenter.tellViewWhatQuestionToShow();
         //String currentQuestion = TriviaTaskController.passRandomQuestion();
-        // ^ that line above would have been half "okay" like wouldve functionede
+        // ^ that line above would have been half "okay" like wouldve functioned
         // but was using a controller to do what the non-existent at the time presenter should've done
         String actualAnswer = TriviaTaskController.passActualAnswer();
 
