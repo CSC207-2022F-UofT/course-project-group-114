@@ -17,11 +17,12 @@ public class TriviaTaskPresenter {
     }
 
     public String tellViewCorrectness(){
-        // if the answer is correct what should the view present?
+        // if the answer is correct what should the view present to the user?
         if (isAnswerCorrect){
             return "that is correct!";
         }
 
+        // what if the answer is incorrect?
         else{
             return "that is incorrect. the correct answer is " + actualAnswer;
         }
