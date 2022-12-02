@@ -349,7 +349,7 @@ public class GameMasterView extends JFrame{
      * and turning on the needed buttons so the user can complete the task
      * @param activeTasks Set of the names of all tasks that are currently active
      */
-    public void activateTasks(Set<String> activeTasks) {
+    private void activateTasks(Set<String> activeTasks) {
         if (activeTasks.contains("HeatAdjustmentTask")) {
             thermostat.setIcon(activeThermostatIcon);
             clickableHeat.setVisible(true);
