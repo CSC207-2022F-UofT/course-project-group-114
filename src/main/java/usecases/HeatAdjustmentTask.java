@@ -56,10 +56,18 @@ public class HeatAdjustmentTask extends Task {
         return getCompletionStatus("HeatAdjustmentTask");
     }
 
+    /**
+     * Getter method for the current temperature.
+     * @return This class's currentTemp value as an integer.
+     */
     public static int getCurrentTemp() {
         return currentTemp;
     }
 
+    /**
+     * Getter method for the answer or needed temperature.
+     * @return This class's answerTemp value as an integer.
+     */
     public static int getAnswerTemp() {
         return answerTemp;
     }

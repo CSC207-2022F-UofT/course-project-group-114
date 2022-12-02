@@ -1,12 +1,11 @@
 import usecases.GameMaster;
 
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.time.Clock;
+import java.util.Arrays;
 import java.util.Hashtable;
-import java.util.Objects;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import usecases.Task;
 
 /**
  * The GameMasterTest class checks methods in GameMaster.java.
@@ -14,87 +13,94 @@ import org.junit.jupiter.api.Test;
  * @author Siyuan Deng
  */
 public class GameMasterTest {
-
+    /**
+     * Test for whether the createTask method of the GameMaster class correctly affects the task's completionStatus
+     * variable.
+     * @throws ClassNotFoundException If task class is not found
+     * @throws NoSuchMethodException If method is not found
+     * @throws InvocationTargetException If method cannot be invoked with passed parameters
+     * @throws IllegalAccessException If method cannot be accessed
+     */
     @Test
-    public void createNewTaskSetCompletionTest() throws ClassNotFoundException, InvocationTargetException,
-            NoSuchMethodException, IllegalAccessException {
-        Clock clock = Clock.systemDefaultZone();
-        long currTime = clock.millis();
-        GameMaster.createNewTask(currTime);
-        boolean taskRun = false;
-        for (int i = 0; i < GameMaster.tasks.length; i++){
-            String task = GameMaster.tasks[i];
-            Class<?> taskClass = Class.forName("entities." + task);
-            Method completionMethod  = taskClass.getMethod("getCompletionStatus");
-            taskRun = (Boolean) completionMethod.invoke(taskClass);
-            if (taskRun){
-                break;
-            }
+    void createTaskCompletionTest() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        GameMaster.reset();
+        String[] taskNames = GameMaster.tasks;
+        for (String task: taskNames) {
+            Task.setCompletionStatus(task, true);
+            GameMaster.createTask(task, 100);
+            assert(!Task.getCompletionStatus(task));
         }
-        Assertions.assertTrue(taskRun);
     }
 
+    /**
+     * Test for whether the createTask method of the GameMaster class correctly affects the task's activatedStatus
+     * variable.
+     * @throws ClassNotFoundException If task class is not found
+     * @throws NoSuchMethodException If method is not found
+     * @throws InvocationTargetException If method cannot be invoked with passed parameters
+     * @throws IllegalAccessException If method cannot be accessed
+     */
     @Test
-    public void createNewTaskSetActivatedTest() throws ClassNotFoundException, InvocationTargetException,
-            NoSuchMethodException, IllegalAccessException {
-        Clock clock = Clock.systemDefaultZone();
-        long currTime = clock.millis();
-        GameMaster.createNewTask(currTime);
-        boolean taskRun = false;
-        for (int i = 0; i < GameMaster.tasks.length; i++){
-            String task = GameMaster.tasks[i];
-            Class<?> taskClass = Class.forName("entities." + task);
-            Method activatedMethod  = taskClass.getMethod("getActivatedStatus");
-            taskRun = (Boolean) activatedMethod.invoke(taskClass);
-            if (taskRun){
-                break;
-            }
+    void createTaskActivationTest() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        GameMaster.reset();
+        String[] taskNames = GameMaster.tasks;
+        for (String task: taskNames) {
+            Task.setActivatedStatus(task, false);
+            GameMaster.createTask(task, 100);
+            assert(Task.getActivatedStatus(task));
         }
-        Assertions.assertTrue(taskRun);
     }
 
+    /**
+     * Test for whether the taskInterval of the GameMaster is initially equal to 10000 milliseconds.
+     */
     @Test
     public void getTaskIntervalTest(){
+        GameMaster.reset();
         int taskInterval = 10000;
         Assertions.assertEquals(GameMaster.getTaskInterval(), taskInterval);
     }
 
+    /**
+     * Test for whether the checkTasksCompletion method of the GameMaster correctly sets the activation status
+     * of each task, or correctly deactivates each task.
+     * @throws ClassNotFoundException If task class is not found
+     * @throws NoSuchMethodException If method is not found
+     * @throws InvocationTargetException If method cannot be invoked with passed parameters
+     * @throws IllegalAccessException If method cannot be accessed
+     */
     @Test
     public void checkTasksCompletionTest() throws ClassNotFoundException, InvocationTargetException,
             NoSuchMethodException, IllegalAccessException {
-        Clock clock = Clock.systemDefaultZone();
-        long currTime = clock.millis();
-        GameMaster.checkTasksCompletion(currTime);
-        boolean taskComp = true;
-        for (int i = 0; i < GameMaster.tasks.length; i++){
-            String task = GameMaster.tasks[i];
-            Class<?> taskClass = Class.forName("entities." + task);
-            Method completionMethod  = taskClass.getMethod("getCompletionStatus");
-            taskComp = (Boolean) completionMethod.invoke(taskClass);
-            if (!taskComp){
-                break;
-            }
+        GameMaster.reset();
+        String[] taskNames = GameMaster.tasks;
+        for (String task: taskNames) {
+            GameMaster.getTimes().put(task, Integer.toUnsignedLong(100));
+            Task.setCompletionStatus(task, true);
+            Task.setActivatedStatus(task, true);
+            GameMaster.checkTasksCompletion(Integer.toUnsignedLong(100));
+            assert(!Task.getActivatedStatus(task));
         }
-        Assertions.assertFalse(taskComp);
     }
 
+    /**
+     * Test for whether the chooseTask method of the GameMaster returns a task name that is in the GameMaster's
+     * tasks list.
+     */
     @Test
     public void chooseTaskTest(){
+        GameMaster.reset();
         String[] tasks = GameMaster.tasks;
         String newTaskName = GameMaster.chooseTask(tasks);
-        boolean validTask = false;
-        for (String task : tasks) {
-            if (Objects.equals(task, newTaskName)) {
-                validTask = true;
-                break;
-            }
-        }
-        Assertions.assertNotEquals(null,newTaskName);
-        Assertions.assertTrue(validTask);
+        assert(Arrays.asList(tasks).contains(newTaskName));
     }
 
+    /**
+     * Test for whether the getTimes method of the GameMaster is empty upon reset.
+     */
     @Test
     public void getTimesTest(){
+        GameMaster.reset();
         Hashtable<String, Long> actual = GameMaster.getTimes();
         Hashtable<String, Long> expected = new Hashtable<>();
         Assertions.assertEquals(expected, actual);

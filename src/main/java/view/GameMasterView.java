@@ -339,7 +339,7 @@ public class GameMasterView extends JFrame{
      * @param iconSource The string representation of the icon's filepath
      * @return The scaled ImageIcon
      */
-    private ImageIcon scaleIcon(String iconSource) {
+    public ImageIcon scaleIcon(String iconSource) {
         ImageIcon icon = new ImageIcon(iconSource);
         return new ImageIcon(icon.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
     }
