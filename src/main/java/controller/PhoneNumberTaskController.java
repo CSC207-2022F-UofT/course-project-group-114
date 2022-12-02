@@ -28,14 +28,6 @@ public class PhoneNumberTaskController {
     }
 
     /**
-     * sets the CompletionStatus of the PhoneNumberTask to the boolean passed
-     * @param status boolean value the CompletionStatus of the PhoneNumberTask needs to be set to
-     */
-    public static void setCompletionStatus(boolean status) {
-        PhoneNumberTask.setCompletionStatus("PhoneNumberTask", status);
-    }
-
-    /**
      * sets the ActivatedStatus of the PhoneNumberTask to the boolean passed
      * @param status boolean value the ActivatedStatus of the PhoneNumberTask needs to be set to
      */
