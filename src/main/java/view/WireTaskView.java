@@ -28,6 +28,9 @@ public class WireTaskView extends JLayeredPane{
     JLabel g2button;
     JLabel b2button;
 
+    Point FirstPoint = new Point(0, 0);
+    Point SecondPoint = new Point(0, 0);
+
     /**
      * Constructor for WireTaskView.
      */
@@ -102,6 +105,8 @@ public class WireTaskView extends JLayeredPane{
         setPreferredSize(new Dimension(1280, 720));
         setVisible(true);
 
+
+
         r1button.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -110,6 +115,7 @@ public class WireTaskView extends JLayeredPane{
 
             @Override
             public void mousePressed(MouseEvent e) {
+                FirstPoint.setLocation(r1button.getX(), r1button.getY());
 
             }
 
