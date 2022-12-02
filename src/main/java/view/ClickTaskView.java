@@ -10,8 +10,6 @@ import javax.swing.*;
  * needed for the Click Task.
  *
  * @author Siyuan Deng
- * @version  2.0
- * @since 2022-10-28
  * @inheritDoc JLayeredPane
  */
 public class ClickTaskView extends JLayeredPane{
@@ -88,7 +86,9 @@ public class ClickTaskView extends JLayeredPane{
         setVisible(true);
     }
 
-    // Main method
+    /**
+     * This method opens a ClickTaskView, which is the plane of the game.
+     */
     public static void main(String[] args) {
         new ClickTaskView();
     }
