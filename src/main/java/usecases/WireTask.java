@@ -95,7 +95,7 @@ public class WireTask extends Task{
     }
 
     /**
-     * A method that returns whether the task is complete or not, which happens when one the lists of colours is
+     * A method that returns whether the task is complete or not, which happens when one of the lists of colours is
      * completely empty, meaning that the user has correctly matched all of them.
      */
     public static boolean checkCompletion(){
