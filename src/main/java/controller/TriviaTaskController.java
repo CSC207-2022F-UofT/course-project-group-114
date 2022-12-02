@@ -38,11 +38,20 @@ public static TriviaTask triviataskusecase = new TriviaTask();
     // relay it to the backend code and call the backend here
 
     // this bitch under here might need some refactoring???
-    public boolean answerChecker(String actualAnswer, JTextField playerAnswer){
-        // takes playerAnswer from the view aka the players input
-        // calls the usecase - tells the usecase to check it
-        return (TriviaTask.checkAnswer(actualAnswer, playerAnswer.getText()));
-    }
+//    public static void answerChecker(String actualAnswer, JTextField playerAnswer){
+//        boolean status = TriviaTask.checkAnswer(actualAnswer, playerAnswer.getText());
+//        if
+//        // takes playerAnswer from the view aka the players input
+//        // calls the usecase - tells the usecase to check it
+//        //return (TriviaTask.checkAnswer(actualAnswer, playerAnswer.getText()));
+//    }
+//    public static void answerChecker(String actualAnswer, JTextField playerAnswer){
+//        boolean isAnswerCorrect = TriviaTask.checkAnswer(actualAnswer, playerAnswer.getText());
+//        if(isAnswerCorrect){
+//            TriviaTask.setCompletionStatus(true);
+//        }
+//    }
+
     public static void setCompletionStatus(boolean status) {
         TriviaTask.setCompletionStatus("TriviaTask", status);
     }
