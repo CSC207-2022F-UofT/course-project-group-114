@@ -37,14 +37,14 @@ public class TriviaTaskView extends JFrame {
         submitButton.setBounds(200, 580, submit.getIconWidth(), submit.getIconHeight());
 
         // setting up playerAnswer input
-        JTextField playerAnswer = new JTextField();
-        playerAnswer.setEditable(true);
-        playerAnswer.setHorizontalAlignment(JTextField.CENTER);
-        playerAnswer.setFont(new Font("Serif", Font.BOLD, 16));
-        playerAnswer.setForeground(Color.GRAY);
-        playerAnswer.setBounds(120, 476, 268, 62);
-        playerAnswer.setOpaque(false);
-        playerAnswer.setMargin(new Insets(1, 1, 1, 1));
+        JTextField playerAnswerInput = new JTextField();
+        playerAnswerInput.setEditable(true);
+        playerAnswerInput.setHorizontalAlignment(JTextField.CENTER);
+        playerAnswerInput.setFont(new Font("Serif", Font.BOLD, 16));
+        playerAnswerInput.setForeground(Color.GRAY);
+        playerAnswerInput.setBounds(120, 476, 268, 62);
+        playerAnswerInput.setOpaque(false);
+        playerAnswerInput.setMargin(new Insets(1, 1, 1, 1));
 
         setPreferredSize(new Dimension(1280, 720));
         setVisible(true);
@@ -56,6 +56,9 @@ public class TriviaTaskView extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                TriviaTaskController.passAnswertoUsecase("actans placeholder", playerAnswerInput);
+                //presenter.
+
 
             }
         });
