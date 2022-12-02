@@ -1,14 +1,17 @@
 package view;
-
 import java.awt.*;
-import controller.ClickTaskController;
-import controller.WireTaskController;
-
+import java.awt.event.*;
 import javax.swing.*;
+import controller.WireTaskController;
+import presenter.WireTaskPresenter;
+
+/**
+ * A class representing WireTaskView, which has the role of creating the UI for WireTask.
+ *
+ * @author Roy
+ */
 
 public class WireTaskView extends JLayeredPane{
-
-    // IMAGES
     ImageIcon backgroundImage;
     JLabel background;
 
@@ -25,15 +28,12 @@ public class WireTaskView extends JLayeredPane{
     JLabel g2button;
     JLabel b2button;
 
-    private static String previous;
-    private static String current;
-    private boolean done;
-
     public WireTaskView() {
 
     }
 
     public static void main(String[] args) {
+
         new WireTaskView();
     }
 }
