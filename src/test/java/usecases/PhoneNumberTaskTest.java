@@ -1,3 +1,5 @@
+package usecases;
+
 import org.junit.jupiter.api.Test;
 
 import usecases.PhoneNumberTask;
