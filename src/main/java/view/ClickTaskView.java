@@ -2,6 +2,7 @@ package view;
 
 import java.awt.*;
 import controller.ClickTaskController;
+import presenter.ClickTaskPresenter;
 
 import javax.swing.*;
 
@@ -14,6 +15,7 @@ import javax.swing.*;
  */
 public class ClickTaskView extends JLayeredPane{
     public ClickTaskView(){
+        ClickTaskPresenter clickTaskPresenter = new ClickTaskPresenter();
         ClickTaskController.setNeededClicks();
         ClickTaskController.reset();
 
@@ -74,7 +76,7 @@ public class ClickTaskView extends JLayeredPane{
             }
 
             boolean success = (neededClicks == currentClicks);
-            endGame(success);
+            clickTaskPresenter.endGame(success);
         });
 
         // Add layers
@@ -91,20 +93,5 @@ public class ClickTaskView extends JLayeredPane{
      */
     public static void main(String[] args) {
         new ClickTaskView();
-    }
-
-    /**
-     * This method is used to determine whether the game needs to be ended. If
-     * the game ends, show message and tell Game Master.
-     * @param success This is the boolean value that is true when a user has made
-     *                enough clicks.
-     */
-    public void endGame(boolean success){
-        if (success){
-            JOptionPane.showMessageDialog(null, "Congrats!");
-            ClickTaskController.setActivatedStatus(false);
-            ClickTaskController.setCompletionStatus(true);
-            GameMasterView.backToMain(GameMasterView.clickTaskView);
-        }
     }
 }
