@@ -89,7 +89,8 @@ public class ClickTaskView extends JLayeredPane{
     }
 
     /**
-     * This method opens a ClickTaskView, which is the plane of the game.
+     * This method opens a ClickTaskView, which is the plane of the game and initiate
+     * a new Click Task.
      */
     public static void main(String[] args) {
         new ClickTaskView();

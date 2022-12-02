@@ -15,7 +15,8 @@ import javax.swing.*;
 public class ClickTaskPresenter {
     /**
      * This method is used to determine whether the game needs to be ended. If
-     * the game ends, show message and tell Game Master.
+     * the game ends, set ActivatedStatus to false, set Completion Status to true,
+     * and show message and tell Game Master.
      * @param success This is the boolean value that is true when a user has made
      *                enough clicks.
      */
