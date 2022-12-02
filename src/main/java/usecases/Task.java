@@ -3,8 +3,8 @@ package usecases;
 import java.util.Hashtable;
 
 public abstract class Task {
-    protected static Hashtable<String, Boolean> completions = new Hashtable<String, Boolean>();
-    protected static Hashtable<String, Boolean> activations = new Hashtable<String, Boolean>();
+    protected static Hashtable<String, Boolean> completions = new Hashtable<>();
+    protected static Hashtable<String, Boolean> activations = new Hashtable<>();
     public static void setCompletionStatus(String task, boolean status) {
         completions.remove(task);
         completions.put(task, status);
