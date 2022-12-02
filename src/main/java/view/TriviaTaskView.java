@@ -14,15 +14,16 @@ public class TriviaTaskView extends JFrame{
 
     public static JLayeredPane TriviaTaskPanel;
 
-    TriviaTaskView(){
-        TriviaTaskController TriviaTaskController = new TriviaTaskController();
+    TriviaTaskView(TriviaTaskController controller, TriviaTaskPresenter presenter){
+        //TriviaTaskController TriviaTaskController = new TriviaTaskController();
         //String currentQuestion = "** temporary string placeholder shit till i figure this out **";
         // figured it out on the line right below :)
-        String currentQuestion = TriviaTaskPresenter.tellViewWhatQuestionToShow();
+        String currentQuestion = presenter.tellViewWhatQuestionToShow();
         //String currentQuestion = TriviaTaskController.passRandomQuestion();
         // ^ that line above would have been half "okay" like wouldve functioned
         // but was using a controller to do what the non-existent at the time presenter should've done
-        String actualAnswer = TriviaTaskController.passActualAnswer();
+        //String actualAnswer = controller.passActualAnswer();
+        String actualAnswer = "placeholder";
 
         JPanel popup = new JPanel();
         JLabel question = new JLabel("You have 10 seconds to answer the question correctly: " + currentQuestion);

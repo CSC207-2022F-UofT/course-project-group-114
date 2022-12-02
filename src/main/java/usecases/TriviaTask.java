@@ -5,15 +5,16 @@ import java.util.*;
 public class TriviaTask extends Task {
     // public int triviaCategory; //can later make changes to code to add categories and get questions and answers from a csv file
     // public static int questionNum; //randomly generated num to select a random question from that category
-    public String currentQuestion; // the question. trivia dict at the randomly generated index
-    public String actualAnswer; // the correct answer corresponding value to the key
+    public static String currentQuestion; // the question. trivia dict at the randomly generated index
+    public static String actualAnswer; // the correct answer corresponding value to the key
+    public static boolean correct;
 
     // creating the trivia dictionary
 
     // creating the trivia dict, this is ok but change it to a csv so that there can be more questions??
     // ask urself if/how this adheres to clean architecture
 
-    public Map<String, String> getMap()
+    public static Map<String, String> getMap()
     {
        Map<String, String> triviaDict = new HashMap<>();
             triviaDict.put("What kind of animal is a Python?", "snake");
@@ -31,8 +32,8 @@ public class TriviaTask extends Task {
         List<String> keys = new ArrayList<>(keySet);
         int size = keys.size();
         int randomKeyIndex = new Random().nextInt(size);
-        this.currentQuestion = keys.get(randomKeyIndex);
-        this.actualAnswer = triviaDict.get(currentQuestion);
+        currentQuestion = keys.get(randomKeyIndex);
+        actualAnswer = triviaDict.get(currentQuestion);
         return currentQuestion;
     }
 
@@ -45,14 +46,14 @@ public class TriviaTask extends Task {
 //    }
     // checks if the answer is correct
 
-    public static boolean checkAnswer (String actualAnswer, String playerAnswer){
+    public static void checkAnswer (String actualAnswer, String playerAnswer){
         // case for if the actual answer is an integer????? this can be added later.
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
             setCompletionStatus("TriviaTask", true);
-            return true;
+            correct = true;
         }
         else{
-            return false;
+            correct = false;
         }
     }
 }

@@ -1,6 +1,10 @@
 package controller;
+// importing the usecase
 import usecases.TriviaTask;
 import javax.swing.*;
+
+import static usecases.TriviaTask.actualAnswer;
+
 // controller is responsible for passing info from view to backend & ensuring that the
 // dependency rule & clean architecture are not violated
 // talk about the difference between controller & presenter
@@ -8,7 +12,8 @@ import javax.swing.*;
 public class TriviaTaskController {
 //    private String playerAnswer;
 //    private String[] actualAnswer;
-public static TriviaTask triviataskusecase = new TriviaTask();
+    // creating an instance of the usecase // no static -instance, static class
+    //don't need a particular "instance" of a static variable to access it
 
     // passes the random question through the controller from backend to view
 //    public static String passRandomQuestion(){
@@ -51,14 +56,26 @@ public static TriviaTask triviataskusecase = new TriviaTask();
 //            TriviaTask.setCompletionStatus(true);
 //        }
 //    }
+//    public void answerChecker(String actualAnswer, JTextField playerAnswer()){
+    // if correct set completion status to true
 
+//    }
+    public static void passAnswertoCheck(String actualAnswer, JTextField playerAnswer()){
+        TriviaTask.checkAnswer(actualAnswer, playerAnswer.getText());
+    }
+
+    // used to set completion status based on whether or not question is answered correctly
     public static void setCompletionStatus(boolean status) {
+
         TriviaTask.setCompletionStatus("TriviaTask", status);
     }
+
     public static void setActivatedStatus(boolean status) {
+
         TriviaTask.setActivatedStatus("TriviaTask", status);
     }
     public static boolean getActivatedStatus() {
+
         return TriviaTask.getActivatedStatus("TriviaTask");
     }
 
