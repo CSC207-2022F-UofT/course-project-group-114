@@ -1,6 +1,7 @@
 package view;
 
 import controller.TriviaTaskController;
+import presenter.TriviaTaskPresenter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,12 @@ public class TriviaTaskView extends JFrame{
 
     TriviaTaskView(){
         TriviaTaskController TriviaTaskController = new TriviaTaskController();
-        String currentQuestion = TriviaTaskController.passRandomQuestion();
+        //String currentQuestion = "** temporary string placeholder shit till i figure this out **";
+        // figured it out on the line right below :)
+        String currentQuestion = TriviaTaskPresenter.tellViewWhatQuestionToShow();
+        //String currentQuestion = TriviaTaskController.passRandomQuestion();
+        // ^ that line above would have been half "okay" like wouldve functionede
+        // but was using a controller to do what the non-existent at the time presenter should've done
         String actualAnswer = TriviaTaskController.passActualAnswer();
 
         JPanel popup = new JPanel();
