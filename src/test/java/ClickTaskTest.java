@@ -41,9 +41,10 @@ public class ClickTaskTest {
         ClickTask.setNeededClicks();
         int needed = ClickTask.getNeededClicks();
         int current = rand.nextInt(ClickTask.getUpperbound() - 1);
-        boolean expected = needed / 2 <= current;
         ClickTask.setCurrentClicks(current);
-        assert(expected == ClickTask.portion);
+        boolean expected = needed / 2 <= current;
+        boolean actual = ClickTask.portion;
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
