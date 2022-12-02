@@ -8,7 +8,6 @@ public class TriviaTask extends Task {
     public static String currentQuestion; // the question. trivia dict at the randomly generated index
     public static String actualAnswer; // the correct answer corresponding value to the key
     public static boolean isAnswerCorrect;
-
     // creating the trivia dictionary
     public static Map<String, String> getMap()
     {
@@ -34,11 +33,9 @@ public class TriviaTask extends Task {
         actualAnswer = triviaDict.get(currentQuestion);
         return currentQuestion;
     }
-
-    public static void reset() { // inherited reset method, generate random question
-        // public int questionNum = random number between 0 and last index of dictionary
-    }
-    // checks if the answer is correct
+//    public static void reset() { // inherited reset method, generate random question
+//        // public int questionNum = random number between 0 and last index of dictionary
+//    }
 
     public static void checkAnswer (String actualAnswer, String playerAnswer){
         // case for if the actual answer is an integer????? this can be added later.
@@ -49,7 +46,5 @@ public class TriviaTask extends Task {
         else{
             isAnswerCorrect = false;
         }
-        // if i want to change it to categories and more than one correct answer or to accept variations of the same answer will
-        // need to check that playerAnswer is in the list of possible answers
     }
 }

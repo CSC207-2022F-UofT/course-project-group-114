@@ -2,27 +2,24 @@ package presenter;
 import usecases.TriviaTask;
 import javax.swing.*;
 
-import static usecases.TriviaTask.actualAnswer;
-import static usecases.TriviaTask.isAnswerCorrect;
+import static usecases.TriviaTask.*;
 
 public class TriviaTaskPresenter {
-    TriviaTask triviaUsecase;
 
     public String tellViewQuestion(){
-        return TriviaTask.getRandomQuestion();
+
+        return currentQuestion;
     }
 
     public String tellViewCorrectness(){
         // if the answer is correct what should the view present?
         if (isAnswerCorrect){
-            return "that is correct";
+            return "that is correct!";
 
         }
 
-        // what if the answer is incorrect?
-        //return "abc";
         else{
-            return "incorrect. the correct answer is " + actualAnswer;
+            return "that is incorrect. the correct answer is " + actualAnswer;
         }
     }
 }
