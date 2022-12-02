@@ -2,6 +2,13 @@ package controller;
 import usecases.TriviaTask;
 import javax.swing.*;
 
+/**
+ * The trivia task controller is responsible for taking the player's input,
+ * (player's answer to the trivia question), "translating" it into something that the usecase
+ * can understand, and "passing" or "relaying" it to the usecase so that the use case can check
+ * if it's correct.
+ * @author talia
+ */
 public class TriviaTaskController {
     public static void passAnswertoUsecase(String actualAnswer, JTextField playerAnswer){
         // backend checkAnswer compares the playerAnswer to the actualAnswer to determine
