@@ -6,12 +6,10 @@ public class TriviaTask extends Task {
     // public int triviaCategory; //can later make changes to code to add categories and get questions and answers from a csv file
     // public static int questionNum; //randomly generated num to select a random question from that category
     public static String currentQuestion; // the question. trivia dict at the randomly generated index
-    public String playerAnswer; // what the player actually answered
     public static String actualAnswer; // the correct answer corresponding value to the key
     public static boolean isAnswerCorrect;
 
     // creating the trivia dictionary
-
     public static Map<String, String> getMap()
     {
        Map<String, String> triviaDict = new HashMap<>();
