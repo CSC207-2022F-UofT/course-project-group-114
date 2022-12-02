@@ -62,7 +62,7 @@ public class GameMasterView extends JFrame{
     public static JLayeredPane clickTaskView;
     public static JLayeredPane phoneTaskView;
     public static JLayeredPane memoryTaskView;
-//    public static JLayeredPane wireTaskView;
+    public static JLayeredPane wireTaskView;
     public static JLayeredPane heatTaskView;
 //    public static JLayeredPane triviaTaskView;
 
@@ -259,8 +259,8 @@ public class GameMasterView extends JFrame{
             layers.setVisible(false);
         });
         clickableWire.addActionListener(e -> {
-//            wireTaskView = new WireTaskView();
-//                main.add(wireTaskView);
+            wireTaskView = new WireTaskView();
+            main.add(wireTaskView);
 
         });
         clickableMemory.addActionListener(e -> {

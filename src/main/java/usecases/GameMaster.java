@@ -17,8 +17,7 @@ public class GameMaster {
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<>();
 
-    public static String[] tasks = new String[] {"ClickTask", "AssignmentTask", "MemoryTask", "HeatAdjustmentTask",
-    "PhoneNumberTask"};
+    public static String[] tasks = new String[] {"WireTask"};
 //    public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
 //            "AssignmentTask", "MemoryTask", "WireTask", "TriviaTask"};
 
@@ -51,6 +50,7 @@ public class GameMaster {
             resetMethod.invoke(taskClass);
             Method completionMethod  = taskClass.getMethod("setCompletionStatus", String.class, boolean.class);
             completionMethod.invoke(taskClass, newTaskName, false);
+            System.out.println("got past completion");
             Method activatedMethod = taskClass.getMethod("setActivatedStatus", String.class, boolean.class);
             activatedMethod.invoke(taskClass, newTaskName, true);
             // Amount of time allowed for each task in milliseconds
