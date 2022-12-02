@@ -22,14 +22,6 @@ public class MemoryTaskController {
     }
 
     /**
-     * sets the CompletionStatus of the MemoryTask to the boolean passed
-     * @param status boolean value the CompletionStatus of the MemoryTask needs to be set to
-     */
-    public static void setCompletionStatus(boolean status) {
-        MemoryTask.setCompletionStatus("MemoryTask", status);
-    }
-
-    /**
      * sets the ActivatedStatus of the MemoryTask to the boolean passed
      * @param status boolean value the ActivatedStatus of the MemoryTask needs to be set to
      */

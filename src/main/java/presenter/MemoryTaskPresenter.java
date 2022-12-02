@@ -1,6 +1,5 @@
 package presenter;
 
-import controller.MemoryTaskController;
 import usecases.MemoryTask;
 
 /**
@@ -19,12 +18,21 @@ public class MemoryTaskPresenter {
     public String correctnessStatus(){
         boolean status = MemoryTask.correct;
         if(status){
-            MemoryTaskController.setCompletionStatus(true);
+            setCompletionStatus(true);
             return("Correct");
         }
         else {
-            MemoryTaskController.setCompletionStatus(false);
+            setCompletionStatus(false);
             return("Incorrect");
         }
     }
+
+    /**
+     * sets the CompletionStatus of the MemoryTask to the boolean passed
+     * @param status boolean value the CompletionStatus of the MemoryTask needs to be set to
+     */
+    public static void setCompletionStatus(boolean status) {
+        MemoryTask.setCompletionStatus("MemoryTask", status);
+    }
+
 }
