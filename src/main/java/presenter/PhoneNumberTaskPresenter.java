@@ -1,6 +1,5 @@
 package presenter;
 
-import controller.PhoneNumberTaskController;
 import usecases.PhoneNumberTask;
 
 /**
@@ -19,14 +18,21 @@ public class PhoneNumberTaskPresenter {
     public String correctnessStatus(){
         boolean status = PhoneNumberTask.correct;
         if(status){
-            PhoneNumberTaskController.setCompletionStatus(true);
+            setCompletionStatus(true);
             return("Correct");
         }
         else {
-            PhoneNumberTaskController.setCompletionStatus(false);
+            setCompletionStatus(false);
             return("Incorrect");
         }
     }
 
+    /**
+     * sets the CompletionStatus of the PhoneNumberTask to the boolean passed
+     * @param status boolean value the CompletionStatus of the PhoneNumberTask needs to be set to
+     */
+    public static void setCompletionStatus(boolean status) {
+        PhoneNumberTask.setCompletionStatus("PhoneNumberTask", status);
+    }
 
 }

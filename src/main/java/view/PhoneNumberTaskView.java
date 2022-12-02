@@ -292,6 +292,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                checkIfTimeRanOut();
                 controller.passer(actualNumber, numberSoFar);
                 String status = presenter.correctnessStatus();
                 JOptionPane.showMessageDialog(null, status);
