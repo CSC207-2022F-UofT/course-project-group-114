@@ -3,7 +3,6 @@ package presenter;
 import org.junit.jupiter.api.Test;
 
 import usecases.PhoneNumberTask;
-import presenter.PhoneNumberTaskPresenter;
 
 public class PhoneNumberTaskPresenterTest {
     @Test
