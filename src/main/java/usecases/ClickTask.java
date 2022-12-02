@@ -13,7 +13,7 @@ public class ClickTask extends Task{
     public static int currentClicks;
     public static int neededClicks;
     private static final int UPPERBOUND = 30;
-    public static boolean portion;
+    public static boolean portion = false;
 
     /**
      * This method generates a random number and make it an instance of the
@@ -43,6 +43,8 @@ public class ClickTask extends Task{
         currentClicks = newCurrentClicks;
         if (neededClicks / 2 <= newCurrentClicks) {
             portion = true;
+        } else{
+            portion = false;
         }
     }
 
