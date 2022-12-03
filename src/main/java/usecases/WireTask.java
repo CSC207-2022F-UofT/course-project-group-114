@@ -30,7 +30,6 @@ public class WireTask extends Task{
     public static void reset(){
         previous = "";
         current = "";
-
         LeftWires = setLeftWires();
         RightWires = setRightWires();
     }
@@ -42,16 +41,10 @@ public class WireTask extends Task{
      */
     public static ArrayList<String> setLeftWires(){
         // Shuffles a random list from LeftWires for the left side
-        if (!LeftWires.contains("RED")){
-            LeftWires.add("RED");
-        }
-        if (!LeftWires.contains("GREEN")){
-            LeftWires.add("GREEN");
-        }
-        if (!LeftWires.contains("BLUE")){
-            LeftWires.add("BLUE");
-        }
-        Collections.shuffle(LeftWires);
+        LeftWires = new ArrayList<>();
+        LeftWires.add("RED");
+        LeftWires.add("GREEN");
+        LeftWires.add("BLUE");
         return LeftWires;
     }
 
@@ -63,16 +56,10 @@ public class WireTask extends Task{
 
     public static ArrayList<String> setRightWires(){
         // Shuffles a random list from RightWires for the right side
-        if (!RightWires.contains("RED")){
-            RightWires.add("RED");
-        }
-        if (!RightWires.contains("GREEN")){
-            RightWires.add("GREEN");
-        }
-        if (!LeftWires.contains("BLUE")){
-            RightWires.add("BLUE");
-        }
-        Collections.shuffle(RightWires);
+        RightWires = new ArrayList<>();
+        RightWires.add("RED");
+        RightWires.add("GREEN");
+        RightWires.add("BLUE");
         return RightWires;
     }
 
