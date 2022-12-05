@@ -10,9 +10,9 @@ import javax.swing.*;
  * @author talia
  */
 public class TriviaTaskController {
-    public static void passAnswertoUsecase(String actualAnswer, JTextField playerAnswer){
+    public static void passAnswertoUsecase(JTextField playerAnswer){
         // backend checkAnswer compares the playerAnswer to the actualAnswer to determine
-        TriviaTask.checkAnswer(actualAnswer, playerAnswer.getText());
+        TriviaTask.checkAnswer(playerAnswer.getText());
     }
     public static void setCompletionStatus(boolean status) {
 

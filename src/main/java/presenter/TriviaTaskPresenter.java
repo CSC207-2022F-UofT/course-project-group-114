@@ -1,6 +1,4 @@
 package presenter;
-import usecases.TriviaTask;
-import javax.swing.*;
 
 import static usecases.TriviaTask.*;
 
@@ -16,15 +14,9 @@ public class TriviaTaskPresenter {
         return currentQuestion;
     }
 
-    public String tellViewCorrectness(String actualAnswer, JTextField playerAnswer){
+    public static String tellViewCorrectness(){
         // if the answer is correct what should the view present to the user?
-        if (isAnswerCorrect){
-            return "that is correct!";
-        }
-
         // what if the answer is incorrect?
-        else{
-            return "that is incorrect. the correct answer is " + actualAnswer;
-        }
+        return "placeholder";
     }
 }
