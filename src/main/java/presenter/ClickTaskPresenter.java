@@ -20,7 +20,7 @@ public class ClickTaskPresenter {
      * @param success This is the boolean value that is true when a user has made
      *                enough clicks.
      */
-    public void endGame(boolean success){
+    public static void endGame(boolean success){
         if (success){
             JOptionPane.showMessageDialog(null, "Congrats!");
             setActivatedStatus(false);
