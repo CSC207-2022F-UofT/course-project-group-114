@@ -4,6 +4,8 @@ import static usecases.TriviaTask.*;
 
 /**
  * The TriviaTask presenter is responsible for "telling the view what to present to the user"
+ * The presenter gets information from the usecase & uses that information to tell the view what to
+ * display/present to the user
  * @author talia
  */
 
@@ -14,9 +16,9 @@ public class TriviaTaskPresenter {
         return currentQuestion;
     }
 
-    public static String tellViewCorrectness(){
-        // if the answer is correct what should the view present to the user?
-        // what if the answer is incorrect?
+    public static String tellCorrectness(){
+        //if answer is correct
         return "placeholder";
+
     }
 }

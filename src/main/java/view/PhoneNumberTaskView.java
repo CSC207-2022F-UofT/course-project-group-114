@@ -154,6 +154,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "1";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -168,6 +169,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "2";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -182,6 +184,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "3";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -196,6 +199,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "4";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -210,6 +214,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "5";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -224,6 +229,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "6";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -238,6 +244,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "7";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -252,6 +259,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "8";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -266,6 +274,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "9";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -280,6 +289,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 checkIfTimeRanOut();
                 numberSoFar += "0";
                 numberTyped.setText(numberSoFar);
+                return null;
             }
         });
 
@@ -298,6 +308,7 @@ public class PhoneNumberTaskView extends JLayeredPane{
                 setVisible(false);
                 PhoneNumberTaskController.setActivatedStatus(false);
                 GameMasterView.backToMain(GameMasterView.phoneTaskView);
+                return status;
             }
         });
 

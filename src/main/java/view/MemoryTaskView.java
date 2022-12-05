@@ -100,6 +100,7 @@ public class MemoryTaskView extends JLayeredPane{
                 setVisible(false);
                 MemoryTaskController.setActivatedStatus(false);
                 GameMasterView.backToMain(GameMasterView.memoryTaskView);
+                return typedPassword;
             }
         });
 

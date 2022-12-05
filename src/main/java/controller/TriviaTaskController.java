@@ -11,7 +11,7 @@ import javax.swing.*;
  */
 public class TriviaTaskController {
     public static void passAnswertoUsecase(JTextField playerAnswer){
-        // backend checkAnswer compares the playerAnswer to the actualAnswer to determine
+        // backend checkAnswer compares the playerAnswer to the actualAnswer to determine correctness
         TriviaTask.checkAnswer(playerAnswer.getText());
     }
     public static void setCompletionStatus(boolean status) {

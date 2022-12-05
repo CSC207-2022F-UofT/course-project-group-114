@@ -7,7 +7,7 @@ public class TriviaTask extends Task {
     // public static int questionNum; //randomly generated num to select a random question from that category
     public static String currentQuestion; // the question. trivia dict at the randomly generated index
     public static String actualAnswer; // the correct answer corresponding value to the key
-    public static boolean isAnswerCorrect = false;
+    public static boolean isAnswerCorrect;
     // creating the trivia dictionary
     public static Map<String, String> getMap()
     {
@@ -38,11 +38,16 @@ public class TriviaTask extends Task {
 //        // public int questionNum = random number between 0 and last index of dictionary
 //    }
 
-    public static void checkAnswer (String playerAnswer){
+    public static boolean checkAnswer (String playerAnswer){
         // case for if the actual answer is an integer????? this can be added later.
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
             setCompletionStatus("TriviaTask", true);
             isAnswerCorrect = true;
+            return true;
+        }
+        else{
+            isAnswerCorrect = false;
+            return false;
         }
     }
 }
