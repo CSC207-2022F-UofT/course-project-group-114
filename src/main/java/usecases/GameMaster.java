@@ -2,14 +2,13 @@ package usecases;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Class representing the GameMaster use case, which is responsible for the main game functions such as generating
- * and deactivating tasks as needed
- * @author Elena
+ * and deactivating tasks as needed.
+ *
+ * @author Elena Scobici
  */
 
 public class GameMaster {
@@ -32,9 +31,20 @@ public class GameMaster {
      * @throws IllegalAccessException If method cannot be accessed
      */
     public static void createNewTask(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        System.out.println("Create task method!");
         String newTaskName = chooseTask(tasks); // Pick a random task
-        System.out.println(newTaskName);
+        createTask(newTaskName, currTime);
+    }
+
+    /**
+     * Helper method for creating the task with the passed name at the passed time.
+     * @param newTaskName The name of the task to be created, as a string.
+     * @param currTime The current time, in milliseconds, as a long.
+     * @throws ClassNotFoundException If task class is not found
+     * @throws NoSuchMethodException If method is not found
+     * @throws InvocationTargetException If method cannot be invoked with passed parameters
+     * @throws IllegalAccessException If method cannot be accessed
+     */
+    public static void createTask(String newTaskName, long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Class<?> taskClass = Class.forName("usecases." + newTaskName); // Get the task class
         if (!times.containsKey(newTaskName)) { // If the task isn't already running, then run it
             Method resetMethod = taskClass.getMethod("reset");
@@ -83,7 +93,6 @@ public class GameMaster {
      */
     public static void checkTasksCompletion(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         ArrayList<String> tasksToRemove = new ArrayList<>();
-        System.out.println(times.keySet());
         for (String taskName : times.keySet()) {
             Class<?> taskClass = Class.forName("usecases." + taskName);
             boolean completionStatus = (boolean) taskClass.getMethod("getCompletionStatus", String.class).invoke(taskClass, taskName);
@@ -125,7 +134,7 @@ public class GameMaster {
      * @param tasks The set of all task names to choose from
      * @return The randomly chosen task
      */
-    private static String chooseTask(String[] tasks) {
+    public static String chooseTask(String[] tasks) {
         Random rand = new Random();
         int randIndex = rand.nextInt(tasks.length);
         return tasks[randIndex];
@@ -137,5 +146,18 @@ public class GameMaster {
      */
     public static Hashtable<String, Long> getTimes() {
         return times;
+    }
+
+    /**
+     * Reset method for the GameMaster, which empties the time hashmap, sets playing to true and sets taskInterval to
+     * 10000 milliseconds.
+     */
+    public static void reset() {
+        Set<String> keySet = new HashSet<>(times.keySet());
+        for (String element : keySet) {
+            times.remove(element);
+        }
+        playing = true;
+        taskInterval = 10000;
     }
 }

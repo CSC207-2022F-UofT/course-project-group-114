@@ -7,15 +7,13 @@ import java.util.Random;
  * contains four instances.
  *
  * @author Siyuan Deng
- * @version 2.0
- * @since 2022-10-27
  * @inheritDoc Task
  */
 public class ClickTask extends Task{
     public static int currentClicks;
     public static int neededClicks;
     private static final int UPPERBOUND = 30;
-    public static boolean portion;
+    public static boolean portion = false;
 
     /**
      * This method generates a random number and make it an instance of the
@@ -23,9 +21,14 @@ public class ClickTask extends Task{
      */
     public static void setNeededClicks(){
         Random newNeed = new Random();
-        neededClicks = newNeed.nextInt(UPPERBOUND);
+        neededClicks = newNeed.nextInt(UPPERBOUND-1)+1;
     }
 
+    /**
+     * This method returns the generated neededClicks instance in Click Task class.
+     *
+     * @return the number of neededClicks.
+     */
     public static int getNeededClicks() {
         return neededClicks;
     }
@@ -40,14 +43,25 @@ public class ClickTask extends Task{
         currentClicks = newCurrentClicks;
         if (neededClicks / 2 <= newCurrentClicks) {
             portion = true;
+        } else{
+            portion = false;
         }
     }
 
+    /**
+     * This method resets the current Click Task to a new Click Task, meaning newly
+     * generated neededClicks and currentClicks is set to 0.
+     */
     public static void reset(){
         setCurrentClicks(0);
         Task.reset("ClickTask");
     }
 
+    /**
+     * This method returns the UPPERBOUND instance in Click Task.
+     *
+     * @return The upperbound for neededClicks.
+     */
     public static int getUpperbound() {
         return UPPERBOUND;
     }

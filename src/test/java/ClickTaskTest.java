@@ -37,11 +37,14 @@ public class ClickTaskTest {
 
     @Test
     public void setCurrentClicksPortionTest(){
-        Random cur = new Random();
-        int tempCur = cur.nextInt(ClickTask.getUpperbound() - 1);
-        boolean expected = tempCur <= ClickTask.getUpperbound() / 2;
-        ClickTask.setCurrentClicks(tempCur);
-        Assertions.assertEquals(expected, ClickTask.portion);
+        Random rand = new Random();
+        ClickTask.setNeededClicks();
+        int needed = ClickTask.getNeededClicks();
+        int current = rand.nextInt(ClickTask.getUpperbound() - 1);
+        ClickTask.setCurrentClicks(current);
+        boolean expected = needed / 2 <= current;
+        boolean actual = ClickTask.portion;
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -52,6 +55,5 @@ public class ClickTaskTest {
         ClickTask.setCurrentClicks(tempCur);
         ClickTask.reset();
         Assertions.assertEquals(0, ClickTask.currentClicks);
-        Assertions.assertEquals(0,ClickTask.neededClicks);
     }
 }

@@ -1,16 +1,21 @@
 package view;
 import controller.GameMasterController;
 import presenter.GameMasterPresenter;
-import usecases.GameMaster;
-import usecases.LifeMaster;
 
 import java.awt.*;
 import javax.swing.*;
 import java.time.Clock;
-import java.util.Hashtable;
 import java.util.Set;
 import java.util.TimerTask;
 import java.util.Timer;
+
+/**
+ * Class representing the GameMasterView, which is responsible for showing everything in the main game view,
+ * calling the GameMasterController to activate GameMaster methods and calling the GameMasterPresenter to retrieve
+ * the needed information to update the UI.
+ *
+ * @author Elena Scobici
+ */
 
 public class GameMasterView extends JFrame{
     public static JPanel main;
@@ -57,10 +62,13 @@ public class GameMasterView extends JFrame{
     public static JLayeredPane clickTaskView;
     public static JLayeredPane phoneTaskView;
     public static JLayeredPane memoryTaskView;
-    public static JLayeredPane wireTaskView;
+//    public static JLayeredPane wireTaskView;
     public static JLayeredPane heatTaskView;
-    public static JLayeredPane triviaTaskView;
+//    public static JLayeredPane triviaTaskView;
 
+    /**
+     * GameMaster constructor, which sets up the view panel and all the elements on it
+     */
     public GameMasterView() {
         main = new JPanel(new CardLayout());
         layers = new JLayeredPane();
@@ -70,7 +78,7 @@ public class GameMasterView extends JFrame{
         scoreDisplay.setForeground(new Color(200, 255, 255));
         scoreDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
 
-        livesDisplay = new JLabel((Integer.toString(LifeMaster.getLives())));
+        livesDisplay = new JLabel((GameMasterPresenter.getLivesText()));
         livesDisplay.setBounds(360, 0, 200, 100);
         livesDisplay.setForeground(new Color(200, 255, 255));
         livesDisplay.setFont(new Font("Comic Sans MS", Font.BOLD, 30));
@@ -251,9 +259,8 @@ public class GameMasterView extends JFrame{
             layers.setVisible(false);
         });
         clickableWire.addActionListener(e -> {
-            //wireTaskView = new WireTaskView();
+//            wireTaskView = new WireTaskView();
 //                main.add(wireTaskView);
-            JOptionPane.showMessageDialog(null, "i should pop up");
 
         });
         clickableMemory.addActionListener(e -> {
@@ -284,56 +291,64 @@ public class GameMasterView extends JFrame{
         // Check for every task activation or de-activation
         Timer timer = new Timer();
         Clock clock = Clock.systemDefaultZone();
-//        long currTime = clock.millis();
         int taskInterval = GameMasterController.getTaskInterval(); // Interval for creating tasks
-//        GameMasterController.createNewTask(currTime);
 
         @SuppressWarnings("unchecked")
         final Set<String>[] activeTasks = new Set[]{GameMasterPresenter.getActivateTasks()};
-//        activateTasks(activeTasks[0]);
 
         TimerTask gameLoop = new TimerTask() {
             long currTime = clock.millis();
             long checkTime = currTime + taskInterval;
             boolean coolDown = false;
+
+            /**
+             * This run method is called on a timer, every 1 second, and represents the "main game loop" except
+             * without using a loop as this would cause issues due to the single-threaded program.
+             */
             @Override
             public void run() {
                 currTime = clock.millis();
                 if (clock.millis() >= checkTime) { // Create new task if interval has passed
                     checkTime = clock.millis() + taskInterval; // Update current time
                     GameMasterController.createNewTask(currTime);
-                    System.out.println("Task created");
                 }
                 GameMasterController.checkTasksCompletion(currTime); // Check for tasks completion
-                activeTasks[0] = GameMasterPresenter.getActivateTasks();
-//                System.out.println(Arrays.toString(activeTasks));
-                activateTasks(activeTasks[0]);
+                activeTasks[0] = GameMasterPresenter.getActivateTasks(); // Get set of all currently active tasks
+                activateTasks(activeTasks[0]); // Activate the tasks visually (update UI)
                 scoreDisplay.setText(GameMasterPresenter.getScoreText());
                 livesDisplay.setText(GameMasterPresenter.getLivesText());
                 int currentTaskCount = GameMasterPresenter.getTaskCount();
-                if (currentTaskCount % 10 == 0 && currentTaskCount > 0 && !coolDown) { // Speed up every 10 won tasks
+                if (currentTaskCount % 5 == 0 && currentTaskCount > 0 && !coolDown) { // Speed up every 5 won tasks
                     int currentTaskInterval = GameMasterController.getTaskInterval();
                     GameMasterController.setTaskInterval((int) (currentTaskInterval / 1.75));
-                    coolDown = true; // Make sure we don't speed up again until the next 10th task
-                } else if (currentTaskCount % 10 == 1) {
+                    coolDown = true; // Make sure we don't speed up again until the next 5th task
+                } else if (currentTaskCount % 5 == 1) {
                     coolDown = false;
                 }
-                if (!GameMasterController.getPlayingStatus()) { // If game is over, stop the game
+                if (!GameMasterController.getPlayingStatus()) { // If game is over, stop the "game loop"
                     this.cancel();
                 }
             }
         };
 
-        timer.schedule(gameLoop, 50, 1000);
+        timer.schedule(gameLoop, 50, 1000); // Call the run method of the TimerTask every 1 second
     }
 
-    // Helper method for rescaling an ImageIcon
-    private ImageIcon scaleIcon(String iconSource) {
+    /**
+     * Helper method for scaling icons to 1280 x 720 size
+     * @param iconSource The string representation of the icon's filepath
+     * @return The scaled ImageIcon
+     */
+    public ImageIcon scaleIcon(String iconSource) {
         ImageIcon icon = new ImageIcon(iconSource);
         return new ImageIcon(icon.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH));
     }
 
-    // Helper method for activating the given tasks
+    /**
+     * Helper method for visually activating all the currently active tasks in the UI, by changing the icon image
+     * and turning on the needed buttons so the user can complete the task
+     * @param activeTasks Set of the names of all tasks that are currently active
+     */
     private void activateTasks(Set<String> activeTasks) {
         if (activeTasks.contains("HeatAdjustmentTask")) {
             thermostat.setIcon(activeThermostatIcon);
@@ -389,11 +404,14 @@ public class GameMasterView extends JFrame{
             clickableTrivia.setVisible(false);
         }
     }
-    // TODO delete main method
     public static void main(String[] args) {
         new GameMasterView();
     }
 
+    /**
+     * Method for switching back to the GameMaster's view and closing the view of the currently active task.
+     * @param taskToRemove The task whose view should be hidden.
+     */
     public static void backToMain(JLayeredPane taskToRemove) {
         layers.setVisible(true);
         taskToRemove.setVisible(false);

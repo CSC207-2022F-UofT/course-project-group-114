@@ -3,13 +3,27 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 import controller.NonGameController;
+import presenter.AuthenticatorPresenter;
 
+/**
+ * This view class display the interface for the player to login or sign up
+ * to the game. The game view is also started from this view class.
+ *
+ * @author Ming Hin Joshua Li
+ * @inheritDoc JFrame
+ */
 public class AuthenticatorView extends JFrame {
-    public static boolean startGame = false;
+
+
+    /**
+     * This constructor draws two panels and stores them into a CardLayout.
+     * Both panels include input fields for the player, a button to switch between
+     * the panels, and a button to submit the inputted info.
+     */
     AuthenticatorView(){
         Dimension maxSize = new Dimension(1280, 720);
-        ImageIcon loginIcon = new ImageIcon("src/main/java/resources/log_in_button.png");
-        ImageIcon signinIcon = new ImageIcon("src/main/java/resources/sign_in_button.png");
+        ImageIcon loginIcon = new ImageIcon("src/main/java/resources/NonTask/log_in_button.png");
+        ImageIcon signinIcon = new ImageIcon("src/main/java/resources/NonTask/sign_in_button.png");
         Color blue = new Color(150,132,255);
         Color red = new Color(222, 49, 79);
 
@@ -40,7 +54,7 @@ public class AuthenticatorView extends JFrame {
         loginPassword.setBounds(400, 500, 350, 70);
         loginPassword.setOpaque(true);
         loginPassword.setMargin(new Insets(0, 0, 0, 0));
-        ImageIcon loginImage = new ImageIcon("src/main/java/resources/log_in_bg.jpg");
+        ImageIcon loginImage = new ImageIcon("src/main/java/resources/NonTask/log_in_bg.jpg");
         JLabel loginBackground = new JLabel(loginImage);
         loginBackground.setPreferredSize(maxSize);
         loginBackground.setBounds(0,     0, 1280, 720);
@@ -91,7 +105,7 @@ public class AuthenticatorView extends JFrame {
         signinPassword2.setBounds(350, 580, 350, 50);
         signinPassword2.setOpaque(true);
         signinPassword2.setMargin(new Insets(0, 0, 0, 0));
-        ImageIcon signinImage = new ImageIcon("src/main/java/resources/sign_in_bg.jpg");
+        ImageIcon signinImage = new ImageIcon("src/main/java/resources/NonTask/sign_in_bg.jpg");
         JLabel signinBackground = new JLabel(signinImage);
         signinBackground.setPreferredSize(maxSize);
         signinBackground.setBounds(0,     0, 1280, 720);
@@ -114,23 +128,46 @@ public class AuthenticatorView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
+        // switches the view to the sign in panel
         signinSwitch.addActionListener(e -> {
             loginPanel.setVisible(false);
             signinPanel.setVisible(true);
         });
 
+        // switches the view to the login panel
         loginSwitch.addActionListener(e -> {
             signinPanel.setVisible(false);
             loginPanel.setVisible(true);
         });
 
+        // both buttons submits the input for evaluation and changes view accordingly
         loginSubmit.addActionListener(e -> {
             NonGameController.login(loginUsername.getText(), loginPassword.getText());
+            if(AuthenticatorPresenter.setLogin()){
+                startGame();
+            }
+            else {
+                AuthenticatorPresenter.loginFail();
+            }
         });
 
         signinSubmit.addActionListener(e -> {
             NonGameController.signin(signinName.getText(),signinUsername.getText(),
                     signinPassword.getText(),signinPassword2.getText());
+            if(AuthenticatorPresenter.setSignin()){
+                startGame();
+            }
+            else {
+                AuthenticatorPresenter.signinFail();
+            }
         });
+    }
+
+    /**
+     * This method disposes the current JFrame and calls the GameMasterView
+     */
+    private void startGame(){
+        this.dispose();
+        new GameMasterView();
     }
 }

@@ -16,18 +16,9 @@ public class MemoryTaskController {
      *
      * @param actualPassword the String which was generated and expected to be typed.
      * @param typedPassword the String which the user has typed.
-     * @return the boolean value returned by the checkCorrectness method in MemoryTask
      */
-    public boolean passer(String actualPassword, String typedPassword){
-        return (MemoryTask.checkCorrectness(actualPassword, typedPassword));
-    }
-
-    /**
-     * sets the CompletionStatus of the MemoryTask to the boolean passed
-     * @param status boolean value the CompletionStatus of the MemoryTask needs to be set to
-     */
-    public static void setCompletionStatus(boolean status) {
-        MemoryTask.setCompletionStatus("MemoryTask", status);
+    public void passer(String actualPassword, String typedPassword){
+        MemoryTask.checkCorrectness(actualPassword, typedPassword);
     }
 
     /**
