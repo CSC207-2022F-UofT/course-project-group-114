@@ -22,8 +22,8 @@ public class AuthenticatorView extends JFrame {
      */
     AuthenticatorView(){
         Dimension maxSize = new Dimension(1280, 720);
-        ImageIcon loginIcon = new ImageIcon("src/main/java/resources/log_in_button.png");
-        ImageIcon signinIcon = new ImageIcon("src/main/java/resources/sign_in_button.png");
+        ImageIcon loginIcon = new ImageIcon("src/main/java/resources/NonTask/log_in_button.png");
+        ImageIcon signinIcon = new ImageIcon("src/main/java/resources/NonTask/sign_in_button.png");
         Color blue = new Color(150,132,255);
         Color red = new Color(222, 49, 79);
 
@@ -54,7 +54,7 @@ public class AuthenticatorView extends JFrame {
         loginPassword.setBounds(400, 500, 350, 70);
         loginPassword.setOpaque(true);
         loginPassword.setMargin(new Insets(0, 0, 0, 0));
-        ImageIcon loginImage = new ImageIcon("src/main/java/resources/log_in_bg.jpg");
+        ImageIcon loginImage = new ImageIcon("src/main/java/resources/NonTask/log_in_bg.jpg");
         JLabel loginBackground = new JLabel(loginImage);
         loginBackground.setPreferredSize(maxSize);
         loginBackground.setBounds(0,     0, 1280, 720);
@@ -105,7 +105,7 @@ public class AuthenticatorView extends JFrame {
         signinPassword2.setBounds(350, 580, 350, 50);
         signinPassword2.setOpaque(true);
         signinPassword2.setMargin(new Insets(0, 0, 0, 0));
-        ImageIcon signinImage = new ImageIcon("src/main/java/resources/sign_in_bg.jpg");
+        ImageIcon signinImage = new ImageIcon("src/main/java/resources/NonTask/sign_in_bg.jpg");
         JLabel signinBackground = new JLabel(signinImage);
         signinBackground.setPreferredSize(maxSize);
         signinBackground.setBounds(0,     0, 1280, 720);
