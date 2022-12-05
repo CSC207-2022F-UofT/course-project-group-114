@@ -93,7 +93,6 @@ public class GameMaster {
      */
     public static void checkTasksCompletion(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         ArrayList<String> tasksToRemove = new ArrayList<>();
-        System.out.println(times.keySet());
         for (String taskName : times.keySet()) {
             Class<?> taskClass = Class.forName("usecases." + taskName);
             boolean completionStatus = (boolean) taskClass.getMethod("getCompletionStatus", String.class).invoke(taskClass, taskName);

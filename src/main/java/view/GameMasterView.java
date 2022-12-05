@@ -318,10 +318,10 @@ public class GameMasterView extends JFrame{
                 scoreDisplay.setText(GameMasterPresenter.getScoreText());
                 livesDisplay.setText(GameMasterPresenter.getLivesText());
                 int currentTaskCount = GameMasterPresenter.getTaskCount();
-                if (currentTaskCount % 5 == 0 && currentTaskCount > 0 && !coolDown) { // Speed up every 10 won tasks
+                if (currentTaskCount % 5 == 0 && currentTaskCount > 0 && !coolDown) { // Speed up every 5 won tasks
                     int currentTaskInterval = GameMasterController.getTaskInterval();
                     GameMasterController.setTaskInterval((int) (currentTaskInterval / 1.75));
-                    coolDown = true; // Make sure we don't speed up again until the next 10th task
+                    coolDown = true; // Make sure we don't speed up again until the next 5th task
                 } else if (currentTaskCount % 5 == 1) {
                     coolDown = false;
                 }
