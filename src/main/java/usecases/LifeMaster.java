@@ -1,5 +1,7 @@
 package usecases;
 
+import view.GameMasterView;
+
 import java.lang.reflect.InvocationTargetException;
 
 public class LifeMaster {
@@ -7,7 +9,7 @@ public class LifeMaster {
     private static int tasksCompletedCount = 0; // Number of completed tasks in total, AKA the score
     public static void deductLife() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, IllegalAccessException { // Method for deducting a life
         lives--;
-        if (lives < 0) {
+        if (lives == 0) {
             gameOver();
         }
     }
@@ -19,6 +21,7 @@ public class LifeMaster {
         return tasksCompletedCount;
     }
     private static void gameOver() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        GameMasterView.getFrames()[0].dispose(); // DISPOSE WINDOW WHEN DEAD TODO REMOVE THIS ONCE GAME OVER IS IMPLEMENTED
         Authenticator.updateScore(tasksCompletedCount); // Update the user's high score
         GameMaster.playing = false; // Stop game loop
         for (String taskName : GameMaster.tasks) { // Deactivate all tasks

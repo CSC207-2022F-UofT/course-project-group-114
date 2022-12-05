@@ -327,7 +327,6 @@ public class GameMasterView extends JFrame{
                 }
                 if (!GameMasterController.getPlayingStatus()) { // If game is over, stop the "game loop"
                     this.cancel();
-                    GameMasterView.this.dispose();
                 }
             }
         };
