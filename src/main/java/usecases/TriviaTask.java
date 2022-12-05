@@ -21,9 +21,6 @@ public class TriviaTask extends Task {
             triviaDict.put("In what room are the csc207 lectures?", "hell");
             return triviaDict;
     }
-    // method to choose a random key from the dictionary
-    // has some errors in terms of choosing the right key and value
-    // ask ta for some assistance fixing this
     public static String getRandomQuestion(){
         Map<String, String> triviaDict = getMap();
         Set <String> keySet = triviaDict.keySet();
@@ -38,16 +35,20 @@ public class TriviaTask extends Task {
 //        // public int questionNum = random number between 0 and last index of dictionary
 //    }
 
-    public static boolean checkAnswer (String playerAnswer){
-        // case for if the actual answer is an integer????? this can be added later.
+    public static boolean checkAnswer(String playerAnswer){
+        /* case for if the actual answer is an integer????? this can be added later. */
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
             setCompletionStatus("TriviaTask", true);
             isAnswerCorrect = true;
             return true;
         }
         else{
-            isAnswerCorrect = false;
+            setCompletionStatus("TriviaTask", false);
             return false;
+            //isAnswerCorrect = false;
         }
+    }
+    public static String getActualAnswer(){
+        return actualAnswer;
     }
 }

@@ -1,5 +1,8 @@
 package presenter;
 
+import controller.TriviaTaskController;
+import usecases.TriviaTask;
+
 import static usecases.TriviaTask.*;
 
 /**
@@ -13,11 +16,13 @@ public class TriviaTaskPresenter {
 
     public String tellViewQuestion(){
 
-        return currentQuestion;
+        return TriviaTask.getRandomQuestion();
     }
 
     public static String tellCorrectness(){
+        //boolean correct = TriviaTask.checkAnswer();
         //if answer is correct
+        //correct = TriviaTask.checkAnswer();
         return "placeholder";
 
     }
