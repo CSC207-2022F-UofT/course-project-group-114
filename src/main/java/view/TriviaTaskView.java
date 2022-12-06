@@ -9,32 +9,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
-public class TriviaTaskView extends JPanel {
+public class TriviaTaskView extends JLayeredPane {
     /**
      * Constructor for the TriviaTask view.
      * Creates and places all the necessary pieces for the view on the JLayeredPane
      * Has event listener submit button to pass information (the player's answer) back to the controller.
      */
 
-    public static JLayeredPane triviaTaskPanel;
+    //public static JLayeredPane triviaTaskPanel;
 
     TriviaTaskView(){
+
         TriviaTaskController controller = new TriviaTaskController();
         TriviaTaskPresenter presenter = new TriviaTaskPresenter();
-        //String actualAnswer = presenter.tellViewActualAnswer();
-        JPanel popup = new JPanel();
+       // JPanel popup = new JPanel();
         JLabel question = new JLabel("you will have 10 seconds to answer the question");
         question.setPreferredSize(new Dimension(1280, 80));
         question.setHorizontalAlignment(JLabel.CENTER);
         question.setFont(new Font("Serif", Font.BOLD, 16));
-        popup.add(question);
+        //popup.add(question);
 
-        triviaTaskPanel = new JLayeredPane();
-        triviaTaskPanel.setPreferredSize(new Dimension(1280, 720));
+//        triviaTaskPanel = new JLayeredPane();
+//        triviaTaskPanel.setPreferredSize(new Dimension(1280, 720));
 
-        //replace these with trivia art
         ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/Background.png");
         JLabel triviaBackground = new JLabel(backgroundPng);
+        triviaBackground.setPreferredSize(new Dimension(1280,720));
+        triviaBackground.setBounds(0,     0, 1280, 720);
+
         //triviaBackground.setPreferredSize()
 
         ImageIcon submit = new ImageIcon("src/main/java/resources/submitbutton.png");
@@ -55,9 +57,11 @@ public class TriviaTaskView extends JPanel {
         setPreferredSize(new Dimension(1280, 720));
         setVisible(true);
 
-        add(triviaTaskPanel);
-        triviaTaskPanel.setVisible(true);
-        popup.setVisible(true);
+//        add(triviaTaskPanel);
+//        triviaTaskPanel.setVisible(true);
+//        popup.setVisible(true);
+
+        add(question);
 
         submitButton.addActionListener(new ActionListener() {
             @Override
