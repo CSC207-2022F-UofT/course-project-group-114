@@ -68,7 +68,7 @@ public class TriviaTaskView extends JPanel {
                 String correctnessMessage = TriviaTaskPresenter.tellCorrectness();
                 JOptionPane.showMessageDialog(null, correctnessMessage);
                 setVisible(false);
-                GameMasterView.backToMain(GameMasterView.triviaTaskView);
+               GameMasterView.backToMain(GameMasterView.triviaTaskView);
             }
         });
 
