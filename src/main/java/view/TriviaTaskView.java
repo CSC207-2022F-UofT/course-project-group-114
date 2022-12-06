@@ -1,39 +1,79 @@
 package view;
+import usecases.TriviaTask;
 import controller.TriviaTaskController;
+import presenter.TriviaTaskPresenter;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.UUID;
 
-public class TriviaTaskView extends JFrame {
-//    Random questionNum = new Random();  // generate a random number between zero and index of last question
-//    private String currentQuestion = "question in dictionary at random index";
-//    private String actualAnswer = "corresponding answer to that";
+public class TriviaTaskView extends JPanel {
+    /**
+     * Constructor for the TriviaTask view.
+     * Creates and places all the necessary pieces for the view on the JLayeredPane
+     * Has event listener submit button to pass information (the player's answer) back to the controller.
+     */
+
+    public static JLayeredPane triviaTaskPanel;
 
     TriviaTaskView(){
-        TriviaTaskController TriviaController = new TriviaTaskController();
+        TriviaTaskController controller = new TriviaTaskController();
+        TriviaTaskPresenter presenter = new TriviaTaskPresenter();
+        //String actualAnswer = presenter.tellViewActualAnswer();
+        JPanel popup = new JPanel();
+        JLabel question = new JLabel("you will have 10 seconds to answer the question");
+        question.setPreferredSize(new Dimension(1280, 80));
+        question.setHorizontalAlignment(JLabel.CENTER);
+        question.setFont(new Font("Serif", Font.BOLD, 16));
+        popup.add(question);
+
+        triviaTaskPanel = new JLayeredPane();
+        triviaTaskPanel.setPreferredSize(new Dimension(1280, 720));
+
+        //replace these with trivia art
+        ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/Background.png");
+        JLabel triviaBackground = new JLabel(backgroundPng);
+        //triviaBackground.setPreferredSize()
+
+        ImageIcon submit = new ImageIcon("src/main/java/resources/submitbutton.png");
+        JButton submitButton = new JButton(submit);
+        submitButton.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        submitButton.setBounds(200, 580, submit.getIconWidth(), submit.getIconHeight());
+
+        // setting up playerAnswer input
+        JTextField playerAnswerInput = new JTextField();
+        playerAnswerInput.setEditable(true);
+        playerAnswerInput.setHorizontalAlignment(JTextField.CENTER);
+        playerAnswerInput.setFont(new Font("Serif", Font.BOLD, 16));
+        playerAnswerInput.setForeground(Color.GRAY);
+        playerAnswerInput.setBounds(120, 476, 268, 62);
+        playerAnswerInput.setOpaque(false);
+        playerAnswerInput.setMargin(new Insets(1, 1, 1, 1));
+
+        setPreferredSize(new Dimension(1280, 720));
+        setVisible(true);
+
+        add(triviaTaskPanel);
+        triviaTaskPanel.setVisible(true);
+        popup.setVisible(true);
+
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // when the submit button is pushed
+                // pass the player's answer back to the view via the controller
+                TriviaTaskController.passAnswer(playerAnswerInput);
+                String correctnessMessage = TriviaTaskPresenter.tellCorrectness();
+                JOptionPane.showMessageDialog(null, correctnessMessage);
+                setVisible(false);
+                GameMasterView.backToMain(GameMasterView.triviaTaskView);
+            }
+        });
+
     }
 
-//    public JPanel chooseCategoryPopup;
-//    public JButton submitAnswerButton;
-//
-//    TriviaTaskController controller = new TriviaTaskController();
-////    String currentQuestion = "abc";     // this is where the current question will be randomly selected and displayed
-//
-//    // have the user choose a category
-//    chooseCategoryPopup = newJPanel();
-//    Jlabel chooseMessage = new JLabel("Choose a category");
-//    chooseMessage.setPreferredSize(new Dimension(1200, 100));
-//    chooseMessage.setHorizontalAlignment(JLabel.CENTER);
-//    chooseMessage.setFont(new java.awt.Font("Serif", Font.BOLD, 24));
-//    chooseCategoryPopup.add(chooseMessage);
-
-
-    // display the question & answer box and give player time to answer
-
-    // the playerAnswer is the answer that the player has submitted. controller will have to relay this to the view
-
-
-
-
+    public static void main(String[] args){new TriviaTaskView();}
 
 }
