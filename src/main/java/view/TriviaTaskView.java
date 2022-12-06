@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
-public class TriviaTaskView extends JFrame {
+public class TriviaTaskView extends JPanel {
     /**
      * Constructor for the TriviaTask view.
      * Creates and places all the necessary pieces for the view on the JLayeredPane
