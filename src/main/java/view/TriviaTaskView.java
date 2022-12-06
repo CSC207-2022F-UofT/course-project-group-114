@@ -27,6 +27,7 @@ public class TriviaTaskView extends JLayeredPane {
         question.setPreferredSize(new Dimension(1280, 80));
         question.setHorizontalAlignment(JLabel.CENTER);
         question.setFont(new Font("Serif", Font.BOLD, 16));
+        question.setBounds(0, 0, 1280, 720);
         //popup.add(question);
 
 //        triviaTaskPanel = new JLayeredPane();

@@ -31,9 +31,9 @@ public class TriviaTask extends Task {
         actualAnswer = triviaDict.get(currentQuestion);
         return currentQuestion;
     }
-//    public static void reset() { // inherited reset method, generate random question
+    public static void reset() { // inherited reset method, generate random question
 //        // public int questionNum = random number between 0 and last index of dictionary
-//    }
+    }
 
     public static void checkAnswer(String playerAnswer){
         // check to see if the answer is correct.
