@@ -19,7 +19,7 @@ public class TriviaTaskView extends JFrame {
     public static JLayeredPane triviaTaskPanel;
 
     TriviaTaskView(){
-       // TriviaTaskController controller = new TriviaTaskController();
+       TriviaTaskController controller = new TriviaTaskController();
         TriviaTaskPresenter presenter = new TriviaTaskPresenter();
         //String actualAnswer = presenter.tellViewActualAnswer();
         JPanel popup = new JPanel();
@@ -62,13 +62,18 @@ public class TriviaTaskView extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // when the submit button is pushed
+                // pass the player's answer back to the view via the controller
                 TriviaTaskController.passAnswer(playerAnswerInput);
-                String correct = TriviaTaskPresenter.tellCorrectness();
+                String correctnessMessage = TriviaTaskPresenter.tellCorrectness();
+                JOptionPane.showMessageDialog(null, correctnessMessage);
+                setVisible(false);
+                GameMasterView.backToMain(GameMasterView.triviaTaskView);
             }
         });
 
     }
 
-
+    public static void main(String[] args){new TriviaTaskView();}
 
 }
