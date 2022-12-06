@@ -35,20 +35,19 @@ public class TriviaTask extends Task {
 //        // public int questionNum = random number between 0 and last index of dictionary
 //    }
 
-    public static boolean checkAnswer(String playerAnswer){
-        /* case for if the actual answer is an integer????? this can be added later. */
+    public static void checkAnswer(String playerAnswer){
+        // check to see if the answer is correct.
+        // checking for the same word, not case sensitive.
+        // if the answer is correct
         if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
+            // set the completion status to true
             setCompletionStatus("TriviaTask", true);
+            // and the answer correctness status to true
             isAnswerCorrect = true;
-            return true;
         }
         else{
             setCompletionStatus("TriviaTask", false);
-            return false;
-            //isAnswerCorrect = false;
+            isAnswerCorrect = false;
         }
-    }
-    public static String getActualAnswer(){
-        return actualAnswer;
     }
 }

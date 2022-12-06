@@ -62,7 +62,7 @@ public class TriviaTaskView extends JFrame {
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TriviaTaskController.passAnswertoUsecase(playerAnswerInput);
+                TriviaTaskController.passAnswer(playerAnswerInput);
                 String correct = TriviaTaskPresenter.tellCorrectness();
             }
         });
