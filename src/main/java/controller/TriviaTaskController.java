@@ -3,14 +3,8 @@ import usecases.TriviaTask;
 import javax.swing.*;
 
 public class TriviaTaskController {
-    //    private String playerAnswer;
-//    private String[] actualAnswer;
-    TriviaTask TriviaTaskUsecase = new TriviaTask();
 
-    // passes the random question thru the controller from backend to view
-    public static String passRandomQuestion(){
-        return TriviaTask.getRandomQuestion();
-    }
+    TriviaTask TriviaTaskUsecase = new TriviaTask();
 
     // take the player's answer
     // translate it into something the backend can understand
