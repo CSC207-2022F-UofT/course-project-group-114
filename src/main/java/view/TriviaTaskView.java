@@ -16,14 +16,9 @@ public class TriviaTaskView extends JLayeredPane {
      * Has event listener submit button to pass information (the player's answer) back to the controller.
      */
 
-    //public static JLayeredPane triviaTaskPanel;
-
     TriviaTaskView(){
 
         TriviaTaskController controller = new TriviaTaskController();
-        //TriviaTaskPresenter presenter = new TriviaTaskPresenter();
-        // JPanel popup = new JPanel();
-        //String q = TriviaTaskPresenter.tellViewQuestion();
 
         // adding in the background
         ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/triviaart.png");
@@ -33,25 +28,12 @@ public class TriviaTaskView extends JLayeredPane {
 
         // adding in the random question
         setPreferredSize(new Dimension(1280, 720));
-        // JLabel instruction = new JLabel("You have 10 seconds to answer the question below")
-        //question = new JLabel(TriviaTaskPresenter.tellViewQuestion());
         JLabel currentRandomQuestion = new JLabel(TriviaTaskPresenter.tellViewQuestion());
         currentRandomQuestion.setPreferredSize(new Dimension(1280, 80));
         currentRandomQuestion.setHorizontalAlignment(JLabel.LEFT);
         currentRandomQuestion.setFont(new Font("Marker felt", Font.BOLD, 24));
         currentRandomQuestion.setBounds(105, -50, 1280, 720);
-        //popup.add(question);
 
-//        triviaTaskPanel = new JLayeredPane();
-//        triviaTaskPanel.setPreferredSize(new Dimension(1280, 720));
-
-//        setPreferredSize(new Dimension(1280, 720));
-//        String currentQuestion = TriviaTaskPresenter.tellViewQuestion();
-
-
-        //triviaBackground.setPreferredSize()
-
-       // ImageIcon submit = new ImageIcon("src/main/java/resources/submitbutton.png");
         JButton submitButton = new JButton();
         submitButton.setBorder(BorderFactory.createLineBorder(Color.MAGENTA, 2));
         submitButton.setBounds(805, 637, 130, 50);
@@ -67,16 +49,8 @@ public class TriviaTaskView extends JLayeredPane {
         playerAnswerInput.setMargin(new Insets(1, 1, 1, 1));
 
         setPreferredSize(new Dimension(1280, 720));
-        //setVisible(true);
 
-//        add(triviaTaskPanel);
-//        triviaTaskPanel.setVisible(true);
-//        popup.setVisible(true);
-
-        //add(triviaBackground);
-//        add(question);
-//        add(playerAnswerInput);
-//        add(submitButton);
+        // adding the layers to the view
         add(triviaBackground, Integer.valueOf(0));
         add(currentRandomQuestion, Integer.valueOf(1));
         add(playerAnswerInput, Integer.valueOf(2));
@@ -99,8 +73,6 @@ public class TriviaTaskView extends JLayeredPane {
         });
 
     }
-    // add the layers!!!
-    //add(triviaBackground, Integer.valueOf(0));
 
     public static void main(String[] args){new TriviaTaskView();}
 
