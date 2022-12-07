@@ -9,11 +9,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
+/**
+ * the view for the trivia task. displays the trivia background, random question, and
+ * submit button.
+ * @author talia
+ */
+
 public class TriviaTaskView extends JLayeredPane {
     /**
      * Constructor for the TriviaTask view.
      * Creates and places all the necessary pieces for the view on the JLayeredPane
      * Has event listener submit button to pass information (the player's answer) back to the controller.
+     * @author talia
      */
 
     TriviaTaskView(){
