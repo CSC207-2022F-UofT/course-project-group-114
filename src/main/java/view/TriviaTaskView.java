@@ -43,7 +43,7 @@ public class TriviaTaskView extends JLayeredPane {
 //        String currentQuestion = TriviaTaskPresenter.tellViewQuestion();
 
         // set background
-        ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/triviabg.png");
+        ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/triviaart.png");
         JLabel triviaBackground = new JLabel(backgroundPng);
         triviaBackground.setPreferredSize(new Dimension(1280,720));
         triviaBackground.setBounds(0,     0, 1280, 720);
@@ -88,7 +88,7 @@ public class TriviaTaskView extends JLayeredPane {
                 String correctnessMessage = TriviaTaskPresenter.tellCorrectness();
                 JOptionPane.showMessageDialog(null, correctnessMessage);
                 setVisible(false);
-                GameMasterView.backToMain(GameMasterView.triviaTaskView);
+                //GameMasterView.backToMain(GameMasterView.triviaTaskView);
             }
         });
 
