@@ -2,6 +2,13 @@ package usecases;
 
 import java.util.*;
 
+/**
+ * Usecase class for the TriviaTask.
+ * invoked when the game master randomly assigns the trivia task.
+ * Responsible for choosing a random trivia question and checking the player's answer for correctness.
+ * @author talia
+ */
+
 public class TriviaTask extends Task {
     // public int triviaCategory; // can later make changes to code to add categories and get questions and answers from a csv file
     // public static int questionNum; //randomly generated num to select a random question from that category
