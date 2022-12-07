@@ -57,19 +57,16 @@ public class TriviaTaskView extends JLayeredPane {
         add(submitButton, Integer.valueOf(3));
         setVisible(true);
 
-        submitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // when the submit button is pushed
-                checkIfTimeRanOut();
-                // pass the player's answer back to the view via the controller
-                TriviaTaskController.passAnswer(playerAnswerInput);
-                String correctnessMessage = TriviaTaskPresenter.tellCorrectness();
-                JOptionPane.showMessageDialog(null, correctnessMessage);
-                setVisible(false);
-                TriviaTaskController.setActivatedStatus(false);
-                GameMasterView.backToMain(GameMasterView.triviaTaskView);
-            }
+        submitButton.addActionListener(e -> {
+            // when the submit button is pushed
+            checkIfTimeRanOut();
+            // pass the player's answer back to the view via the controller
+            TriviaTaskController.passAnswer(playerAnswerInput);
+            String correctnessMessage = TriviaTaskPresenter.tellCorrectness();
+            JOptionPane.showMessageDialog(null, correctnessMessage);
+            setVisible(false);
+            TriviaTaskController.setActivatedStatus(false);
+            GameMasterView.backToMain(GameMasterView.triviaTaskView);
         });
 
     }
