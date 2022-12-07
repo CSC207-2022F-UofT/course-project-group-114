@@ -3,8 +3,6 @@ package usecases;
 import java.util.*;
 
 public class TriviaTask extends Task {
-    // public int triviaCategory; // can later make changes to code to add categories and get questions and answers from a csv file
-    // public static int questionNum; //randomly generated num to select a random question from that category
     public static String currentQuestion; // the question. trivia dict at the randomly generated index
     public static String actualAnswer; // the correct answer corresponding value to the key
     public static boolean isAnswerCorrect;
@@ -36,7 +34,6 @@ public class TriviaTask extends Task {
         return currentQuestion;
     }
     public static void reset() { // inherited reset method, generate random question
-//        // public int questionNum = random number between 0 and last index of dictionary
     }
 
     public static void checkAnswer(String playerAnswer){

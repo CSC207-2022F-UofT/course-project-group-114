@@ -3,8 +3,6 @@ import usecases.TriviaTask;
 import javax.swing.*;
 
 public class TriviaTaskController {
-    //    private String playerAnswer;
-//    private String[] actualAnswer;
     TriviaTask TriviaTaskUsecase = new TriviaTask();
 
     // take the player's answer
