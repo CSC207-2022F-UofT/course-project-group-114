@@ -25,15 +25,21 @@ public class TriviaTaskView extends JLayeredPane {
         // JPanel popup = new JPanel();
         //String q = TriviaTaskPresenter.tellViewQuestion();
 
-        // trivia task panel
+        // adding in the background
+        ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/triviaart.png");
+        JLabel triviaBackground = new JLabel(backgroundPng);
+        triviaBackground.setPreferredSize(new Dimension(1280,720));
+        triviaBackground.setBounds(0,     0, 1280, 720);
+
+        // adding in the random question
         setPreferredSize(new Dimension(1280, 720));
         // JLabel instruction = new JLabel("You have 10 seconds to answer the question below")
         //question = new JLabel(TriviaTaskPresenter.tellViewQuestion());
         JLabel currentRandomQuestion = new JLabel(TriviaTaskPresenter.tellViewQuestion());
         currentRandomQuestion.setPreferredSize(new Dimension(1280, 80));
         currentRandomQuestion.setHorizontalAlignment(JLabel.LEFT);
-        currentRandomQuestion.setFont(new Font("Marker felt", Font.BOLD, 20));
-        currentRandomQuestion.setBounds(350, -270, 1280, 720);
+        currentRandomQuestion.setFont(new Font("Marker felt", Font.BOLD, 24));
+        currentRandomQuestion.setBounds(105, -50, 1280, 720);
         //popup.add(question);
 
 //        triviaTaskPanel = new JLayeredPane();
@@ -42,11 +48,6 @@ public class TriviaTaskView extends JLayeredPane {
 //        setPreferredSize(new Dimension(1280, 720));
 //        String currentQuestion = TriviaTaskPresenter.tellViewQuestion();
 
-        // set background
-        ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/triviaart.png");
-        JLabel triviaBackground = new JLabel(backgroundPng);
-        triviaBackground.setPreferredSize(new Dimension(1280,720));
-        triviaBackground.setBounds(0,     0, 1280, 720);
 
         //triviaBackground.setPreferredSize()
 
@@ -58,10 +59,10 @@ public class TriviaTaskView extends JLayeredPane {
         // setting up playerAnswer input
         JTextField playerAnswerInput = new JTextField();
         playerAnswerInput.setEditable(true);
-        playerAnswerInput.setHorizontalAlignment(JTextField.LEFT);
+        playerAnswerInput.setHorizontalAlignment(JTextField.CENTER);
         playerAnswerInput.setFont(new Font("Serif", Font.BOLD, 25));
         playerAnswerInput.setForeground(Color.GRAY);
-        playerAnswerInput.setBounds(120, 476, 268, 62);
+        playerAnswerInput.setBounds(220, 387, 620, 135);
         playerAnswerInput.setOpaque(false);
         playerAnswerInput.setMargin(new Insets(1, 1, 1, 1));
 
@@ -78,6 +79,7 @@ public class TriviaTaskView extends JLayeredPane {
 //        add(submitButton);
         add(triviaBackground, Integer.valueOf(0));
         add(currentRandomQuestion, Integer.valueOf(1));
+        add(playerAnswerInput, Integer.valueOf(1));
 
         submitButton.addActionListener(new ActionListener() {
             @Override
@@ -88,7 +90,7 @@ public class TriviaTaskView extends JLayeredPane {
                 String correctnessMessage = TriviaTaskPresenter.tellCorrectness();
                 JOptionPane.showMessageDialog(null, correctnessMessage);
                 setVisible(false);
-                //GameMasterView.backToMain(GameMasterView.triviaTaskView);
+                GameMasterView.backToMain(GameMasterView.triviaTaskView);
             }
         });
 
