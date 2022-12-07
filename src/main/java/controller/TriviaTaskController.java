@@ -7,11 +7,6 @@ public class TriviaTaskController {
 //    private String[] actualAnswer;
     TriviaTask TriviaTaskUsecase = new TriviaTask();
 
-    // passes the random question thru the controller from backend to view
-    public static String passRandomQuestion(){
-        return TriviaTask.getRandomQuestion();
-    }
-
     // take the player's answer
     // translate it into something the backend can understand
     // relay it to the backend code and call the backend here
