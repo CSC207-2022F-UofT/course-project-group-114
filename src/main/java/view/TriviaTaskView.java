@@ -29,11 +29,11 @@ public class TriviaTaskView extends JLayeredPane {
         setPreferredSize(new Dimension(1280, 720));
         // JLabel instruction = new JLabel("You have 10 seconds to answer the question below")
         //question = new JLabel(TriviaTaskPresenter.tellViewQuestion());
-        JLabel instruction = new JLabel("*you have 10 seconds to correctly answer the question below*");
-        instruction.setPreferredSize(new Dimension(1280, 80));
-        instruction.setHorizontalAlignment(JLabel.LEFT);
-        instruction.setFont(new Font("Marker felt", Font.BOLD, 20));
-        instruction.setBounds(350, -270, 1280, 720);
+        JLabel currentRandomQuestion = new JLabel(TriviaTaskPresenter.tellViewQuestion());
+        currentRandomQuestion.setPreferredSize(new Dimension(1280, 80));
+        currentRandomQuestion.setHorizontalAlignment(JLabel.LEFT);
+        currentRandomQuestion.setFont(new Font("Marker felt", Font.BOLD, 20));
+        currentRandomQuestion.setBounds(350, -270, 1280, 720);
         //popup.add(question);
 
 //        triviaTaskPanel = new JLayeredPane();
@@ -77,7 +77,7 @@ public class TriviaTaskView extends JLayeredPane {
 //        add(playerAnswerInput);
 //        add(submitButton);
         add(triviaBackground, Integer.valueOf(0));
-        add(instruction, Integer.valueOf(1));
+        add(currentRandomQuestion, Integer.valueOf(1));
 
         submitButton.addActionListener(new ActionListener() {
             @Override
