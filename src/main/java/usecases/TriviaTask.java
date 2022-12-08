@@ -41,7 +41,6 @@ public class TriviaTask extends Task {
         return currentQuestion;
     }
     public static void reset() { // inherited reset method, generate random question
-//        // public int questionNum = random number between 0 and last index of dictionary
     }
 
     public static void checkAnswer(String playerAnswer){
