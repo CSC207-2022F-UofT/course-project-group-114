@@ -62,9 +62,9 @@ public class GameMasterView extends JFrame{
     public static JLayeredPane clickTaskView;
     public static JLayeredPane phoneTaskView;
     public static JLayeredPane memoryTaskView;
-//    public static JLayeredPane wireTaskView;
+    //    public static JLayeredPane wireTaskView;
     public static JLayeredPane heatTaskView;
-//    public static JLayeredPane triviaTaskView;
+    public static JLayeredPane triviaTaskView;
 
     /**
      * GameMaster constructor, which sets up the view panel and all the elements on it
@@ -276,9 +276,10 @@ public class GameMasterView extends JFrame{
             layers.setVisible(false);
         });
         clickableTrivia.addActionListener(e -> {
-//                triviaTaskView = new TriviaTaskView();
-//                main.add(triviaTaskView);
-            JOptionPane.showMessageDialog(null, "i should pop up");
+            triviaTaskView = new TriviaTaskView();
+            main.add(triviaTaskView);
+            triviaTaskView.setVisible(true);
+            layers.setVisible(false);
 
         });
 
