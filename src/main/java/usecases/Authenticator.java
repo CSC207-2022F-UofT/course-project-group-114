@@ -1,7 +1,6 @@
 package usecases;
 
 import entities.User;
-import presenter.AuthenticatorPresenter;
 
 import java.io.*;
 import java.math.BigInteger;
