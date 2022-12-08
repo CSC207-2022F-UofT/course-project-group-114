@@ -39,7 +39,7 @@ public class TriviaTask extends Task {
 //        // public int questionNum = random number between 0 and last index of dictionary
     }
 
-    public static boolean checkAnswer(String playerAnswer){
+    public static void checkAnswer(String playerAnswer){
         // check to see if the answer is correct.
         // checking for the same word, not case sensitive.
         // if the answer is correct
@@ -48,12 +48,10 @@ public class TriviaTask extends Task {
             setCompletionStatus("TriviaTask", true);
             // and the answer correctness status to true
             isAnswerCorrect = true;
-            return true;
         }
         else{
             setCompletionStatus("TriviaTask", false);
             isAnswerCorrect = false;
-            return false;
         }
     }
 }
