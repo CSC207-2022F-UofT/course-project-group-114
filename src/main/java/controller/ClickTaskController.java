@@ -7,8 +7,6 @@ import usecases.ClickTask;
  * and the ClickTaskView.
  *
  * @author Siyuan Deng
- * @version 2.0
- * @since 2022-10-27
  */
 public class ClickTaskController {
 
