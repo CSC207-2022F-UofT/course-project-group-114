@@ -13,6 +13,7 @@ public class TriviaTask extends Task {
     public static String currentQuestion; // the question. trivia dict at the randomly generated index
     public static String actualAnswer; // the correct answer corresponding value to the key
     public static boolean isAnswerCorrect;
+
     // creating the trivia dictionary
     public static Map<String, String> getMap()
     {

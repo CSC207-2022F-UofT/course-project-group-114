@@ -14,7 +14,6 @@ public class TriviaTaskController {
      * "translates" it into a string, and calls the usecase to check that string for correctness.
      */
 
-    TriviaTask TriviaTaskUsecase = new TriviaTask();
 
     // take the player's answer
     // translate it into something the backend can understand
