@@ -1,6 +1,13 @@
 package usecases;
-
 import java.util.*;
+import java.util.Random;
+
+/**
+ * A class representing the TriviaTask usecase, which is responsible for generating
+ * a random trivia question and checking the correctness of the player's answer.
+ *
+ * @author talia
+ */
 
 public class TriviaTask extends Task {
     public static String currentQuestion; // the question. trivia dict at the randomly generated index
@@ -23,6 +30,11 @@ public class TriviaTask extends Task {
         triviaDict.put("what is the capital of canada?", "ottawa");
         return triviaDict;
     }
+
+    /**
+     * Method for choosing a random question.
+     * @return the randomly chosen question from the trivia dictionary.
+     */
     public static String getRandomQuestion(){
         Map<String, String> triviaDict = getMap();
         Set <String> keySet = triviaDict.keySet();
@@ -33,9 +45,17 @@ public class TriviaTask extends Task {
         actualAnswer = triviaDict.get(currentQuestion);
         return currentQuestion;
     }
+
+    /**
+     * Reset method, inherited from the task abstract class
+     */
     public static void reset() { // inherited reset method, generate random question
-//        // public int questionNum = random number between 0 and last index of dictionary
     }
+
+    /**
+     * Method for checking the correctness of the player's answer.
+     * @param playerAnswer
+     */
 
     public static void checkAnswer(String playerAnswer){
         // check to see if the answer is correct.
