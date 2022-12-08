@@ -22,7 +22,7 @@ public class TriviaTaskController {
     }
 
     /**
-     * Sets the completed status of the trivia task to the boolean passed
+     * Sets the completed status of the trivia task to the boolean passed.
      * @param status boolean value that the completed status TriviaTask needs to be set to.
      */
     public static void setCompletionStatus(boolean status) {
