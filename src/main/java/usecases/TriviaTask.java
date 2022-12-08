@@ -3,15 +3,13 @@ package usecases;
 import java.util.*;
 
 /**
- * Usecase class for the TriviaTask.
+ * Use case class for the TriviaTask.
  * invoked when the game master randomly assigns the trivia task.
  * Responsible for choosing a random trivia question and checking the player's answer for correctness.
  * @author talia
  */
 
 public class TriviaTask extends Task {
-    // public int triviaCategory; // can later make changes to code to add categories and get questions and answers from a csv file
-    // public static int questionNum; //randomly generated num to select a random question from that category
     public static String currentQuestion; // the question. trivia dict at the randomly generated index
     public static String actualAnswer; // the correct answer corresponding value to the key
     public static boolean isAnswerCorrect;
@@ -24,7 +22,7 @@ public class TriviaTask extends Task {
         triviaDict.put("A poisson is a... ", "FISH");
         triviaDict.put("What is the missing word: S***D Design Principles", "solid");
         triviaDict.put("A violation of clean architecture is called *missing word* architecture", "dIrTy");
-        triviaDict.put("The dude who wrote clean architecture is nicknamed ...", "unclE bOb");
+        triviaDict.put("The dude who wrote clean architecture is nicknamed ...", "uncle bob");
         triviaDict.put("In what room are the csc207 lectures?", "hell");
         triviaDict.put("REALLY BAD clean arc violations are called F***Y arc", "filthy");
         triviaDict.put("what do you call code that totally disregards solid deign?", "liquid");
@@ -48,7 +46,7 @@ public class TriviaTask extends Task {
 
     public static void checkAnswer(String playerAnswer){
         // check to see if the answer is correct.
-        // checking for the same word, not case sensitive.
+        // checking for the same word, not case-sensitive.
         // if the answer is correct
         if (playerAnswer.equalsIgnoreCase(actualAnswer)){
             // set the completion status to true
