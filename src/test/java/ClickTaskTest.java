@@ -8,11 +8,13 @@ import java.util.Random;
  * The ClickTaskTest class checks methods in ClickTask.java.
  *
  * @author Siyuan Deng
- * @version 2.0
- * @since 2022-11-24
  */
 public class ClickTaskTest {
 
+    /**
+     * Tests if the setNeededClicks method correctly generates a random number
+     * and makes it the neededClicks instance of the Click Task class.
+     */
     @Test
     public void setNeededClicksTest(){
         ClickTask.setNeededClicks();
@@ -21,12 +23,19 @@ public class ClickTaskTest {
         Assertions.assertTrue(meetsReq);
     }
 
+    /**
+     * Tests if the getNeededClicks method returns the correct number of clicks.
+     */
     @Test
     public void getNeededClicksTest(){
         ClickTask.setNeededClicks();
         Assertions.assertEquals(ClickTask.neededClicks, ClickTask.getNeededClicks());
     }
 
+    /**
+     * Tests if the setCurrentClicks method sets the correct number of currentClicks
+     * in the Click Task class.
+     */
     @Test
     public void setCurrentClicksSettingTest(){
         Random newNeed = new Random();
@@ -35,6 +44,10 @@ public class ClickTaskTest {
         Assertions.assertEquals(expected, ClickTask.currentClicks);
     }
 
+    /**
+     * This tests if the setCurrentClicks method changes the boolean instance portion
+     * correctly in the Click Task class.
+     */
     @Test
     public void setCurrentClicksPortionTest(){
         Random rand = new Random();
@@ -47,6 +60,10 @@ public class ClickTaskTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    /**
+     * This tests if the reset method correctly generates a new neededClicks
+     * and make currentClicks 0 when it is called.
+     */
     @Test
     public void resetTest(){
         ClickTask.setNeededClicks();
