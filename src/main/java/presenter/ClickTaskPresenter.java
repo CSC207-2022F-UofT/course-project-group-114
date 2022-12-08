@@ -1,6 +1,5 @@
 package presenter;
 
-import controller.ClickTaskController;
 import usecases.ClickTask;
 import view.GameMasterView;
 
