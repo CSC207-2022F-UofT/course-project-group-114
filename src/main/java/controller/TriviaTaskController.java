@@ -2,15 +2,18 @@ package controller;
 import usecases.TriviaTask;
 import javax.swing.*;
 
+/**
+ * The controller for the trivia task.
+ * responsible for getting information from the view, translating it into something that the
+ * usecase can understand, packaging it, and passing it to the usecase.
+ * @author talia
+ */
 public class TriviaTaskController {
-    //    private String playerAnswer;
-//    private String[] actualAnswer;
-    TriviaTask TriviaTaskUsecase = new TriviaTask();
+    /**
+     * the controller for the trivia task is called by the view. it takes the player's answer (user input),
+     * "translates" it into a string, and calls the usecase to check that string for correctness.
+     */
 
-    // passes the random question thru the controller from backend to view
-    public static String passRandomQuestion(){
-        return TriviaTask.getRandomQuestion();
-    }
 
     // take the player's answer
     // translate it into something the backend can understand

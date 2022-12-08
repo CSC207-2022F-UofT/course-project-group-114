@@ -280,7 +280,6 @@ public class GameMasterView extends JFrame{
             main.add(triviaTaskView);
             triviaTaskView.setVisible(true);
             layers.setVisible(false);
-//            JOptionPane.showMessageDialog(null, "i should pop up");
 
         });
 
