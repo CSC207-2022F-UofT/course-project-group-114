@@ -51,7 +51,7 @@ public class ClickTaskPresenterTest {
     @Test
     public void setCompletionStatusFalseTest(){
         ClickTaskPresenter.setCompletionStatus(false);
-        Assertions.assertTrue(ClickTask.getCompletionStatus("ClickTask"));
+        Assertions.assertFalse(ClickTask.getCompletionStatus("ClickTask"));
     }
 
     /**
@@ -74,11 +74,7 @@ public class ClickTaskPresenterTest {
     @Test
     public void endGameNotEnoughClicksTest(){
         ClickTaskPresenter clickTaskPresenter = new ClickTaskPresenter();
-        ClickTask.setNeededClicks();
-        int currentClicks = ClickTask.getNeededClicks() - 1;
-        ClickTask.setCurrentClicks(currentClicks);
         clickTaskPresenter.endGame(false);
-        Assertions.assertTrue(ClickTask.getActivatedStatus("ClickTask"));
         Assertions.assertFalse(ClickTask.getCompletionStatus("ClickTask"));
     }
 }
