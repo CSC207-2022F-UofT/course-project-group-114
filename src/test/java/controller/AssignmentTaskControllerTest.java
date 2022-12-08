@@ -5,7 +5,7 @@ import controller.AssignmentTaskController;
 import usecases.AssignmentTask;
 
 /**
- * The AssignmentTaskTest class checks methods in AssignmentTask.java.
+ * The usecases.AssignmentTaskTest class checks methods in AssignmentTask.java.
  *
  * @author uoft-flyfreejay
  * @version 1.0
