@@ -23,7 +23,7 @@ public class TriviaTaskController {
     public static void passAnswer(JTextField playerAnswer){
         // backend checkAnswer compares the playerAnswer to the actualAnswer to determine
         // if it is correct
-        TriviaTask.checkAnswer(playerAnswer.getText(), actualAnswer);
+        TriviaTask.checkAnswer(playerAnswer.getText(), TriviaTask.actualAnswer);
     }
     public static void setCompletionStatus(boolean status) {
         TriviaTask.setCompletionStatus("TriviaTask", status);

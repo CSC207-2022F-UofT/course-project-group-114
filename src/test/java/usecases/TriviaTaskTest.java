@@ -1,6 +1,7 @@
 package usecases;
 import org.junit.jupiter.api.Test;
 import usecases.TriviaTask;
+import java.util.Map;
 
 /**
  * Class representing test cases for the TriviaTask
@@ -10,9 +11,7 @@ public class TriviaTaskTest {
 
     @Test
     void testCorrectPlayerAnswer(){
-        String playerAnswer = "abcdefg";
-        String actualAnswer = "abcdefg";
-        TriviaTask.checkAnswer(playerAnswer, actualAnswer);
+        TriviaTask.checkAnswer("snake", "snake");
         assert(TriviaTask.isAnswerCorrect);
         assert(TriviaTask.getCompletionStatus("TriviaTask"));
     }
