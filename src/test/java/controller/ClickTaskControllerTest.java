@@ -1,8 +1,6 @@
 package controller;
 
 import usecases.ClickTask;
-import view.ClickTaskView;
-import controller.ClickTaskController;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
