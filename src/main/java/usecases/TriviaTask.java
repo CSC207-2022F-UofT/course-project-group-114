@@ -50,7 +50,7 @@ public class TriviaTask extends Task {
         // check to see if the answer is correct.
         // checking for the same word, not case sensitive.
         // if the answer is correct
-        if (playerAnswer.toLowerCase().equals(actualAnswer.toLowerCase())){
+        if (playerAnswer.equalsIgnoreCase(actualAnswer)){
             // set the completion status to true
             setCompletionStatus("TriviaTask", true);
             // and the answer correctness status to true
