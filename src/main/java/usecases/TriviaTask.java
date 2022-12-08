@@ -44,7 +44,7 @@ public class TriviaTask extends Task {
     public static void reset() { // inherited reset method, generate random question
     }
 
-    public static void checkAnswer(String playerAnswer){
+    public static void checkAnswer(String playerAnswer, String actualAnswer){
         // check to see if the answer is correct.
         // checking for the same word, not case-sensitive.
         // if the answer is correct
