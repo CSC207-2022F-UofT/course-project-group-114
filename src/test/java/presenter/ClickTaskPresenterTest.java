@@ -55,20 +55,6 @@ public class ClickTaskPresenterTest {
     }
 
     /**
-     * This tests if the endGame method works when the user has made enough clicks.
-     */
-    @Test
-    public void endGameEnoughClicksTest(){
-        ClickTaskPresenter clickTaskPresenter = new ClickTaskPresenter();
-        ClickTask.setNeededClicks();
-        int neededClicks = ClickTask.getNeededClicks();
-        ClickTask.setCurrentClicks(neededClicks);
-        clickTaskPresenter.endGame(true);
-        Assertions.assertTrue(ClickTask.getCompletionStatus("ClickTask"));
-        Assertions.assertFalse(ClickTask.getActivatedStatus("ClickTask"));
-    }
-
-    /**
      * This tests if the endGame method works when the user hasn't made enough clicks.
      */
     @Test
