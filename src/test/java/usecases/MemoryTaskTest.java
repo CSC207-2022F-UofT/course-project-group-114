@@ -30,7 +30,7 @@ public class MemoryTaskTest {
     }
 
     /**
-     * Tests that it is case sensitive and correct is updated correctly when inputs with only case differences are provided.
+     * Tests that it is case-sensitive and correct is updated correctly when inputs with only case differences are provided.
      */
 
     @Test
