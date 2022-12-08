@@ -1,3 +1,5 @@
+package usecases;
+
 import usecases.ClickTask;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

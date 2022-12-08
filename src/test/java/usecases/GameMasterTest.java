@@ -1,3 +1,5 @@
+package usecases;
+
 import usecases.GameMaster;
 
 import java.lang.reflect.InvocationTargetException;
