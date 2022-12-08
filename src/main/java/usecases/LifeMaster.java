@@ -21,13 +21,14 @@ public class LifeMaster {
         return tasksCompletedCount;
     }
     private static void gameOver() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        GameMasterView.getFrames()[0].dispose(); // DISPOSE WINDOW WHEN DEAD TODO REMOVE THIS ONCE GAME OVER IS IMPLEMENTED
+//        GameMasterView.getFrames()[0].dispose(); // DISPOSE WINDOW WHEN DEAD TODO REMOVE THIS ONCE GAME OVER IS IMPLEMENTED
         Authenticator.updateScore(tasksCompletedCount); // Update the user's high score
-        GameMaster.playing = false; // Stop game loop
-        for (String taskName : GameMaster.tasks) { // Deactivate all tasks
-            Class<?> taskClass = Class.forName("usecases." + taskName); // Get the task class
-            taskClass.getDeclaredMethod("setActivatedStatus").invoke(false);
-        }
+//        GameMaster.playing = false; // Stop game loop
+//        for (String taskName : GameMaster.tasks) { // Deactivate all tasks
+//            Class<?> taskClass = Class.forName("usecases." + taskName); // Get the task class
+//            taskClass.getDeclaredMethod("setActivatedStatus").invoke(false);
+//        }
+        System.exit(0);
     }
     public static int getLives() {
         return lives;
