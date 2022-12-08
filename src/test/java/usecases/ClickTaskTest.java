@@ -1,3 +1,5 @@
+package usecases;
+
 import usecases.ClickTask;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -5,7 +7,7 @@ import java.util.Random;
 
 
 /**
- * The ClickTaskTest class checks methods in ClickTask.java.
+ * The usecases.ClickTaskTest class checks methods in ClickTask.java.
  *
  * @author Siyuan Deng
  */
