@@ -70,8 +70,8 @@ public class TriviaTaskView extends JLayeredPane {
             checkIfTimeRanOut();
             // pass the player's answer back to the view via the controller
             TriviaTaskController.passAnswer(playerAnswerInput);
-            String correctnessMessage = TriviaTaskPresenter.tellCorrectness();
-            JOptionPane.showMessageDialog(null, correctnessMessage);
+            String message = TriviaTaskPresenter.tellCorrectness();
+            JOptionPane.showMessageDialog(null, message);
             setVisible(false);
             TriviaTaskController.setActivatedStatus(false);
             GameMasterView.backToMain(GameMasterView.triviaTaskView);
