@@ -17,10 +17,9 @@ public class GameMaster {
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<>();
 // changed this line below to include trivia now that i got it working
+
     public static String[] tasks = new String[] {"ClickTask", "AssignmentTask", "MemoryTask", "TriviaTask", "HeatAdjustmentTask",
-    "PhoneNumberTask", "WireTask"};
-//    public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
-//            "AssignmentTask", "MemoryTask", "WireTask", "TriviaTask"};
+            "PhoneNumberTask", "WireTask"};
 
     /**
      * Method for creating / activating a new task and adding it to the times hashmap

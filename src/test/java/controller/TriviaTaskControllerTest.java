@@ -1,6 +1,6 @@
 package controller;
 import org.junit.jupiter.api.Test;
-import usecases.TriviaTask;
+import use_cases.TriviaTask;
 
 /**
  * Class representing tests for the TriviaTaskController

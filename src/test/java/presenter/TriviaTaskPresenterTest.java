@@ -1,6 +1,6 @@
 package presenter;
 import org.junit.jupiter.api.Test;
-import usecases.TriviaTask;
+import use_cases.TriviaTask;
 
 /**
  * Class representing tests for the TriviaTask presenter.
@@ -8,18 +8,6 @@ import usecases.TriviaTask;
  */
 
 public class TriviaTaskPresenterTest {
-
-    /**
-     * Checks that the correctness message is generated correctly and according to whether or not the player's answer
-     * was correct.
-     */
-
-    @Test
-    public void testTellCorrect(){
-        TriviaTask.isAnswerCorrect = true;
-        String message = TriviaTaskPresenter.tellCorrectness();
-        assert(message.equals("that is correct!"));
-    }
 
     /**
      * Checks that the incorrect message is correctly generated when the player's answer was incorrect.
