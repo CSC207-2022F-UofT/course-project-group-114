@@ -35,6 +35,8 @@ public class WireTaskView extends JLayeredPane{
      * Constructor for WireTaskView.
      */
     public WireTaskView() {
+        WireTaskPresenter wireTaskPresenter = new WireTaskPresenter();
+        WireTaskController.reset();
 
         JTextField instructions = new JTextField("CONNECT THE WIRES IN THE FOLLOWING ORDER: BLUE, GREEN, RED (CLICK THE SAME COLOUR)");
         instructions.setHorizontalAlignment(JTextField.CENTER);
@@ -136,10 +138,12 @@ public class WireTaskView extends JLayeredPane{
             public void mousePressed(MouseEvent e) {
                 if (PreviousClick.x > 512 & PreviousClick.x < 580 & PreviousClick.y > 430 &
                 PreviousClick.y < 475){
-                    r1button.setVisible(false);
-                    r2button.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Congrats!");
-                    GameMasterView.backToMain(GameMasterView.clickTaskView);
+                    remove(1);
+                    remove(2);
+                    WireTaskController.removeColour("RED");
+                    wireTaskPresenter.endGame(true);
+
+
                 }
 
                 PreviousClick.setLocation(e.getX(), e.getY());
@@ -169,11 +173,10 @@ public class WireTaskView extends JLayeredPane{
             @Override
             public void mousePressed(MouseEvent e) {
                 if (PreviousClick.x > 0 & PreviousClick.x < 99 & PreviousClick.y < 155 & PreviousClick.y > 115) {
-                    r1button.setVisible(false);
-                    r2button.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Congrats!");
-                    WireTaskController.setActivationStatus(false);
-                    GameMasterView.backToMain(GameMasterView.clickTaskView);
+                    remove(1);
+                    remove(2);
+                    WireTaskController.removeColour("RED");
+                    wireTaskPresenter.endGame(true);
                 }
                 PreviousClick.setLocation(e.getX(), e.getY());
             }

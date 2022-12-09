@@ -13,7 +13,7 @@ import java.util.Collections;
 
 public class WireTask extends Task{
 
-    private static ArrayList<String> RemainingWires; // The list containing strings of the colours of the wires on the left side
+    private static final ArrayList<String> RemainingWires = new ArrayList<String>(); // The list containing strings of the colours of the wires on the left side
 
     /**
      * Constructor for WireTask.

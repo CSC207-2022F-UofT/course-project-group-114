@@ -13,6 +13,14 @@ public class WireTaskController {
         return WireTask.getRemainingWires();
     }
 
+    public static void removeColour(String colour){
+        WireTask.removeWire(colour);
+    }
+
+    public static void reset(){
+        WireTask.reset();
+    }
+
     /**
      * A setter method for WireTask's completion status.
      */
