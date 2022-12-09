@@ -1,9 +1,11 @@
 package view;
 import java.awt.*;
 import java.awt.event.*;
+import javax.sound.midi.Soundbank;
 import javax.swing.*;
 import controller.WireTaskController;
 import presenter.WireTaskPresenter;
+import usecases.WireTask;
 
 /**
  * A class representing WireTaskView, which has the role of creating the UI for WireTask.
@@ -27,11 +29,21 @@ public class WireTaskView extends JLayeredPane{
     JLabel r2button;
     JLabel g2button;
     JLabel b2button;
+    Point PreviousClick = new Point(0, 0);
 
     /**
      * Constructor for WireTaskView.
      */
     public WireTaskView() {
+
+        JTextField instructions = new JTextField("CONNECT THE WIRES IN THE FOLLOWING ORDER: BLUE, GREEN, RED (CLICK THE SAME COLOUR)");
+        instructions.setHorizontalAlignment(JTextField.CENTER);
+        instructions.setEditable(false);
+        instructions.setFont(new java.awt.Font("Serif", Font.ITALIC | Font.BOLD, 20));
+        instructions.setBounds(0,0,1280,80);
+        instructions.setOpaque(false);
+        instructions.setBorder(null);
+        instructions.setMargin(new Insets(0,0,0,0));
 
         // Set the Background
         backgroundImage = new ImageIcon("src/main/java/resources/WireTask/wire background.jpg");
@@ -97,25 +109,55 @@ public class WireTaskView extends JLayeredPane{
         background.setSize(new Dimension(1280, 720));
 
         // Add to JLayeredPane
-        add(background, Integer.valueOf(1));
-        add(r1button, Integer.valueOf(2) );
-        add(r2button, Integer.valueOf(3) );
-        add(g1button, Integer.valueOf(4) );
-        add(g2button, Integer.valueOf(5) );
-        add(b1button, Integer.valueOf(6) );
-        add(b2button, Integer.valueOf(7) );
+        add(background, Integer.valueOf(0));
+        add(r1button, Integer.valueOf(1) );
+        add(r2button, Integer.valueOf(2) );
+        add(g1button, Integer.valueOf(3) );
+        add(g2button, Integer.valueOf(4) );
+        add(b1button, Integer.valueOf(5) );
+        add(b2button, Integer.valueOf(6) );
+        add(instructions, Integer.valueOf(7));
 
         setPreferredSize(new Dimension(1280, 720));
         setVisible(true);
-
 
 
         /*
         MOUSE EVENTS
          */
 
-
+        //RED BUTTONS
         r1button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (PreviousClick.x > 512 & PreviousClick.x < 580 & PreviousClick.y > 430 &
+                PreviousClick.y < 475){
+                    r1button.setVisible(false);
+                    r2button.setVisible(false);
+                }
+
+                PreviousClick.setLocation(e.getX(), e.getY());
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        r2button.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
@@ -123,7 +165,11 @@ public class WireTaskView extends JLayeredPane{
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                if (PreviousClick.x > 0 & PreviousClick.x < 99 & PreviousClick.y < 155 & PreviousClick.y > 115) {
+                    r1button.setVisible(false);
+                    r2button.setVisible(false);
+                }
+                PreviousClick.setLocation(e.getX(), e.getY());
             }
 
             @Override
@@ -141,7 +187,126 @@ public class WireTaskView extends JLayeredPane{
 
             }
         });
-    }
+
+
+        // GREEN BUTTONS
+        g1button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (PreviousClick.x > 512 & PreviousClick.x < 580 & PreviousClick.y < 155 & PreviousClick.y > 115){
+                    g1button.setVisible(false);
+                    g2button.setVisible(false);
+                }
+                PreviousClick.setLocation(e.getX(), e.getY());
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+
+        g2button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (PreviousClick.x > 0 & PreviousClick.x < 99 & PreviousClick.y > 435 &
+                        PreviousClick.y < 475){
+                    g1button.setVisible(false);
+                    g2button.setVisible(false);
+                }
+                PreviousClick.setLocation(e.getX(), e.getY());
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        // BLUE BUTTONS
+        b1button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (PreviousClick.x > 512 & PreviousClick.x < 580 & PreviousClick.y < 262 &
+                        PreviousClick.y > 220){
+                    b1button.setVisible(false);
+                    b2button.setVisible(false);
+                }
+                PreviousClick.setLocation(e.getX(), e.getY());
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        b2button.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (PreviousClick.x > 0 & PreviousClick.x < 99 & PreviousClick.y > 325 &
+                        PreviousClick.y < 368){
+                    b1button.setVisible(false);
+                    b2button.setVisible(false);
+                }
+                PreviousClick.setLocation(e.getX(), e.getY());
+            }
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        }
+   public void taskFinished(){}
+
+
 
 
     public static void main(String[] args) {

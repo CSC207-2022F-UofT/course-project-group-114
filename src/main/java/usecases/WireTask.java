@@ -63,6 +63,12 @@ public class WireTask extends Task{
         return RightWires;
     }
 
+    public static void storeCurrent(int XPos, int YPos, String Colour) {
+        current = Colour;
+
+
+    }
+
     /**
      * A setter method for both arraylists that represent the left and right wires. If the user selects correctly
      * selects two colours that are matching, remove them from both lists.
