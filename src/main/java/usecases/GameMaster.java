@@ -16,8 +16,9 @@ public class GameMaster {
     private static int taskInterval = 10000; // Time between tasks in milliseconds
     public static boolean playing = true;
     private static final Hashtable<String, Long> times = new Hashtable<>();
-
-    public static String[] tasks = new String[] {"WireTask"};
+// changed this line below to include trivia now that i got it working
+    public static String[] tasks = new String[] {"ClickTask", "AssignmentTask", "MemoryTask", "TriviaTask", "HeatAdjustmentTask",
+    "PhoneNumberTask", "WireTask"};
 //    public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
 //            "AssignmentTask", "MemoryTask", "WireTask", "TriviaTask"};
 
