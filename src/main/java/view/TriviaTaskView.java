@@ -10,10 +10,9 @@ import java.awt.event.ActionListener;
 import java.util.UUID;
 
 /**
- * The view class for the trivia task. displays the trivia background, random question, and
+ * Class representing the TriviaTask View. Responsible for displaying the trivia background, random question, and
  * submit button.
  * @author talia
- * @inheritDoc JLayeredPane
  */
 
 public class TriviaTaskView extends JLayeredPane {
@@ -21,9 +20,12 @@ public class TriviaTaskView extends JLayeredPane {
      * Constructor for the TriviaTask view.
      * Creates and places all the necessary pieces for the view on the JLayeredPane
      * Has event listener submit button to pass information (the player's answer) back to the controller.
+     * @author talia
      */
 
     TriviaTaskView(){
+
+        TriviaTaskController controller = new TriviaTaskController();
 
         // adding in the background
         ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/triviaart.png");
@@ -67,11 +69,12 @@ public class TriviaTaskView extends JLayeredPane {
          * @param e the event to be processed
          */
         submitButton.addActionListener(e -> {
+            // when the submit button is pushed
             checkIfTimeRanOut();
             // pass the player's answer back to the view via the controller
             TriviaTaskController.passAnswer(playerAnswerInput);
-            String message = TriviaTaskPresenter.tellCorrectness();
-            JOptionPane.showMessageDialog(null, message);
+            String correctnessMessage = TriviaTaskPresenter.tellCorrectness();
+            JOptionPane.showMessageDialog(null, correctnessMessage);
             setVisible(false);
             TriviaTaskController.setActivatedStatus(false);
             GameMasterView.backToMain(GameMasterView.triviaTaskView);

@@ -1,3 +1,5 @@
+package usecases;
+
 import usecases.ClickTask;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -5,7 +7,7 @@ import java.util.Random;
 
 
 /**
- * The ClickTaskTest class checks methods in ClickTask.java.
+ * The usecases.ClickTaskTest class checks methods in ClickTask.java.
  *
  * @author Siyuan Deng
  */
@@ -46,18 +48,32 @@ public class ClickTaskTest {
 
     /**
      * This tests if the setCurrentClicks method changes the boolean instance portion
-     * correctly in the Click Task class.
+     * correctly in the Click Task class in general.
      */
     @Test
-    public void setCurrentClicksPortionTest(){
+    public void setCurrentClicksPortionGeneralTest(){
         Random rand = new Random();
         ClickTask.setNeededClicks();
         int needed = ClickTask.getNeededClicks();
-        int current = rand.nextInt(ClickTask.getUpperbound() - 1);
+        int current = rand.nextInt(ClickTask.getUpperbound() - 1) + 1;
         ClickTask.setCurrentClicks(current);
         boolean expected = needed / 2 <= current;
         boolean actual = ClickTask.portion;
         Assertions.assertEquals(expected, actual);
+    }
+
+    /**
+     * This tests if the setCurrentClicks method changes the boolean instance portion
+     * correctly in the Click Task class when the number of currentClicks are exactly
+     * half of the number of neededClicks.
+     */
+    @Test
+    public void setCurrentClicksPortionDivisionTest(){
+        ClickTask.setNeededClicks();
+        int needed = ClickTask.getNeededClicks();
+        int current = needed / 2;
+        ClickTask.setCurrentClicks(current);
+        Assertions.assertTrue(ClickTask.portion);
     }
 
     /**
