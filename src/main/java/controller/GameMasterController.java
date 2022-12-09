@@ -1,5 +1,5 @@
 package controller;
-import usecases.GameMaster;
+import use_cases.GameMaster;
 
 import javax.swing.*;
 import java.lang.reflect.InvocationTargetException;

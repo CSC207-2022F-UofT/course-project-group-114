@@ -1,5 +1,5 @@
 package controller;
-import usecases.WireTask;
+import use_cases.WireTask;
 
 /**
  * The WireTaskController class, which provides user information for WireTask to process for its use case.

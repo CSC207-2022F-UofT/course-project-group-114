@@ -1,6 +1,6 @@
 package presenter;
 
-import usecases.ClickTask;
+import use_cases.ClickTask;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

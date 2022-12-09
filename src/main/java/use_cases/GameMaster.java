@@ -1,4 +1,4 @@
-package usecases;
+package use_cases;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -45,7 +45,7 @@ public class GameMaster {
      * @throws IllegalAccessException If method cannot be accessed
      */
     public static void createTask(String newTaskName, long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Class<?> taskClass = Class.forName("usecases." + newTaskName); // Get the task class
+        Class<?> taskClass = Class.forName("use_cases." + newTaskName); // Get the task class
         if (!times.containsKey(newTaskName)) { // If the task isn't already running, then run it
             Method resetMethod = taskClass.getMethod("reset");
             resetMethod.invoke(taskClass);
@@ -94,7 +94,7 @@ public class GameMaster {
     public static void checkTasksCompletion(long currTime) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         ArrayList<String> tasksToRemove = new ArrayList<>();
         for (String taskName : times.keySet()) {
-            Class<?> taskClass = Class.forName("usecases." + taskName);
+            Class<?> taskClass = Class.forName("use_cases." + taskName);
             boolean completionStatus = (boolean) taskClass.getMethod("getCompletionStatus", String.class).invoke(taskClass, taskName);
             boolean activationStatus = (boolean) taskClass.getMethod("getActivatedStatus", String.class).invoke(taskClass, taskName);
             Method setActivatedStatus = taskClass.getMethod("setActivatedStatus", String.class, boolean.class);

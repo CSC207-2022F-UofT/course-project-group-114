@@ -1,4 +1,4 @@
-package usecases;
+package use_cases;
 
 import org.junit.jupiter.api.Test;
 

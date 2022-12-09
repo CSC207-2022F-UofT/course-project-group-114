@@ -1,4 +1,4 @@
-package usecases;
+package use_cases;
 
 /**
  * PhoneNumberTask is a subclass of the abstract class Task and represents the PhoneNumberTask game.

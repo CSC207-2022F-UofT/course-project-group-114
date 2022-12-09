@@ -1,6 +1,6 @@
 package presenter;
 
-import usecases.PhoneNumberTask;
+import use_cases.PhoneNumberTask;
 
 /**
  * The Presenter class for PhoneNumberTask which gets information from the

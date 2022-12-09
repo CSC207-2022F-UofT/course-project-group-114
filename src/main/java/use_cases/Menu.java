@@ -1,4 +1,4 @@
-package usecases;
+package use_cases;
 import entities.User;
 
 import java.util.ArrayList;

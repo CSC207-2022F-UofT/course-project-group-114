@@ -1,6 +1,6 @@
 package presenter;
 
-import usecases.HeatAdjustmentTask;
+import use_cases.HeatAdjustmentTask;
 
 /**
  * A class representing the HeatAdjustmentTaskPresenter, which contains methods that allow HeatAdjustmentTaskView to

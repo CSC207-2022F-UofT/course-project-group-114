@@ -1,5 +1,5 @@
 package controller;
-import usecases.TriviaTask;
+import use_cases.TriviaTask;
 import javax.swing.*;
 
 

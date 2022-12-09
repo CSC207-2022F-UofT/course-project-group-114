@@ -1,5 +1,5 @@
 package controller;
-import usecases.HeatAdjustmentTask;
+import use_cases.HeatAdjustmentTask;
 
 /**
  * A class representing the HeatAdjustmentTaskController, which contains method that allow HeatAdjustmentTaskView

@@ -1,4 +1,4 @@
-package usecases;
+package use_cases;
 
 import entities.User;
 
@@ -130,13 +130,11 @@ public class Authenticator {
         //updates users to all the existing users
         Scanner scan = new Scanner(new File("src/main/java/resources/users.txt")); // goes to the path to find the file
         scan.useDelimiter(",");
-//        String line;
         String name;
         String username;
         String password;
         int highscore;
-//        String[] temp;
-        ArrayList<User> lst = new ArrayList<User>();
+        ArrayList<User> lst = new ArrayList<>();
         
         while(scan.hasNext()){
             name = scan.next();
