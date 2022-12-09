@@ -1,7 +1,6 @@
 package use_cases;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * A class representing the WireTask use case, which has the role of carrying out the correct function of the game task,
@@ -13,7 +12,7 @@ import java.util.Collections;
 
 public class WireTask extends Task{
 
-    private static final ArrayList<String> RemainingWires = new ArrayList<String>(); // The list containing strings of the colours of the wires on the left side
+    private static final ArrayList<String> RemainingWires = new ArrayList<>(); // The list containing strings of the colours of the wires on the left side
 
     /**
      * Constructor for WireTask.
@@ -48,15 +47,4 @@ public class WireTask extends Task{
         }
         }
 
-    /**
-     * A method that returns whether the task is complete or not, which happens when one of the lists of colours is
-     * completely empty, meaning that the user has correctly matched all of them.
-     */
-    public static boolean checkCompletion(){
-        if (RemainingWires.isEmpty()){
-            setCompletionStatus("WireTask", true);
-            setActivatedStatus("WireTask", false);
-        }
-        return getCompletionStatus("WireTask");
-    }
 }
