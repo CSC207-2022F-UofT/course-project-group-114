@@ -3,7 +3,7 @@ package presenter;
 import org.junit.jupiter.api.Test;
 
 import usecases.HeatAdjustmentTask;
-import presenter.HeatAdjustmentTaskPresenter;
+
 /**
  * Class representing the tests for the HeatAdjustmentTaskPresenter class.
  *

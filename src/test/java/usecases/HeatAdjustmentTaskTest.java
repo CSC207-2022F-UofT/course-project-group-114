@@ -2,7 +2,6 @@ package usecases;
 
 import org.junit.jupiter.api.Test;
 
-import usecases.HeatAdjustmentTask;
 
 /**
  * Class representing tests for HeatAdjustmentTask use case class.

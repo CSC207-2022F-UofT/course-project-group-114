@@ -3,7 +3,6 @@ package controller;
 import org.junit.jupiter.api.Test;
 
 import usecases.HeatAdjustmentTask;
-import controller.HeatAdjustmentTaskController;
 
 /**
  * Class representing the tests for the HeatAdjustmentTaskController class.
