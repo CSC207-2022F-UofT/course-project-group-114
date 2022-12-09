@@ -25,6 +25,8 @@ public class ClickTaskPresenter {
             setActivatedStatus(false);
             setCompletionStatus(true);
             GameMasterView.backToMain(GameMasterView.clickTaskView);
+        } else{
+            setCompletionStatus(false);
         }
     }
 

@@ -65,7 +65,7 @@ public class ClickTaskView extends JLayeredPane{
                     currentClicks + "\n Needed Clicks: "+ ClickTaskController.getNeededClicks());
 
             // Change icons as users make more clicks
-            if (currentClicks == neededClicks - 1) {
+            if (currentClicks >= neededClicks - 1) {
                 button.setIcon(last);
             } else if (currentClicks == neededClicks - 2){
                 button.setIcon(third);

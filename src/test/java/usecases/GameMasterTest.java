@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import usecases.Task;
 
 /**
- * The GameMasterTest class checks methods in GameMaster.java.
+ * The usecases.GameMasterTest class checks methods in GameMaster.java.
  *
  * @author Siyuan Deng
  */
