@@ -2,7 +2,6 @@ package controller;
 import usecases.TriviaTask;
 import javax.swing.*;
 
-import static usecases.TriviaTask.actualAnswer;
 
 /**
  * The TriviaTask controller class.

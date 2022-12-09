@@ -1,13 +1,9 @@
 package view;
-import usecases.TriviaTask;
 import controller.TriviaTaskController;
 import presenter.TriviaTaskPresenter;
 import javax.swing.*;
 import java.awt.*;
-import java.util.Random;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.UUID;
+
 
 /**
  * Class representing the TriviaTask View. Responsible for displaying the trivia background, random question, and
