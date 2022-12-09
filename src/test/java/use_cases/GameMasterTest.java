@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /**
- * The usecases.GameMasterTest class checks methods in GameMaster.java.
+ * The use case GameMasterTest class checks methods in GameMaster.java.
  *
  * @author Siyuan Deng
  */
