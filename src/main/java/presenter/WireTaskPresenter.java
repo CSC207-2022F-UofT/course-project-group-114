@@ -15,13 +15,13 @@ public class WireTaskPresenter {
             JOptionPane.showMessageDialog(null, "Congrats!");
             setActivatedStatus(false);
             setCompletionStatus(true);
-            GameMasterView.backToMain(GameMasterView.clickTaskView);
+            GameMasterView.backToMain(GameMasterView.wireTaskView);
         } else{
             setCompletionStatus(false);
         }
     }
     public static void setActivatedStatus(boolean status){
-        WireTask.setActivatedStatus("ClickTask", status);
+        WireTask.setActivatedStatus("WireTask", status);
     }
     public static void setCompletionStatus(boolean status){
         WireTask.setCompletionStatus("WireTask", status);
