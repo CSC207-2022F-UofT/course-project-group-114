@@ -1,6 +1,4 @@
 package presenter;
-
-import controller.TriviaTaskController;
 import usecases.TriviaTask;
 
 import static usecases.TriviaTask.*;
@@ -24,7 +22,7 @@ public class TriviaTaskPresenter {
      * to be made to the view.
      * @return String form of the random question that needs to be "presented" to the user.
      */
-    public static String tellViewQuestion(){
+    public String tellViewQuestion(){
 
         return TriviaTask.getRandomQuestion();
     }
