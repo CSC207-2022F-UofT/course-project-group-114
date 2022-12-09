@@ -10,15 +10,9 @@ import usecases.TriviaTask;
 public class TriviaTaskPresenterTest {
 
     /**
-     * Tests if the question string correctly generated according to the random
-     * question from the use case class.
+     * Checks that the correctness message is generated correctly and according to whether or not the player's answer
+     * was correct.
      */
-//    @Test
-//    void testTellQuestion(){
-//        String usecaseQ = TriviaTask.getRandomQuestion();
-//        String question = TriviaTaskPresenter.tellViewQuestion();
-//        assert(question.equals(usecaseQ));
-//    }
 
     @Test
     public void testTellCorrect(){
