@@ -18,7 +18,7 @@ public class GameMaster {
     private static final Hashtable<String, Long> times = new Hashtable<>();
 // changed this line below to include trivia now that i got it working
     public static String[] tasks = new String[] {"ClickTask", "AssignmentTask", "MemoryTask", "TriviaTask", "HeatAdjustmentTask",
-    "PhoneNumberTask"};
+    "PhoneNumberTask", "WireTask"};
 //    public static String[] tasks = new String[] {"HeatAdjustmentTask", "ClickTask", "PhoneNumberTask",
 //            "AssignmentTask", "MemoryTask", "WireTask", "TriviaTask"};
 

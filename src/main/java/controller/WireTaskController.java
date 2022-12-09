@@ -1,6 +1,7 @@
 package controller;
 import use_cases.WireTask;
 
+
 /**
  * The WireTaskController class, which provides user information for WireTask to process for its use case.
  *
@@ -8,12 +9,14 @@ import use_cases.WireTask;
  */
 public class WireTaskController {
 
-//    /**
-//     * A setter method for the last two colours the user selected. If they are matching, remove them both from the list
-//     */
-//    public static boolean check_matching(String first, String second){
-//        return WireTask.checkWiresSelected(first, second);
-//        }
+
+    public static void removeColour(String colour){
+        WireTask.removeWire(colour);
+    }
+
+    public static void reset(){
+        WireTask.reset();
+    }
 
     /**
      * A setter method for WireTask's completion status.
@@ -21,10 +24,7 @@ public class WireTaskController {
     public static void setCompletionStatus(boolean status) {
         WireTask.setCompletionStatus("WireTask", status);
     }
-    public static void setActivationStatus(boolean status) {
 
-        WireTask.setActivatedStatus("WireTask", status);
-    }
     public static boolean getActivatedStatus() {
 
         return WireTask.getActivatedStatus("WireTask");

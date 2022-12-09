@@ -2,6 +2,9 @@ package view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import controller.WireTaskController;
+import presenter.WireTaskPresenter;
+
 
 /**
  * A class representing WireTaskView, which has the role of creating the UI for WireTask.
@@ -26,12 +29,13 @@ public class WireTaskView extends JLayeredPane{
     JLabel g2button;
     JLabel b2button;
     Point PreviousClick = new Point(0, 0);
-    // POINT USED FOR STORING CLICK POSITION
 
     /**
      * Constructor for WireTaskView.
      */
     public WireTaskView() {
+        WireTaskPresenter wireTaskPresenter = new WireTaskPresenter();
+        WireTaskController.reset();
 
         JTextField instructions = new JTextField("CONNECT THE WIRES IN THE FOLLOWING ORDER: BLUE, GREEN, RED (CLICK THE SAME COLOUR)");
         instructions.setHorizontalAlignment(JTextField.CENTER);
@@ -119,17 +123,12 @@ public class WireTaskView extends JLayeredPane{
         setVisible(true);
 
 
-
+        /*
+        MOUSE EVENTS
+         */
 
         //RED BUTTONS
         r1button.addMouseListener(new MouseListener() {
-
-            /**
-             * Click event for the left-hand red button. When the button is clicked on with the mouse, it will check
-             * the last stored position and whether that corresponds to the button of the same colour. If so, remove
-             * both buttons (completed). Also stores the position now to be this button.
-             * @param e the event to be processed
-             */
             @Override
             public void mouseClicked(MouseEvent e) {
 
@@ -137,12 +136,17 @@ public class WireTaskView extends JLayeredPane{
             @Override
             public void mousePressed(MouseEvent e) {
                 if (PreviousClick.x > 512 & PreviousClick.x < 580 & PreviousClick.y > 430 &
-                        PreviousClick.y < 475){
-                    r1button.setVisible(false);
-                    r2button.setVisible(false);
+                PreviousClick.y < 475){
+                    remove(1);
+                    remove(2);
+                    WireTaskController.removeColour("RED");
+                    wireTaskPresenter.endGame(true);
+
+
                 }
 
                 PreviousClick.setLocation(e.getX(), e.getY());
+
             }
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -168,8 +172,10 @@ public class WireTaskView extends JLayeredPane{
             @Override
             public void mousePressed(MouseEvent e) {
                 if (PreviousClick.x > 0 & PreviousClick.x < 99 & PreviousClick.y < 155 & PreviousClick.y > 115) {
-                    r1button.setVisible(false);
-                    r2button.setVisible(false);
+                    remove(1);
+                    remove(2);
+                    WireTaskController.removeColour("RED");
+                    wireTaskPresenter.endGame(true);
                 }
                 PreviousClick.setLocation(e.getX(), e.getY());
             }
@@ -305,11 +311,7 @@ public class WireTaskView extends JLayeredPane{
             }
         });
 
-    }
-    public void taskFinished(){}
-
-
-
+        }
 
     public static void main(String[] args) {
         new WireTaskView();
