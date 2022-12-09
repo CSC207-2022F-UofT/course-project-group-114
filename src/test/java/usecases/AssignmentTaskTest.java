@@ -2,8 +2,6 @@ package usecases;
 
 import org.junit.jupiter.api.Test;
 
-import usecases.AssignmentTask;
-
 /**
  * The usecases.AssignmentTaskTest class checks methods in AssignmentTask.java.
  *

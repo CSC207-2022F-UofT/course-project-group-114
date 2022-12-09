@@ -1,16 +1,12 @@
 package view;
-import usecases.TriviaTask;
 import controller.TriviaTaskController;
 import presenter.TriviaTaskPresenter;
 import javax.swing.*;
 import java.awt.*;
-import java.util.Random;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.UUID;
+
 
 /**
- * the view for the trivia task. displays the trivia background, random question, and
+ * Class representing the TriviaTask View. Responsible for displaying the trivia background, random question, and
  * submit button.
  * @author talia
  */
@@ -64,6 +60,10 @@ public class TriviaTaskView extends JLayeredPane {
         add(submitButton, Integer.valueOf(3));
         setVisible(true);
 
+        /**
+         * Invoked when the submitButton is clicked
+         * @param e the event to be processed
+         */
         submitButton.addActionListener(e -> {
             // when the submit button is pushed
             checkIfTimeRanOut();
