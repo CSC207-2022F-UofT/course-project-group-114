@@ -5,7 +5,7 @@ import javax.sound.midi.Soundbank;
 import javax.swing.*;
 import controller.WireTaskController;
 import presenter.WireTaskPresenter;
-import usecases.WireTask;
+import use_cases.WireTask;
 
 /**
  * A class representing WireTaskView, which has the role of creating the UI for WireTask.
@@ -138,9 +138,12 @@ public class WireTaskView extends JLayeredPane{
                 PreviousClick.y < 475){
                     r1button.setVisible(false);
                     r2button.setVisible(false);
+                    JOptionPane.showMessageDialog(null, "Congrats!");
+                    GameMasterView.backToMain(GameMasterView.clickTaskView);
                 }
 
                 PreviousClick.setLocation(e.getX(), e.getY());
+
             }
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -168,6 +171,9 @@ public class WireTaskView extends JLayeredPane{
                 if (PreviousClick.x > 0 & PreviousClick.x < 99 & PreviousClick.y < 155 & PreviousClick.y > 115) {
                     r1button.setVisible(false);
                     r2button.setVisible(false);
+                    JOptionPane.showMessageDialog(null, "Congrats!");
+                    WireTaskController.setActivationStatus(false);
+                    GameMasterView.backToMain(GameMasterView.clickTaskView);
                 }
                 PreviousClick.setLocation(e.getX(), e.getY());
             }
@@ -304,10 +310,6 @@ public class WireTaskView extends JLayeredPane{
         });
 
         }
-   public void taskFinished(){}
-
-
-
 
     public static void main(String[] args) {
         new WireTaskView();
