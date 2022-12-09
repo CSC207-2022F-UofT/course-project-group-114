@@ -16,7 +16,7 @@ public class TriviaTaskController {
      * @param playerAnswer the answer which the user has typed
      */
 
-    public static void passAnswer(JTextField playerAnswer){
+    public void passAnswer(JTextField playerAnswer){
         // backend checkAnswer compares the playerAnswer to the actualAnswer to determine
         // if it is correct
         TriviaTask.checkAnswer(playerAnswer.getText(), TriviaTask.actualAnswer);

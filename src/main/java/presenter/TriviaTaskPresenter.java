@@ -24,17 +24,11 @@ public class TriviaTaskPresenter {
      * to be made to the view.
      * @return String form of the random question that needs to be "presented" to the user.
      */
-    public static String tellViewQuestion(){
+    public String tellViewQuestion(){
 
         return TriviaTask.getRandomQuestion();
     }
-    
-    /**
-     * Finds out if the player answered the question correctly from the usecase, and decides what
-     * message the view needs to "present" to the user.
-     * @return String form of the message that needs to be displayed to the user to tell them if they answered
-     * the question correctly or not.
-     */
+
 
     /**
      * Finds out if the player answered the question correctly from the usecase, and decides what
@@ -43,7 +37,7 @@ public class TriviaTaskPresenter {
      * the question correctly or not.
      */
 
-    public static String tellCorrectness(){
+    public String tellCorrectness(){
         String correctnessMessage;
         //if answer is correct
         if (isAnswerCorrect){
