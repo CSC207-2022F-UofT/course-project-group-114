@@ -1,5 +1,4 @@
 package presenter;
-import usecases.WireTask;
 
 /**
  * The WireTaskPresenter,

@@ -1,9 +1,9 @@
+package use_cases;
+
 import org.junit.jupiter.api.Test;
 
-import usecases.AssignmentTask;
-
 /**
- * The AssignmentTaskTest class checks methods in AssignmentTask.java.
+ * The usecases.AssignmentTaskTest class checks methods in AssignmentTask.java.
  *
  * @author uoft-flyfreejay
  * @version 1.0

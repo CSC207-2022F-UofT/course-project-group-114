@@ -1,7 +1,8 @@
+package use_cases;
+
 import entities.User;
 import org.junit.jupiter.api.Test;
 
-import usecases.Authenticator;
 
 /**
  * This class contains unit tests meant for the Authenticator class, testing the

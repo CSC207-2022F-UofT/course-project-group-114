@@ -140,7 +140,7 @@ public class AuthenticatorView extends JFrame {
             loginPanel.setVisible(true);
         });
 
-        // both buttons submits the input for evaluation and changes view accordingly
+        // both buttons submit the input for evaluation and changes view accordingly
         loginSubmit.addActionListener(e -> {
             NonGameController.login(loginUsername.getText(), loginPassword.getText());
             if(AuthenticatorPresenter.setLogin()){

@@ -1,7 +1,8 @@
+package controller;
+
 import org.junit.jupiter.api.Test;
 
-import usecases.HeatAdjustmentTask;
-import controller.HeatAdjustmentTaskController;
+import use_cases.HeatAdjustmentTask;
 
 /**
  * Class representing the tests for the HeatAdjustmentTaskController class.

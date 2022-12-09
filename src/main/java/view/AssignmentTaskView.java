@@ -83,13 +83,14 @@ public class AssignmentTaskView extends JLayeredPane implements KeyListener{
 
     }
 
+    /**
+     * Invoked when any key is pressed
+     *
+     * @param e the event to be processed
+     */
     @Override
     public void keyPressed(KeyEvent e) {
-        /**
-         * Invoked when any key is pressed
-         *
-         * @param e the event to be processed
-         */
+
         totalCount++;
 
         if (totalCount >= currentProgress * (countNeeded / 6)){
@@ -101,7 +102,7 @@ public class AssignmentTaskView extends JLayeredPane implements KeyListener{
             GameMasterView.backToMain(GameMasterView.assignmentTaskView);
         }
 
-        // changing backgroung pictures to reflect changes
+        // changing background pictures to reflect changes
         switch (currentProgress){
             case 6:
                 background.setIcon(b7);

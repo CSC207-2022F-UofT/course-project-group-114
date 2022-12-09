@@ -1,7 +1,7 @@
 package controller;
 
 import org.junit.jupiter.api.Test;
-import usecases.PhoneNumberTask;
+import use_cases.PhoneNumberTask;
 
 /**
  * Class representing the tests for the HeatAdjustmentTaskController class.

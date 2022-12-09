@@ -1,6 +1,6 @@
 package presenter;
 
-import usecases.MemoryTask;
+import use_cases.MemoryTask;
 
 /**
  * The Presenter class for MemoryTask which gets information from the

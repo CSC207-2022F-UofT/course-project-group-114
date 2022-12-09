@@ -1,5 +1,5 @@
 package controller;
-import usecases.AssignmentTask;
+import use_cases.AssignmentTask;
 
 /**
  * A class representing the AssignmentTaskController, which is responsible for communicating

@@ -1,4 +1,4 @@
-package usecases;
+package use_cases;
 
 /**
  * Class representing the AssignmentTask use case, which is responsible for Assignment mini-game
@@ -39,18 +39,6 @@ public class AssignmentTask extends Task {
     public static void setCurrentCharacterCount(int currCharCount){
         currentCharacterCount = currCharCount;
     }
-//    public static void setCompletionStatus(boolean status) {
-//        completed = status;
-//    }
-//    public static boolean getCompletionStatus() {
-//        return completed;
-//    }
-//    public static void setActivatedStatus(boolean status) {
-//        activated = status;
-//    }
-//    public static boolean getActivatedStatus() {
-//        return activated;
-//    }
 
     /**
      * a method that checks whether the currentCharacterCount is greater than or equal to characterCountNeeded

@@ -1,6 +1,6 @@
 package presenter;
 
-import usecases.Authenticator;
+import use_cases.Authenticator;
 
 import javax.swing.*;
 

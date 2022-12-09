@@ -1,6 +1,6 @@
 package presenter;
-import usecases.GameMaster;
-import usecases.LifeMaster;
+import use_cases.GameMaster;
+import use_cases.LifeMaster;
 
 import java.util.Set;
 

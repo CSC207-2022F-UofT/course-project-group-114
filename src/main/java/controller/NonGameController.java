@@ -1,6 +1,6 @@
 package controller;
-import usecases.Menu;
-import usecases.Authenticator;
+import use_cases.Menu;
+import use_cases.Authenticator;
 
 /**
  * This controller class contains methods that handles

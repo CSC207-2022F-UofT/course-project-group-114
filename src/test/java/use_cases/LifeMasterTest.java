@@ -1,6 +1,6 @@
-import org.junit.jupiter.api.Test;
+package use_cases;
 
-import usecases.LifeMaster;
+import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Random;

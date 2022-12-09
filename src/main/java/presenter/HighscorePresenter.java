@@ -1,6 +1,6 @@
 package presenter;
 
-import usecases.Menu;
+import use_cases.Menu;
 import javax.swing.*;
 import java.awt.*;
 

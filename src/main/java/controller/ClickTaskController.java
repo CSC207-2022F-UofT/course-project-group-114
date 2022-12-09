@@ -1,14 +1,12 @@
 package controller;
 
-import usecases.ClickTask;
+import use_cases.ClickTask;
 
 /**
  * The ClickTaskController class passes information between the ClickTask
  * and the ClickTaskView.
  *
  * @author Siyuan Deng
- * @version 2.0
- * @since 2022-10-27
  */
 public class ClickTaskController {
 

@@ -1,8 +1,9 @@
+package presenter;
+
 import org.junit.jupiter.api.Test;
 
-import presenter.GameMasterPresenter;
-import usecases.GameMaster;
-import usecases.LifeMaster;
+import use_cases.GameMaster;
+import use_cases.LifeMaster;
 
 /**
  * Class representing the tests for the GameMasterPresenter class.

@@ -1,6 +1,6 @@
 package presenter;
 
-import usecases.ClickTask;
+import use_cases.ClickTask;
 import view.GameMasterView;
 
 import javax.swing.*;
@@ -25,6 +25,8 @@ public class ClickTaskPresenter {
             setActivatedStatus(false);
             setCompletionStatus(true);
             GameMasterView.backToMain(GameMasterView.clickTaskView);
+        } else{
+            setCompletionStatus(false);
         }
     }
 

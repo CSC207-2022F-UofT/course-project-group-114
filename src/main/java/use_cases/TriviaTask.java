@@ -1,4 +1,4 @@
-package usecases;
+package use_cases;
 
 import java.util.*;
 
@@ -31,6 +31,11 @@ public class TriviaTask extends Task {
         triviaDict.put("what is the capital of canada?", "ottawa");
         return triviaDict;
     }
+    
+    
+    /** Method for choosing a random question.
+     * @return the randomly chosen question from the trivia dictionary.
+     */
     public static String getRandomQuestion(){
         Map<String, String> triviaDict = getMap();
         Set <String> keySet = triviaDict.keySet();
@@ -41,10 +46,19 @@ public class TriviaTask extends Task {
         actualAnswer = triviaDict.get(currentQuestion);
         return currentQuestion;
     }
+    
+    /**
+     * Reset method, inherited from the task abstract class
+     */
     public static void reset() { // inherited reset method, generate random question
     }
+    
+    /**
+     * Method for checking the correctness of the player's answer.
+     * @param playerAnswer the string version of the answer inputted by the user
+     */
 
-    public static void checkAnswer(String playerAnswer){
+    public static void checkAnswer(String playerAnswer, String actualAnswer){
         // check to see if the answer is correct.
         // checking for the same word, not case-sensitive.
         // if the answer is correct

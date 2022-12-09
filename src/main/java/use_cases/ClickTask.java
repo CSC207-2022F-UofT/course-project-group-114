@@ -1,4 +1,4 @@
-package usecases;
+package use_cases;
 
 import java.util.Random;
 
@@ -41,11 +41,7 @@ public class ClickTask extends Task{
      */
     public static void setCurrentClicks(int newCurrentClicks){
         currentClicks = newCurrentClicks;
-        if (neededClicks / 2 <= newCurrentClicks) {
-            portion = true;
-        } else{
-            portion = false;
-        }
+        portion = neededClicks / 2 <= newCurrentClicks;
     }
 
     /**
