@@ -1,5 +1,6 @@
 package controller;
 import use_cases.WireTask;
+import java.util.ArrayList;
 
 /**
  * The WireTaskController class, which provides user information for WireTask to process for its use case.
@@ -8,12 +9,9 @@ import use_cases.WireTask;
  */
 public class WireTaskController {
 
-//    /**
-//     * A setter method for the last two colours the user selected. If they are matching, remove them both from the list
-//     */
-//    public static boolean check_matching(String first, String second){
-//        return WireTask.checkWiresSelected(first, second);
-//        }
+    public static ArrayList<String> getRemainingColours(){
+        return WireTask.getRemainingWires();
+    }
 
     /**
      * A setter method for WireTask's completion status.

@@ -12,87 +12,48 @@ import java.util.Collections;
  */
 
 public class WireTask extends Task{
-    private static ArrayList<String> LeftWires; // The list containing strings of the colours of the wires on the left side
-    private static ArrayList<String> RightWires; // The list containing strings of the colours of the wires on the right side
-    private static String previous;
-    private static String current;
+
+    private static ArrayList<String> RemainingWires; // The list containing strings of the colours of the wires on the left side
 
     /**
      * Constructor for WireTask.
      */
     public WireTask(){
+
         reset();
     }
 
     /**
-     * Reset method, which sets up two lists with set colours in a random order.
+     * Reset method, which sets LIST.
      */
     public static void reset(){
-        previous = "";
-        current = "";
-        LeftWires = setLeftWires();
-        RightWires = setRightWires();
+        RemainingWires.add("RED");
+        RemainingWires.add("GREEN");
+        RemainingWires.add("BLUE");
     }
 
-    /**
-     * A setter method for the left set of wires. Its function is to add the colours red, green and blue if the
-     * list does not already contain them, then shuffle this arraylist such that colours will be in a random order each
-     * time.
-     */
-    public static ArrayList<String> setLeftWires(){
-        // Shuffles a random list from LeftWires for the left side
-        LeftWires = new ArrayList<>();
-        LeftWires.add("RED");
-        LeftWires.add("GREEN");
-        LeftWires.add("BLUE");
-        return LeftWires;
+    public static ArrayList<String> getRemainingWires(){
+        return RemainingWires;
     }
 
-    /**
-     * A setter method for the right set of wires. Its function is to add the colours red, green and blue if the
-     * list does not already contain them, then shuffle this arraylist such that colours will be in a random order each
-     * time.
-     */
-
-    public static ArrayList<String> setRightWires(){
-        // Shuffles a random list from RightWires for the right side
-        RightWires = new ArrayList<>();
-        RightWires.add("RED");
-        RightWires.add("GREEN");
-        RightWires.add("BLUE");
-        return RightWires;
-    }
-
-    public static void storeCurrent(int XPos, int YPos, String Colour) {
-        current = Colour;
-
-
-    }
-
-    /**
-     * A setter method for both arraylists that represent the left and right wires. If the user selects correctly
-     * selects two colours that are matching, remove them from both lists.
-     */
-    public static boolean checkWiresSelected(String first, String second) {
-        // Checks whether the two last wires the user selected are matching. If so, remove the matching
-        // colour from both arraylists.
-        previous = first;
-        current = second;
-
-        if (previous.equals(current)) {
-            LeftWires.remove(previous);
-            RightWires.remove(previous);
-            return true;
+    public static void removeWire(String colour){
+        if (colour.equals("RED")) {
+            RemainingWires.remove("RED");
         }
-        return false;
-    }
+        if (colour.equals("BLUE")) {
+            RemainingWires.remove("BLUE");
+        }
+        if (colour.equals("GREEN")) {
+            RemainingWires.remove("GREEN");
+        }
+        }
 
     /**
      * A method that returns whether the task is complete or not, which happens when one of the lists of colours is
      * completely empty, meaning that the user has correctly matched all of them.
      */
     public static boolean checkCompletion(){
-        if (LeftWires.isEmpty()){
+        if (RemainingWires.isEmpty()){
             setCompletionStatus("WireTask", true);
             setActivatedStatus("WireTask", false);
         }
