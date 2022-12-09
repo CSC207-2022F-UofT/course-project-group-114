@@ -30,6 +30,7 @@ public class WireTaskView extends JLayeredPane{
     JLabel g2button;
     JLabel b2button;
     Point PreviousClick = new Point(0, 0);
+    // POINT USED FOR STORING CLICK POSITION
 
     /**
      * Constructor for WireTaskView.
@@ -122,12 +123,17 @@ public class WireTaskView extends JLayeredPane{
         setVisible(true);
 
 
-        /*
-        MOUSE EVENTS
-         */
+
 
         //RED BUTTONS
         r1button.addMouseListener(new MouseListener() {
+
+            /**
+             * Click event for the left-hand red button. When the button is clicked on with the mouse, it will check
+             * the last stored position and whether that corresponds to the button of the same colour. If so, remove
+             * both buttons (completed). Also stores the position now to be this button.
+             * @param e the event to be processed
+             */
             @Override
             public void mouseClicked(MouseEvent e) {
 
