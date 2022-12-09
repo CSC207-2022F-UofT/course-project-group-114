@@ -20,6 +20,10 @@ public class TriviaTaskPresenterTest {
         String message = TriviaTaskPresenter.tellCorrectness();
         assert(message.equals("that is correct!"));
     }
+
+    /**
+     * Checks that the incorrect message is correctly generated when the player's answer was incorrect.
+     */
     @Test
     public void testTellIncorrect(){
         TriviaTask.isAnswerCorrect = false;
