@@ -5,15 +5,15 @@ import javax.swing.*;
 import static usecases.TriviaTask.actualAnswer;
 
 /**
- * The controller for the trivia task.
+ * The TriviaTask controller class.
  * responsible for getting information from the view, translating it into something that the
  * usecase can understand, packaging it, and passing it to the usecase.
  * @author talia
  */
 public class TriviaTaskController {
     /**
-     * the controller for the trivia task is called by the view. it takes the player's answer (user input),
-     * "translates" it into a string, and calls the usecase to check that string for correctness.
+     * Takes inputs passed by the TriviaTaskView and translates them into an appropriate data type for the usecase.
+     * @param playerAnswer the answer which the user has typed
      */
 
 
