@@ -20,9 +20,6 @@ public class TriviaTaskView extends JLayeredPane {
      */
 
     TriviaTaskView(){
-
-        TriviaTaskController controller = new TriviaTaskController();
-
         // adding in the background
         ImageIcon backgroundPng = new ImageIcon("src/main/java/resources/triviaart.png");
         JLabel triviaBackground = new JLabel(backgroundPng);
@@ -39,6 +36,10 @@ public class TriviaTaskView extends JLayeredPane {
 
         JButton submitButton = new JButton();
         submitButton.setBorder(BorderFactory.createLineBorder(Color.MAGENTA, 2));
+        submitButton.setBorderPainted(false);
+        submitButton.setBorder(null);
+        submitButton.setMargin(new Insets(0, 0, 0, 0));
+        submitButton.setContentAreaFilled(false);
         submitButton.setBounds(805, 637, 130, 50);
 
         // setting up playerAnswer input
@@ -60,7 +61,7 @@ public class TriviaTaskView extends JLayeredPane {
         add(submitButton, Integer.valueOf(3));
         setVisible(true);
 
-        /**
+        /*
          * Invoked when the submitButton is clicked
          * @param e the event to be processed
          */

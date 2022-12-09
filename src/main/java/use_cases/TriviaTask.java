@@ -24,7 +24,6 @@ public class TriviaTask extends Task {
         triviaDict.put("What is the missing word: S***D Design Principles", "solid");
         triviaDict.put("A violation of clean architecture is called *missing word* architecture", "dIrTy");
         triviaDict.put("The dude who wrote clean architecture is nicknamed ...", "uncle bob");
-        triviaDict.put("In what room are the csc207 lectures?", "hell");
         triviaDict.put("REALLY BAD clean arc violations are called F***Y arc", "filthy");
         triviaDict.put("what do you call code that totally disregards solid deign?", "liquid");
         triviaDict.put("what is the 11th month of the year?", "november");
