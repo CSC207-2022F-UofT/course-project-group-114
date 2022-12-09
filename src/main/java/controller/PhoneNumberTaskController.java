@@ -1,6 +1,6 @@
 package controller;
 
-import usecases.PhoneNumberTask;
+import use_cases.PhoneNumberTask;
 
 /**
  * The controller for the Phone Number Task which is responsible to take inputs from the view and

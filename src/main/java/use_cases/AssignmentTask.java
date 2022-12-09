@@ -1,4 +1,4 @@
-package usecases;
+package use_cases;
 
 /**
  * Class representing the AssignmentTask use case, which is responsible for Assignment mini-game

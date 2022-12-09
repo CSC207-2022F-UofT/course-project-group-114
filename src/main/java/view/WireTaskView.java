@@ -1,11 +1,7 @@
 package view;
 import java.awt.*;
 import java.awt.event.*;
-import javax.sound.midi.Soundbank;
 import javax.swing.*;
-import controller.WireTaskController;
-import presenter.WireTaskPresenter;
-import usecases.WireTask;
 
 /**
  * A class representing WireTaskView, which has the role of creating the UI for WireTask.

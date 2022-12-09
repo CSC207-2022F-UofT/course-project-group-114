@@ -2,7 +2,7 @@ package controller;
 
 import org.junit.jupiter.api.Test;
 
-import usecases.GameMaster;
+import use_cases.GameMaster;
 
 /**
  * Class representing the tests for the GameMasterController class.

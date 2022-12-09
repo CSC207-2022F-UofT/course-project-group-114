@@ -1,8 +1,8 @@
 package presenter;
 
-import usecases.TriviaTask;
+import use_cases.TriviaTask;
 
-import static usecases.TriviaTask.*;
+import static use_cases.TriviaTask.*;
 
 /**
  * The presenter class for TriviaTask, which calls the usecases to determine what the view needs to "present" to the user. 

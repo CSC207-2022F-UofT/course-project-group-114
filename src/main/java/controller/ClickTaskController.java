@@ -1,6 +1,6 @@
 package controller;
 
-import usecases.ClickTask;
+import use_cases.ClickTask;
 
 /**
  * The ClickTaskController class passes information between the ClickTask

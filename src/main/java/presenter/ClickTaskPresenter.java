@@ -1,6 +1,6 @@
 package presenter;
 
-import usecases.ClickTask;
+import use_cases.ClickTask;
 import view.GameMasterView;
 
 import javax.swing.*;
