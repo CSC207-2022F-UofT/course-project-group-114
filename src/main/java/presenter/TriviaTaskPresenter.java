@@ -48,13 +48,13 @@ public class TriviaTaskPresenter {
         //if answer is correct
         if (isAnswerCorrect){
             // tell the view to present the word correct to the user
-            correctnessMessage = "correct";
+            correctnessMessage = " that is correct!";
             return correctnessMessage;
         }
         else{
             // if not tell the view to present incorrect & what the correct answer would have
             // been to the user
-            correctnessMessage = "incorrect. correct answer is: " + actualAnswer;
+            correctnessMessage = "incorrect!";
             return correctnessMessage;
         }
 
