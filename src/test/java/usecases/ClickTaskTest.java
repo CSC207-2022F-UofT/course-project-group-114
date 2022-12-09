@@ -6,7 +6,7 @@ import java.util.Random;
 
 
 /**
- * The usecases.ClickTaskTest class checks methods in ClickTask.java.
+ * The use case ClickTaskTest class checks methods in ClickTask.java.
  *
  * @author Siyuan Deng
  */
