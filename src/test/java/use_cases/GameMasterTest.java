@@ -61,28 +61,6 @@ public class GameMasterTest {
     }
 
     /**
-     * Test for whether the checkTasksCompletion method of the GameMaster correctly sets the activation status
-     * of each task, or correctly deactivates each task.
-     * @throws ClassNotFoundException If task class is not found
-     * @throws NoSuchMethodException If method is not found
-     * @throws InvocationTargetException If method cannot be invoked with passed parameters
-     * @throws IllegalAccessException If method cannot be accessed
-     */
-    @Test
-    public void checkTasksCompletionTest() throws ClassNotFoundException, InvocationTargetException,
-            NoSuchMethodException, IllegalAccessException {
-        GameMaster.reset();
-        String[] taskNames = GameMaster.tasks;
-        for (String task: taskNames) {
-            GameMaster.getTimes().put(task, Integer.toUnsignedLong(100));
-            Task.setCompletionStatus(task, true);
-            Task.setActivatedStatus(task, true);
-            GameMaster.checkTasksCompletion(Integer.toUnsignedLong(100));
-            assert(!Task.getActivatedStatus(task));
-        }
-    }
-
-    /**
      * Test for whether the chooseTask method of the GameMaster returns a task name that is in the GameMaster's
      * tasks list.
      */
