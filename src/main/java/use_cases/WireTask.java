@@ -12,13 +12,13 @@ import java.util.ArrayList;
 
 public class WireTask extends Task{
 
+    @ SuppressWarnings("all") // We need RemainingWires for the correct function of the other classes
     private static final ArrayList<String> RemainingWires = new ArrayList<>(); // The list containing strings of the colours of the wires on the left side
 
     /**
      * Constructor for WireTask.
      */
     public WireTask(){
-
         reset();
     }
 
@@ -29,10 +29,6 @@ public class WireTask extends Task{
         RemainingWires.add("RED");
         RemainingWires.add("GREEN");
         RemainingWires.add("BLUE");
-    }
-
-    public static ArrayList<String> getRemainingWires(){
-        return RemainingWires;
     }
 
     public static void removeWire(String colour){

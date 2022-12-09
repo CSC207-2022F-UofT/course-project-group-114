@@ -24,6 +24,7 @@ public class WireTaskController {
     public static void setCompletionStatus(boolean status) {
         WireTask.setCompletionStatus("WireTask", status);
     }
+
     public static boolean getActivatedStatus() {
 
         return WireTask.getActivatedStatus("WireTask");
