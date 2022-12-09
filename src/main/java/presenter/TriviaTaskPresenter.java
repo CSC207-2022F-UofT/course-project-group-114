@@ -1,6 +1,5 @@
 package presenter;
 
-import controller.TriviaTaskController;
 import usecases.TriviaTask;
 
 import static usecases.TriviaTask.*;
