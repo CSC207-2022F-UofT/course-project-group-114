@@ -2,7 +2,6 @@ package presenter;
 
 import org.junit.jupiter.api.Test;
 
-import presenter.GameMasterPresenter;
 import usecases.GameMaster;
 import usecases.LifeMaster;
 

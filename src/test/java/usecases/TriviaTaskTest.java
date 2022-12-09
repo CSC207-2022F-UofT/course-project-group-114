@@ -1,7 +1,5 @@
 package usecases;
 import org.junit.jupiter.api.Test;
-import usecases.TriviaTask;
-import java.util.Map;
 
 /**
  * Class representing test cases for the TriviaTask

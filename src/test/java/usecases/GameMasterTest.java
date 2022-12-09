@@ -1,13 +1,10 @@
 package usecases;
 
-import usecases.GameMaster;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Hashtable;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import usecases.Task;
 
 /**
  * The usecases.GameMasterTest class checks methods in GameMaster.java.
