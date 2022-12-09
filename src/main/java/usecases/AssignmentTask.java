@@ -30,6 +30,7 @@ public class AssignmentTask extends Task {
         // generate random number from lowerbound and upperbound
         characterCountNeeded =
                 (int) Math.floor(Math.random()*(COUNT_UPPERBOUND - COUNT_LOWERBOUND +1)+ COUNT_LOWERBOUND);
+        // constants defined at the head
     }
     /**
      * Setter method that sets currentCharacterCount as a given parameter
