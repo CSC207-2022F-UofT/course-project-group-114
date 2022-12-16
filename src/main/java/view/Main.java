@@ -12,7 +12,7 @@ import java.awt.*;
  *
  * @author Ming Hin Joshua Li
  */
-public class StartView extends JFrame {
+public class Main extends JFrame {
 
     /**
      * This constructor creates multiple panels that are stored into a
@@ -24,7 +24,7 @@ public class StartView extends JFrame {
      * presenters) with a button that switched the view to the
      * AuthenticatorView.
      */
-    StartView(){
+    Main(){
         Dimension maxSize = new Dimension(1280, 720);
 
         JPanel startPanel = new JPanel();
@@ -115,6 +115,6 @@ public class StartView extends JFrame {
     }
 
     public static void main(String[] args) {
-        new StartView();
+        new Main();
     }
 }

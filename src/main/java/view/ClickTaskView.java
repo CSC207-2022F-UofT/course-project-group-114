@@ -87,12 +87,4 @@ public class ClickTaskView extends JLayeredPane{
         // turn the panel visible
         setVisible(true);
     }
-
-    /**
-     * This method opens a ClickTaskView, which is the plane of the game and initiate
-     * a new Click Task.
-     */
-    public static void main(String[] args) {
-        new ClickTaskView();
-    }
 }

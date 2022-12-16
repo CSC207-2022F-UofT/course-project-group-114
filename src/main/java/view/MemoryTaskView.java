@@ -105,7 +105,4 @@ public class MemoryTaskView extends JLayeredPane{
         });
 
     }
-    public static void main(String[] args) {
-        new MemoryTaskView();
-    }
 }

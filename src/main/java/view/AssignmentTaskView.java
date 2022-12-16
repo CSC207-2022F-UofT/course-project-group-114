@@ -74,9 +74,6 @@ public class AssignmentTaskView extends JLayeredPane implements KeyListener{
         setSize(1280,720);
         setVisible(true);
     }
-    public static void main(String[] args) {
-        new AssignmentTaskView();
-    }
 
     @Override
     public void keyTyped(KeyEvent e) {

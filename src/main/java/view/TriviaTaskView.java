@@ -79,7 +79,6 @@ public class TriviaTaskView extends JLayeredPane {
 
     }
 
-    public static void main(String[] args){new TriviaTaskView();}
 
     private static void checkIfTimeRanOut(){
         if(!TriviaTaskController.getActivatedStatus()){

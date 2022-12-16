@@ -171,8 +171,5 @@ public class HeatAdjustmentTaskView extends JLayeredPane{
      * Main method for testing purposes.
      * @param args Method call arguments
      */
-    public static void main(String[] args) {
-        new HeatAdjustmentTaskView();
-    }
 
 }

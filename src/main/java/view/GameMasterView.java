@@ -406,9 +406,6 @@ public class GameMasterView extends JFrame{
             clickableTrivia.setVisible(false);
         }
     }
-    public static void main(String[] args) {
-        new GameMasterView();
-    }
 
     /**
      * Method for switching back to the GameMaster's view and closing the view of the currently active task.

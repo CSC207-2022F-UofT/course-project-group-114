@@ -313,7 +313,4 @@ public class WireTaskView extends JLayeredPane{
 
         }
 
-    public static void main(String[] args) {
-        new WireTaskView();
-    }
 }

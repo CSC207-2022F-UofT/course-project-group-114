@@ -303,9 +303,6 @@ public class PhoneNumberTaskView extends JLayeredPane{
         });
 
     }
-    public static void main(String[] args) {
-        new PhoneNumberTaskView();
-    }
 
     /**
      * Checks if the time has run out by checking if the task
